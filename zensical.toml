@@ -93,7 +93,7 @@ Copyright &copy; 2026 The authors
 # - https://zensical.org/docs/setup/logo-and-icons/#favicon
 # - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
 #
-#favicon = "images/favicon.png"
+#favicon = "🌴"
 
 # Zensical supports more than 60 different languages. This means that the
 # labels and tooltips that Zensical's templates produce are translated.
@@ -298,7 +298,7 @@ toggle.name = "Switch to dark mode"
 # - https://zensical.org/docs/authoring/icons-emojis/#search
 # ----------------------------------------------------------------------------
 #[project.theme.icon]
-#logo = "lucide/smile"
+#logo = "simple/fastapi"
 #repo = "lucide/smile"
 
 # ----------------------------------------------------------------------------
