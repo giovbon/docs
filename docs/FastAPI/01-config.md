@@ -2,6 +2,8 @@
 icon: simple/fastapi
 tags:
   - poetry
+hide:
+  - navigation
 ---
 
 # Configuração inicial
