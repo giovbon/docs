@@ -2,4 +2,4 @@
 icon: lucide/rocket
 ---
 
-# Get started
+# Index

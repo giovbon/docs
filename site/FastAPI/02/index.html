@@ -6,28 +6,28 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A new project generated from the default template project.">
+        <meta name="description" content="Learn in Public">
       
       
-        <meta name="author" content="<your name here>">
+        <meta name="author" content="Giovani Bontempo">
       
+      
+        <link rel="canonical" href="https://giovbon.github.io/docs/FastAPI/02/">
       
       
         <link rel="prev" href="../01/">
       
-      
-        <link rel="next" href="../03/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.19">
+      <meta name="generator" content="zensical-0.0.20">
     
     
       
-        <title>02 CRUD: POST e GET - giobon data</title>
+        <title>CRUD - giobon</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#02-crud-post-e-get" class="md-skip">
+        <a href="#crud" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href="../.." title="giobon data" class="md-header__button md-logo" aria-label="giobon data" data-md-component="logo">
+    <a href="../.." title="giobon" class="md-header__button md-logo" aria-label="giobon" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
@@ -113,13 +113,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            giobon data
+            giobon
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              02 CRUD: POST e GET
+              CRUD
             
           </span>
         </div>
@@ -198,13 +198,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="giobon data" class="md-nav__button md-logo" aria-label="giobon data" data-md-component="logo">
+    <a href="../.." title="giobon" class="md-nav__button md-logo" aria-label="giobon" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
 
     </a>
-    giobon data
+    giobon
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -225,7 +225,7 @@
   <span class="md-ellipsis">
     
   
-    Get started
+    Index
   
 
     
@@ -282,25 +282,18 @@
       
         
       
-        
-      
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -345,7 +338,7 @@
   <span class="md-ellipsis">
     
   
-    01
+    Configuração inicial
   
 
     
@@ -375,6 +368,26 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .039c-6.627 0-12 5.354-12 11.96-.001 6.606 5.372 11.963 12 11.962S24.001 18.605 24 12 18.627.039 12 .039m-.829 5.415h7.55l-7.58 5.329h5.182L5.28 18.543Q8.226 12 11.171 5.455"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -384,7 +397,7 @@
   <span class="md-ellipsis">
     
   
-    02 CRUD: POST e GET
+    CRUD
   
 
     
@@ -394,36 +407,59 @@
 
       </a>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03/" class="md-nav__link">
         
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .039c-6.627 0-12 5.354-12 11.96-.001 6.606 5.372 11.963 12 11.962S24.001 18.605 24 12 18.627.039 12 .039m-.829 5.415h7.55l-7.58 5.329h5.182L5.28 18.543Q8.226 12 11.171 5.455"/></svg>
   
-  <span class="md-ellipsis">
     
   
-    03 CRUD: PUT e DELETE
   
-
-    
-  </span>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#post-e-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST e GET
+      
+    </span>
+  </a>
   
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schemas
+      
+    </span>
+  </a>
   
-
-      </a>
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-patch-e-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT, PATCH e DELETE
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -457,6 +493,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#post-e-get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST e GET
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schemas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-patch-e-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT, PATCH e DELETE
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -466,59 +543,21 @@
           
             <div class="md-content" data-md-component="content">
               
-                
-
-
-
-  
-
-
-  <nav class="md-path" aria-label="Navegação" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Get started
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../01/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    FastAPI
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
-              
               <article class="md-content__inner md-typeset">
                 
                   
 
-<h1 id="02-crud-post-e-get">02 CRUD: POST e GET<a class="headerlink" href="#02-crud-post-e-get" title="Permanent link">&para;</a></h1>
+<h1 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h1>
+<p>No desenvolvimento de APIs, existem <em>quatro ações principais que fazemos com os dados</em>: criar, ler, atualizar e excluir. Com essas operações podemos realizar qualquer tipo de comportamento em uma base dados. Podemos criar um registro, em seguida alterá-lo, e depois deletá-lo.</p>
+<p>Quando falamos de APIs servindo dados, todas essas operações têm alguma forma similar no protocolo HTTP. O protocolo tem verbos para indicar essas mesmas ações que queremos representar no banco de dados.</p>
+<ul>
+<li><code>POST</code>: é usado para solicitar que o servidor aceite um dado para a criação do recurso enviado pelo cliente.</li>
+<li><code>GET</code>: é usado para quando o cliente deseja requisitar uma informação do servidor.</li>
+<li><code>PUT</code>: é usando no momento em que o cliente deseja informar alguma alteração nos dados para o servidor.</li>
+<li><code>PATCH</code>: é usado quando o cliente quer aplicar atualizações parciais a um recurso existente, enviando apenas os dados que precisam ser modificados.</li>
+<li><code>DELETE</code>: usado para dizer ao servidor que delete determinado recurso.</li>
+</ul>
+<h2 id="post-e-get"><code>POST</code> e <code>GET</code><a class="headerlink" href="#post-e-get" title="Permanent link">&para;</a></h2>
 <details class="abstract">
 <summary>Referências</summary>
 <ul>
@@ -541,14 +580,14 @@
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span> <span class="c1"># (1)!</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="c1"># (2)!</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Endpoint raiz&quot;</span><span class="p">)</span> <span class="c1"># (2)!</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;API FUNCIONANDO!&#39;</span><span class="p">}</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">database</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># (3)!</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users/&quot;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">201</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">)</span><span class="c1"># (4)!</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserSchema</span><span class="p">):</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/users/&quot;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">201</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserResponse</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Cria um usuário&quot;</span><span class="p">)</span><span class="c1"># (4)!</span>
+</span></span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">UserSchema</span><span class="p">):</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="hll">    <span class="n">dados_do_usuario</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="c1"># (5)!</span>
 </span></span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="hll">
@@ -569,8 +608,8 @@
 </span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">user_with_id</span>
 </span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="p">}</span>
 </span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
-</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/users/&#39;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserList</span><span class="p">)</span>
-</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_users</span><span class="p">():</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/users/&#39;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserList</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Retorna todos os usuários&quot;</span><span class="p">)</span>
+</span></span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">read_users</span><span class="p">():</span>
 </span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;users&#39;</span><span class="p">:</span> <span class="n">database</span><span class="p">}</span> <span class="c1"># (10)!</span>
 </span></code></pre></div>
 <ol>
@@ -586,37 +625,151 @@
     <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">user_with_id</span> <span class="o">=</span> <span class="n">UserDB</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span> <span class="nb">id</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">database</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_with_id</span><span class="p">)</span>
 </span></code></pre></div>
-    Ao usar <code>**user.model_dump()</code>, o operador <code>**</code> desempacota o dicionário resultante, permitindo que seus pares chave-valor sejam passados como argumentos nomeados para uma função ou construtor, como em <code>UserDB()</code></li>
+    Sobre o uso de <code>user.model_dump()</code> <sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup> e <code>**user.model_dump()</code> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 <li>Retorna um dicionário com a chave <code>users</code> e a lista <code>database</code> como valor, representando todos os usuários armazenados</li>
 </ol>
-<p>O arquivo abaixo contém as definições de schemas de dados utilizando o Pydantic, que são essenciais para validar e estruturar as informações utilizadas na aplicação FastAPI definida em <code>app.py</code>.</p>
+<p>Sobre o uso de <code>user.model_dump()</code> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<hr />
+<h2 id="schemas">Schemas<a class="headerlink" href="#schemas" title="Permanent link">&para;</a></h2>
+<p>Os <strong>Schemas</strong> no Pydantic são classes que definem a estrutura dos dados em uma aplicação, agindo como um contrato para garantir que os dados que entram ou saem da API estejam conformes às expectativas. Eles são criados a partir de <code>BaseModel</code>, utilizando anotações de tipo para definir regras. Os principais propósitos dos schemas são:</p>
+<ol>
+<li><strong>Validação</strong>: Verificam automaticamente se os dados estão corretos.</li>
+<li><strong>Conversão</strong>: Transformam tipos de dados, como strings em inteiros.</li>
+<li><strong>Serialização</strong>: Facilitam a conversão de objetos em dicionários ou JSON.</li>
+</ol>
+<p>No FastAPI, os schemas são usados para validar a entrada de dados em funções de endpoint e filtrar a saída de dados, protegendo informações sensíveis. Boas práticas incluem ter diferentes schemas para diferentes situações, como criação, atualização e exposição de dados. Em resumo, os schemas garantem que os dados estejam formatados corretamente antes de serem processados na aplicação.</p>
+<hr />
+<p>Em relação ao projeto, o arquivo abaixo contém as definições de schemas de dados utilizando o Pydantic, que são essenciais para validar e estruturar as informações utilizadas na aplicação FastAPI definida em <code>app.py</code>.</p>
 <p>As classes definidas no arquivo servem como modelos que especificam os atributos e seus tipos para os dados utilizados na aplicação, utilizando o Pydantic. Cada classe define campos, como <code>username</code>, <code>email</code>, e <code>password</code>, e seus tipos correspondentes (por exemplo, <code>str</code> e <code>EmailStr</code>), garantindo que os dados sejam automaticamente validados e estruturados de maneira consistente ao interagir com a API.</p>
-<div class="language-python highlight"><span class="filename">schemas.py</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">EmailStr</span> <span class="c1"># (2)!</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserPublic</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">user</span><span class="p">:</span> <span class="n">UserPublic</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserDB</span><span class="p">(</span><span class="n">UserSchema</span><span class="p">):</span> <span class="c1"># (1)!</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserPublic</span><span class="p">]</span>
+<div class="language-python highlight"><span class="filename">schemas.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">EmailStr</span> <span class="c1"># (2)!</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserPublic</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">user</span><span class="p">:</span> <span class="n">UserPublic</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserDB</span><span class="p">(</span><span class="n">UserSchema</span><span class="p">):</span> <span class="c1"># (1)!</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">users</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">UserPublic</span><span class="p">]</span>
 </span></code></pre></div>
 <ol>
 <li>Indica que a classe <code>UserDB</code> herda da classe <code>UserSchema</code>. Isso significa que <code>UserDB</code> possui todos os atributos e validações definidos em <code>UserSchema</code>, além de adicionar um novo atributo, <code>id</code>, do tipo <code>int</code>. Essa herança permite que <code>UserDB</code> aproveite a estrutura e a validação de dados já configuradas em <code>UserSchema</code>, facilitando a criação de modelos de dados mais especializados.</li>
 <li><code>BaseModel</code> é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.</li>
 </ol>
+<h2 id="put-patch-e-delete"><code>PUT</code>, <code>PATCH</code> e <code>DELETE</code><a class="headerlink" href="#put-patch-e-delete" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><span class="filename">app.py</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">HTTPException</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserSchema</span><span class="p">,</span> <span class="n">UserResponse</span><span class="p">,</span> <span class="n">UserDB</span><span class="p">,</span> <span class="n">UserList</span><span class="p">,</span> <span class="n">UserPublic</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="o">...</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;/users/</span><span class="si">{user_id}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserPublic</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Atualiza totalmente um usuário&quot;</span><span class="p">)</span>
+</span></span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">update_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">UserSchema</span><span class="p">):</span> <span class="c1"># (1)!</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">if</span> <span class="n">user_id</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="ow">or</span> <span class="n">user_id</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># (2)!</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span> <span class="c1"># (3)!</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>            <span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s1">&#39;User not found&#39;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="p">)</span> 
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="n">user_with_id</span> <span class="o">=</span> <span class="n">UserDB</span><span class="p">(</span><span class="o">**</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span> <span class="nb">id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span> <span class="c1"># (4)!</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">database</span><span class="p">[</span><span class="n">user_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_with_id</span> <span class="c1"># (5)!</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="k">return</span> <span class="n">user_with_id</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">&#39;/users/</span><span class="si">{user_id}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">UserPublic</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Atualiza parcialmente um usuário&quot;</span><span class="p">)</span>
+</span></span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">patch_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">UserUpdate</span><span class="p">):</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="k">if</span> <span class="n">user_id</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="ow">or</span> <span class="n">user_id</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s1">&#39;User not found&#39;</span><span class="p">)</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="n">user_atual</span> <span class="o">=</span> <span class="n">database</span><span class="p">[</span><span class="n">user_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># (6)!</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="n">update_data</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (7)!</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>    <span class="n">user_atualizado</span> <span class="o">=</span> <span class="n">user_atual</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="n">update_data</span><span class="p">)</span> <span class="c1"># (8)!</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>    <span class="n">database</span><span class="p">[</span><span class="n">user_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_atualizado</span> <span class="c1"># (9)!</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="k">return</span> <span class="n">user_atualizado</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;/users/</span><span class="si">{user_id}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">Message</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Deleta um usuário&quot;</span><span class="p">)</span>
+</span></span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="k">def</span><span class="w"> </span><span class="nf">delete_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="k">if</span> <span class="n">user_id</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">database</span><span class="p">)</span> <span class="ow">or</span> <span class="n">user_id</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>            <span class="n">status_code</span><span class="o">=</span><span class="n">HTTPStatus</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s1">&#39;User not found&#39;</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>        <span class="p">)</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="k">del</span> <span class="n">database</span><span class="p">[</span><span class="n">user_id</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># (10)!</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;User deleted&#39;</span><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>O parâmetro <code>user_id</code>, que deve ser um número inteiro, identifica qual usuário deve ser atualizado, enquanto o parâmetro <code>user</code>, que segue o modelo <code>UserSchema</code>, contém os dados que serão utilizados na atualização. Assim, a função combina esses dois elementos para localizar e modificar as informações do usuário correspondente no banco de dados.   </li>
+<li>Avalia se o identificador do usuário é maior que o número total de usuários no banco de dados ou menor que 1. Se qualquer uma dessas condições for verdadeira, a função gera uma exceção HTTP 404, utilizando <code>raise HTTPException</code>, indicando que o usuário não foi encontrado.</li>
+<li>Esse trecho gera uma exceção HTTP 404, indicando que o usuário não foi encontrado. Ele utiliza <code>HTTPException</code> com <code>status_code=404</code> e a mensagem <code>detail='User not found'</code> para informar ao cliente que o recurso solicitado não existe.</li>
+<li>Cria uma nova instância de <code>UserDB</code> usando os dados recebidos. Ao usar <code>**user.model_dump()</code>, o operador <code>**</code> desempacota o dicionário resultante, permitindo que seus pares chave-valor sejam passados como argumentos nomeados para uma função ou construtor</li>
+<li>Substitui o usuário existente no banco de dados. Aqui, <code>user_with_id</code> (a nova instância com os dados atualizados) é atribuído à posição correspondente a <code>user_id - 1</code> na lista database, substituindo quaisquer dados que estavam anteriormente nesse índice. O <code>-1</code> é usado para ajustar o índice porque a contagem em listas em Python começa do zero, enquanto os identificadores de usuário (neste caso, <code>user_id</code>) geralmente começam a partir de 1.</li>
+<li>Busca o registro do usuário que está sendo atualizado a partir do <code>database</code>, usando o <code>user_id</code> fornecido</li>
+<li>A classe <code>UserUpdate</code> define um modelo com três campos opcionais: <code>username</code>, <code>email</code> e <code>password</code>. Cada um desses campos pode ser atualizado individualmente, permitindo que o usuário altere apenas as informações desejadas. Utilizando o método <code>model_dump(exclude_unset=True)</code>, apenas os campos que o usuário fornecer no JSON serão incluídos na atualização, garantindo que dados não mencionados permaneçam inalterados. Usar <code>exclude_unset=True</code> garante que o seu <code>model_copy(update=...)</code> receba apenas as "peças" que precisam ser trocadas, mantendo todas as outras peças originais intactas.</li>
+<li>Cria uma nova instância do usuário atual, chamada <code>user_atualizado</code>, aplicando as alterações contidas em <code>update_data</code>. O método <code>model_copy</code> do Pydantic é utilizado para gerar uma cópia do objeto original, mesclando os novos dados com os existentes. Isso permite que as atualizações sejam feitas de forma segura, preservando a integridade do objeto original e garantindo que apenas os campos especificados em <code>update_data</code> sejam modificados. Veja <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li>Substitui o registro antigo do usuário no <code>database</code> pelo novo objeto <code>user_atualizado</code>. Isso atualiza a lista com as informações alteradas, garantindo que os dados mais recentes sejam armazenados corretamente.</li>
+<li>Remove um item da lista <code>database</code> no índice correspondente ao <code>user_id</code> fornecido. O comando <code>del</code> exclui o objeto do usuário daquela posição, garantindo que o registro seja completamente removido da lista.</li>
+</ol>
+<p>Com isso concluímos um CRUD simples de usuário de uma aplicação, usando FastAPI <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .039c-6.627 0-12 5.354-12 11.96-.001 6.606 5.372 11.963 12 11.962S24.001 18.605 24 12 18.627.039 12 .039m-.829 5.415h7.55l-7.58 5.329h5.182L5.28 18.543Q8.226 12 11.171 5.455"/></svg></span></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>O <code>model_dump()</code> é um método do Pydantic (a biblioteca que o FastAPI usa por baixo dos panos para validação de dados). De forma bem direta: ele pega o objeto da sua classe (que é uma instância complexa do Python) e o <strong>converte em um dicionário comum</strong> (<code>dict</code>).
+Quando você recebe <code>user: UserSchema</code> no seu endpoint, o FastAPI já validou os dados, mas o <code>user</code> ainda é um objeto Pydantic. Se você precisar manipular esses dados como uma coleção de chave-valor, o <code>model_dump()</code> faz isso.
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># O que você tem (Objeto Pydantic)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">user</span><span class="o">.</span><span class="n">username</span>  <span class="c1"># Acessa como atributo</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># O que o model_dump() gera (Dicionário)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;joao&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;joao@email.com&#39;</span><span class="p">}</span>
+</span></code></pre></div>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><strong>O que é o <code>**</code> (double asterisk)</strong>:
+No código, você viu isto: <code>UserDB(**user.model_dump() ...</code>
+O <code>**</code> é o operador de <strong>desempacotamento</strong> (unpacking). Ele pega o dicionário gerado e "espalha" as chaves como argumentos para o novo objeto. Na prática, isso:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dados</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span> <span class="c1"># {&#39;name&#39;: &#39;Leo&#39;, &#39;email&#39;: &#39;a@a.com&#39;}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">UserDB</span><span class="p">(</span><span class="o">**</span><span class="n">dados</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># É exatamente igual a fazer isso:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">UserDB</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Leo&#39;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;a@a.com&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>O <code>model_copy()</code> é um dos métodos mais úteis do Pydantic para lidar com a imutabilidade e a atualização de dados.Em termos simples: ele cria uma <strong>cópia idêntica</strong> de uma instância do seu modelo, mas permite que você <strong>sobrescreva</strong> valores específicos durante esse processo.
+Imagine que você tem um usuário carregado do banco de dados e quer alterar apenas o email. Em vez de editar o objeto original (o que pode causar efeitos colaterais), você gera uma cópia atualizada.
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">user_original</span> <span class="o">=</span> <span class="n">UserDB</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;leo&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;velho@email.com&quot;</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Criando a cópia com a alteração</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">novo_user</span> <span class="o">=</span> <span class="n">user_original</span><span class="o">.</span><span class="n">model_copy</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;novo@email.com&#39;</span><span class="p">})</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">user_original</span><span class="o">.</span><span class="n">email</span><span class="p">)</span> <span class="c1"># Continua &quot;velho@email.com&quot;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">novo_user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>     <span class="c1"># Agora é &quot;novo@email.com&quot;</span>
+</span></code></pre></div>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">pydantic</span>
+      
+    
+  </nav>
 
 
 
@@ -653,52 +806,12 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
-        
-          
-          <a href="../01/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 01">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              <div class="md-ellipsis">
-                01
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../03/" class="md-footer__link md-footer__link--next" aria-label="Próximo: 03 CRUD: PUT e DELETE">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Próximo
-              </span>
-              <div class="md-ellipsis">
-                03 CRUD: PUT e DELETE
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2026 The authors
+      Giovani Bontempo &copy; 2026
 
     </div>
   
@@ -706,6 +819,22 @@
     Made with
     <a href="https://zensical.org/" target="_blank" rel="noopener">
       Zensical
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/giovbon" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
     </a>
   
 </div>
@@ -724,7 +853,7 @@
       
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copiado para área de transferência","clipboard.copy":"Copiar para área de transferência","search.result.more.one":"mais 1 nesta página","search.result.more.other":"# mais nesta página","search.result.none":"Nenhum documento encontrado","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Digite para iniciar a busca","search.result.term.missing":"Ausente","select.version":"Selecione a versão"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","navigation.tracking","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.top","navigation.tracking","search.highlight"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copiado para área de transferência","clipboard.copy":"Copiar para área de transferência","search.result.more.one":"mais 1 nesta página","search.result.more.other":"# mais nesta página","search.result.none":"Nenhum documento encontrado","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Digite para iniciar a busca","search.result.term.missing":"Ausente","select.version":"Selecione a versão"},"version":null}</script>
     
     
       <script src="../../assets/javascripts/bundle.8ffeb9c9.min.js"></script>
