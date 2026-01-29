@@ -17,6 +17,58 @@ Quando falamos de APIs servindo dados, todas essas operações têm alguma forma
 - `PATCH`: é usado quando o cliente quer aplicar atualizações parciais a um recurso existente, enviando apenas os dados que precisam ser modificados.
 - `DELETE`: usado para dizer ao servidor que delete determinado recurso.
 
+## Schemas
+
+Os **Schemas** no Pydantic são classes que definem a estrutura dos dados em uma aplicação, agindo como um contrato para garantir que os dados que entram ou saem da API estejam conformes às expectativas. Eles são criados a partir de `BaseModel`, utilizando anotações de tipo para definir regras. Os principais propósitos dos schemas são:
+
+1. **Validação**: Verificam automaticamente se os dados estão corretos.
+2. **Conversão**: Transformam tipos de dados, como strings em inteiros.
+3. **Serialização**: Facilitam a conversão de objetos em dicionários ou JSON.
+
+No FastAPI, os schemas são usados para validar a entrada de dados em funções de endpoint e filtrar a saída de dados, protegendo informações sensíveis. Boas práticas incluem ter diferentes schemas para diferentes situações, como criação, atualização e exposição de dados. Em resumo, os schemas garantem que os dados estejam formatados corretamente antes de serem processados na aplicação.
+
+---
+
+Em relação ao projeto, o arquivo abaixo contém as definições de schemas de dados utilizando o Pydantic, que são essenciais para validar e estruturar as informações utilizadas na aplicação FastAPI definida em `app.py`.
+
+As classes definidas no arquivo servem como modelos que especificam os atributos e seus tipos para os dados utilizados na aplicação, utilizando o Pydantic. Cada classe define campos, como `username`, `email`, e `password`, e seus tipos correspondentes (por exemplo, `str` e `EmailStr`), garantindo que os dados sejam automaticamente validados e estruturados de maneira consistente ao interagir com a API.
+
+``` python title="schemas.py"
+from typing import Optional
+from pydantic import BaseModel, EmailStr # (2)!
+
+class UserSchema(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+
+class UserPublic(BaseModel):
+    username: str
+    email: EmailStr
+
+class UserResponse(BaseModel):
+    message: str
+    user: UserPublic
+
+class UserDB(UserSchema): # (1)!
+    id: int
+
+class UserList(BaseModel):
+    users: list[UserPublic]
+
+class UserUpdate(BaseModel):
+    username: Optional[str] = None # (3)!
+    email: Optional[EmailStr] = None
+    password: Optional[str] = None
+
+class Message(BaseModel):
+    message: str
+```
+
+1. Indica que a classe `UserDB` herda da classe `UserSchema`. Isso significa que `UserDB` possui todos os atributos e validações definidos em `UserSchema`, além de adicionar um novo atributo, `id`, do tipo `int`. Essa herança permite que `UserDB` aproveite a estrutura e a validação de dados já configuradas em `UserSchema`, facilitando a criação de modelos de dados mais especializados.
+2. `BaseModel` é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.
+3. No método PATCH, usar `Optional[str] = None` (ou `str | None = None`) é essencial porque torna o campo não obrigatório, permitindo que o usuário envie apenas os dados que deseja atualizar. Se um campo, como `username`, for omitido, o Pydantic atribui None a ele. Isso é importante para que, ao usar `model_dump(exclude_unset=True)`, o sistema identifique quais campos foram realmente enviados e quais podem ser ignorados na atualização, evitando a sobrescrição acidental de informações existentes.
+
 ## `POST` e `GET`
 
 ??? abstract "Referências"
@@ -180,58 +232,6 @@ novo_user = user_original.model_copy(update={'email': 'novo@email.com'})
 print(user_original.email) # Continua "velho@email.com"
 print(novo_user.email)     # Agora é "novo@email.com"
 ```
-
-## Schemas
-
-Os **Schemas** no Pydantic são classes que definem a estrutura dos dados em uma aplicação, agindo como um contrato para garantir que os dados que entram ou saem da API estejam conformes às expectativas. Eles são criados a partir de `BaseModel`, utilizando anotações de tipo para definir regras. Os principais propósitos dos schemas são:
-
-1. **Validação**: Verificam automaticamente se os dados estão corretos.
-2. **Conversão**: Transformam tipos de dados, como strings em inteiros.
-3. **Serialização**: Facilitam a conversão de objetos em dicionários ou JSON.
-
-No FastAPI, os schemas são usados para validar a entrada de dados em funções de endpoint e filtrar a saída de dados, protegendo informações sensíveis. Boas práticas incluem ter diferentes schemas para diferentes situações, como criação, atualização e exposição de dados. Em resumo, os schemas garantem que os dados estejam formatados corretamente antes de serem processados na aplicação.
-
----
-
-Em relação ao projeto, o arquivo abaixo contém as definições de schemas de dados utilizando o Pydantic, que são essenciais para validar e estruturar as informações utilizadas na aplicação FastAPI definida em `app.py`.
-
-As classes definidas no arquivo servem como modelos que especificam os atributos e seus tipos para os dados utilizados na aplicação, utilizando o Pydantic. Cada classe define campos, como `username`, `email`, e `password`, e seus tipos correspondentes (por exemplo, `str` e `EmailStr`), garantindo que os dados sejam automaticamente validados e estruturados de maneira consistente ao interagir com a API.
-
-``` python title="schemas.py"
-from typing import Optional
-from pydantic import BaseModel, EmailStr # (2)!
-
-class UserSchema(BaseModel):
-    username: str
-    email: EmailStr
-    password: str
-
-class UserPublic(BaseModel):
-    username: str
-    email: EmailStr
-
-class UserResponse(BaseModel):
-    message: str
-    user: UserPublic
-
-class UserDB(UserSchema): # (1)!
-    id: int
-
-class UserList(BaseModel):
-    users: list[UserPublic]
-
-class UserUpdate(BaseModel):
-    username: Optional[str] = None # (3)!
-    email: Optional[EmailStr] = None
-    password: Optional[str] = None
-
-class Message(BaseModel):
-    message: str
-```
-
-1. Indica que a classe `UserDB` herda da classe `UserSchema`. Isso significa que `UserDB` possui todos os atributos e validações definidos em `UserSchema`, além de adicionar um novo atributo, `id`, do tipo `int`. Essa herança permite que `UserDB` aproveite a estrutura e a validação de dados já configuradas em `UserSchema`, facilitando a criação de modelos de dados mais especializados.
-2. `BaseModel` é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.
-3. 
 
 ---
 
