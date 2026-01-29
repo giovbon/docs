@@ -117,7 +117,7 @@ UserDB(name='Leo', email='a@a.com', id=1)
 
 ``` python hl_lines="6 18 31" title="app.py"
 from fastapi import FastAPI, HTTPException
-from schemas import UserSchema, UserResponse, UserDB, UserList, UserPublic
+from schemas import UserSchema, UserResponse, UserDB, UserList, UserPublic, UserUpdate, Message
 
 ...
 
@@ -198,6 +198,7 @@ Em relação ao projeto, o arquivo abaixo contém as definições de schemas de 
 As classes definidas no arquivo servem como modelos que especificam os atributos e seus tipos para os dados utilizados na aplicação, utilizando o Pydantic. Cada classe define campos, como `username`, `email`, e `password`, e seus tipos correspondentes (por exemplo, `str` e `EmailStr`), garantindo que os dados sejam automaticamente validados e estruturados de maneira consistente ao interagir com a API.
 
 ``` python title="schemas.py"
+from typing import Optional
 from pydantic import BaseModel, EmailStr # (2)!
 
 class UserSchema(BaseModel):
