@@ -33,5 +33,3 @@ jobs:
       - name: Rodar Testes
         run: pytest test_main.py
 ```
-
-[Baixar Arquivo](../../files/cria-act-actions.sh)
