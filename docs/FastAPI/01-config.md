@@ -1,6 +1,7 @@
 ---
 icon: simple/fastapi
 tags:
+  - fastapi
   - poetry
 hide:
   - navigation

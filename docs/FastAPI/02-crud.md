@@ -1,6 +1,7 @@
 ---
 icon: simple/fastapi
 tags:
+  - fastapi
   - pydantic
 hide:
   - navigation
@@ -36,7 +37,7 @@ No FastAPI, os schemas são usados para ==validar a entrada de dados== em funç�
 ### `schemas.py`
 
 Estrutura do projeto:
-```
+``` hl_lines="2 6"
 └── fast_zero
     ├── app.py
     ├── fast_zero

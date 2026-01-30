@@ -310,4 +310,3 @@ toggle.name = "Switch to dark mode"
 icon = "simple/github"
 link = "https://github.com/giovbon"
 
-include = ["files"]
