@@ -3,7 +3,7 @@ icon: simple/githubactions
 hide:
   - navigation
 tags:
-  - githubactions
+  - githubActions
 ---
 
 # Artefatos

@@ -4,7 +4,7 @@ tags:
   - progLang
 ---
 
-# Python
+# Python :simple-python:
 
 Criação de ambiente:
 

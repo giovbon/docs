@@ -1,5 +1,4 @@
 ---
-icon: simple/python
 hide:
   - navigation
 ---

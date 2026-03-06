@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-# Git
+# Git :simple-git:
 
 ## Comandos Auxiliares de Terminal (CLI)
 Comandos básicos de Linux citados nos slides para navegação.

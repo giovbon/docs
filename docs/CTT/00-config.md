@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-# Linux
+# Linux :simple-linux:
 
 ## Configuração de Ambiente
 
@@ -25,7 +25,7 @@ Para emular workflows do github actions no ubuntu.
 
 Instalação no ubuntu:
 
-```bash
+``` bash
 cd
 sudo apt install curl docker.io
 sudo systemctl start docker
@@ -39,7 +39,7 @@ newgrp docker
 
 Mensagem ao tentar rodar algum workflow com `act`:
 
-```bash
+```
 Please choose the default image you want to use with act:
   - Large size image: ca. 17GB download + 53.1GB storage, you will need 75GB of free disk space, snapshots of GitHub Hosted Runners without snap and pulled docker images
   - Medium size image: ~500MB, includes only necessary tools to bootstrap actions and aims to be compatible with most actions
@@ -51,4 +51,4 @@ Default image and other options can be changed manually in /home/giovani/.config
   Micro
 ```
 
-Escolha `Medium` e ++Enter++
+Escolha `Medium` e Enter.
