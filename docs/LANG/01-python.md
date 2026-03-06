@@ -53,6 +53,14 @@ uv run pytest
 
 1. Quando você adiciona uma biblioteca (como o `requests`), o `uv` já baixa a versão correta do Python (se necessário), cria um ambiente virtual (pasta `.venv`) e instala o pacote instantaneamente.
 
+| Comando              | Descrição                                                                              |
+|----------------------|----------------------------------------------------------------------------------------|
+| `uv init`            | Prepara o ambiente criando as pastas iniciais, mas não cria o ambiente virtual ou o arquivo `uv.lock`.            |
+| `uv run <script>`    | Cria o ambiente virtual e executa o script/arquivo (`main.py`).                                          |
+| `uv add <library>`   | Cria o ambiente virtual e adiciona a biblioteca ao projeto.                          |
+| `uv sync`            | Cria ou atualiza o ambiente virtual a partir do arquivo pyproject.toml.            |
+
+
 ### `uvx`
 
 O `uvx`, que acompanha o uv, é uma ferramenta eficaz para executar o pytest de forma rápida e isolada, semelhante ao `npx` (Node.js) e `pipx` (Python). Ele cria um ambiente virtual temporário de maneira rápida, baixa pacotes necessários e executa comandos, tudo isso sem afetar o ambiente global ou exigir configuração manual de um `.venv`.
