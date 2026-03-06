@@ -1,8 +1,6 @@
 ---
 hide:
   - navigation
-tags:
-  - pytest
 ---
 
 # TDD

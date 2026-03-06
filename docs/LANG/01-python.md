@@ -1,7 +1,5 @@
 ---
 icon: simple/python
-tags:
-  - progLang
 ---
 
 # Python :simple-python:

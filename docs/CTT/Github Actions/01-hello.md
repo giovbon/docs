@@ -2,8 +2,6 @@
 icon: simple/githubactions
 hide:
   - navigation
-tags:
-  - githubActions
 ---
 
 # Hello World

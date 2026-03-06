@@ -1,8 +1,5 @@
 ---
 icon: simple/fastapi
-tags:
-  - fastapi
-  - pydantic
 hide:
   - navigation
 ---
