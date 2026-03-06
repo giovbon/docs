@@ -22,6 +22,9 @@ Criação de ambiente:
 
 ## `uv` :simple-uv:
 
+??? abstract "Referências"
+    - [Installing and managing Python | uv](https://docs.astral.sh/uv/guides/install-python/)
+
 O `uv` é uma ferramenta moderna concebida para ser um utilitário "tudo-em-um" no ecossistema Python. Ele unifica e substitui o uso de várias ferramentas conhecidas que os desenvolvedores costumam usar separadamente, como `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine` e `virtualenv`.
 
 Instalação:
@@ -47,18 +50,22 @@ cd meu_projeto
 uv add pytest # (1)!
 ```
 
+1. Quando você adiciona uma biblioteca (como o `requests`), o `uv` já baixa a versão correta do Python (se necessário), cria um ambiente virtual (pasta `.venv`) e instala o pacote instantaneamente.
+
 ``` bash title="Rodar o pytest"
 uv run pytest
 ```
 
-1. Quando você adiciona uma biblioteca (como o `requests`), o `uv` já baixa a versão correta do Python (se necessário), cria um ambiente virtual (pasta `.venv`) e instala o pacote instantaneamente.
-
-| Comando              | Descrição                                                                              |
-|----------------------|----------------------------------------------------------------------------------------|
-| `uv init`            | Prepara o ambiente criando as pastas iniciais, mas não cria o ambiente virtual ou o arquivo `uv.lock`.            |
-| `uv run <script>`    | Cria o ambiente virtual e executa o script/arquivo (`main.py`).                                          |
-| `uv add <library>`   | Cria o ambiente virtual e adiciona a biblioteca ao projeto.                          |
-| `uv sync`            | Cria ou atualiza o ambiente virtual a partir do arquivo pyproject.toml.            |
+| Comando | Descrição |
+| :--- | :--- |
+| `uv init [nome]` | Cria a estrutura básica do projeto (`pyproject.toml`, `hello.py`, etc.), mas não cria o ambiente virtual (`.venv`) nem o `uv.lock` de imediato. |
+| `uv add <pacote>` | Cria o ambiente virtual (se não existir), instala o pacote, anota no `pyproject.toml` e gera o arquivo de trava `uv.lock`. |
+| `uv add --dev <pacote>` | Faz o mesmo que o comando acima, mas separa o pacote como dependência de desenvolvimento (ex: `pytest`, linters). |
+| `uv remove <pacote>` | Desinstala o pacote do ambiente virtual e o remove do `pyproject.toml` e do `uv.lock`. |
+| `uv sync` | Lê o seu `pyproject.toml`/`uv.lock` e instala tudo de uma vez. Ótimo para quando você acaba de clonar o projeto de outra pessoa. |
+| `uv run <arquivo/comando>` | Roda um arquivo (`main.py`) ou um comando (`pytest`) usando o ambiente virtual do projeto (criando o `.venv` na hora, se precisar). |
+| `uv lock` | Lê o `pyproject.toml` e gera/atualiza o `uv.lock` travando as versões exatas de cada dependência, para garantir que o projeto rode igual em qualquer máquina. |
+| `uv lock --upgrade` | Atualiza as versões travadas no `uv.lock` para as mais recentes que forem permitidas pelo seu `pyproject.toml`. |
 
 
 ### `uvx`
