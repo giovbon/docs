@@ -98,3 +98,25 @@ if __name__ == '__main__':
 ### `discover`
 
 O comando `python3 -m unittest discover` permite que você procure automaticamente por testes em um projeto inteiro, ao invés de especificar arquivos individualmente. Ao ser executado, ele percorre o diretório atual e suas subpastas em busca de arquivos que começam com `test` (ex: `test_soma.py`, `test_login.py`). Dentro desses arquivos, o comando identifica classes que herdam de `unittest.TestCase` e métodos que começam com `test_`. Em vez de executar testes individualmente, o `discover` reúne todos, executa-os e fornece um único relatório.
+
+## Apresentação de Exemplo
+
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../../Slides/exemplo-slides.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
+
+<br>
+
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="/Slides/exemplo-slides2.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+# Bem-vindo aos Slides!
+Esta é a primeira página da apresentação.
+
+---
+
+## Como funciona?
+Esta apresentação é gerada a partir de arquivos `.txt` (Plain text) apenas usando Markdown!
+
+- Item 1
+- Item 2
+- Item 3
+
+## Imagens funcionam?
+Sim! E usam a mesma sintaxe do Markdown normal:
+
+![Imagem de Exemplo](https://picsum.photos/400/300)
+
+---
+
+## Código
+```javascript
+console.log("Olá Mundo!");
+```
+
+---
+
+## Conclusão
+O Zensical + Reveal.js = Sucesso absoluto! 🎉
+Puta vida
