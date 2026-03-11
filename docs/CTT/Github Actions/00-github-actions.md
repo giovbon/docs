@@ -51,7 +51,11 @@ Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para
 
 Escolha `Medium` e Enter.
 
-## Workflow
+## Workflows
+
+!!! danger "Alerta"
+
+  Todos workflows são criados usando a linguagem YAML. Tenha em mente que a precisão na indentação é crucial. Um erro simples, como um espaço a mais ou a falta dele, pode fazer com que seu workflow falhe sem explicações claras.
 
 Elementos básicos de um workflow, a estrutura mínima para um workflow funcionar:
 
