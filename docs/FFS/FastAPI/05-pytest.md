@@ -4,7 +4,9 @@ hide:
   - navigation
 ---
 
-# Testes com Pytest
+# Testes para rotas
+
+[Sobre o arquivo `conftest.py`](../../ATS/02-pytest.md#conftestpy) e [Fixtures](../../ATS/02-pytest.md#fixtures). Aplicando esses recursos para testes unitário da lógica das rotas.
 
 ``` hl_lines="15 16"
 .

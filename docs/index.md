@@ -1,5 +1,5 @@
 ---
-icon: lucide/rocket
+icon: lucide/book-copy
 hide:
   - toc
 search:
@@ -7,7 +7,6 @@ search:
 ---
 
 # Disciplinas
-
 
 ??? abstract inline "Colaboration Tools for Teams"
     
@@ -22,6 +21,7 @@ search:
     | [CRUD](./FFS/FastAPI/02-crud.md)
     | [Configuração do BD](./FFS/FastAPI/03-bd1.md)
     | [Usando BD nas rotas](./FFS/FastAPI/04-bd2.md)
+    | [Testes para rotas](./FFS/FastAPI/05-pytest.md)
 
 ??? abstract inline "Automação de Testes de Software"
 
