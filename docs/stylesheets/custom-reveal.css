@@ -32,4 +32,6 @@
     line-height: 1.3 !important;
     max-height: 600px !important;
     overflow: auto !important;
+    background-color: #272822 !important; /* Garante fundo escuro do Monokai */
+    color: #f8f8f2 !important; /* Garante cor do texto claro do Monokai */
 }
