@@ -6,7 +6,7 @@ function initReveal() {
         container.classList.add('reveal-initialized');
 
         let deck = new Reveal(container, {
-            plugins: [ RevealMarkdown ],
+            plugins: [RevealMarkdown, RevealHighlight],
             embedded: true,
             hash: false,
             keyboard: true,
@@ -34,7 +34,7 @@ function initReveal() {
         btn.style.fontFamily = 'inherit';
         btn.style.fontSize = '14px';
         btn.title = "Alternar Tela Cheia";
-        
+
         btn.addEventListener('click', () => {
             if (!document.fullscreenElement) {
                 container.requestFullscreen().catch(err => {
@@ -44,7 +44,7 @@ function initReveal() {
                 document.exitFullscreen();
             }
         });
-        
+
         container.appendChild(btn);
     });
 }
@@ -53,7 +53,7 @@ function initReveal() {
 // Assim, o DOMContentLoaded ocorre só na primeira vez.
 // Por isso, precisamos amarrar o evento na troca de páginas do Zensical também:
 if (typeof document$ !== "undefined") {
-    document$.subscribe(function() {
+    document$.subscribe(function () {
         initReveal();
     });
 } else {

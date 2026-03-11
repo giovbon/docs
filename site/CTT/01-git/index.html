@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../00-config/">
+        <link rel="prev" href="../00-linux/">
       
       
-        <link rel="next" href="../Github%20Actions/01-hello/">
+        <link rel="next" href="../Github%20Actions/00-github-actions/">
       
       
         
@@ -61,6 +61,10 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom-reveal.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -226,7 +230,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-copy" viewBox="0 0 24 24"><path d="M5 7a2 2 0 0 0-2 2v11"/><path d="M5.803 18H5a2 2 0 0 0 0 4h9.5a.5.5 0 0 0 .5-.5V21M9 15V4a2 2 0 0 1 2-2h9.5a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H11a2 2 0 0 1 0-4h10"/></svg>
   
   <span class="md-ellipsis">
     
@@ -466,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00-config/" class="md-nav__link">
+      <a href="../00-linux/" class="md-nav__link">
         
   
   
@@ -561,10 +565,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#comandos-auxiliares-de-terminal-cli" class="md-nav__link">
+  <a href="#comandos-de-terminal-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comandos Auxiliares de Terminal (CLI)
+        Comandos de Terminal (CLI)
       
     </span>
   </a>
@@ -617,10 +621,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#reset-uso-privadolocal-altera-o-historico" class="md-nav__link">
+  <a href="#reset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reset (Uso privado/local - altera o histórico)
+        Reset
       
     </span>
   </a>
@@ -628,10 +632,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#revert-uso-publicocolaborativo-preserva-o-historico" class="md-nav__link">
+  <a href="#revert" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Revert (Uso público/colaborativo - preserva o histórico)
+        Revert
       
     </span>
   </a>
@@ -665,6 +669,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gerenciamento-de-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerenciamento de Branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mudanca-de-contexto-switch-checkout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mudança de Contexto (Switch &amp; Checkout)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracao-de-alteracoes-merge-e-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integração de Alterações (Merge e Rebase)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolucao-de-conflitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolução de Conflitos
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -682,12 +730,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -746,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Github%20Actions/01-hello/" class="md-nav__link">
+      <a href="../Github%20Actions/00-github-actions/" class="md-nav__link">
         
   
   
@@ -755,67 +797,7 @@
   <span class="md-ellipsis">
     
   
-    Hello World
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Github%20Actions/02-variaveis/" class="md-nav__link">
-        
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.984 13.836a.5.5 0 0 1-.353-.146l-.745-.743a.5.5 0 1 1 .706-.708l.392.391 1.181-1.18a.5.5 0 0 1 .708.707l-1.535 1.533a.5.5 0 0 1-.354.146m9.353-.147 1.534-1.532a.5.5 0 0 0-.707-.707l-1.181 1.18-.392-.391a.5.5 0 1 0-.706.708l.746.743a.497.497 0 0 0 .706-.001M4.527 7.452l2.557-1.585A1 1 0 0 0 7.09 4.17L4.533 2.56A1 1 0 0 0 3 3.406v3.196a1.001 1.001 0 0 0 1.527.85m2.03-2.436L4 6.602V3.406zM24 12.5c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3h-2.08a3.5 3.5 0 0 1-3.46 3 3.5 3.5 0 0 1-3.46-3h-.558c-.972 0-1.85-.399-2.482-1.042V17c0 1.654 1.346 3 3 3h.04c.244-1.693 1.7-3 3.46-3 1.93 0 3.5 1.57 3.5 3.5S13.43 24 11.5 24a3.5 3.5 0 0 1-3.46-3H8c-2.206 0-4-1.794-4-4V9.899A5.01 5.01 0 0 1 0 5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.005 5.005 0 0 1-4.952 4.998A2.48 2.48 0 0 0 7.482 12h.558c.244-1.693 1.7-3 3.46-3a3.5 3.5 0 0 1 3.46 3h2.08a3.5 3.5 0 0 1 3.46-3c1.93 0 3.5 1.57 3.5 3.5m-15 8c0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5-1.122-2.5-2.5-2.5S9 19.122 9 20.5M5 9c2.206 0 4-1.794 4-4S7.206 1 5 1 1 2.794 1 5s1.794 4 4 4m9 3.5c0-1.378-1.122-2.5-2.5-2.5S9 11.122 9 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m9 0c0-1.378-1.122-2.5-2.5-2.5S18 11.122 18 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m-13 8a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m12 0c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3.002q-.01.003-.021.005l-.506.017h-.017a.5.5 0 0 1-.016-.999l.506-.017c.018-.002.035.006.052.007A3.5 3.5 0 0 1 20.5 17c1.93 0 3.5 1.57 3.5 3.5m-1 0c0-1.378-1.122-2.5-2.5-2.5S18 19.122 18 20.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Variáveis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Github%20Actions/03-dependencias/" class="md-nav__link">
-        
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.984 13.836a.5.5 0 0 1-.353-.146l-.745-.743a.5.5 0 1 1 .706-.708l.392.391 1.181-1.18a.5.5 0 0 1 .708.707l-1.535 1.533a.5.5 0 0 1-.354.146m9.353-.147 1.534-1.532a.5.5 0 0 0-.707-.707l-1.181 1.18-.392-.391a.5.5 0 1 0-.706.708l.746.743a.497.497 0 0 0 .706-.001M4.527 7.452l2.557-1.585A1 1 0 0 0 7.09 4.17L4.533 2.56A1 1 0 0 0 3 3.406v3.196a1.001 1.001 0 0 0 1.527.85m2.03-2.436L4 6.602V3.406zM24 12.5c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3h-2.08a3.5 3.5 0 0 1-3.46 3 3.5 3.5 0 0 1-3.46-3h-.558c-.972 0-1.85-.399-2.482-1.042V17c0 1.654 1.346 3 3 3h.04c.244-1.693 1.7-3 3.46-3 1.93 0 3.5 1.57 3.5 3.5S13.43 24 11.5 24a3.5 3.5 0 0 1-3.46-3H8c-2.206 0-4-1.794-4-4V9.899A5.01 5.01 0 0 1 0 5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.005 5.005 0 0 1-4.952 4.998A2.48 2.48 0 0 0 7.482 12h.558c.244-1.693 1.7-3 3.46-3a3.5 3.5 0 0 1 3.46 3h2.08a3.5 3.5 0 0 1 3.46-3c1.93 0 3.5 1.57 3.5 3.5m-15 8c0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5-1.122-2.5-2.5-2.5S9 19.122 9 20.5M5 9c2.206 0 4-1.794 4-4S7.206 1 5 1 1 2.794 1 5s1.794 4 4 4m9 3.5c0-1.378-1.122-2.5-2.5-2.5S9 11.122 9 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m9 0c0-1.378-1.122-2.5-2.5-2.5S18 11.122 18 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m-13 8a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m12 0c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3.002q-.01.003-.021.005l-.506.017h-.017a.5.5 0 0 1-.016-.999l.506-.017c.018-.002.035.006.052.007A3.5 3.5 0 0 1 20.5 17c1.93 0 3.5 1.57 3.5 3.5m-1 0c0-1.378-1.122-2.5-2.5-2.5S18 19.122 18 20.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Dependências
+    Github Actions
   
 
     
@@ -906,36 +888,6 @@
     
   
     Artefatos
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Github%20Actions/07-actions/" class="md-nav__link">
-        
-  
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.984 13.836a.5.5 0 0 1-.353-.146l-.745-.743a.5.5 0 1 1 .706-.708l.392.391 1.181-1.18a.5.5 0 0 1 .708.707l-1.535 1.533a.5.5 0 0 1-.354.146m9.353-.147 1.534-1.532a.5.5 0 0 0-.707-.707l-1.181 1.18-.392-.391a.5.5 0 1 0-.706.708l.746.743a.497.497 0 0 0 .706-.001M4.527 7.452l2.557-1.585A1 1 0 0 0 7.09 4.17L4.533 2.56A1 1 0 0 0 3 3.406v3.196a1.001 1.001 0 0 0 1.527.85m2.03-2.436L4 6.602V3.406zM24 12.5c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3h-2.08a3.5 3.5 0 0 1-3.46 3 3.5 3.5 0 0 1-3.46-3h-.558c-.972 0-1.85-.399-2.482-1.042V17c0 1.654 1.346 3 3 3h.04c.244-1.693 1.7-3 3.46-3 1.93 0 3.5 1.57 3.5 3.5S13.43 24 11.5 24a3.5 3.5 0 0 1-3.46-3H8c-2.206 0-4-1.794-4-4V9.899A5.01 5.01 0 0 1 0 5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.005 5.005 0 0 1-4.952 4.998A2.48 2.48 0 0 0 7.482 12h.558c.244-1.693 1.7-3 3.46-3a3.5 3.5 0 0 1 3.46 3h2.08a3.5 3.5 0 0 1 3.46-3c1.93 0 3.5 1.57 3.5 3.5m-15 8c0 1.378 1.122 2.5 2.5 2.5s2.5-1.122 2.5-2.5-1.122-2.5-2.5-2.5S9 19.122 9 20.5M5 9c2.206 0 4-1.794 4-4S7.206 1 5 1 1 2.794 1 5s1.794 4 4 4m9 3.5c0-1.378-1.122-2.5-2.5-2.5S9 11.122 9 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m9 0c0-1.378-1.122-2.5-2.5-2.5S18 11.122 18 12.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5m-13 8a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m12 0c0 1.93-1.57 3.5-3.5 3.5a3.5 3.5 0 0 1-3.46-3.002q-.01.003-.021.005l-.506.017h-.017a.5.5 0 0 1-.016-.999l.506-.017c.018-.002.035.006.052.007A3.5 3.5 0 0 1 20.5 17c1.93 0 3.5 1.57 3.5 3.5m-1 0c0-1.378-1.122-2.5-2.5-2.5S18 19.122 18 20.5s1.122 2.5 2.5 2.5 2.5-1.122 2.5-2.5"/></svg>
-  
-  <span class="md-ellipsis">
-    
-  
-    Actions
   
 
     
@@ -1217,7 +1169,7 @@
   <span class="md-ellipsis">
     
   
-    Testes com Pytest
+    Testes para rotas
   
 
     
@@ -1401,10 +1353,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#comandos-auxiliares-de-terminal-cli" class="md-nav__link">
+  <a href="#comandos-de-terminal-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comandos Auxiliares de Terminal (CLI)
+        Comandos de Terminal (CLI)
       
     </span>
   </a>
@@ -1457,10 +1409,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#reset-uso-privadolocal-altera-o-historico" class="md-nav__link">
+  <a href="#reset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reset (Uso privado/local - altera o histórico)
+        Reset
       
     </span>
   </a>
@@ -1468,10 +1420,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#revert-uso-publicocolaborativo-preserva-o-historico" class="md-nav__link">
+  <a href="#revert" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Revert (Uso público/colaborativo - preserva o histórico)
+        Revert
       
     </span>
   </a>
@@ -1505,6 +1457,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gerenciamento-de-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerenciamento de Branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mudanca-de-contexto-switch-checkout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mudança de Contexto (Switch &amp; Checkout)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracao-de-alteracoes-merge-e-rebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integração de Alterações (Merge e Rebase)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolucao-de-conflitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolução de Conflitos
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1521,7 +1517,7 @@
                   
 
 <h1 id="git">Git <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.85 1.85 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.85 1.85 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></svg></span><a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
-<h2 id="comandos-auxiliares-de-terminal-cli">Comandos Auxiliares de Terminal (CLI)<a class="headerlink" href="#comandos-auxiliares-de-terminal-cli" title="Permanent link">&para;</a></h2>
+<h2 id="comandos-de-terminal-cli">Comandos de Terminal (CLI)<a class="headerlink" href="#comandos-de-terminal-cli" title="Permanent link">&para;</a></h2>
 <p>Comandos básicos de Linux citados nos slides para navegação.</p>
 <table>
 <thead>
@@ -1675,56 +1671,21 @@
 </table>
 <h2 id="desfazendo-alteracoes-e-corrigindo-erros">Desfazendo Alterações e Corrigindo Erros<a class="headerlink" href="#desfazendo-alteracoes-e-corrigindo-erros" title="Permanent link">&para;</a></h2>
 <p>Comandos para reverter arquivos ou commits em diferentes situações.</p>
-<h4 id="reset-uso-privadolocal-altera-o-historico"><strong>Reset</strong> (Uso privado/local - altera o histórico)<a class="headerlink" href="#reset-uso-privadolocal-altera-o-historico" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Variação</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>git reset --soft HEAD~1</code></td>
-<td style="text-align: left;">Volta 1 commit, mantendo as alterações na <em>Staging Area</em> para um novo commit.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git reset --mixed HEAD~1</code></td>
-<td style="text-align: left;">Volta 1 commit, mantém as alterações nos arquivos, mas fora da stage.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git reset --hard &lt;hash&gt;</code></td>
-<td style="text-align: left;"><strong>Cuidado:</strong> Apaga todas as alterações e volta o projeto exatamente ao estado do commit especificado.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git reset HEAD &lt;arquivo&gt;</code></td>
-<td style="text-align: left;">Remove um arquivo específico da <em>Staging Area</em> (unstage), sem alterar o código.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="revert-uso-publicocolaborativo-preserva-o-historico"><strong>Revert</strong> (Uso público/colaborativo - preserva o histórico)<a class="headerlink" href="#revert-uso-publicocolaborativo-preserva-o-historico" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Variação</th>
-<th style="text-align: left;">Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>git revert &lt;hash&gt;</code></td>
-<td style="text-align: left;">Cria um novo commit que desfaz as alterações do commit especificado.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git revert HEAD</code></td>
-<td style="text-align: left;">Desfaz o último commit criando uma nova entrada no histórico.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>git revert -n &lt;hash&gt;</code></td>
-<td style="text-align: left;">Prepara a reversão, mas não commita automaticamente (permite revisão).</td>
-</tr>
-</tbody>
-</table>
+<h4 id="reset"><strong>Reset</strong><a class="headerlink" href="#reset" title="Permanent link">&para;</a></h4>
+<p>Uso privado/local pois altera o histórico.
+| Variação | Descrição |
+| :--- | :--- |
+| <code>git reset --soft HEAD~1</code> | Volta 1 commit, mantendo as alterações na <em>Staging Area</em> para um novo commit. |
+| <code>git reset --mixed HEAD~1</code> | Volta 1 commit, mantém as alterações nos arquivos, mas fora da stage. |
+| <code>git reset --hard &lt;hash&gt;</code> | <strong>Cuidado:</strong> Apaga todas as alterações e volta o projeto exatamente ao estado do commit especificado. |
+| <code>git reset HEAD &lt;arquivo&gt;</code> | Remove um arquivo específico da <em>Staging Area</em> (unstage), sem alterar o código. |</p>
+<h4 id="revert"><strong>Revert</strong><a class="headerlink" href="#revert" title="Permanent link">&para;</a></h4>
+<p>Uso público/colaborativo pois preserva o histórico.
+| Variação | Descrição |
+| :--- | :--- |
+| <code>git revert &lt;hash&gt;</code> | Cria um novo commit que desfaz as alterações do commit especificado. |
+| <code>git revert HEAD</code> | Desfaz o último commit criando uma nova entrada no histórico. |
+| <code>git revert -n &lt;hash&gt;</code> | Prepara a reversão, mas não commita automaticamente (permite revisão). |</p>
 <h4 id="restore-manipulacao-de-arquivos"><strong>Restore</strong> (Manipulação de arquivos)<a class="headerlink" href="#restore-manipulacao-de-arquivos" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1777,6 +1738,114 @@
 <tr>
 <td style="text-align: left;"><code>git pull origin main</code></td>
 <td style="text-align: left;">Busca as novidades do servidor e as mescla no repositório local (Fetch + Merge).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gerenciamento-de-branches">Gerenciamento de Branches<a class="headerlink" href="#gerenciamento-de-branches" title="Permanent link">&para;</a></h2>
+<p>Comandos para criar, listar, renomear e excluir ramificações (<em>branches</em>).</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git branch</code></td>
+<td>Lista todas as <em>branches</em> no repositório e indica em qual você está atualmente.</td>
+</tr>
+<tr>
+<td><code>git branch &lt;nome-da-branch&gt;</code></td>
+<td>Cria uma nova <em>branch</em> com o nome especificado, mas mantém o ambiente de trabalho na <em>branch</em> atual.</td>
+</tr>
+<tr>
+<td><code>git branch -m &lt;novo-nome&gt;</code></td>
+<td>Renomeia a <em>branch</em> em que você está no momento.</td>
+</tr>
+<tr>
+<td><code>git branch -m &lt;nome-antigo&gt; &lt;novo-nome&gt;</code></td>
+<td>Renomeia uma <em>branch</em> sem precisar estar nela no momento.</td>
+</tr>
+<tr>
+<td><code>git branch -d &lt;nome-da-branch&gt;</code></td>
+<td>Exclui a <em>branch</em> especificada (só funciona se a <em>branch</em> já tiver sido integrada/mesclada com a principal).</td>
+</tr>
+<tr>
+<td><code>git branch -D &lt;nome-da-branch&gt;</code></td>
+<td>Força a exclusão da <em>branch</em>, descartando todas as alterações que ainda não foram integradas.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mudanca-de-contexto-switch-checkout">Mudança de Contexto (Switch &amp; Checkout)<a class="headerlink" href="#mudanca-de-contexto-switch-checkout" title="Permanent link">&para;</a></h2>
+<p>Comandos para alternar o diretório de trabalho entre diferentes <em>branches</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git switch &lt;nome_branch&gt;</code></td>
+<td>Muda o ambiente de trabalho para a <em>branch</em> especificada (comando recente dedicado exclusivamente à mudança de ramificação).</td>
+</tr>
+<tr>
+<td><code>git switch -c &lt;nome-nova-branch&gt;</code></td>
+<td>Cria uma nova <em>branch</em> e muda imediatamente o contexto de trabalho para ela.</td>
+</tr>
+<tr>
+<td><code>git checkout &lt;nome-branch&gt;</code></td>
+<td>Comando tradicional que permite mudar para a <em>branch</em> especificada (também usado historicamente para restaurar arquivos).</td>
+</tr>
+<tr>
+<td><code>git checkout -b &lt;nome-da-branch&gt;</code></td>
+<td>Comando tradicional para criar uma nova <em>branch</em> e mudar imediatamente para ela.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="integracao-de-alteracoes-merge-e-rebase">Integração de Alterações (Merge e Rebase)<a class="headerlink" href="#integracao-de-alteracoes-merge-e-rebase" title="Permanent link">&para;</a></h2>
+<p>Comandos para juntar o trabalho de diferentes <em>branches</em> em um único histórico.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git merge &lt;branch&gt;</code></td>
+<td>Integra as alterações da <em>branch</em> especificada na <em>branch</em> em que você está atualmente. Pode resultar em um <em>Fast-Forward</em> ou em um <em>Three-Way merge</em>.</td>
+</tr>
+<tr>
+<td><code>git rebase &lt;branch&gt;</code></td>
+<td>Reorganiza o histórico de <em>commits</em>, pegando as alterações exclusivas da <em>branch</em> atual e reaplicando-as no topo da <em>branch</em> especificada (ex: <code>main</code>), de forma a criar um histórico linear.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resolucao-de-conflitos">Resolução de Conflitos<a class="headerlink" href="#resolucao-de-conflitos" title="Permanent link">&para;</a></h2>
+<p>Comandos utilizados quando existem alterações divergentes nas mesmas linhas de um arquivo (durante <em>merges</em> ou <em>rebases</em>).</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git status</code></td>
+<td>Verifica o estado atual e indica o que o Git espera que você faça durante a resolução de um conflito.</td>
+</tr>
+<tr>
+<td><code>git add &lt;nome-do-arquivo&gt;</code></td>
+<td>Informa ao Git que o conflito no arquivo específico foi resolvido (usado após a remoção manual dos marcadores de conflito e edição do código).</td>
+</tr>
+<tr>
+<td><code>git commit</code></td>
+<td>Finaliza o processo de integração e conclui o <em>merge</em> após todos os conflitos estarem devidamente resolvidos e adicionados.</td>
 </tr>
 </tbody>
 </table>
@@ -1860,6 +1929,8 @@
         <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/markdown/markdown.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
       
         <script src="../../javascripts/init-reveal.js"></script>
       

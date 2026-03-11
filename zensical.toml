@@ -59,7 +59,9 @@ Copyright &copy; 2026 The authors
 #
 extra_css = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css",
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css"
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css",
+    "stylesheets/custom-reveal.css"
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
@@ -71,6 +73,7 @@ extra_css = [
 extra_javascript = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/markdown/markdown.js",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js",
     "javascripts/init-reveal.js"
 ]
 
