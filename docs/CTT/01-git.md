@@ -6,7 +6,7 @@ hide:
 
 # Git :simple-git:
 
-## Comandos Auxiliares de Terminal (CLI)
+## Comandos de Terminal (CLI)
 Comandos básicos de Linux citados nos slides para navegação.
 
 | Comando | Descrição |
@@ -59,7 +59,8 @@ Gerenciamento das alterações nas áreas de *Working Directory*, *Staging Area*
 ## Desfazendo Alterações e Corrigindo Erros
 Comandos para reverter arquivos ou commits em diferentes situações.
 
-#### **Reset** (Uso privado/local - altera o histórico)
+#### **Reset**
+Uso privado/local pois altera o histórico.
 | Variação | Descrição |
 | :--- | :--- |
 | `git reset --soft HEAD~1` | Volta 1 commit, mantendo as alterações na *Staging Area* para um novo commit. |
@@ -67,7 +68,8 @@ Comandos para reverter arquivos ou commits em diferentes situações.
 | `git reset --hard <hash>` | **Cuidado:** Apaga todas as alterações e volta o projeto exatamente ao estado do commit especificado. |
 | `git reset HEAD <arquivo>` | Remove um arquivo específico da *Staging Area* (unstage), sem alterar o código. |
 
-#### **Revert** (Uso público/colaborativo - preserva o histórico)
+#### **Revert** 
+Uso público/colaborativo pois preserva o histórico.
 | Variação | Descrição |
 | :--- | :--- |
 | `git revert <hash>` | Cria um novo commit que desfaz as alterações do commit especificado. |
@@ -91,3 +93,46 @@ Sincronização entre o computador local e o servidor remoto.
 | `git remote -v` | Lista os repositórios remotos configurados e suas URLs. |
 | `git push origin main` | Envia os commits locais para a branch `main` do repositório remoto. |
 | `git pull origin main` | Busca as novidades do servidor e as mescla no repositório local (Fetch + Merge). |
+
+## Gerenciamento de Branches
+
+Comandos para criar, listar, renomear e excluir ramificações (*branches*).
+
+| Comando | Descrição |
+| --- | --- |
+| `git branch` | Lista todas as *branches* no repositório e indica em qual você está atualmente. |
+| `git branch <nome-da-branch>` | Cria uma nova *branch* com o nome especificado, mas mantém o ambiente de trabalho na *branch* atual. |
+| `git branch -m <novo-nome>` | Renomeia a *branch* em que você está no momento. |
+| `git branch -m <nome-antigo> <novo-nome>` | Renomeia uma *branch* sem precisar estar nela no momento. |
+| `git branch -d <nome-da-branch>` | Exclui a *branch* especificada (só funciona se a *branch* já tiver sido integrada/mesclada com a principal). |
+| `git branch -D <nome-da-branch>` | Força a exclusão da *branch*, descartando todas as alterações que ainda não foram integradas. |
+
+## Mudança de Contexto (Switch & Checkout)
+
+Comandos para alternar o diretório de trabalho entre diferentes *branches*.
+
+| Comando | Descrição |
+| --- | --- |
+| `git switch <nome_branch>` | Muda o ambiente de trabalho para a *branch* especificada (comando recente dedicado exclusivamente à mudança de ramificação). |
+| `git switch -c <nome-nova-branch>` | Cria uma nova *branch* e muda imediatamente o contexto de trabalho para ela. |
+| `git checkout <nome-branch>` | Comando tradicional que permite mudar para a *branch* especificada (também usado historicamente para restaurar arquivos). |
+| `git checkout -b <nome-da-branch>` | Comando tradicional para criar uma nova *branch* e mudar imediatamente para ela. |
+
+## Integração de Alterações (Merge e Rebase)
+
+Comandos para juntar o trabalho de diferentes *branches* em um único histórico.
+
+| Comando | Descrição |
+| --- | --- |
+| `git merge <branch>` | Integra as alterações da *branch* especificada na *branch* em que você está atualmente. Pode resultar em um *Fast-Forward* ou em um *Three-Way merge*. |
+| `git rebase <branch>` | Reorganiza o histórico de *commits*, pegando as alterações exclusivas da *branch* atual e reaplicando-as no topo da *branch* especificada (ex: `main`), de forma a criar um histórico linear. |
+
+## Resolução de Conflitos
+
+Comandos utilizados quando existem alterações divergentes nas mesmas linhas de um arquivo (durante *merges* ou *rebases*).
+
+| Comando | Descrição |
+| --- | --- |
+| `git status` | Verifica o estado atual e indica o que o Git espera que você faça durante a resolução de um conflito. |
+| `git add <nome-do-arquivo>` | Informa ao Git que o conflito no arquivo específico foi resolvido (usado após a remoção manual dos marcadores de conflito e edição do código). |
+| `git commit` | Finaliza o processo de integração e conclui o *merge* após todos os conflitos estarem devidamente resolvidos e adicionados. |
