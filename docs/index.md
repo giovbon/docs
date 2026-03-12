@@ -10,9 +10,8 @@ search:
 
 ??? abstract inline "Colaboration Tools for Teams"
     
-    [Git](./CTT/01-git.md)
-    
-    Github Actions:
+    - [Git](./CTT/01-git.md)
+    - [Github Actions](./CTT/02-github-actions.md)
 
 ??? abstract inline "Frameworks Full Stack"
 
@@ -25,6 +24,7 @@ search:
 
 ??? abstract inline "Automação de Testes de Software"
 
-    [UnitTest](./ATS/01-unittest.md)
-    | [PyTest](./ATS/02-pytest.md)
-    | [TDD](./ATS/03-tdd.md)
+    - [UnitTest](./ATS/01-unittest.md)
+    - [PyTest](./ATS/02-pytest.md)
+    - [TDD](./ATS/03-tdd.md)
+    - [Dublês de Testes](./ATS/04-duble-testes.md)

@@ -83,7 +83,6 @@ Para usá-lo, define-se a lista em `@pytest.fixture(params=[...])` e, dentro da 
 
 ---
 
-<!-- _class: invert -->
 ## `conftest.py`
 
 O **`conftest.py`** é um *arquivo do Pytest que centraliza recursos compartilhados para testes*. Ao definir fixtures ou configurações nele, o Pytest as torna automaticamente *disponíveis para todos os arquivos de teste na mesma pasta e subpastas, sem necessidade de importações manuais*. É ideal para armazenar fixtures globais, como conexões de banco de dados ou autenticações de API, mantendo o código dos testes limpo e livre de repetições.

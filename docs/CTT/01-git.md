@@ -6,6 +6,15 @@ hide:
 
 # Git :simple-git:
 
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../SLIDES/00-controle-versao.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
+
 ## Comandos de Terminal (CLI)
 Comandos básicos de Linux citados nos slides para navegação.
 
@@ -61,6 +70,7 @@ Comandos para reverter arquivos ou commits em diferentes situações.
 
 #### **Reset**
 Uso privado/local pois altera o histórico.
+
 | Variação | Descrição |
 | :--- | :--- |
 | `git reset --soft HEAD~1` | Volta 1 commit, mantendo as alterações na *Staging Area* para um novo commit. |
@@ -70,6 +80,7 @@ Uso privado/local pois altera o histórico.
 
 #### **Revert** 
 Uso público/colaborativo pois preserva o histórico.
+
 | Variação | Descrição |
 | :--- | :--- |
 | `git revert <hash>` | Cria um novo commit que desfaz as alterações do commit especificado. |

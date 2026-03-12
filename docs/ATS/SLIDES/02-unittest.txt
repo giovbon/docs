@@ -49,7 +49,7 @@ Quase todo teste de unidade segue uma estrutura lógica dividida em três etapas
 A Pirâmide de Testes é um conceito que serve para *guiar a estratégia de automação de testes* em um projeto de software que ajuda os desenvolvedores a decidirem *quantos e quais tipos de testes devem ser criados*.
 
 <div style="text-align: center;">
-    <img src="../../Slides/ATS/img/piram-tests.png" width="60%">
+    <img src="../SLIDES/img/piram-tests.png" width="60%">
 </div>
 
 
@@ -199,7 +199,7 @@ Se você chamasse `dividir(10, 2)`, a função retornaria `5` (não daria erro).
 
 ### Comando `discover`
 
-O comando `python3 -m unittest discover` permite que você *procure automaticamente por testes em um projeto inteiro*, ao invés de especificar arquivos individualmente. Ao ser executado, ele percorre o diretório atual e suas subpastas em *busca de arquivos que começam com `test`* (ex: `test_soma.py`, `test_login.py`). Dentro desses arquivos, o comando *identifica classes que herdam de `unittest.TestCase` e métodos que começam com `test_`*. Em vez de executar testes individualmente, o `discover` *reúne todos, executa-os e fornece um único relatório*.
+O comando `python3 -m unittest discover` permite que você *psrocure automaticamente por testes em um projeto inteiro*, ao invés de especificar arquivos individualmente. Ao ser executado, ele percorre o diretório atual e suas subpastas em *busca de arquivos que começam com `test`* (ex: `test_soma.py`, `test_login.py`). Dentro desses arquivos, o comando *identifica classes que herdam de `unittest.TestCase` e métodos que começam com `test_`*. Em vez de executar testes individualmente, o `discover` *reúne todos, executa-os e fornece um único relatório*.
 
 Usar `-m unittest discover` traz vantagens como organização dos códigos de produção separados dos testes, escalabilidade em projetos grandes, e integração contínua em ferramentas como GitHub Actions.
 
