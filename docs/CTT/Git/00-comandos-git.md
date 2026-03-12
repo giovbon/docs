@@ -4,16 +4,7 @@ hide:
   - navigation
 ---
 
-# Git :simple-git:
-
-<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
-  <div class="slides">
-    <section data-markdown="../SLIDES/00-controle-versao.txt"
-             data-separator="^\r?\n---\r?\n$"
-             data-separator-vertical="^\r?\n--\r?\n$">
-    </section>
-  </div>
-</div>
+# Comandos do Git :simple-git:
 
 ## Comandos de Terminal (CLI)
 Comandos básicos de Linux citados nos slides para navegação.

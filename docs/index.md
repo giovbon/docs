@@ -6,7 +6,7 @@ search:
   exclude: true
 ---
 
-# Disciplinas
+<!-- # Disciplinas
 
 ??? abstract inline "Colaboration Tools for Teams"
     
@@ -28,3 +28,4 @@ search:
     - [PyTest](./ATS/02-pytest.md)
     - [TDD](./ATS/03-tdd.md)
     - [Dublês de Testes](./ATS/04-duble-testes.md)
+ -->
