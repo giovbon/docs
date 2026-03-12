@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    // Se seus slides forem Markdown dentro do .txt:
+    "*.txt": "markdown",
+    
+    // OU, se você usa tags HTML nos slides .txt:
+    // "*.txt": "html",
+
+    // DICA: Se seus slides estiverem em uma pasta específica, 
+    // use um padrão mais restrito para não afetar outros .txt:
+    "**/slides/*.txt": "markdown"
+  }
+}

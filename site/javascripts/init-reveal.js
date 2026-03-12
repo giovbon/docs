@@ -12,8 +12,20 @@ function initReveal() {
             keyboard: true,
             progress: true,
             controls: true,
-            slideNumber: true
+            slideNumber: true,
+            highlight: {
+                lineNumbers: true
+            }
         });
+
+        deck.on('ready', event => {
+            if (typeof hljs !== 'undefined') {
+                hljs.initLineNumbersOnLoad({
+                    singleLine: true
+                });
+            }
+        });
+
         deck.initialize();
 
         // Garante que o container tenha position relative para o botão ficar no lugar certo

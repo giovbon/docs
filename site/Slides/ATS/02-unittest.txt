@@ -1,12 +1,12 @@
-<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" -->
+<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" data-background-opacity="0.4" -->
 
-<div style="background: rgba(0, 0, 0, 0.8); padding: 10px; border-radius: 10px;">
-<h1>Unittest</h1>
+<div class="glass-box">
+    <h1>unittest</h1>
 </div>
 
 ---
 
-O **unittest** é focado primordialmente em **Testes de Unidade** (ou Testes Unitários), como o <mark>próprio nome sugere</mark>. O unittest é focado primordialmente em **Testes de Unidade**. Eles servem para *verificar se as menores partes de um sistema* (as "unidades") estão funcionando exatamente como deveriam, de forma *isolada*.
+O **unittest é focado primordialmente em Testes de Unidade** (ou Testes Unitários), como o próprio nome sugere. O unittest é focado primordialmente em **Testes de Unidade**. Eles servem para *verificar se as menores partes de um sistema* (as "unidades") estão funcionando exatamente como deveriam, de forma *isolada*.
 
 Uma **unidade** é geralmente:
 
@@ -76,7 +76,7 @@ Ele é fortemente inspirado no JUnit (do Java), o que significa que ele é *base
 
 Exemplo simples:
 
-```python
+```py [data-line-numbers]
 import unittest
 
 def soma(a, b):
@@ -186,6 +186,8 @@ Quando você usa `with self.assertRaises(ZeroDivisionError):`, você está crian
 2. O código lá dentro roda.
 3. Se um erro aconteceu: o `with` captura o erro e verifica se é do tipo que você esperava (`ZeroDivisionError`). Se for, ele "engole" o erro e deixa o teste seguir como **Sucesso**.
     * Se nenhum erro aconteceu: o `with` entende que algo está errado (já que você esperava um erro) e interrompe o teste como **Falha**.
+
+---
 
 Resultados:
 

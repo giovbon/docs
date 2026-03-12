@@ -11,30 +11,30 @@
 # The site_name is shown in the page header and the browser window title
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Documentation"
+site_name = "giovbon docs"
 
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_description
-site_description = "A new project generated from the default template project."
+site_description = "Conteúdo das aulas."
 
 # The site_author attribute. This is used in the HTML head element.
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "<your name here>"
+site_author = "Giovani Bontempo"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+#site_url = "https://giovbon.github.io/docs/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2026 The authors
+2026 by giovbon
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
@@ -74,6 +74,7 @@ extra_javascript = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/markdown/markdown.js",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js",
+    "https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js",
     "javascripts/init-reveal.js"
 ]
 
@@ -118,7 +119,7 @@ extra_javascript = [
 # Read more:
 # - https://zensical.org/docs/setup/language/
 #
-language = "en"
+language = "pt-BR"
 
 # Zensical provides a number of feature toggles that change the behavior
 # of the documentation site.
@@ -269,14 +270,14 @@ features = [
 # - https://zensical.org/docs/setup/colors/
 # ----------------------------------------------------------------------------
 [[project.theme.palette]]
-scheme = "default"
-toggle.icon = "lucide/sun"
-toggle.name = "Switch to dark mode"
-
-[[project.theme.palette]]
 scheme = "slate"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
 
 # ----------------------------------------------------------------------------
 # In the "font" subsection you can configure the fonts used. By default, fonts

@@ -6,6 +6,15 @@ hide:
 
 # PyTest :simple-pytest:
 
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../../Slides/ATS/03-pytest.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
+
 ??? abstract "Referências"
 
     - [pytest documentation](https://docs.pytest.org/en/stable/)
@@ -184,6 +193,15 @@ O comando `coverage html` gera um relatório visual e interativo a partir dos da
 - Linhas em amarelo (se usado `--cov-branch`) que foram testadas, mas não em todos os caminhos possíveis, facilitando a identificação de áreas que precisam de mais testes.
 
 ## Fixtures
+
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../../Slides/ATS/04-fixtures.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
 
 Fixture é uma função que prepara e fornece dados ou contexto para os testes. O pytest detecta automaticamente essas funções marcadas com `@pytest.fixture`. Seus resultados são injetados nos testes que as solicitam, eliminando a necessidade de chamadas manuais, por simplesmente adicionar o nome da fixture dentro dos parênteses da função de teste.
 
@@ -445,22 +463,3 @@ meu_projeto/
 1. Fixtures globais. Este arquivo na raiz contém fixtures que são necessárias para todo o projeto, como conexões com bancos de dados que podem ser usadas em testes de diferentes tipos.
 2. Fixtures específicas para testes de API. Se você tem fixtures específicas que só são úteis para os testes da API, como um cliente HTTP configurado para fazer chamadas para uma API de teste, você pode colocá-las aqui. Isso mantém essas fixtures organizadas e evita que a lógica de API "polua" outros testes.
 3. Fixtures específicas para testes de backend. Se você tem fixtures que são voltadas para testes de frontend, como um objeto que simula um usuário na interface, coloque-as neste arquivo. Isso isola suas fixtures de frontend das de API.
-
-## Mock
-
-Um objeto mock simula o comportamento de um objeto real, sendo amplamente utilizado em testes unitários para isolar componentes e verificar seu funcionamento sem depender de outros códigos. Por exemplo, ele pode simular uma chamada a um banco de dados sem realmente conectar-se a ele. A simulação é especialmente útil quando o objeto real é difícil de configurar, leva muito tempo para uso (como acessar um banco de dados remoto) ou provoca efeitos colaterais indesejados (como envio de e-mails ou custos).
-
-Mocks são usados no pytest para substituir partes reais do sistema por simulações controladas, permitindo executar testes unitários rápidos e isolados. Eles facilitam a simulação de APIs, isolamento de dependências, interações com bancos de dados, testes de cenários de erro, verificação de comportamentos específicos e controle de resultados de tempo ou aleatoriedade, garantindo que os testes sejam confiáveis e independentes de fatores externos.
-
-Mocks são usados em ambos os frameworks, mas o pytest se destaca na comunidade Python moderna. Ele utiliza a biblioteca `unittest.mock` por trás das cenas, mas a forma de organização e escrita é mais limpa e funcional. No unittest, o uso de mocks pode levar a confusões devido ao "Decorator Hell", enquanto no pytest, a utilização de fixtures simplifica a criação e gerenciamento de mocks, além de garantir a limpeza automática após os testes.
-
-Mock vs. Fixtures:
-
-| Aspecto         | Mocks                                      | Fixtures                                   |
-|------------------|-------------------------------------------|--------------------------------------------|
-| Propósito   | Simular comportamentos de objetos         | Preparar e limpar ambientes de teste       |
-| Uso         | Testes de interações e respostas          | Preparar dados ou estados para testes      |
-| Verificação | Monitorar chamadas e argumentos            | Não tem foco em verificação, apenas em configuração |
-| Criação     | Criados dinamicamente durante os testes   | Definidos antes do teste e usados em múltiplos testes |
-
-<!-- https://dev.to/mchdax/mocks-o-que-sao-40id  -->
