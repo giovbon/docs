@@ -127,3 +127,29 @@
         display: none !important;
     }
 }
+
+/* Content Markers (Slides vs. Documentation) */
+.content-marker {
+    display: none; /* Hidden in web view by default */
+    padding: 12px 0;
+    margin: 20px 0 15px 0;
+    border-bottom: 2px solid var(--md-primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--md-primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.content-marker svg {
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-top: -4px;
+}
+
+@media print {
+    .content-marker {
+        display: block !important;
+        break-after: avoid;
+    }
+}

@@ -255,9 +255,29 @@
                         if (slideContent) {
                             const slideWrapper = document.createElement('div');
                             slideWrapper.className = 'extracted-slides md-typeset';
-                            // Remove the header to make it more continuous as requested
+                            
+                            // Insert "Slides" marker
+                            const slideMarker = document.createElement('div');
+                            slideMarker.className = 'content-marker slide-marker';
+                            slideMarker.innerHTML = `
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M7 21h10"/><path d="M12 17v4"/></svg>
+                                Slides
+                            `;
+                            
                             slideWrapper.innerHTML = slideContent;
+                            container.parentNode.insertBefore(slideMarker, container);
                             container.parentNode.replaceChild(slideWrapper, container);
+
+                            // Insert "Documentação" marker if there is content after the slides
+                            if (slideWrapper.nextElementSibling) {
+                                const docsMarker = document.createElement('div');
+                                docsMarker.className = 'content-marker docs-marker';
+                                docsMarker.innerHTML = `
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    Documentação
+                                `;
+                                slideWrapper.parentNode.insertBefore(docsMarker, slideWrapper.nextElementSibling);
+                            }
                         }
                     }
                     // ----------------------------------
