@@ -16,35 +16,39 @@ hide:
   </div>
 </div>
 
-Fixture é uma função que prepara e fornece dados ou contexto para os testes. O pytest detecta automaticamente essas funções marcadas com `@pytest.fixture`. Seus resultados são injetados nos testes que as solicitam, eliminando a necessidade de chamadas manuais, por simplesmente adicionar o nome da fixture dentro dos parênteses da função de teste.
+Fixture é uma função que prepara e fornece dados ou contexto para os testes.
 
-Use `return` quando você só quer fornecer um dado inicial para o teste e não precisa desfazer/limpar nada depois:
+Com `return`:
 
 ``` py hl_lines="1 3"
-@pytest.fixture
+@pytest.fixture # (1)!
 def usuario_padrao():
     return {"nome": "João", "idade": 30}
 
-def test_nome_do_usuario(usuario_padrao):
+def test_nome_do_usuario(usuario_padrao): # (2)!
     assert usuario_padrao["nome"] == "João"
 ```
 
-Use `yield` quando você cria algo que precisa ser destruído ou fechado depois que o teste acabar (ex: arquivos físicos, conexões de rede, bancos de dados):
+1. Função marcada com isso é fixture. Será injetada automaticamente em funções de teste que a usarem.
+2. Usa a fixture `usuario_padrao`
+
+Com `yield`:
 
 ``` py hl_lines="1 7"
 @pytest.fixture
 def arquivo_temporario():
-    # 1. SETUP
-    arquivo = open("temp.txt", "w")
+    # SETUP
+    arquivo = open("temp.txt", "w") # (1)!
     
-    # 2. INJEÇÃO (pausa a fixture e roda o teste)
-    yield arquivo 
+    # INJEÇÃO (pausa a fixture e roda o teste)
+    yield arquivo # (1)!
     
     # 3. TEARDOWN (o teste acabou, o código volta para cá)
     arquivo.close()
 ```
 
----
+1. Setup ou preparação dos recursos
+2. Injeta o arquivo para os testes usarem
 
 Segue exemplo do uso de fixture com `yield` simulando um banco de dados:
 
@@ -116,10 +120,6 @@ Essas ferramentas dão uma flexibilidade enorme para criar ambientes de teste r�
 
 ### `params`
 
-O parâmetro `params` serve para **parametrizar uma fixture**, ou seja, fazê-la rodar múltiplas vezes com dados diferentes. Se você passar uma lista com 3 itens para o `params`, qualquer teste que pedir essa fixture vai ser executado 3 vezes automaticamente, uma vez para cada item da lista. É a ferramenta perfeita para testar o mesmo comportamento sob várias condições diferentes (como testar vários navegadores ou tipos de usuários) sem precisar duplicar o código do teste.
-
-Para usá-lo, você passa a lista em `@pytest.fixture(params=[...])` e, dentro da fixture, usa um objeto especial do pytest chamado `request` para acessar o valor da rodada atual através de `request.param`.
-
 Exemplo prático de params:
 
 ``` python
@@ -136,8 +136,6 @@ def test_email_deve_conter_arroba(email_valido): # (3)!
 3. Esse teste roda 3 vezes automaticamente
 
 ### `scope`
-
-O scope determina como e quando a fixture é criada e destruída. Com ele, você pode evitar a criação repetida de recursos pesados, como conexões de banco de dados ou instâncias de navegadores, e assim otimizar a execução dos testes.
 
 Ele define o "tempo de vida" da fixture. As opções são:
 
