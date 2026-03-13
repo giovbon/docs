@@ -271,7 +271,6 @@ features = [
 # ----------------------------------------------------------------------------
 [[project.theme.palette]]
 scheme = "slate"
-[project.markdown_extensions.pymdownx.keys]
 
 # ----------------------------------------------------------------------------
 # In the "font" subsection you can configure the fonts used. By default, fonts
