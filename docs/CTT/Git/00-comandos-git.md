@@ -44,12 +44,12 @@ Comandos para iniciar um novo projeto ou copiar um existente.
 | `git clone <URL>` | Copia um repositório remoto inteiro para a sua máquina local. |
 
 ## Fluxo de Trabalho Local (Add & Commit)
-Gerenciamento das alterações nas áreas de *Working Directory*, *Staging Area* e *Local Repository*.
+Gerenciamento das alterações nas áreas de Working Directory, Staging Area e Local Repository.
 
 | Comando | Descrição |
 | :--- | :--- |
 | `git status` | Exibe o estado atual do diretório (arquivos modificados, novos ou na stage). |
-| `git add <arquivo>` | Adiciona um arquivo específico à área de preparação (*Staging Area*). |
+| `git add <arquivo>` | Adiciona um arquivo específico à área de preparação (Staging Area). |
 | `git add *` | Adiciona todos os arquivos novos e modificados à área de preparação. |
 | `git add .` | Adiciona tudo no diretório atual e subdiretórios à área de preparação. |
 | `git commit -m "mensagem"` | Cria um novo snapshot (versão) do projeto com as alterações da stage. |
@@ -59,17 +59,17 @@ Gerenciamento das alterações nas áreas de *Working Directory*, *Staging Area*
 ## Desfazendo Alterações e Corrigindo Erros
 Comandos para reverter arquivos ou commits em diferentes situações.
 
-#### **Reset**
+#### Reset
 Uso privado/local pois altera o histórico.
 
 | Variação | Descrição |
 | :--- | :--- |
-| `git reset --soft HEAD~1` | Volta 1 commit, mantendo as alterações na *Staging Area* para um novo commit. |
+| `git reset --soft HEAD~1` | Volta 1 commit, mantendo as alterações na Staging Area para um novo commit. |
 | `git reset --mixed HEAD~1` | Volta 1 commit, mantém as alterações nos arquivos, mas fora da stage. |
-| `git reset --hard <hash>` | **Cuidado:** Apaga todas as alterações e volta o projeto exatamente ao estado do commit especificado. |
-| `git reset HEAD <arquivo>` | Remove um arquivo específico da *Staging Area* (unstage), sem alterar o código. |
+| `git reset --hard <hash>` | Cuidado: Apaga todas as alterações e volta o projeto exatamente ao estado do commit especificado. |
+| `git reset HEAD <arquivo>` | Remove um arquivo específico da Staging Area (unstage), sem alterar o código. |
 
-#### **Revert** 
+#### Revert
 Uso público/colaborativo pois preserva o histórico.
 
 | Variação | Descrição |
@@ -78,12 +78,12 @@ Uso público/colaborativo pois preserva o histórico.
 | `git revert HEAD` | Desfaz o último commit criando uma nova entrada no histórico. |
 | `git revert -n <hash>` | Prepara a reversão, mas não commita automaticamente (permite revisão). |
 
-#### **Restore** (Manipulação de arquivos)
+#### Restore (Manipulação de arquivos)
 | Variação | Descrição |
 | :--- | :--- |
 | `git restore <arquivo>` | Descarta mudanças locais e volta o arquivo ao estado do último commit. |
 | `git restore --source=<hash> <arq>` | Restaura um arquivo para como ele era em um commit específico. |
-| `git restore --staged <arquivo>` | Tira o arquivo da *Staging Area* (equivalente ao unstage). |
+| `git restore --staged <arquivo>` | Tira o arquivo da Staging Area (equivalente ao unstage). |
 
 ## Repositórios Remotos (GitHub)
 Sincronização entre o computador local e o servidor remoto.
@@ -98,27 +98,27 @@ Sincronização entre o computador local e o servidor remoto.
 
 ## Gerenciamento de Branches
 
-Comandos para criar, listar, renomear e excluir ramificações (*branches*).
+Comandos para criar, listar, renomear e excluir ramificações (branches).
 
 | Comando | Descrição |
 | --- | --- |
-| `git branch` | Lista todas as *branches* no repositório e indica em qual você está atualmente. |
-| `git branch <nome-da-branch>` | Cria uma nova *branch* com o nome especificado, mas mantém o ambiente de trabalho na *branch* atual. |
-| `git branch -m <novo-nome>` | Renomeia a *branch* em que você está no momento. |
-| `git branch -m <nome-antigo> <novo-nome>` | Renomeia uma *branch* sem precisar estar nela no momento. |
-| `git branch -d <nome-da-branch>` | Exclui a *branch* especificada (só funciona se a *branch* já tiver sido integrada/mesclada com a principal). |
-| `git branch -D <nome-da-branch>` | Força a exclusão da *branch*, descartando todas as alterações que ainda não foram integradas. |
+| `git branch` | Lista todas as branches no repositório e indica em qual você está atualmente. |
+| `git branch <nome-da-branch>` | Cria uma nova branch com o nome especificado, mas mantém o ambiente de trabalho na branch atual. |
+| `git branch -m <novo-nome>` | Renomeia a branch em que você está no momento. |
+| `git branch -m <nome-antigo> <novo-nome>` | Renomeia uma branch sem precisar estar nela no momento. |
+| `git branch -d <nome-da-branch>` | Exclui a branch especificada (só funciona se a branch já tiver sido integrada/mesclada com a principal). |
+| `git branch -D <nome-da-branch>` | Força a exclusão da branch, descartando todas as alterações que ainda não foram integradas. |
 
 ## Mudança de Contexto (Switch & Checkout)
 
-Comandos para alternar o diretório de trabalho entre diferentes *branches*.
+Comandos para alternar o diretório de trabalho entre diferentes branches.
 
 | Comando | Descrição |
 | --- | --- |
-| `git switch <nome_branch>` | Muda o ambiente de trabalho para a *branch* especificada (comando recente dedicado exclusivamente à mudança de ramificação). |
-| `git switch -c <nome-nova-branch>` | Cria uma nova *branch* e muda imediatamente o contexto de trabalho para ela. |
-| `git checkout <nome-branch>` | Comando tradicional que permite mudar para a *branch* especificada (também usado historicamente para restaurar arquivos). |
-| `git checkout -b <nome-da-branch>` | Comando tradicional para criar uma nova *branch* e mudar imediatamente para ela. |
+| `git switch <nome_branch>` | Muda o ambiente de trabalho para a branch especificada (comando recente dedicado exclusivamente à mudança de ramificação). |
+| `git switch -c <nome-nova-branch>` | Cria uma nova branch e muda imediatamente o contexto de trabalho para ela. |
+| `git checkout <nome-branch>` | Comando tradicional que permite mudar para a branch especificada (também usado historicamente para restaurar arquivos). |
+| `git checkout -b <nome-da-branch>` | Comando tradicional para criar uma nova branch e mudar imediatamente para ela. |
 
 ## Integração de Alterações (Merge e Rebase)
 
@@ -126,8 +126,8 @@ Comandos para juntar o trabalho de diferentes *branches* em um único histórico
 
 | Comando | Descrição |
 | --- | --- |
-| `git merge <branch>` | Integra as alterações da *branch* especificada na *branch* em que você está atualmente. Pode resultar em um *Fast-Forward* ou em um *Three-Way merge*. |
-| `git rebase <branch>` | Reorganiza o histórico de *commits*, pegando as alterações exclusivas da *branch* atual e reaplicando-as no topo da *branch* especificada (ex: `main`), de forma a criar um histórico linear. |
+| `git merge <branch>` | Integra as alterações da branch especificada na branch em que você está atualmente. Pode resultar em um *Fast-Forward* ou em um *Three-Way merge*. |
+| `git rebase <branch>` | Reorganiza o histórico de commits, pegando as alterações exclusivas da branch atual e reaplicando-as no topo da branch especificada (ex: `main`), de forma a criar um histórico linear. |
 
 ## Resolução de Conflitos
 
