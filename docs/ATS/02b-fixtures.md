@@ -130,6 +130,7 @@ def email_valido(request):
 def test_email_deve_conter_arroba(email_valido): # (3)!
     assert "@" in email_valido
 ```
+
 1. Define a lista de dados. A fixture fornece um e-mail diferente a cada rodada
 2. Retorna diretamente o valor da rodada atual
 3. Esse teste roda 3 vezes automaticamente

@@ -1,5 +1,5 @@
 ---
-icon: simple/git
+icon: simple/github
 hide:
   - navigation
 ---

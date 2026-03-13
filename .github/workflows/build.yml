@@ -28,9 +28,10 @@ jobs:
         if: failure()
         run: |
           curl \
-            -H "Title: Erro no Build da Documentação" \
+            -H "Title: Erro no Build de ${{ github.repository }}" \
             -H "Priority: high" \
-            -d "O workflow de documentação do repositório ${{ github.repository }} falhou." \
+            -H "Tags: x" \
+            -d "O workflow de documentação do repositório ${{ github.repository }} FALHOU." \
             -H "Authorization: Bearer ${{ secrets.NTFY_TOKEN }}" \
             https://ntfy.giobon.uk/transpeed
 
