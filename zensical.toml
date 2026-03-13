@@ -58,9 +58,9 @@ copyright = """
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
 extra_css = [
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css",
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.css",
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/monokai.css",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/monokai.css",
     "stylesheets/custom-reveal.css"
 ]
 
@@ -71,9 +71,9 @@ extra_css = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
 extra_javascript = [
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js",
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/markdown/markdown.js",
-    "https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/markdown/markdown.js",
+    "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js",
     "https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js",
     "javascripts/init-reveal.js"
 ]
