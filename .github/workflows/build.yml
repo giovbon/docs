@@ -22,6 +22,19 @@ jobs:
           python-version: 3.x
       - run: pip install zensical
       - run: zensical build --clean
+      
+      # --- NOTIFICAÇÃO DE ERRO ---
+      - name: Notificar falha via ntfy
+        if: failure()
+        run: |
+          curl \
+            -H "Title: Erro no Build da Documentação" \
+            -H "Priority: high" \
+            -d "O workflow de documentação do repositório ${{ github.repository }} falhou." \
+            -H "Authorization: Bearer ${{ secrets.NTFY_TOKEN }}" \
+            https://ntfy.giobon.uk/transpeed
+
+      # Estas etapas só rodarão se as anteriores passarem com sucesso
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
