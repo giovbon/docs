@@ -61,7 +61,8 @@ extra_css = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/monokai.css",
-    "stylesheets/custom-reveal.css"
+    "stylesheets/custom-reveal.css",
+    "stylesheets/pdf-export.css"
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
@@ -75,7 +76,8 @@ extra_javascript = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/markdown/markdown.js",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js",
     "https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js",
-    "javascripts/init-reveal.js"
+    "javascripts/init-reveal.js",
+    "javascripts/pdf-export.js"
 ]
 
 # ----------------------------------------------------------------------------
