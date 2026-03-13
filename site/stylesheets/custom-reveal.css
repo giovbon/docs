@@ -94,6 +94,12 @@ strong {
     border-radius: 4px !important;
 }
 
+@media print {
+    .reveal :not(pre)>code {
+        font-size: 0.8em !important;
+    }
+}
+
 .reveal p {
     text-align: left !important;
 }
@@ -113,7 +119,7 @@ strong {
     gap: 35px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.644);
     margin: 30px auto;
-    animation: float-glass 6s ease-in-out infinite;
+    animation: float-glass 8s ease-in-out infinite;
     transition: all 0.3s ease;
 }
 
@@ -149,9 +155,13 @@ strong {
 }
 
 @keyframes float-glass {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(0.5deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-2px, -4px) rotate(-0.5deg); }
+    40% { transform: translate(2px, -8px) rotate(0.5deg); }
+    50% { transform: translate(0, -12px) rotate(0deg); }
+    60% { transform: translate(-2px, -8px) rotate(-0.5deg); }
+    80% { transform: translate(2px, -4px) rotate(0.5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 .imagem-invertida {
