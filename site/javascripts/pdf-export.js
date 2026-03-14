@@ -454,6 +454,17 @@
                             overflow: visible !important;
                             display: block !important;
                         }
+
+                        /* Reset italic/emph styles for print (override custom-reveal.css) */
+                        em {
+                            color: inherit !important;
+                            background-color: transparent !important;
+                            padding-left: 0 !important;
+                            padding-right: 0 !important;
+                            font-style: italic !important;
+                            font-weight: inherit !important;
+                            border-radius: 0 !important;
+                        }
                     </style>
                 </head>
                 <body>

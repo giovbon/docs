@@ -176,6 +176,17 @@
     .md-typeset details > summary {
         padding-left: 0.6rem !important;
     }
+
+    /* Reset italic/emph styles for print (override custom-reveal.css) */
+    em {
+        color: inherit !important;
+        background-color: transparent !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        font-style: italic !important;
+        font-weight: inherit !important;
+        border-radius: 0 !important;
+    }
 }
 
 /* Content Markers (Slides vs. Documentation) */
@@ -185,10 +196,10 @@
     padding: 12px 0;
     margin: 20px 0 15px 0;
     border-bottom: 2px solid var(--md-primary-color);
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--md-primary-color);
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.05em;
 }
 
