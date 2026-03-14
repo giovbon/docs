@@ -134,6 +134,15 @@
     }
 
     function updateHeaderButtons() {
+        const toggleBtn = document.querySelector('.pdf-export-toggle');
+        if (toggleBtn) {
+            if (selectionMode) {
+                toggleBtn.classList.add('active');
+            } else {
+                toggleBtn.classList.remove('active');
+            }
+        }
+
         const genBtn = document.querySelector('.pdf-export-generate');
         if (!genBtn) return;
 
@@ -288,6 +297,11 @@
                     }
                     // ----------------------------------
 
+                    // Force all details/callouts to be open for print
+                    content.querySelectorAll('details').forEach(details => {
+                        details.setAttribute('open', '');
+                    });
+
                     // Fix relative paths for images
                     content.querySelectorAll('img').forEach(img => {
                         const src = img.getAttribute('src');
@@ -315,6 +329,8 @@
                     <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
                     <link rel="stylesheet" href="${new URL('./assets/stylesheets/modern/main.50057488.min.css', window.location.href).href}">
+                    <link rel="stylesheet" href="${new URL('./stylesheets/custom-reveal.css', window.location.href).href}">
+                    <link rel="stylesheet" href="${new URL('./stylesheets/pdf-export.css', window.location.href).href}">
                     <style>
                         @page {
                             size: A4;
@@ -405,6 +421,32 @@
                         .md-typeset h1, .md-typeset h2 { color: var(--md-primary-color); }
                         .md-sidebar, .md-header, .md-footer, .md-nav, .md-content__button { display: none !important; }
                         
+                        /* Force hide icons and chevrons in the aggregated PDF window */
+                        .md-typeset .admonition > .admonition-title::before,
+                        .md-typeset .admonition > summary::before,
+                        .md-typeset details > .admonition-title::before,
+                        .md-typeset details > summary::before,
+                        .md-typeset .admonition > .admonition-title:before,
+                        .md-typeset .admonition > summary:before,
+                        .md-typeset details > .admonition-title:before,
+                        .md-typeset details > summary:before,
+                        .md-typeset details > summary::after,
+                        .md-typeset details > summary:after {
+                            display: none !important;
+                            content: none !important;
+                            background-image: none !important;
+                            -webkit-mask-image: none !important;
+                            mask-image: none !important;
+                        }
+
+                        /* Reset padding for titles */
+                        .md-typeset .admonition > .admonition-title,
+                        .md-typeset .admonition > summary,
+                        .md-typeset details > .admonition-title,
+                        .md-typeset details > summary {
+                            padding-left: 0.6rem !important;
+                        }
+
                         /* Remove fixed heights and other restrictive styles from original content */
                         .md-content__inner, .md-typeset {
                             height: auto !important;

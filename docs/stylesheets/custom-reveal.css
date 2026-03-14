@@ -121,6 +121,11 @@ strong {
     margin: 30px auto;
     animation: float-glass 8s ease-in-out infinite;
     transition: all 0.3s ease;
+
+    /* Fix for backdrop-filter sampling issues when scaled by Reveal.js */
+    transform: translateZ(0); 
+    isolation: isolate;
+    will-change: backdrop-filter;
 }
 
 .glass-box:hover {

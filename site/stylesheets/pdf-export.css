@@ -30,6 +30,13 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
+.pdf-export-toggle.active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.25);
+    color: #00b0ff; /* Light blue to match selection indicator */
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
 .pdf-export-generate {
     position: relative;
     display: none;
@@ -133,6 +140,41 @@
     .pdf-export-toolbar,
     .pdf-selection-container {
         display: none !important;
+    }
+
+    /* Aggressively hide icons and chevrons in callouts/admonitions */
+    .md-typeset .admonition > .admonition-title::before,
+    .md-typeset .admonition > summary::before,
+    .md-typeset details > .admonition-title::before,
+    .md-typeset details > summary::before,
+    .md-typeset .admonition > .admonition-title:before,
+    .md-typeset .admonition > summary:before,
+    .md-typeset details > .admonition-title:before,
+    .md-typeset details > summary:before,
+    .md-typeset details > summary::after,
+    .md-typeset details > summary:after {
+        display: none !important;
+        content: none !important;
+        background-image: none !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
+    /* Force all callouts and their contents to be visible */
+    details, .admonition {
+        display: block !important;
+    }
+    
+    details > * {
+        display: block !important;
+    }
+
+    /* Adjust padding to remove space from hidden icon */
+    .md-typeset .admonition > .admonition-title,
+    .md-typeset .admonition > summary,
+    .md-typeset details > .admonition-title,
+    .md-typeset details > summary {
+        padding-left: 0.6rem !important;
     }
 }
 
