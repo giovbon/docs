@@ -75,8 +75,8 @@
 
 /* Sidebar Selection UI */
 .md-nav__link {
-    display: flex !important;
-    align-items: center !important;
+    display: flex;
+    align-items: center;
     padding-top: 4px !important;
     padding-bottom: 4px !important;
 }
