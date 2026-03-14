@@ -7,10 +7,12 @@
     background: rgba(255, 255, 255, 0.1);
     padding: 4px 8px;
     border-radius: 8px;
-    height: 32px; /* Fixed height for alignment */
+    height: 32px;
+    /* Fixed height for alignment */
 }
 
-.pdf-export-toggle, .pdf-export-generate {
+.pdf-export-toggle,
+.pdf-export-generate {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -22,15 +24,18 @@
     height: 24px;
 }
 
-.pdf-export-toggle:hover, .pdf-export-generate:hover {
+.pdf-export-toggle:hover,
+.pdf-export-generate:hover {
     opacity: 1;
     background: rgba(255, 255, 255, 0.2);
 }
 
 .pdf-export-generate {
     position: relative;
-    display: none; /* Hidden until items selected */
-    color: #4caf50; /* Green for print action */
+    display: none;
+    /* Hidden until items selected */
+    color: #4caf50;
+    /* Green for print action */
     margin-left: 4px;
 }
 
@@ -58,7 +63,7 @@
     justify-content: center;
     font-weight: bold;
     padding: 0 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Sidebar Selection UI */
@@ -110,18 +115,21 @@
 .loading-spinner {
     width: 16px;
     height: 16px;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-top-color: white;
     border-radius: 50%;
     animation: pdf-spin 0.8s linear infinite;
 }
 
 @keyframes pdf-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Print Overrides */
 @media print {
+
     .pdf-export-toolbar,
     .pdf-selection-container {
         display: none !important;
@@ -130,7 +138,8 @@
 
 /* Content Markers (Slides vs. Documentation) */
 .content-marker {
-    display: none; /* Hidden in web view by default */
+    display: none;
+    /* Hidden in web view by default */
     padding: 12px 0;
     margin: 20px 0 15px 0;
     border-bottom: 2px solid var(--md-primary-color);
@@ -151,5 +160,12 @@
     .content-marker {
         display: block !important;
         break-after: avoid;
+    }
+}
+
+/* Hide PDF Export on Mobile/Tablet */
+@media screen and (max-width: 76.25rem) {
+    .pdf-export-toolbar {
+        display: none !important;
     }
 }

@@ -58,7 +58,13 @@
     }
 
     function addCheckboxesToNav() {
-        const navItems = document.querySelectorAll('.md-nav__link'); // Safer to target links directly
+        // Refine selector to only target the primary navigation sidebar (left)
+        // and exclude the Table of Contents/Index (right)
+        const navItems = document.querySelectorAll('.md-sidebar--primary .md-nav__link'); 
+        
+        // Remove any accidentally created checkboxes in the secondary sidebar (TOC)
+        document.querySelectorAll('.md-sidebar--secondary .pdf-selection-container').forEach(el => el.remove());
+
         navItems.forEach(link => {
             if (link.querySelector('.pdf-selection-container')) return;
             
@@ -111,7 +117,7 @@
     }
 
     function updateAllCheckboxes() {
-        const items = document.querySelectorAll('.md-nav__link');
+        const items = document.querySelectorAll('.md-sidebar--primary .md-nav__link');
         items.forEach(link => {
             const container = link.querySelector('.pdf-selection-container');
             if (!container) return;
@@ -348,10 +354,18 @@
                             margin-left: 0 !important;
                         }
                         .md-typeset ol > li {
-                            display: block !important;
-                            break-inside: auto !important; /* Allow internal content like code blocks to break */
+                            display: flex !important;
+                            break-inside: auto !important;
                             padding-left: 0 !important;
                             margin-bottom: 0.5em !important;
+                            align-items: flex-start !important;
+                        }
+                        .li-content {
+                            flex: 1 !important;
+                            min-width: 0 !important;
+                        }
+                        .li-content > :first-child {
+                            margin-top: 0 !important;
                         }
                         .md-typeset ol > li::before {
                             display: none !important;
@@ -419,15 +433,22 @@
                             const items = Array.from(ol.children).filter(child => child.tagName === 'LI');
                             items.forEach((li, index) => {
                                 if (li.dataset.numbered) return;
+
+                                // Wrap existing content to prevent flex separation of text nodes
+                                const contentWrapper = document.createElement('div');
+                                contentWrapper.className = 'li-content';
+                                while (li.firstChild) {
+                                    contentWrapper.appendChild(li.firstChild);
+                                }
+                                li.appendChild(contentWrapper);
+
                                 const marker = document.createElement('span');
                                 marker.textContent = (start + index) + '.';
-                                marker.style.display = 'inline-block';
+                                marker.style.flexShrink = '0';
                                 marker.style.width = '2em';
-                                marker.style.marginLeft = '-2.5em';
                                 marker.style.fontWeight = 'bold';
                                 marker.style.color = 'var(--md-primary-color)';
                                 li.style.listStyle = 'none';
-                                li.style.position = 'relative';
                                 li.prepend(marker);
                                 li.dataset.numbered = "true";
                             });

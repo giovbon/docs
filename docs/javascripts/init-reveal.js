@@ -153,6 +153,26 @@ function initReveal() {
         });
 
         container.appendChild(pdfBtn);
+
+        // --- RESOLVE KEYBOARD CONFLICT ---
+        // Prevent slides from changing when typing in search or other inputs
+        const handleFocus = (e) => {
+            const isInput = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable;
+            if (isInput) {
+                deck.configure({ keyboard: false });
+            } else {
+                deck.configure({ keyboard: true });
+            }
+        };
+
+        // We use capture to catch the event as it descends
+        document.addEventListener('focusin', handleFocus, true);
+        document.addEventListener('focusout', (e) => {
+            // Re-enable keyboard when leaving an input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+                deck.configure({ keyboard: true });
+            }
+        }, true);
     });
 }
 
