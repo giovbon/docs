@@ -11,7 +11,8 @@ search:
 ## Exercício Prático: Fluxo Colaborativo no GitHub
 
 **Objetivo**: Vivenciar o ciclo de vida completo de uma contribuição de software utilizando Issues, Projects (Kanban), Forks e Pull Requests.
-Entrega: O link do repositório público do Aluno A, contendo o histórico de Issues fechadas, Pull Requests mergeados e o link para o Project Board.
+
+**Entrega**: O link do repositório público do Aluno A, contendo o histórico de Issues fechadas, Pull Requests mergeados e o link para o Project Board.
 
 ---
 

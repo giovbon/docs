@@ -3,7 +3,7 @@
     /* Tamanho padrão menor para os slides */
 }
 
-em {
+.reveal em {
     color: #4e9ffc;
     background-color: #111111;
     padding-left: 8px;
@@ -13,7 +13,7 @@ em {
     border-radius: 5px;
 }
 
-strong {
+.reveal strong {
     color: #d6a949;
     font-weight: bold;
 }
@@ -106,7 +106,7 @@ strong {
 
 
 /* Estilo Glassmorphism Genérico - Funciona bem em fundos claros e escuros */
-.glass-box {
+.reveal .glass-box {
     background: rgba(30, 30, 30, 0.4);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -124,17 +124,17 @@ strong {
     overflow: hidden;
 }
 
-.glass-box:hover {
+.reveal .glass-box:hover {
     transform: scale(1.02);
     background: rgba(158, 158, 158, 0.075);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* Garante que títulos e textos dentro do box tenham alto contraste */
-.glass-box h1,
-.glass-box h2,
-.glass-box h3,
-.glass-box p {
+.reveal .glass-box h1,
+.reveal .glass-box h2,
+.reveal .glass-box h3,
+.reveal .glass-box p {
     margin: 0 !important;
     padding: 0 !important;
     color: #ffffff !important;
@@ -142,14 +142,14 @@ strong {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.836), 0 0 60px rgba(0, 0, 0, 0.3) !important;
 }
 
-.glass-box h1 {
+.reveal .glass-box h1 {
     font-size: 3.2em !important;
     font-weight: 800 !important;
     letter-spacing: -1px;
 }
 
 /* Classe auxiliar para imagens/ícones dentro do box */
-.glass-icon {
+.reveal .glass-icon {
     width: 90px;
     height: auto;
     filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.3));
@@ -163,7 +163,7 @@ strong {
 
 /* Sugestão de uso: animation: pulse 3s infinite ease-in-out; */
 
-.imagem-invertida {
+.reveal .imagem-invertida {
     filter: invert(100%);
     /* Inverte as cores da imagem */
     width: 100px;

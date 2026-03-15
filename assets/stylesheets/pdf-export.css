@@ -180,7 +180,7 @@
     }
 
     /* Reset italic/emph styles for print (override custom-reveal.css) */
-    em {
+    .reveal em {
         color: inherit !important;
         background-color: transparent !important;
         padding-left: 0 !important;
@@ -190,7 +190,7 @@
         border-radius: 0 !important;
     }
 
-    strong {
+    .reveal strong {
         color: inherit !important;
         font-weight: bold !important;
     }
