@@ -33,7 +33,8 @@
 .pdf-export-toggle.active {
     opacity: 1;
     background: rgba(255, 255, 255, 0.25);
-    color: #00b0ff; /* Light blue to match selection indicator */
+    color: #00b0ff;
+    /* Light blue to match selection indicator */
     box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -84,8 +85,8 @@
 .pdf-selection-container {
     display: none;
     align-items: center;
-    gap: 4px;
-    margin-right: 6px;
+    gap: 3px;
+    margin-right: 4px;
     flex-shrink: 0;
 }
 
@@ -143,16 +144,16 @@
     }
 
     /* Aggressively hide icons and chevrons in callouts/admonitions */
-    .md-typeset .admonition > .admonition-title::before,
-    .md-typeset .admonition > summary::before,
-    .md-typeset details > .admonition-title::before,
-    .md-typeset details > summary::before,
-    .md-typeset .admonition > .admonition-title:before,
-    .md-typeset .admonition > summary:before,
-    .md-typeset details > .admonition-title:before,
-    .md-typeset details > summary:before,
-    .md-typeset details > summary::after,
-    .md-typeset details > summary:after {
+    .md-typeset .admonition>.admonition-title::before,
+    .md-typeset .admonition>summary::before,
+    .md-typeset details>.admonition-title::before,
+    .md-typeset details>summary::before,
+    .md-typeset .admonition>.admonition-title:before,
+    .md-typeset .admonition>summary:before,
+    .md-typeset details>.admonition-title:before,
+    .md-typeset details>summary:before,
+    .md-typeset details>summary::after,
+    .md-typeset details>summary:after {
         display: none !important;
         content: none !important;
         background-image: none !important;
@@ -161,19 +162,20 @@
     }
 
     /* Force all callouts and their contents to be visible */
-    details, .admonition {
+    details,
+    .admonition {
         display: block !important;
     }
-    
-    details > * {
+
+    details>* {
         display: block !important;
     }
 
     /* Adjust padding to remove space from hidden icon */
-    .md-typeset .admonition > .admonition-title,
-    .md-typeset .admonition > summary,
-    .md-typeset details > .admonition-title,
-    .md-typeset details > summary {
+    .md-typeset .admonition>.admonition-title,
+    .md-typeset .admonition>summary,
+    .md-typeset details>.admonition-title,
+    .md-typeset details>summary {
         padding-left: 0.6rem !important;
     }
 
@@ -186,6 +188,11 @@
         font-style: italic !important;
         font-weight: inherit !important;
         border-radius: 0 !important;
+    }
+
+    strong {
+        color: inherit !important;
+        font-weight: bold !important;
     }
 }
 

@@ -3,7 +3,7 @@
  * Uses Paged.js for high-quality PDF formatting.
  */
 
-(function() {
+(function () {
     let selectionMode = false;
     let selectedUrls = []; // Use array to maintain selection order
 
@@ -16,7 +16,7 @@
         if (headerInner) {
             const toolbar = document.createElement('div');
             toolbar.className = 'pdf-export-toolbar';
-            
+
             // Toggle Button
             const toggle = document.createElement('div');
             toggle.className = 'pdf-export-toggle';
@@ -25,7 +25,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-up"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 12v6"/><path d="m15 15-3-3-3 3"/></svg>
             `;
             toggle.addEventListener('click', toggleSelectionMode);
-            
+
             // Generate Button
             const generate = document.createElement('div');
             generate.className = 'pdf-export-generate';
@@ -35,7 +35,7 @@
                 <span class="pdf-count">0</span>
             `;
             generate.addEventListener('click', generatePdf);
-            
+
             toolbar.appendChild(toggle);
             toolbar.appendChild(generate);
 
@@ -60,29 +60,29 @@
     function addCheckboxesToNav() {
         // Refine selector to only target the primary navigation sidebar (left)
         // and exclude the Table of Contents/Index (right)
-        const navItems = document.querySelectorAll('.md-sidebar--primary .md-nav__link'); 
-        
+        const navItems = document.querySelectorAll('.md-sidebar--primary .md-nav__link');
+
         // Remove any accidentally created checkboxes in the secondary sidebar (TOC)
         document.querySelectorAll('.md-sidebar--secondary .pdf-selection-container').forEach(el => el.remove());
 
         navItems.forEach(link => {
             if (link.querySelector('.pdf-selection-container')) return;
-            
+
             const href = link.getAttribute('href');
             if (!href || href.startsWith('#')) return;
 
             const container = document.createElement('div');
             container.className = 'pdf-selection-container';
-            
+
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.className = 'pdf-selection-checkbox';
-            
+
             const badge = document.createElement('span');
             badge.className = 'pdf-selection-order';
-            
+
             const absoluteUrl = new URL(href, window.location.href).href;
-            
+
             checkbox.checked = selectedUrls.includes(absoluteUrl);
             updateBadge(badge, absoluteUrl);
 
@@ -99,8 +99,8 @@
             });
 
             container.addEventListener('click', (e) => e.stopPropagation());
-            container.appendChild(checkbox);
             container.appendChild(badge);
+            container.appendChild(checkbox);
             link.prepend(container);
         });
     }
@@ -124,10 +124,10 @@
 
             const href = link.getAttribute('href');
             const absoluteUrl = new URL(href, window.location.href).href;
-            
+
             const checkbox = container.querySelector('.pdf-selection-checkbox');
             const badge = container.querySelector('.pdf-selection-order');
-            
+
             checkbox.checked = selectedUrls.includes(absoluteUrl);
             updateBadge(badge, absoluteUrl);
         });
@@ -157,21 +157,21 @@
     async function generatePdf() {
         const genBtn = document.querySelector('.pdf-export-generate');
         if (genBtn.classList.contains('processing')) return;
-        
+
         genBtn.classList.add('processing');
         const originalHtml = genBtn.innerHTML;
         genBtn.innerHTML = '<span class="loading-spinner"></span>';
 
         try {
             const pagesContent = [];
-            
+
             // Sort URLs if needed? For now, insertion order.
             for (const url of selectedUrls) {
                 const response = await fetch(url);
                 const html = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
-                
+
                 // Extract main content
                 const content = doc.querySelector('article.md-content__inner');
                 if (content) {
@@ -180,26 +180,26 @@
                     for (const container of revealContainers) {
                         let slideContent = '';
                         const sections = container.querySelectorAll('section[data-markdown]');
-                        
+
                         for (const section of sections) {
                             const mdPath = section.getAttribute('data-markdown');
                             const separator = section.getAttribute('data-separator') || '^\r?\n---\r?\n$';
                             const verticalSeparator = section.getAttribute('data-separator-vertical');
-                            
+
                             if (mdPath) {
                                 try {
                                     // Ensure the base URL has a trailing slash for consistent relative resolution
                                     const baseUrl = url.endsWith('/') ? url : url + '/';
                                     const mdUrl = new URL(mdPath, baseUrl).href;
                                     console.log('[PDF Export] Fetching slide MD from:', mdUrl);
-                                    
+
                                     const mdResponse = await fetch(mdUrl);
                                     let mdText = await mdResponse.text();
-                                    
+
                                     // Split by separators
                                     const sepRegex = new RegExp(separator, 'm');
                                     let parts = mdText.split(sepRegex);
-                                    
+
                                     if (verticalSeparator) {
                                         const vSepRegex = new RegExp(verticalSeparator, 'm');
                                         parts = parts.flatMap(p => p.split(vSepRegex));
@@ -220,7 +220,7 @@
                                                     const absoluteBg = new URL(bgUrl, baseUrl).href;
                                                     console.log('[PDF Export] Resolved BG Image (relative to page):', absoluteBg);
                                                     bgImage = `<img src="${absoluteBg}" style="max-height: 250px; display: block; margin: 15px 0; border: 1px solid #ddd; border-radius: 4px;">`;
-                                                } catch (e) {}
+                                                } catch (e) { }
                                             } else if (bgUrl) {
                                                 bgImage = `<img src="${bgUrl}" style="max-height: 250px; display: block; margin: 15px 0; border: 1px solid #ddd; border-radius: 4px;">`;
                                             }
@@ -229,16 +229,16 @@
                                         // Basic cleaning of reveal.js comments/attributes
                                         let cleanPart = part.replace(/<!-- \.slide: .*? -->/g, '');
                                         cleanPart = cleanPart.replace(/\{: .*?\}/g, ''); // Attributes like {:.fragment}
-                                        
+
                                         // Resolve Image Paths in Slide Content (Markdown and HTML)
                                         // 1. Markdown images: ![alt](path)
                                         cleanPart = cleanPart.replace(/!\[(.*?)\]\(([^"'\s)]+)(?:\s+["'].*?["'])?\)/g, (match, alt, path) => {
                                             if (path && !path.startsWith('http') && !path.startsWith('data:')) {
-                                                try { 
+                                                try {
                                                     // Resolve relative to page
                                                     const absolutePath = new URL(path, baseUrl).href;
                                                     console.log('[PDF Export] Resolved MD Image (relative to page):', absolutePath);
-                                                    return `![${alt}](${absolutePath})`; 
+                                                    return `![${alt}](${absolutePath})`;
                                                 } catch (e) { return match; }
                                             }
                                             return match;
@@ -247,11 +247,11 @@
                                         // 2. HTML images: <img src="path" ...>
                                         cleanPart = cleanPart.replace(/<img\s+([^>]*?)src=["']([^"']*)["']([^>]*?)>/gi, (match, before, src, after) => {
                                             if (src && !src.startsWith('http') && !src.startsWith('data:')) {
-                                                try { 
+                                                try {
                                                     // Resolve relative to page
                                                     const absoluteSrc = new URL(src, baseUrl).href;
                                                     console.log('[PDF Export] Resolved HTML Image (relative to page):', absoluteSrc);
-                                                    return `<img ${before}src="${absoluteSrc}"${after}>`; 
+                                                    return `<img ${before}src="${absoluteSrc}"${after}>`;
                                                 } catch (e) { return match; }
                                             }
                                             return match;
@@ -266,11 +266,11 @@
                                 }
                             }
                         }
-                        
+
                         if (slideContent) {
                             const slideWrapper = document.createElement('div');
                             slideWrapper.className = 'extracted-slides md-typeset';
-                            
+
                             // Insert "Slides" marker
                             const slideMarker = document.createElement('div');
                             slideMarker.className = 'content-marker slide-marker';
@@ -278,7 +278,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M7 21h10"/><path d="M12 17v4"/></svg>
                                 Slides
                             `;
-                            
+
                             slideWrapper.innerHTML = slideContent;
                             container.parentNode.insertBefore(slideMarker, container);
                             container.parentNode.replaceChild(slideWrapper, container);
@@ -526,7 +526,7 @@
 
     // Initialize
     if (typeof document$ !== "undefined") {
-        document$.subscribe(function() {
+        document$.subscribe(function () {
             initPdfExport();
         });
     } else {
