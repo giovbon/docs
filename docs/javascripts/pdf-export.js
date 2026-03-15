@@ -7,14 +7,28 @@
     let selectionMode = false;
     let selectedUrls = []; // Use array to maintain selection order
 
-    function initPdfExport() {
-        if (document.querySelector('.pdf-export-toggle')) return;
+    function isIndexPage() {
+        const logo = document.querySelector('.md-logo');
+        if (!logo) return false;
+        try {
+            const logoUrl = new URL(logo.getAttribute('href'), window.location.href).href.replace(/\/+$/, '');
+            const currentUrl = window.location.href.split(/[?#]/)[0].replace(/\/+$/, '');
+            return logoUrl === currentUrl;
+        } catch (e) {
+            return false;
+        }
+    }
 
-        // 1. Add PDF Toolbar to Header
+    function initPdfExport() {
+        const isIndex = isIndexPage();
+
+        // 1. Add/Manage PDF Toolbar
+        let toolbar = document.querySelector('.pdf-export-toolbar');
         const headerInner = document.querySelector('.md-header__inner');
         const logo = document.querySelector('.md-logo');
-        if (headerInner) {
-            const toolbar = document.createElement('div');
+
+        if (!toolbar && headerInner) {
+            toolbar = document.createElement('div');
             toolbar.className = 'pdf-export-toolbar';
 
             // Toggle Button
@@ -39,12 +53,21 @@
             toolbar.appendChild(toggle);
             toolbar.appendChild(generate);
 
-            // Insert after logo
             if (logo && logo.nextSibling) {
                 headerInner.insertBefore(toolbar, logo.nextSibling);
             } else {
                 headerInner.appendChild(toolbar);
             }
+        }
+
+        // Toggle visibility of Toolbar and Search based on page
+        if (toolbar) {
+            toolbar.style.display = isIndex ? 'flex' : 'none';
+        }
+
+        const search = document.querySelector('.md-search');
+        if (search) {
+            search.style.display = isIndex ? 'block' : 'none';
         }
 
         addCheckboxesToNav();
