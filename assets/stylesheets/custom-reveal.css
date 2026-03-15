@@ -171,3 +171,28 @@ strong {
     height: auto;
     /* Mantém a proporção da imagem */
 }
+
+/* Cabeçalho Breadcrumb (Trilha) Discreto */
+.reveal-breadcrumb {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 999;
+    font-size: 0.35em;
+    font-family: inherit;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none; /* Não interfere nos cliques */
+    background: rgba(0, 0, 0, 0.4); /* Transparência de 40% */
+    padding: 2px 6px;
+    border-radius: 2px;
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Esconde o breadcrumb em telas muito pequenas se necessário */
+@media screen and (max-width: 600px) {
+    .reveal-breadcrumb {
+        display: none !important;
+    }
+}

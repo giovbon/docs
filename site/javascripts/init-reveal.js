@@ -154,6 +154,53 @@ function initReveal() {
 
         container.appendChild(pdfBtn);
 
+        // --- BREADCRUMB HEADER ---
+        const breadcrumb = document.createElement('div');
+        breadcrumb.className = 'reveal-breadcrumb';
+        container.appendChild(breadcrumb);
+
+        const updateBreadcrumb = () => {
+            const currentSlide = deck.getCurrentSlide();
+            if (!currentSlide) return;
+
+            const indices = deck.getIndices();
+            
+            // Esconde na capa (slide 0,0)
+            if (indices.h === 0 && indices.v === 0) {
+                breadcrumb.style.display = 'none';
+                return;
+            }
+
+            // BUSCA LINEAR FLATTENED: Percorre todos os slides anteriores na ordem de apresentação
+            const allSlides = deck.getSlides(); // Retorna todos os slides (horizontal e vertical) em ordem
+            const currentIndex = allSlides.indexOf(currentSlide);
+            
+            let mostRecentTitle = null;
+
+            // Percorre do slide atual para trás até o início
+            for (let i = currentIndex; i >= 0; i--) {
+                const slide = allSlides[i];
+                
+                // Busca o cabeçalho mais específico no slide (H2/H3 tem prioridade sobre H1 se ambos existirem)
+                const header = slide.querySelector('h2, h3, h1, .title');
+                if (header) {
+                    mostRecentTitle = header.innerText.trim();
+                    break; // Achou o mais recente, para a busca
+                }
+            }
+
+            breadcrumb.innerText = mostRecentTitle || '';
+            
+            if (!mostRecentTitle) {
+                breadcrumb.style.display = 'none';
+            } else {
+                breadcrumb.style.display = 'block';
+            }
+        };
+
+        deck.on('ready', updateBreadcrumb);
+        deck.on('slidechanged', updateBreadcrumb);
+
         // --- RESOLVE KEYBOARD CONFLICT ---
         // Prevent slides from changing when typing in search or other inputs
         const handleFocus = (e) => {
