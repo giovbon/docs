@@ -6,4 +6,40 @@
 
 ---
 
-<img src="../SLIDES/img/diagrama-físico-sabor-local.png" data-preview-image>
+<img src="../SLIDES/img/diagrama-sabor-local/diagrama-físico-sabor-local.png" width="100%" >
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-cadastro.png" width="100%">
+</div>
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-produtos-pedidos.png" width="100%">
+</div>
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-prod-entrega.png" width="100%">
+</div>
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-cancel-estorn.png" width="100%">
+</div>
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-tokenizacao.png" width="70%">
+</div>
+
+---
+
+<div style="text-align: center;">
+	<img src="../SLIDES/img/diagrama-sabor-local/char-avulsas.png" width="70%">
+</div>

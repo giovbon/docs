@@ -27,7 +27,7 @@ Nesta etapa, o Aluno A atuará como o "Dono do Projeto" (Maintainer).
 
 
 - Criação do Project (Kanban):
-    - O Aluno A vai na aba "Projects" do seu perfil e cria um novo projeto estilo "Board" (Kanban).
+    - O Aluno A vai na aba 'Projects' do repositório lab-colaboracao-github e cria um novo projeto estilo 'Board' (Kanban).
     - Crie três colunas: `To Do`, `In Progress`, e `Done`.
     - Adicione um campo personalizado (Custom Field) do tipo Single select chamado "Prioridade" (Alta, Média, Baixa).
 
