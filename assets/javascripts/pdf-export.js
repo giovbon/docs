@@ -351,7 +351,7 @@
                     <title>Documentação Exportada</title>
                     <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-                    <link rel="stylesheet" href="${new URL('./assets/stylesheets/modern/main.50057488.min.css', window.location.href).href}">
+                    <link rel="stylesheet" href="${new URL('./assets/stylesheets/classic/main.d9d44b50.min.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/custom-reveal.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/pdf-export.css', window.location.href).href}">
                     <style>
@@ -386,7 +386,27 @@
                             break-after: avoid !important;
                             break-inside: avoid !important;
                         }
-                        /* Prepare lists for hardcoded script-based numbering */
+                        /* Fix for nested lists (ul) */
+                        .md-typeset ul {
+                            list-style-type: disc !important;
+                            padding-left: 2.5em !important;
+                            margin-left: 0 !important;
+                        }
+                        .md-typeset ul ul {
+                            list-style-type: circle !important;
+                            padding-left: 1.5em !important;
+                        }
+                        .md-typeset ul ul ul {
+                            list-style-type: square !important;
+                            padding-left: 1.5em !important;
+                        }
+                        .md-typeset li {
+                            display: list-item !important;
+                            break-inside: avoid-page !important;
+                            margin-bottom: 0.3em !important;
+                        }
+
+                        /* Prepare ordered lists for hardcoded script-based numbering */
                         .md-typeset ol {
                             list-style: none !important;
                             padding-left: 2.5em !important;
@@ -418,6 +438,7 @@
                             background-color: #f5f5f5 !important;
                             overflow: visible !important;
                             height: auto !important;
+                            min-height: 0 !important;
                             max-height: none !important;
                             break-inside: auto !important;
                             page-break-inside: auto !important;
