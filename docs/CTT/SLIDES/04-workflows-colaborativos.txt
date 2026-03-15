@@ -1,7 +1,7 @@
 <!-- .slide: data-background-image="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
 
 <div class="glass-box">
-    <h1>workflows colaborativos</h1>
+    <h1>workflows colaborativos e code review</h1>
     <img src="https://simpleicons.org/icons/git.svg" alt="Pytest" class="glass-icon imagem-invertida" />
 </div>
 
@@ -165,3 +165,66 @@ O padrão de trabalho com **Pull Requests (PRs)** envolve os seguintes passos:
 * **Rastreabilidade:** Cada linha de código na `main` tem um histórico de *por que* ela foi criada (ligada à Issue).
 * **Segurança (Protected Branches):** Em projetos sérios, a branch `main` nunca é tocada diretamente. Ela é protegida para que apenas código revisado via PR possa entrar.
 * **Qualidade (CI/CD):** É aqui que você encaixa o seu **GitHub Actions**. O PR serve como o "gatilho" para os testes automáticos. Se o código não passar nos testes do `pytest` ou `unittest`, o botão de *Merge* fica bloqueado. Isso tira a responsabilidade humana de checar se o código quebra a aplicação.
+
+---
+
+## Code Review
+
+<!-- https://engsoftmoderna.info/artigos/revisao-codigo.html -->
+
+A ideia de *revisão de código* é simples: todo *código desenvolvido* por um desenvolvedor (**author**) tem que ser, em seguida, *analisado* por pelo menos um outro desenvolvedor (**reviewer**). O revisor pode adicionar *comentários* no código sob revisão, procurando *esclarecer dúvidas, sugerindo melhorias, indicando bugs*, etc.
+
+O *autor pode modificar sua implementação* para atender a alguma sugestão do revisor que ele achou procedente. Ou então, ele pode replicar e justificar que ela não faz sentido. Espera-se que após esse diálogo o código seja *aprovado pelo revisor* e possa ser integrado no repositório do projeto.
+
+---
+
+<div style="text-align: center;">
+	<img src="https://kroki.io/nomnoml/svg/eNqNUsFOwzAMvfcrLPU8CQS7VGiogiscxnHqwUrczpDGVZJ234M48AF8Qn-MtGWom1BHckns5_eeE6eaHanAYjPQcrBJ6htUbKsM1ldJ2qDW4-V6naQlG5NBWt4OOwKDkzeKgZtxJckub8NeXAaP5Ml2YjoCAdV_aa6kgNUGdlvqmA4UMblFwx5ngEiwlB7r79ReWNEGHqYo5I2TDrXcD-ULWVjBc_8h5yY0q9g6gpKabOjfHYsvLhG9cD2Z8QHDDIQ_ICBgG6hy8XzW1Z96p51NjwioiAMCgm8r8iF6P21xATazePyRJ9FcshqAXDeGBnXsPyO8-Dfn7_sdSbfUmIGT4LX1YeQvZlOwoHl5FhZFLpZ_A5ZVA94=" width="100%" data-preview-image>
+</div>
+
+
+---
+
+Esse impasse, quando o autor (codificador) e o revisor não aceitam as sugestões um do outro é uma situação super comum no dia a dia das equipes de desenvolvimento. Esse cenário é chamado de **"deadlock"** ou impasse de revisão, a solução deixa de ser apenas técnica e passa a envolver a comunicação e a cultura da equipe.
+
+As práticas recomendadas para resolver esses impasses incluem:
+
+1. **Sair do Assíncrono (Mudança de Meio)**: Se houver muitas idas e vindas nos comentários, uma chamada de vídeo rápida pode esclarecer mal-entendidos de forma mais eficaz do que mensagens escritas.
+
+2. **Chamar um "Desempate" (Tie-breaker)**: Em divergências técnicas, adicionar um terceiro desenvolvedor, como um líder técnico ou Code Owner, pode ajudar a tomar uma decisão.
+
+---
+
+3. **Recorrer à Documentação e Padrões**: Consultar guias de estilo e documentações relevantes ajuda a eliminar subjetividades e segue as normas previamente estabelecidas.
+
+4. **Princípio do "Disagree and Commit"**: Quando persistem divergências, a pessoa mais responsável pela entrega toma a decisão final, permitindo que o projeto avance.
+
+5. **Acordo de Trade-off (Dívida Técnica)**: Se for melhor optar pela sugestão do revisor, mas isso atrasaria a entrega, pode-se aprovar o código atual e criar uma nova **Issue** para melhorias futuras, assumindo a dívida técnica de forma consciente.
+
+---
+
+### Motivação
+As principais motivações do code review são encontrar bugs no código submetido; melhorar o código; propor soluções alternativas; transferir conhecimento (o autor pode aprender com os comentários do revisor e vice-versa)
+
+Questões que devem ser apontadas e consideradas em revisões de código:
+
+- Bugs em geral
+- Código mais complexo do que o necessário
+- Código que usa um algoritmo e/ou estrutura de dados menos eficiente
+- Código que não trata exceções e erros
+- Ausência de testes
+- Ausência de documentação, principalmente aquela mais relevante
+- Falhas de segurança ou privacidade
+- Problemas de desempenho
+- Problemas de usabilidade com o usuário
+
+---
+
+No GitHub, o code review é realizado principalmente por meio de pull requests (PRs), que funcionam como uma etapa de garantia de qualidade antes de o código ser integrado à branch principal. Cada PR permite que outros desenvolvedores revisem o código proposto, avaliem legibilidade, segurança, desempenho e aderência a padrões, além de executar verificações automatizadas (como testes e análise estática) via CI/CD. Somente após aprovação e sucesso nos checks o merge é permitido, garantindo que cada mudança passe por revisão técnica e validação automatizada, fortalecendo assim a qualidade e a confiabilidade do software.
+
+---
+
+Diversos problemas tratados em uma revisão de código podem ser detectados de forma automática por meio de ferramentas de análise estática. Por exemplo, questões como convenções de nomes de identificadores (camel case, snake case, etc), leiaute de código e estilo de indentação (tab ou espaços, por exemplo) podem ser padronizadas por meio de linters. Com isso, evita-se que um revisor humano tenha que perder tempo com tais questões.
+
+- [Code Review Pyramid](https://roadmap.sh/code-review?fl=0)
+- [Code Review Best Practices](https://roadmap.sh/best-practices/code-review)

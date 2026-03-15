@@ -77,6 +77,7 @@ Formas de se trabalhar com o repositórios remotos:
 <div style="text-align: center;">
     <img src="../../SLIDES/img/image-1-integ.png" width="60%">
 </div>
+
 ---
 
 Os repositórios locais e os repositórios remotos agem separadamente. Quando se trabalha com eles, é importante saber que *não ocorrerá nenhuma atualização automática enviada de um para o outro*. Para isso temos os comandos `git pull` e `git push`, que veremos abaixo.

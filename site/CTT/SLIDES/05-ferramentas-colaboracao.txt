@@ -33,7 +33,7 @@ Em repositórios privados, apenas usuários com acesso ao repositório podem cri
 
 ---
 
-### Principais Usos de um Fork
+**Principais Usos de um Fork**
 
 1. **Contribuição em Projetos Open Source** (Principal uso): Se você quer *corrigir um bug ou adicionar uma funcionalidade em um projeto público* (como o Linux, React, ou uma ferramenta de terceiros), você não tem permissão para alterar o código deles diretamente. O fork permite que você faça as alterações na sua cópia e, depois, peça para os donos do projeto original avaliarem e aceitarem seu código (através de um Pull Request).
 2. **Ponto de Partida para um Novo Projeto**: Você pode encontrar um projeto que faz 90% do que você precisa, fazer um fork e seguir um caminho completamente diferente, *criando um software novo e independente a partir daquela base*.
@@ -41,7 +41,7 @@ Em repositórios privados, apenas usuários com acesso ao repositório podem cri
 
 ---
 
-### Como usar um fork para contribuir com um projeto
+Como usar um fork para contribuir com um projeto
 
 1. **Fazer o Fork**: Vá até a página do repositório original no GitHub. No canto superior direito, clique no botão "Fork".
 <div style="text-align: center;">
@@ -75,7 +75,7 @@ Um issue no GitHub é um *recurso usado para rastrear bugs, solicitações de re
 
 ---
 
-Principais Usos de uma Issue
+**Principais Usos de uma Issue**
 
 1. **Rastreamento de Bugs** (Bug Tracking): É o uso mais comum. *Quando alguém encontra um erro no código* ou no sistema, abre-se uma issue relatando o problema, como reproduzi-lo e qual era o comportamento esperado.
 2. **Solicitação de Novas Funcionalidades** (Feature Requests): Antes de sair programando algo novo (especialmente em equipes ou projetos open source), cria-se uma *issue propondo a ideia*. Isso permite que a equipe discuta se a *funcionalidade faz sentido* antes de investir tempo no código.
