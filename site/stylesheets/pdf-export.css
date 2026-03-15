@@ -194,6 +194,73 @@
         color: inherit !important;
         font-weight: bold !important;
     }
+
+    /* Aggressive Reset for Code Blocks to ensure "Continuum" */
+    .md-typeset .highlight, 
+    .md-typeset .highlighttable,
+    .md-typeset .highlight pre {
+        display: block !important;
+        background-color: #f5f5f5 !important; /* Force a consistent light grey to hide gaps */
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        margin-bottom: 1.2em !important;
+        padding: 0 !important;
+        border: none !important;
+        orphans: 1 !important;
+        widows: 1 !important;
+    }
+
+    /* Hide ALL decorative elements that might add space or cause breaks */
+    .md-typeset .highlight::before,
+    .md-typeset .highlight::after,
+    .md-typeset .highlight pre::before,
+    .md-typeset .highlight pre::after,
+    .md-clipboard, .md-code__copy, .md-status, .md-header__source {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* Target the container of title + code */
+    .highlight {
+        margin-top: 1em !important;
+        break-inside: auto !important;
+    }
+
+    /* Keep heading with the code block */
+    h1 + .highlight, h2 + .highlight, h3 + .highlight, h4 + .highlight,
+    h1 + p + .highlight, h2 + p + .highlight, h3 + p + .highlight {
+        break-before: avoid !important;
+    }
+
+    /* Visually join filename and code block with overlap */
+    .md-typeset .highlight .filename {
+        display: block !important;
+        margin: 0 !important;
+        margin-bottom: -1px !important; /* OVERLAP to kill the white line */
+        padding: 0.5rem 0.6rem !important;
+        background-color: #eee !important; /* Slightly darker for title bar */
+        border: none !important;
+        border-bottom: 1px solid #ddd !important;
+        break-after: avoid !important;
+        position: relative !important;
+        z-index: 2 !important;
+        font-weight: bold !important;
+    }
+
+    .md-typeset .highlight pre {
+        margin: 0 !important;
+        border-top: none !important;
+        padding: 0.5rem 0.6rem !important;
+        background-color: #f5f5f5 !important;
+    }
+
+    .md-typeset .highlight pre code {
+        padding: 0 !important;
+        background: transparent !important;
+    }
 }
 
 /* Content Markers (Slides vs. Documentation) */

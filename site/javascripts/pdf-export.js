@@ -410,16 +410,57 @@
                             display: none !important;
                             content: none !important;
                         }
-                        /* Allow code blocks to break across pages to avoid huge white spaces */
-                        pre, .highlight, .md-code, .md-typeset pre, .md-typeset .highlight {
+                        /* Aggressive Reset for Code Blocks to ensure "Continuum" */
+                        .md-typeset .highlight, 
+                        .md-typeset .highlighttable,
+                        .md-typeset .highlight pre {
+                            display: block !important;
+                            background-color: #f5f5f5 !important;
+                            overflow: visible !important;
+                            height: auto !important;
+                            max-height: none !important;
                             break-inside: auto !important;
+                            page-break-inside: auto !important;
+                            margin-bottom: 1.2em !important;
+                            padding: 0 !important;
+                            border: none !important;
+                            orphans: 1 !important;
+                            widows: 1 !important;
                             white-space: pre-wrap !important;
                             word-break: break-all !important;
-                            overflow: visible !important;
                         }
+
+                        /* Hide ALL decorative elements in PDF */
+                        .md-typeset .highlight::before, .md-typeset .highlight::after,
+                        .md-clipboard, .md-code__copy, .md-status {
+                            display: none !important;
+                        }
+
+                        /* Visually join filename and code block with overlap */
+                        .md-typeset .highlight .filename {
+                            display: block !important;
+                            margin: 0 !important;
+                            margin-bottom: -1px !important;
+                            padding: 0.5rem 0.6rem !important;
+                            background-color: #eee !important;
+                            border-bottom: 1px solid #ddd !important;
+                            break-after: avoid !important;
+                            position: relative !important;
+                            z-index: 2 !important;
+                            font-weight: bold !important;
+                        }
+
+                        .md-typeset .highlight pre {
+                            margin: 0 !important;
+                            border-top: none !important;
+                            padding: 0.5rem 0.6rem !important;
+                        }
+
                         .md-typeset pre code {
                             break-inside: auto !important;
                             white-space: pre-wrap !important;
+                            padding: 0 !important;
+                            background: transparent !important;
                         }
                         p, li {
                             orphans: 3;
