@@ -14,6 +14,7 @@ hide:
   </div>
 </div>
 
-## Vídeos
+!!! abstract "Referências"
 
-- [Cadastro de Tabela](https://drive.google.com/file/d/1-MeB5uGM80-JexLhha9qTIxhPLFnJBIL/view?usp=sharing)
+    - [Diagrama físico](./SLIDES/img/diagrama-sabor-local/diagrama-físico-sabor-local.png)
+    - [Vídeos tutoriais da disciplina](https://drive.google.com/drive/folders/1Gzk5JdG7Yk5fwXh7a4X112YFTHm2Vdz-?usp=sharing)
