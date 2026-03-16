@@ -13,3 +13,7 @@ hide:
     </section>
   </div>
 </div>
+
+## Vídeos
+
+- [Cadastro de Tabela](https://drive.google.com/file/d/1-MeB5uGM80-JexLhha9qTIxhPLFnJBIL/view?usp=sharing)
