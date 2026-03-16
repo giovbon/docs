@@ -22,8 +22,8 @@ Nesta etapa, o Aluno A atuará como o "Dono do Projeto" (Maintainer).
 
 - Criação do Repositório Base:
     - O Aluno A deve criar um novo repositório público no GitHub chamado `lab-colaboracao-github`.
-    - Inicialize o repositório com um arquivo `README.md`.
-    - Adicione um arquivo `app.py` ou `index.html` com um código bem simples e propositalmente incompleto (ex: um script de "Olá Mundo" que precisa de mais funções).
+    - Inicialize o repositório com um arquivo `README.md` com um erro de digitação no arquivo.
+    - Adicione um arquivo `app.py` com um código bem simples e propositalmente incompleto (ex: um script de "Olá Mundo" que precisa de mais funções).
 
 
 - Criação do Project (Kanban):
@@ -84,7 +84,7 @@ Nesta etapa, o Aluno B atuará como o "Desenvolvedor Externo" (Contributor).
     - O Aluno A pode deixar um comentário elogiando ou pedindo uma pequena alteração. (O Aluno B pode responder ao comentário para simular a interação).
 
 
-- O Merge e a Mágica:
+- O Merge:
     - O Aluno A clica em Merge pull request para o PR 1 e depois para o PR 2.
     - Observação Ativa: Ambos os alunos devem voltar à aba de Issues e verificar que elas foram fechadas automaticamente (devido às palavras-chave `Closes` e `Resolves` usadas pelo Aluno B).
     - O Aluno A vai até o Project Kanban. Se as automações (Workflows) estiverem ativas por padrão, os cartões devem ter ido automaticamente para a coluna `Done`. Caso contrário, ele deve movê-los manualmente e verificar como ativar essa automação na aba "Workflows".

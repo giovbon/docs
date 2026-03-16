@@ -1,0 +1,6 @@
+/* Hide redundant search button on mobile/tablet */
+@media screen and (max-width: 76.25rem) {
+  .md-search__button {
+    display: none !important;
+  }
+}

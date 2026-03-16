@@ -62,7 +62,8 @@ extra_css = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/monokai.css",
     "stylesheets/custom-reveal.css",
-    "stylesheets/pdf-export.css"
+    "stylesheets/pdf-export.css",
+    "stylesheets/custom.css"
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
