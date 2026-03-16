@@ -15,12 +15,12 @@ Esses recursos juntos tornam o GitHub uma plataforma poderosa para colaboração
 
 ---
 
-| **Recurso**       | **O que é**                                                                              | **Para que é usado**                                                |   |   |
-|-------------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| **Fork**          | Cópia de um repositório que permite modificar e experimentar sem afetar o original.   | Contribuir com projetos, testar ideias ou criar versões personalizadas. |  
-| **Issues**        | Sistema para rastreamento de bugs, solicitações de recursos e tarefas relacionadas.    | Gerenciar tarefas, discutir problemas e colaborar com desenvolvedores. |   
-| **Projects**      | Recurso para organizar e gerenciar tarefas visualmente, usando quadros Kanban ou listas. | Planejar, organizar e acompanhar o progresso de projetos.          |   
-| **Pull Requests** | Pedido para mesclar alterações feitas em um fork ou branch para o repositório original. | Solicitar a incorporação de alterações, facilitando a revisão de código. |   
+| **Recurso** | **O que é** | **Para que é usado** |
+|---|---|---|
+| **Fork** | Cópia de um repositório que permite modificar e experimentar sem afetar o original. | Contribuir com projetos, testar ideias ou criar versões personalizadas. |
+| **Issues** | Sistema para rastreamento de bugs, solicitações de recursos e tarefas relacionadas. | Gerenciar tarefas, discutir problemas e colaborar com desenvolvedores. |
+| **Projects** | Recurso para organizar e gerenciar tarefas visualmente, usando quadros Kanban ou listas. | Planejar, organizar e acompanhar o progresso de projetos. |
+| **Pull Requests** | Pedido para mesclar alterações feitas em um fork ou branch para o repositório original. | Solicitar a incorporação de alterações, facilitando a revisão de código. |  
 
 ---
 
