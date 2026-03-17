@@ -18,3 +18,16 @@ No CMD lance o comando: `wsl --install -d Ubuntu-22.04`. Vai instalar o ubuntu, 
 Deletando máquinas:
 - listar máquinas `wsl --list --verbose`
 - deletar máquina `wsl --unregister NomeDaDistro`
+
+## Distrobox :simple-distrobox:
+
+```bash
+sudo apt install distrobox
+distrobox create --name debian1 --image debian:latest
+distrobox enter debian1
+apt install chromium
+distrobox-export --app chromium
+```
+
+nano ~/.distroboxrc
+container_manager="podman"
