@@ -10,31 +10,9 @@
 
 ## Github CLI
 
-O GitHub CLI (gh) é uma ferramenta que permite gerenciar o GitHub diretamente pelo terminal, sem precisar abrir o navegador.
+O GitHub CLI (`gh`) é uma ferramenta que permite gerenciar o GitHub diretamente pelo terminal, sem precisar abrir o navegador. Vai permitir listar repos da sua conta, criar, clonar, criar forks, issues e PRs.
 
---
-
-### Comandos
-
-| Comando                                                | Descrição                                                                                                  |
-|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-| `gh repo list`                                       | Lista repositórios da sua conta.                                                                          |
-| `gh repo create my-repo-name`                        | Cria um novo repositório.                                                                                 |
-| `gh repo clone owner/repo-name`                      | Clona um repositório existente.                                                                           |
-| `gh repo view --web`                                 | Abre a página do repositório atual diretamente no seu navegador de internet.                              |
-| `gh repo fork facebook/react`                         | Faz o fork do projeto na sua conta, especificando qual.                                                  |
-| `gh repo fork`                                       | Faz o fork do projeto na sua conta, identificando o projeto em que você está atualmente no terminal.      |
-| `gh repo sync`                                       | Atualiza o seu repositório local (ou seu fork) com as últimas mudanças do repositório original (upstream). |
-
---
-
-| Comando                                                | Descrição                                                                                                  |
-|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------
-| `gh pr list`                                         | Lista os Pull Requests abertos no repositório atual.                                                     |
-| `gh pr status`                                       | Mostra um resumo rápido de todos os PRs que importam para você (criados por você, que pedem sua revisão, etc). |
-| `gh pr create --title "Minha nova feature" --body "Explicação detalhada do que foi feito"` | Criação de Pull Request (após criar a branch com git, adicionar coisas nela, fazer commit e o push da branch para o GitHub). |
-| `gh issue list --repo giovbon/docs`                 | Lista issues do repositório específico.                                                                   |
-| `gh issue create`                                    | Cria uma nova Issue no repositório atual (abre um menu interativo).                                      |
+![](https://i0.wp.com/user-images.githubusercontent.com/10404068/74261502-34ae1380-4cb0-11ea-8baf-cf8248f1b222.png?ssl=1)
 
 ---
 
