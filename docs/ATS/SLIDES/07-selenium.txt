@@ -7,7 +7,7 @@
 
 ---
 
-o **Selenium** é um ecossistema de ferramentas voltado para a *automação de navegadores*. Basicamente, ele permite que você escreva um *script* (em Python, Java, JavaScript, etc.) *que "dirige" o navegador como se fosse um ser humano clicando, digitando e navegando pelas páginas*.
+O **Selenium** é um ecossistema de ferramentas voltado para a *automação de navegadores*. Basicamente, ele permite que você escreva um *script* (em Python, Java, JavaScript, etc.) *que "dirige" o navegador como se fosse um ser humano clicando, digitando e navegando pelas páginas*.
 
 ---
 

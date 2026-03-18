@@ -23,11 +23,21 @@ Deletando máquinas:
 
 ```bash
 sudo apt install distrobox
-distrobox create --name debian1 --image debian:latest
-distrobox enter debian1
-apt install chromium
-distrobox-export --app chromium
+
+distrobox create --name debian1 --image debian:latest #(1)!
+distrobox enter debian1 #(2)!
+apt install chromium #(3)!
+distrobox-export --app chromium #(4)!
 ```
 
+1. Criar ambiente debian
+2. Entrar no ambiente
+3. Instalar aplicativo dentro do ambiente
+4. Tornar o aplicativo instalado disponível no ambiente hospedeiro (haverá ícone para acesso)
+
+Definir podman como motor de emulação:
+
+```bash
 nano ~/.distroboxrc
 container_manager="podman"
+```
