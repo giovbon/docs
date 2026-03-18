@@ -1,4 +1,5 @@
 ---
+icon: simple/selenium
 hide:
   - navigation
 ---
@@ -97,103 +98,104 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-print("Iniciando a Aula Prática de Selenium...\n")
+print("Iniciando a Aula Prática de Selenium... preparando ambiente\n")
 
-# --- PREPARAÇÃO DO AMBIENTE ---
 caminho_arquivo = f"file://{Path(__file__).parent.absolute()}/playground.html"
-driver = webdriver.Chrome()
-driver.get(caminho_arquivo)
-driver.maximize_window()
+driver = webdriver.Chrome() # (1)!
+driver.get(caminho_arquivo) # (2)!
+driver.maximize_window() # (3)!
 
-# Instanciamos o ActionChains (nossa ferramenta para ações complexas de mouse e teclado)
-acoes_avancadas = ActionChains(driver)
-time.sleep(2) # Pausa para o aluno ver a página inicial
+acoes_avancadas = ActionChains(driver) # (4)!
+time.sleep(2)
 
 try:
-    # --- LIÇÃO 1: CLIQUE SIMPLES ---
     print("▶ Lição 1: Executando clique simples...")
-    caixa_clique = driver.find_element(By.ID, 'caixa-clique')
-    caixa_clique.click()
-    time.sleep(2) # Aluno vê a caixa ficar verde
+    caixa_clique = driver.find_element(By.ID, 'caixa-clique') # (5)!
+    caixa_clique.click() # (6)!
+    time.sleep(2)
 
-    # --- LIÇÃO 2: DUPLO CLIQUE ---
     print("▶ Lição 2: Executando duplo clique...")
     caixa_duplo = driver.find_element(By.ID, 'caixa-duplo')
-    acoes_avancadas.double_click(caixa_duplo).perform()
-    time.sleep(2) # Aluno vê a caixa ficar vermelha/salmão
+    acoes_avancadas.double_click(caixa_duplo).perform() # (7)!
+    time.sleep(2)
 
-    # --- LIÇÃO 3: CLIQUE DIREITO ---
     print("▶ Lição 3: Executando clique com o botão direito...")
     caixa_direito = driver.find_element(By.ID, 'caixa-direito')
     acoes_avancadas.context_click(caixa_direito).perform()
-    time.sleep(2) # Aluno vê a caixa ficar azul
+    time.sleep(2)
 
-    # --- LIÇÃO 4: AÇÕES DE TECLADO (CTRL+A e Backspace) ---
     print("▶ Lição 4: Limpando texto e digitando com o teclado...")
     area_teclado = driver.find_element(By.ID, 'area-teclado')
+    area_teclado.click() #(8)!
     
-    # Clica na caixa de texto para focar nela
-    area_teclado.click()
-    
-    # Encadeamento: Pressiona CTRL, aperta A, solta CTRL, aperta Backspace
     acoes_avancadas\
         .key_down(Keys.CONTROL).send_keys("a").key_up(Keys.CONTROL)\
         .send_keys(Keys.BACKSPACE)\
-        .perform()
+        .perform() #(9)!
     
-    time.sleep(1) # Pausa para ver a caixa vazia
+    time.sleep(1)
     
-    # Digita um texto novo como se fosse um humano
     area_teclado.send_keys("Automação concluída com sucesso!")
-    time.sleep(3) # Pausa final para o aluno admirar o resultado final
+    time.sleep(3)
 
     print("\n✅ Todas as ações foram executadas com sucesso.")
 
 finally:
-    # --- ENCERRAMENTO ---
     print("Encerrando o navegador...")
-    driver.quit()
+    driver.quit() #(10)!
 ```
+
+1. Inicia uma nova instância do Google Chrome controlada pelo Selenium
+2. Carrega o conteúdo do arquivo HTML
+3. Abre a janela do Chrome em tela cheia
+4. Instanciação de ActionChains
+5. Vasculha o código HTML da página procurando por um elemento que tenha o atributo id="caixa-clique"
+6. Simula um clique físico do mouse em cima do elemento
+7. Prepara o comando de "clicar duas vezes rapidamente", `perform()` é o gatilho da ação
+8. Clica na caixa de texto para focar nela
+9. Primeira linha "aperta" a tecla Control (Ctrl) e a mantém pressionada, toca na tecla "A" e finalmente solta a tecla. A segunda linha apaga o conteúdo.
+10. Fecha tudo e mata o processo do driver (diferente do `driver.close()` que fecha apenas a janela/aba que está em foco no momento)
+
+| Componente | Função Principal | Analogia |
+| :--- | :--- | :--- |
+| **By** | Localizar elementos. | Apontar para um objeto na página. |
+| **Keys** | Teclas de comando. | Apertar botões no teclado. |
+| **ActionChains** | Gestos complexos. | Mover, arrastar e soltar. |
+
+Gestos complexos ou teclas especiais: a classe `Keys` no Selenium simula as "teclas especiais" do teclado, excluindo letras, números e símbolos comuns. As principais categorias incluem: **Ação** (como `Keys.ENTER` e `Keys.TAB`), **Edição** (como `Keys.BACKSPACE`), **Modificadoras** (como `Keys.CONTROL` e `Keys.SHIFT`), e **Navegação** (teclas de seta e funcionais).
+
+| Se você ler... | O robô fará... |
+| :--- | :--- |
+| **`.click()`** | Clique normal (botão esquerdo). |
+| **`.double_click()`** | Clique duplo rápido. |
+| **`.context_click()`** | Clique com o botão **Direito** (abre menu). |
+| **`.send_keys()`** | Digita um texto ou aperta uma tecla especial. |
+
+**Lembrete:** Para o **Duplo** e o **Direito**, você sempre precisa do `.perform()` no final para a ação realmente acontecer.
 
 ## Selenium como Teste
 
-O script apresentado é uma boa automação visual, mas não constitui um teste de software verdadeiro, que depende de validações manuais para confirmar resultados. Para profissionalizar a automação, será introduzido o uso do Pytest e Fixtures. Com o Pytest, é possível usar o comando **assert** para validar automaticamente se o sistema se comporta conforme o esperado; caso a afirmação falhe, o teste é interrompido automaticamente.
+O script apresentado é uma boa automação visual, mas não constitui um teste de software verdadeiro, que depende de validações manuais para confirmar resultados. Para profissionalizar a automação, será introduzido o uso do [Pytest](./02-pytest.md) e [Fixtures](./02b-fixtures.md). Com o Pytest, é possível usar o comando **assert** para validar automaticamente se o sistema se comporta conforme o esperado; caso a afirmação falhe, o teste é interrompido automaticamente.
 
 ```py title="test_pytest_simples.py"
 import pytest
 from pathlib import Path
 from selenium import webdriver
 
-# ==========================================
-# 1. A FIXTURE (O "Preparador")
-# ==========================================
 @pytest.fixture
 def navegador():
-    print("\n[FIXTURE] Abrindo o Chrome...")
     driver = webdriver.Chrome()
-    yield driver  
-    print("\n[FIXTURE] Fechando o Chrome...")
+    yield driver
     driver.quit()
 
-# ==========================================
-# 2. O TESTE (A "Ação e Validação")
-# ==========================================
 def test_verificar_titulo_do_playground(navegador):
     
-    print("[TESTE] Montando o caminho do arquivo local...")
-    # __file__ descobre onde ESTE script Python está salvo.
-    # .parent pega a pasta onde ele está.
-    # .absolute() garante o caminho completo desde a raiz do sistema.
     pasta_atual = Path(__file__).parent.absolute()
+    caminho_html = f"file://{pasta_atual}/playground.html" #(1)!
     
-    # Montamos a "URL" do arquivo local
-    caminho_html = f"file://{pasta_atual}/playground.html"
-    
-    print(f"[TESTE] Acessando: {caminho_html}")
     navegador.get(caminho_html)
     
-    print("[TESTE] Validando o título da página...")
-    # O nosso assert agora verifica o título do seu HTML!
     assert navegador.title == "Playground Selenium"
 ```
 
+1. O código utiliza um caminho para um arquivo HTML local na mesma pasta que o script de teste, em vez de acessar um site na Internet. O prefixo `file://` indica ao navegador para abrir um arquivo local.
