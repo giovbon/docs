@@ -281,7 +281,19 @@
                                         });
 
                                         // Wrap in a div to simulate a slide block in the PDF
-                                        return `<div class="slide-block">${bgImage}${cleanPart}</div>`;
+                                        // Store MD as textContent manually to prevent browser mangling
+                                        const block = document.createElement('div');
+                                        block.className = 'slide-block';
+                                        block.textContent = cleanPart; 
+                                        
+                                        if (bgImage) {
+                                            const bgDiv = document.createElement('div');
+                                            bgDiv.innerHTML = bgImage;
+                                            if (bgDiv.firstChild) {
+                                                block.prepend(bgDiv.firstChild);
+                                            }
+                                        }
+                                        return block.outerHTML;
                                     }).join('\n');
 
                                 } catch (e) {
@@ -561,7 +573,8 @@
                     <script>
                         // 1. Convert any markdown in slide-blocks to HTML
                         document.querySelectorAll('.slide-block').forEach(block => {
-                            const rawMd = block.innerHTML;
+                            // Use textContent to get the RAW markdown we safely stored
+                            const rawMd = block.textContent;
                             block.innerHTML = marked.parse(rawMd);
                         });
 
