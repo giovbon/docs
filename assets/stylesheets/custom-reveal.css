@@ -100,8 +100,16 @@
     }
 }
 
-.reveal p {
+.reveal p,
+.reveal ul,
+.reveal ol {
     text-align: left !important;
+}
+
+.reveal ul,
+.reveal ol {
+    display: block !important;
+    margin-left: 2em !important;
 }
 
 
