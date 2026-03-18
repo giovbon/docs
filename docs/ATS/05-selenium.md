@@ -156,6 +156,8 @@ finally:
 9. Primeira linha "aperta" a tecla Control (Ctrl) e a mantém pressionada, toca na tecla "A" e finalmente solta a tecla. A segunda linha apaga o conteúdo.
 10. Fecha tudo e mata o processo do driver (diferente do `driver.close()` que fecha apenas a janela/aba que está em foco no momento)
 
+---
+
 | Componente | Função Principal | Analogia |
 | :--- | :--- | :--- |
 | **By** | Localizar elementos. | Apontar para um objeto na página. |
