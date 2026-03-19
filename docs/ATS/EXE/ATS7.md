@@ -109,4 +109,4 @@ Para concluir o exercício, abra seu terminal na pasta do projeto e execute o co
 pytest test_portal.py -v
 ```
 
-Você deve obter sucesso (PASS) em todos os três cenários criados. Se algum falhar, leia a mensagem de erro do Pytest, corrija seu código e execute novamente. Entregue os arquivos `planejamento.txt` e `test_portal.py`.
+Você deve obter sucesso (PASS) em todos os três cenários criados. Se algum falhar, leia a mensagem de erro do Pytest, corrija seu código e execute novamente. Entregue os arquivos `portal.html` e `test_portal.py`.

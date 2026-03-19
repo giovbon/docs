@@ -361,11 +361,26 @@
                 <head>
                     <meta charset="utf-8">
                     <title>Documentação Exportada</title>
-                    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <script>
+                        window.PagedConfig = {
+                            after: (flow) => {
+                                console.log('[PDF Export] Paged.js rendered. Initializing Markmaps...');
+                                if (window.initMarkmap) {
+                                    window.initMarkmap({ duration: 0 });
+                                }
+                            }
+                        };
+                    </script>
+                    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
                     <link rel="stylesheet" href="${new URL('./assets/stylesheets/classic/main.d9d44b50.min.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/custom-reveal.css', window.location.href).href}">
+                    <link rel="stylesheet" href="${new URL('./stylesheets/markmap.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/pdf-export.css', window.location.href).href}">
+                    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>
+                    <script src="${new URL('./javascripts/init-markmap.js', window.location.href).href}"></script>
                     <style>
                         @page {
                             size: A4;
@@ -562,6 +577,32 @@
                             font-weight: inherit !important;
                             border-radius: 0 !important;
                         }
+
+                        /* Markmap Print/Light Mode Overrides */
+                        .markmap {
+                            background: white !important;
+                            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+                            height: 800px !important; /* Larger height for better visibility */
+                            width: 100% !important;
+                            break-inside: avoid !important;
+                            margin: 20px 0 !important;
+                        }
+                        .markmap text, .markmap-node text, .markmap div, .markmap span, .markmap p {
+                            fill: #1e1e1e !important;
+                            color: #1e1e1e !important;
+                        }
+                        .markmap-control-btn {
+                            display: none !important;
+                        }
+
+                        /* Global Image Handling for Print */
+                        .md-typeset img {
+                            max-width: 100% !important;
+                            height: auto !important;
+                            break-inside: avoid !important;
+                            margin: 10px auto !important;
+                            display: block !important;
+                        }
                     </style>
                 </head>
                 <body>
@@ -604,6 +645,8 @@
                                 li.dataset.numbered = "true";
                             });
                         });
+
+                        // 3. Markmaps are now initialized via PagedConfig.after hook
                     </script>
                 </body>
                 </html>

@@ -7,6 +7,10 @@
     overflow: hidden;
     background: #ffffff;
     position: relative;
+    /* Hardware acceleration on mobile */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Theme integration for Material Design for MkDocs */

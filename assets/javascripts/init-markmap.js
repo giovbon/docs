@@ -9,11 +9,46 @@
         return window.markmap;
     }
 
-    async function initMarkmap() {
+    // Performance Optimization: Global Registry for resize handling
+    const markmapInstances = [];
+    let resizeTimeout;
+
+    function debounce(func, wait) {
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(resizeTimeout);
+                func(...args);
+            };
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(later, wait);
+        };
+    }
+
+    const handleGlobalResize = debounce(() => {
+        console.log('[Markmap] Global resize triggered, refitting all maps...');
+        // Iterate backwards to allow splicing while iterating
+        for (let i = markmapInstances.length - 1; i >= 0; i--) {
+            const { el, mm } = markmapInstances[i];
+            if (!document.body.contains(el)) {
+                markmapInstances.splice(i, 1);
+                continue;
+            }
+            try {
+                mm.fit();
+            } catch (e) {
+                console.warn('[Markmap] Failed to fit map on resize', e);
+            }
+        }
+    }, 250);
+
+    // Single listener for all instances
+    window.addEventListener('resize', handleGlobalResize);
+
+    async function initMarkmap(options = {}) {
         const { Markmap, Transformer, loadCSS, loadJS } = getMarkmap() || {};
         if (!Markmap || !Transformer) {
             console.warn('[Markmap] Markmap libraries not found. Retrying in 500ms...');
-            setTimeout(initMarkmap, 500);
+            setTimeout(() => initMarkmap(options), 500);
             return;
         }
 
@@ -90,8 +125,11 @@
             // Create Markmap instance
             const mm = Markmap.create(svg, {
                 autoFit: true,
-                duration: 500
+                duration: options.duration !== undefined ? options.duration : 500
             }, root);
+
+            // Re-fit after a small delay to ensure container dimensions are settled
+            setTimeout(() => mm.fit(), 200);
 
             // Create controls container
             const controls = document.createElement('div');
@@ -151,12 +189,13 @@
 
             el.addEventListener('fullscreenchange', handleFullscreenChange);
 
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                mm.fit();
-            });
+            // Register instance for global resize handling
+            markmapInstances.push({ el, mm });
         });
     }
+
+    // Expose to window for PDF export access
+    window.initMarkmap = initMarkmap;
 
     // Support for Zensical/MkDocs Material instant navigation
     if (typeof document$ !== "undefined") {
