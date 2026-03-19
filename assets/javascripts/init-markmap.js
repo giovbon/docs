@@ -123,9 +123,10 @@
             if (scripts) loadJS(scripts, { getMarkmap });
 
             // Create Markmap instance
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
             const mm = Markmap.create(svg, {
                 autoFit: false,
-                duration: options.duration !== undefined ? options.duration : 500
+                duration: isMobile ? 0 : (options.duration !== undefined ? options.duration : 500)
             }, root);
 
             // Re-fit after a small delay to ensure container dimensions are settled
