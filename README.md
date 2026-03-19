@@ -378,3 +378,47 @@ Para carregar de um arquivo externo:
 ```html
 <div class="markmap" data-src="caminho/para/arquivo.txt"></div>
 ```
+
+
+
+---
+
+
+# Asciinema
+
+Este arquivo testa a integração do Asciinema no Markdown.
+
+## Exemplo 1: Via ID (asciinema.org)
+
+Aqui carregamos um vídeo pelo ID do asciinema.org.
+
+<div class="asciinema" data-src="612345"></div>
+
+## Exemplo 2: Via URL Direta (.cast)
+
+Aqui carregamos um arquivo `.cast`.
+
+<div class="asciinema" data-src="./minha_gravacao.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>
+
+## Exemplo 3: Código do Arquivo (.cast) Inline
+
+Aqui passamos o "código" do vídeo diretamente no Markdown, colando o conteúdo de um arquivo `.cast` (Asciicast v2). 
+
+<div class="asciinema">
+<pre>
+{"version": 2, "width": 80, "height": 10, "title": "Exemplo Inline"}
+[0.1, "o", "\u001b[32mHello from Antigravity!\r\n\u001b[0m"]
+[0.5, "o", "Implementing Asciinema support...\r\n"]
+[1.0, "o", "Done!"]
+</pre>
+</div>
+
+---
+
+### Opções suportadas:
+
+Você pode passar atributos `data-*` para customizar o player:
+- `data-speed`: Velocidade (ex: 2)
+- `data-theme`: Tema (ex: monokai, solarized-dark)
+- `data-idle-time-limit`: Limite de tempo ocioso
+- `data-poster`: Frame inicial (ex: npt:1:30)

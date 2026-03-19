@@ -377,6 +377,7 @@
                     <link rel="stylesheet" href="${new URL('./stylesheets/custom-reveal.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/markmap.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/pdf-export.css', window.location.href).href}">
+                    <link rel="stylesheet" href="${new URL('./stylesheets/asciinema.css', window.location.href).href}">
                     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
                     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.17"></script>
                     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17"></script>

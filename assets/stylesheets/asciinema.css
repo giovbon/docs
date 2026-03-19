@@ -1,0 +1,124 @@
+/* Custom styles for Asciinema Player in Zensical/MkDocs */
+
+.asciinema {
+    margin: 2rem auto;
+    max-width: 100%;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ensure the player doesn't overflow its container */
+.asciinema .asciinema-player-wrapper {
+    max-width: 100%;
+}
+
+/* Theme adjustments if needed to match MkDocs Material */
+.asciinema-theme-asciinema {
+    --player-bg: #1e2129; /* Match Slate theme background */
+}
+
+/* Fix: Add bottom padding so the last line isn't hidden behind player controls */
+.asciinema .asciinema-player {
+    padding-bottom: 2rem;
+}
+
+/* Add bottom padding to the terminal text area */
+.asciinema .asciinema-terminal {
+    padding-bottom: 1.5rem !important;
+}
+
+/* Ensure the control bar has a solid background so it doesn't overlap text */
+.asciinema .control-bar {
+    background: linear-gradient(transparent, rgba(30, 33, 41, 0.95) 40%);
+    padding-top: 1rem;
+}
+
+/* Print Overrides: Replace player with a static placeholder for PDF/Print */
+@media print {
+    .asciinema {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        border: 1.5px solid #000 !important;
+        background: #fdfdfd !important;
+        color: #333 !important;
+        min-height: 120px !important;
+        text-align: center !important;
+        padding: 30px 10px !important;
+        margin: 1.5rem auto !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        border-radius: 8px !important;
+    }
+
+    .asciinema > * {
+        display: none !important;
+    }
+
+    .asciinema::before {
+        content: "> _" !important;
+        font-family: "Courier New", Courier, monospace !important;
+        font-size: 2.5rem !important;
+        font-weight: bold !important;
+        color: #333 !important;
+        margin-bottom: 0.5rem !important;
+        display: block !important;
+    }
+
+    .asciinema::after {
+        content: "Gravação de Terminal" !important;
+        font-family: inherit !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        color: #555 !important;
+        display: block !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+/* Also apply the same styles if the element has .asciinema-print-mode class (used for Reveal.js PDF Export) */
+.asciinema-print-mode {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: 1.5px solid #000 !important;
+    background: #fdfdfd !important;
+    color: #333 !important;
+    min-height: 120px !important;
+    text-align: center !important;
+    padding: 30px 10px !important;
+    margin: 1.5rem auto !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+}
+
+.asciinema-print-mode > * {
+    display: none !important;
+}
+
+.asciinema-print-mode::before {
+    content: "> _" !important;
+    font-family: "Courier New", Courier, monospace !important;
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+}
+
+.asciinema-print-mode::after {
+    content: "Gravação de Terminal" !important;
+    font-family: inherit !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #555 !important;
+    display: block !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

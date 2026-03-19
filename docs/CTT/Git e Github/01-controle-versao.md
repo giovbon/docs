@@ -14,3 +14,7 @@ hide:
     </section>
   </div>
 </div>
+
+??? example "Comandos: git init, commit e clone"
+
+    <div class="asciinema" data-src="../../ASC/01-init_clone_commit.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>
