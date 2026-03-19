@@ -372,7 +372,7 @@
                             }
                         };
                     </script>
-                    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
                     <link rel="stylesheet" href="${new URL('./assets/stylesheets/classic/main.d9d44b50.min.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/custom-reveal.css', window.location.href).href}">
                     <link rel="stylesheet" href="${new URL('./stylesheets/markmap.css', window.location.href).href}">

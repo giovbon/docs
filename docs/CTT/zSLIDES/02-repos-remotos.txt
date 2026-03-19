@@ -34,7 +34,7 @@ Ao criar um repositório, você pode optar por tornar o repositório público ou
 - Os repositórios *privados* só podem ser acessados por você, pelas pessoas com as quais você compartilha explicitamente o acesso e, em repositórios da organização, por determinados integrantes da organização.
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image8.png" width="80%">
+    <img src="../../zSLIDES/img/image8.png" width="80%">
 </div>
 
 ---
@@ -61,7 +61,7 @@ Para definir sua chave no Github siga o caminho:
 Settings > SSH and GPG keys > New SSH Key (defina o título e cole a chave copiada)
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-3-ssh.png" width="80%">
+    <img src="../../zSLIDES/img/image-3-ssh.png" width="80%">
 </div>
 
 ---
@@ -70,12 +70,12 @@ Formas de se trabalhar com o repositórios remotos:
 
 - a partir de um repositório local
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-integ.png" width="60%">
+    <img src="../../zSLIDES/img/image-integ.png" width="60%">
 </div>
 
 - a partir de um repositório remoto
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-1-integ.png" width="60%">
+    <img src="../../zSLIDES/img/image-1-integ.png" width="60%">
 </div>
 
 ---
@@ -125,7 +125,7 @@ Para *atualizar o repositório local a partir do repo remoto*, os outros desenvo
 Abaixo o esquema completo da integração e comandos de repos locais e remotos:
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-100.png" width="80%">
+    <img src="../../zSLIDES/img/image-100.png" width="80%">
 </div>
 
 ---
@@ -139,15 +139,15 @@ Vimos até o momento a integração entre um repo local e um remoto no github, m
 ---
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-ui.png" width="100%">
+    <img src="../../zSLIDES/img/image-ui.png" width="100%">
 </div>
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-1-ui.png" width="100%">
+    <img src="../../zSLIDES/img/image-1-ui.png" width="100%">
 </div>
 
 ---
 
 <div style="text-align: center;">
-    <img src="../../SLIDES/img/image-2-ui.png" width="100%">
+    <img src="../../zSLIDES/img/image-2-ui.png" width="100%">
 </div>
