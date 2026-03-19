@@ -124,7 +124,7 @@
 
             // Create Markmap instance
             const mm = Markmap.create(svg, {
-                autoFit: true,
+                autoFit: false,
                 duration: options.duration !== undefined ? options.duration : 500
             }, root);
 
@@ -219,6 +219,32 @@
 
             // Register instance for global resize handling
             markmapInstances.push({ el, mm });
+
+            // Visual Cue: Robust synchronization of fold color using MutationObserver
+            const syncFoldColors = () => {
+                el.querySelectorAll('.markmap-node.markmap-fold circle').forEach(circle => {
+                    const stroke = circle.getAttribute('stroke') || circle.style.stroke;
+                    if (stroke) {
+                        circle.style.fill = stroke;
+                        circle.style.fillOpacity = "1";
+                    }
+                });
+                el.querySelectorAll('.markmap-node:not(.markmap-fold) circle').forEach(circle => {
+                    circle.style.fill = "";
+                    circle.style.fillOpacity = "";
+                });
+            };
+
+            const observer = new MutationObserver(syncFoldColors);
+            observer.observe(svg, { 
+                attributes: true, 
+                childList: true, 
+                subtree: true,
+                attributeFilter: ['class', 'stroke'] 
+            });
+            
+            // Initial sync
+            setTimeout(syncFoldColors, 500);
         });
     }
 

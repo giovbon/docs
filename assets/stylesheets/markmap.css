@@ -15,8 +15,9 @@
 
 /* Theme integration for Material Design for MkDocs */
 [data-md-color-scheme="slate"] .markmap {
-    background: #1e1e1e;
-    border: none;
+    background: #1e2129;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Fix node text contrast - support both SVG and HTML elements */
@@ -79,9 +80,9 @@
     fill: var(--md-default-bg-color, #fff);
 }
 
-/* Visual indication for folded nodes */
+/* Visual indication for folded nodes - managed via MutationObserver in init-markmap.js */
 .markmap-node.markmap-fold circle {
-    fill: inherit;
+    cursor: pointer; /* Previne aviso de ruleset vazio e mantém sentido interativo */
 }
 
 /* Link visibility */
@@ -141,8 +142,8 @@
 }
 
 [data-md-color-scheme="slate"] .markmap-control-btn {
-    background: rgba(30, 30, 30, 0.7);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #1e2129;
+    border-color: #15171d;
     color: #ccc;
 }
 
@@ -168,7 +169,7 @@
 }
 
 [data-md-color-scheme="slate"] .markmap:fullscreen {
-    background: #1e1e1e;
+    background: #1e2129;
 }
 
 /* Title styling - Discreet floating text */
