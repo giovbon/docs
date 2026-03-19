@@ -88,7 +88,7 @@ O script apresentado ensina a abrir e fechar o navegador, mas uma automação ef
 </html>
 ```
 
-<iframe src="../EX/playground.html" width="100%" height="450px" style="border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></iframe>
+<iframe src="../EXE/playground-selenium.html" width="100%" height="450px" style="border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></iframe>
 
 ```py title="aula1_selenium.py"
 import time

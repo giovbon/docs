@@ -22,7 +22,7 @@ O **Selenium** é um ecossistema de ferramentas voltado para a *automação de n
 
 --
 
-Lembrando...
+Lembrando da pirâmide de testes:
 
 <div style="text-align: center;">
     <img src="../SLIDES/img/piram-tests.png" width="60%">
@@ -30,8 +30,6 @@ Lembrando...
 
 
 --
-
-Uma pirâmide padrão geralmente é dividida em três níveis:
 
 | Tipo de Teste                      | O que são                                                                                   | Quantidade                 | Vantagens                                                 | Desvantagens                                                   |
 |------------------------------------|-------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------|--------------------------------------------------------------|
