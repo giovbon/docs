@@ -136,6 +136,34 @@
             controls.className = 'markmap-controls';
             el.appendChild(controls);
 
+            // Add title if present (check data-title first, then markdown content)
+            let title = el.getAttribute('data-title');
+            
+            // Fallback: try to extract title from markdown if not in data-title
+            if (!title) {
+                // Try to find the first level 1 heading
+                const titleMatch = markdown.match(/^#\s+(.+)$/m);
+                if (titleMatch) {
+                    title = titleMatch[1].trim();
+                } else {
+                    // Try to find title in frontmatter
+                    const fmMatch = markdown.match(/^title:\s*(.+)$/m);
+                    if (fmMatch) {
+                        title = fmMatch[1].trim();
+                    }
+                }
+            }
+
+            if (title) {
+                const titleEl = document.createElement('div');
+                titleEl.className = 'markmap-title';
+                titleEl.textContent = title;
+                el.appendChild(titleEl);
+                
+                // Also set it as a title attribute for accessibility/tooltip
+                svg.setAttribute('title', title);
+            }
+
             // Helper to create buttons
             const createBtn = (className, title, icon, onClick) => {
                 const btn = document.createElement('button');

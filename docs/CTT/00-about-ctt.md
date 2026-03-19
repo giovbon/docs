@@ -1,5 +1,4 @@
 ---
-icon: simple/linux
 hide:
   - navigation
   - toc
@@ -7,9 +6,9 @@ search:
   exclude: true
 ---
 
-# Sobre CTT
+# Roadmap CTT
 
-<div class="markmap">
+<div class="markmap" data-title="Roadmap CTT">
 <pre>
 # CTT
 ## 1 Controle de versão
