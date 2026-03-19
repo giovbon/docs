@@ -326,3 +326,55 @@ Or use a blank line for a new paragraph.
   ![Image title](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
+
+
+
+# Teste de Markmap
+
+Este arquivo testa a implementação do Markmap no Zensical.
+
+## 1. Mapa Mental Inline
+
+Abaixo está um mapa mental renderizado diretamente do HTML/Markdown inline:
+
+<div class="markmap">
+<pre>
+# Markmap Inline
+## Recursos
+- Renderização Instantânea
+- Suporte a Markdown
+    - Olha essa ferinha!
+- Zoom e Pan
+## Estilos
+- Personalizável via CSS
+- Suporte a Dark Mode
+</pre>
+</div>
+
+---
+
+## 2. Mapa Mental de Arquivo Externo (.txt)
+
+Este mapa mental é carregado a partir de um arquivo `.txt` externo:
+
+<div class="markmap" data-src="../mindmap.txt"></div>
+
+---
+
+## Como usar
+
+Para incluir um mapa mental em seus arquivos `.md`, use a classe `markmap`:
+
+```html
+<div class="markmap">
+# Seu Título
+## Tópico 1
+## Tópico 2
+</div>
+```
+
+Para carregar de um arquivo externo:
+
+```html
+<div class="markmap" data-src="caminho/para/arquivo.txt"></div>
+```
