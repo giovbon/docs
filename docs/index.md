@@ -16,6 +16,6 @@ Made with:
     <img src="./img/jupyterlite.png" style="height: 35px;">
 </div>
 
----
+
 
 <!-- NÃO MUDE O NOME DA PÁGINA DE INDEX PRA OUTRA COISA, pesquisa só aparece aqui-->

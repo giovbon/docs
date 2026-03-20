@@ -8,7 +8,7 @@ icon: simple/python
 
 Execute Python diretamente no navegador, sem instalar nada.
 
-<a href="./jupyterlite/lab/index.html?path=exemplo.ipynb" target="_blank">
+<a href="../../jupyterlite/lab/index.html?path=exemplo.ipynb" target="_blank">
     :simple-jupyter: Abrir Notebook de Exemplo
 </a>
 
