@@ -1,3 +1,5 @@
 zensical
 jupyterlite-core
 jupyterlite-pyodide-kernel
+jupyter-server
+jupyterlab-server
