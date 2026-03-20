@@ -1,0 +1,3 @@
+zensical
+jupyterlite-core
+jupyterlite-pyodide-kernel
