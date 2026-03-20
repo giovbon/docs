@@ -81,3 +81,7 @@ gh config set editor "nano"
 | `gh pr create --title "Minha nova feature" --body "Explicação detalhada do que foi feito"` | Criação de Pull Request (após criar a branch com git, adicionar coisas nela, fazer commit e o push da branch para o GitHub). |
 | `gh issue list --repo giovbon/docs`                 | Lista issues do repositório específico.                                                                   |
 | `gh issue create`                                    | Cria uma nova Issue no repositório atual (abre um menu interativo).                                      |
+
+??? example ":lucide-square-terminal: Instalando gh e logando no github"
+
+    <div class="asciinema" data-src="../../zASC/12-github-cli.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 

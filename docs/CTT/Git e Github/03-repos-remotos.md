@@ -14,3 +14,15 @@ hide:
     </section>
   </div>
 </div>
+
+??? example ":lucide-square-terminal: Configurando chaves ssh e subindo repositório local com git push"
+
+    <div class="asciinema" data-src="../../zASC/06-ssh-git-push.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
+
+!!! danger "Alerta"
+
+    Depois de configurar a chave SSH no github, se você mudar de computador, para poder interagir com repos remotos da sua conta, deverá gerá-la e adicioná-la novamente.
+
+??? example ":lucide-square-terminal: Puxando alterações em repo remoto com git pull"
+
+    <div class="asciinema" data-src="../../zASC/07-git-pull.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
