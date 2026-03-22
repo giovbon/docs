@@ -28,6 +28,7 @@ distrobox create --name debian1 --image debian:latest #(1)!
 distrobox enter debian1 #(2)!
 apt install chromium #(3)!
 distrobox-export --app chromium #(4)!
+exit
 ```
 
 1. Criar ambiente debian
@@ -40,4 +41,22 @@ Definir podman como motor de emulação:
 ```bash
 nano ~/.distroboxrc
 container_manager="podman"
+```
+
+Para separar as pastas (seu sistema e do ubuntu)
+
+```bash
+mkdir -p ~/ubuntu-distrobox
+distrobox create -i ubuntu:latest -n ubuntu-safe --home ~/ubuntu-distrobox
+distrobox enter ubuntu-safe
+```
+
+Criando distrobox do archlinux:
+
+```bash
+distrobox create -i archlinux:latest -n arch-box --home ~/arch-distrobox
+
+distrobox enter arch-box
+
+sudo pacman -Syu
 ```

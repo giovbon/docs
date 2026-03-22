@@ -51,6 +51,31 @@ Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para
 
 Escolha `Medium` e Enter.
 
+Para rodar github actions localmente. Veja a [Documentação](https://nektosact.com/) e o [Github](https://github.com/nektos/act) do projeto.  
+No GitHub, quando você faz um git push, o servidor olha para a pasta `.github/workflows/` e dispara todos os arquivos que tenham `on: push` configurado. O act foi feito para imitar o comportamento do GitHub.
+
+Instalação `pacman -S act`
+
+```bash
+# lista todos os workflows e jobs detectados no seu projeto
+act -l
+# checa se o arquivo YAML está com a sintaxe correta
+act -n
+# executará todos os jobs com evento de push
+act
+# roda os workflows por evento
+act pull_request
+# roda workflow inteiro específico, pode estar em qualquer pasta
+act -W .github/workflows/meu-teste.yml
+# filtra a saída do terminal para exibir apenas o que o script imprimiu
+act -W ./.github/workflows/meu-teste.yml | grep "|" 
+# executa workflow definindo qual imagem Docker deve ser 
+# usada para rodar os jobs
+act -W ./hello.yml -P ubuntu-latest=node:slim
+# roda um job específico
+act -j [ID]
+```
+
 ## Workflows
 
 !!! danger "Alerta"
