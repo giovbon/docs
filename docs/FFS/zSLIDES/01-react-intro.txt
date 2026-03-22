@@ -1,0 +1,173 @@
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>react intro</h1>
+    <img src="https://simpleicons.org/icons/react.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+
+React refere-se à uma *biblioteca JavaScript usada para criar interfaces de usuário (UIs) interativas*, desenvolvida pelo Facebook. Ele permite *compor interfaces de usuário complexas a partir de pequenos e isolados trechos de códigos chamados componentes*, que são independentes e reutilizáveis.
+
+O padrão de **Composição** no React consiste em *montar componentes complexos a partir de componentes menores e independentes*. Substitui o "Super Componente" monolítico por peças reutilizáveis que se combinam.
+
+<div style="text-align: center;">
+	<img src="https://www.patterns.dev/img/reactjs/react-components@1.5x.svg" width="80%" data-preview-image>
+</div>
+
+--
+
+Vantagens da composição:
+- componentes pequenos são mais fáceis de entender, testar e modificar.
+- cada peça tem responsabilidade única, tornando o fluxo e a composição da interface mais previsíveis e óbvios.
+
+O conceito de componentes reutilizáveis está intimamente ligado às **Single Page Applications (SPAs)**. Uma SPA é um aplicativo web que *carrega uma única página HTML* e, em seguida, *atualiza o conteúdo dinamicamente* conforme o usuário interage, sem a necessidade de recarregar a página inteira, oferencendo uma experiência de usuário superior. A *forma* mais eficiente de construir e gerenciar essa complexidade é dividindo a interface em partes menores e independentes, os componentes.
+
+---
+
+O React mantém uma *representação em memória da árvore de elementos* da página html, chamado de **Virtual DOM**. Quando o estado muda, o React atualiza o VDOM, compara a versão anterior com a nova (diff) e determina as mudanças mínimas necessárias; depois aplica apenas essas mudanças ao DOM real (reconciliação), reduzindo acessos custosos ao DOM e *melhorando desempenho*.
+
+<div style="text-align: center;">
+	<img src="https://www.gfecdn.net/img/blog/react-article/virtual-dom-vs-browser-dom.jpg" width="80%" data-preview-image>
+</div>
+
+---
+
+## JSX
+
+**JSX** (JavaScript XML) é a *síntaxe* usada nos elementos do React que *permite que se escreva HTML dentro do JavaScript, facilitando a criação de componentes de interface de usuário*. Ele se assemelha ao HTML, permitindo a *incorporação de expressões JavaScript dinâmicas usando chaves `{}`*, tornando o desenvolvimento de interfaces no React mais intuitivo e eficiente. Exemplo:
+
+```jsx
+function Greeting() {
+  const name = "Maria";
+  return <h1>Olá, {name}!</h1>;
+}
+```
+
+JSX é a *forma conveniente de declarar o que um componente deve renderizar*.
+
+--
+
+Regra importante do JSX: *cada componente React deve devolver apenas um elemento "pai" envolto no JSX*.
+
+❌ Errado:
+```jsx
+return (
+  <h1>Hello World!</h1>
+  <p>This is my first React component.</p>
+)
+```
+
+✅ Certo, com **fragmentos** (`<> ... </>`), também poderiam estar envoltos em única `<div>` se tivesse que retornar mais de um elemento html pra renderizar:
+```jsx
+return (
+  <>
+    <h1>Hello World!</h1>
+    <p>This is my first React component.</p>
+  </>
+)
+```
+
+---
+
+## Componente
+
+Um componente em React é uma *função* (ou classe) que recebe entradas chamadas props e retorna a interface em JSX. A grande vantagem é que os *componentes encapsulam lógica, estado (quando necessário) e apresentação*, permitindo sua reutilização e composição de interfaces. Exemplo de botão simples em componente de função:
+
+```jsx
+export default function MeuBotao(props) {
+  return (
+    <button style={{ backgroundColor: props.bgcor, color: props.cor }}>
+      {props.texto}
+    </button>
+  );
+}
+```
+
+Pontos-chave:
+- A função permite a entrada outros elementos que podem ser renderizados dentro dele (composição e reutilização).  
+- Saída como `return`.
+
+---
+
+## Props
+
+**Props ou propriedades** é a forma de passar argumentos aos componentes. Cada componente pode *receber propriedades (props) que permitem personalizar seu comportamento e aparência*, promovendo a reutilização de código e a modularidade. As props também são uma forma de *passar informações de um componente para outro*, do componente pai para o filho.
+
+--
+
+```jsx
+// Aqui, o App é o "Pai"
+export default function App() {
+  return (
+    // Você está enviando 3 props: texto, bgcor e cor
+    <MeuBotao texto="Outro botão" bgcor="red" cor="white" />
+  );
+}
+```
+
+```jsx
+// Aqui, MeuBotao é o "Filho"
+export default function MeuBotao(props) {
+  // props = { texto: "Outro botão", bgcor: "red", cor: "white" }
+
+  return (
+    <button style={{ backgroundColor: props.bgcor, color: props.cor }}>
+      {props.texto}
+    </button>
+  );
+}
+```
+
+--
+
+### Desestruturação
+
+Na maioria dos códigos React hoje em dia, usamos um recurso do JavaScript chamado **Desestruturação** para não ter que ficar escrevendo a palavra props. Em vez de receber o objeto inteiro `props` e ter que digitar `props.` toda vez, você "desempacota" as variáveis direto nos parênteses da função usando chaves `{ }`.
+
+```jsx
+export default function MeuBotao({ texto, bgcor, cor }) {
+  return (
+    <button style={{ backgroundColor: bgcor, color: cor }}>
+      {texto}
+    </button>
+  );
+}
+```
+
+---
+
+## Estados
+
+Os **estados** do React *armazenam dados que podem mudar ao longo do tempo em um componente*, permitindo que ele seja dinâmico e reativo. Quando o estado muda, o React *re-renderiza automaticamente o componente*, refletindo as alterações na interface do usuário, o que é fundamental para criar aplicações interativas que respondem a eventos e mudanças de dados.
+
+### `useState`
+
+Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo *declarar uma variável de estado e uma função para atualizá-la*. Os hooks no React são funções que permitem utilizar o estado e outras funcionalidades em componentes funcionais.
+
+--
+
+```js
+import React, { useState } from 'react';
+
+function Contador() {
+  const [contador, setContador] = useState(0); 
+
+  return (
+    <div>
+      <p>Contagem: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+Aqui, `contador` é a variável que *armazena um estado*. A função `setContador`, por sua vez, é a responsável por *atualizar o estado* (`contador`) do componente. Quando o estado é atualizado, o React entende que o componente precisa ser renderizado novamente com o novo valor, e é assim que a interface do usuário (a contagem exibida na tela) é atualizada.
+
+--
+
+<div style="text-align: center;">
+    <img src="https://miro.medium.com/v2/resize:fit:1400/1*vwRUCje-RAg7AeKx5nu8bw.jpeg" width="50%" data-preview-image>
+    <img src="https://albertprofe.dev/images/reactjs/usestate.jpeg" width="50%" data-preview-image>
+</div>

@@ -422,3 +422,14 @@ Você pode passar atributos `data-*` para customizar o player:
 - `data-theme`: Tema (ex: monokai, solarized-dark)
 - `data-idle-time-limit`: Limite de tempo ocioso
 - `data-poster`: Frame inicial (ex: npt:1:30)
+
+
+
+## Destaque de Código
+
+```python [1|1-2|1-4]
+def somar(a, b):
+    resultado = a + b
+    
+    return resultado
+```
