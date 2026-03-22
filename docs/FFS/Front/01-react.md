@@ -9,7 +9,7 @@ hide:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">
-    <section data-markdown="../zSLIDES/01-react-intro.txt"
+    <section data-markdown="../../zSLIDES/01-react-intro.txt"
              data-separator="^\r?\n---\r?\n$"
              data-separator-vertical="^\r?\n--\r?\n$">
     </section>
@@ -62,15 +62,6 @@ Os atributos do JSX (como o `backgroundColor`) são semelhantes aos atributos HT
     - `class` do html é escrito de forma diferente em React: `className`.
 - Alguns atributos são específicos do React e não têm equivalente direto no HTML.
 
----
-
-<iframe src="https://codesandbox.io/embed/xvskdc?view=editor+%2B+preview&module=%2Fsrc%2FComponentes%2FBotao1.jsx"
-     style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="react-impacta-aula"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
-
 ## Estados
 
 Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo declarar uma variável de estado e uma função para atualizá-la.
@@ -91,6 +82,15 @@ function Contador() {
 ```
 
 1. O uso de `useState` envolve declarar uma variável de estado (`contador`) e uma função para atualizá-la (`setContador`) além do estado inicial (`useState(0)`)
+
+---
+
+<iframe src="https://codesandbox.io/embed/xvskdc?view=editor+%2B+preview&module=%2Fsrc%2FComponentes%2FBotao1.jsx"
+     style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="react-impacta-aula"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ## Criação de Projeto React com Vite
 
