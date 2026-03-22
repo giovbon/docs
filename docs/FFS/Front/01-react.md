@@ -111,32 +111,8 @@ npm run dev
 
 Estrutura de pastas do projeto:
 
-```bash
-├── node_modules #(1)!
-├── public #(2)!
-│   └── vite.sgv
-├── src #(3)!
-│   └── ...
-├── .gitignore
-├── eslint.config.js
-├── index.html #(4)!
-├── package-lock.json
-├── package.json #(5)!
-├── public
-│   └── vite.svg
-├── src
-│   ├── App.css
-│   ├── App.jsx
-│   ├── assets
-│   │   └── react.svg
-│   ├── index.css
-│   └── main.jsx
-└── vite.config.js #(6)!
-```
-
-1. `node_modules` contém todos os pacotes e bibliotecas que seu projeto precisa para funcionar
-2. `public` ficam os arquivos estáticos que não precisam ser processados pelo Vite. Imagens, fontes, ou outros assets que você quer que o navegador acesse diretamente
-3. `src` é onde o código-fonte da aplicação React fica, aqui se encontram os componentes, estilos e toda a lógica do app. `App.jsx` é o componente "raiz" da aplicação, onde todos os outros componentes são aninhados. `App.css` é usado para definir os estilos CSS específicos do componente App.jsx. `index.css` contém estilos CSS globais que serão aplicados a toda a aplicação. `main.jsx` é o ponto de entrada principal da aplicação React, sendo o primeiro arquivo JavaScript a ser executado, e sua responsabilidade é "montar" a aplicação no navegador.
-4. `index.html` é a página web principal da sua aplicação. O Vite usa esse arquivo como um template para carregar o aplicativo React no navegador. Note que o React "injeta" seu código dentro de um elemento `<div id="root">` que está nesse arquivo.
-5. `package.json` é o coração do projeto. Ele contém metadados como o nome e a versão do projeto, além de listar todas as dependências (os pacotes que o projeto usa) e scripts úteis (como o npm run dev para iniciar o servidor).
-6. `vite.config.js` é o arquivo de configuração específico do Vite. Nele, você pode adicionar plugins, definir caminhos de importação, configurar o servidor de desenvolvimento e muito mais.
+- `node_modules` contém todos os pacotes e bibliotecas que seu projeto precisa para funcionar
+- `public` ficam os arquivos estáticos que não precisam ser processados pelo Vite. Imagens, fontes, ou outros assets que você quer que o navegador acesse diretamente
+- `src` é onde o código-fonte da aplicação React fica, aqui se encontram os componentes, estilos e toda a lógica do app. `App.jsx` é o componente "raiz" da aplicação, onde todos os outros componentes são aninhados. `App.css` é usado para definir os estilos CSS específicos do componente App.jsx. `index.css` contém estilos CSS globais que serão aplicados a toda a aplicação. `main.jsx` é o ponto de entrada principal da aplicação React, sendo o primeiro arquivo JavaScript a ser executado, e sua responsabilidade é "montar" a aplicação no navegador.
+- `package.json` é o coração do projeto. Ele contém metadados como o nome e a versão do projeto, além de listar todas as dependências (os pacotes que o projeto usa) e scripts úteis (como o npm run dev para iniciar o servidor).
+- `vite.config.js` é o arquivo de configuração específico do Vite. Nele, você pode adicionar plugins, definir caminhos de importação, configurar o servidor de desenvolvimento e muito mais.
