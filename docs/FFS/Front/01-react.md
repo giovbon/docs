@@ -107,7 +107,7 @@ npm run dev
 
 ??? example ":lucide-square-terminal: Criação de projeto react com vite"
 
-    <div class="asciinema" data-src="../../zASC/01-react-init-vite.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>
+    <div class="asciinema" data-src="../../zASC/01-react-vite-init.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>
 
 Estrutura de pastas do projeto:
 
