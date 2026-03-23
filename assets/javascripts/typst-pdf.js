@@ -52,32 +52,31 @@ window.gerarPDFTypst = async function(typPath) {
             typstCompiler = typstModule.$typst;
 
             // 2. Fully robust WASM resolution
-            typstCompiler.setCompilerInitOptions({
-                getModule: async () => {
-                    const wasmPaths = [
-                        new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href,
-                        new URL('../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                        new URL('../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                        new URL('../../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                        new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href,
-                        new URL('/docs/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href
-                    ];
-                    
-                    for (const p of wasmPaths) {
-                        try {
-                            const res = await fetch(p, { method: 'HEAD' });
-                            if (res.ok) {
-                                // Double check it doesn't return HTML (Github pages 404s sometimes trick ok)
-                                const contentType = res.headers.get('content-type');
-                                if (!contentType || !contentType.includes('text/html')) {
-                                    return p;
-                                }
-                            }
-                        } catch (e) {}
+            let resolvedWasmUrl = new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
+            const wasmPaths = [
+                new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href,
+                new URL('../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                new URL('../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                new URL('../../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href,
+                new URL('/docs/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href
+            ];
+            
+            for (const p of wasmPaths) {
+                try {
+                    const res = await fetch(p, { method: 'HEAD' });
+                    if (res.ok) {
+                        const contentType = res.headers.get('content-type');
+                        if (!contentType || !contentType.includes('text/html')) {
+                            resolvedWasmUrl = p;
+                            break;
+                        }
                     }
-                    // Fallback to the default one if all fail
-                    return new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
-                }
+                } catch (e) {}
+            }
+
+            typstCompiler.setCompilerInitOptions({
+                getModule: () => resolvedWasmUrl
             });
         }
 
