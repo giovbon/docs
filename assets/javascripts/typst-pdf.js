@@ -28,11 +28,14 @@ window.gerarPDFTypst = async function(typPath) {
             const typstModule = await import('./typst/snippet.bundle.mjs');
             typstCompiler = typstModule.$typst;
 
+            // Determine Wasm URL relative to this script
+            const scriptTag = document.querySelector('script[src*="typst-pdf.js"]');
+            const baseUrl = scriptTag ? scriptTag.src : window.location.origin + '/javascripts/typst-pdf.js';
+            const wasmUrl = new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
+
             // Init compiler with local WASM
             typstCompiler.setCompilerInitOptions({
-                getModule: () => {
-                    return new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href;
-                }
+                getModule: () => wasmUrl
             });
         }
 
