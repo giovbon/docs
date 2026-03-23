@@ -10,7 +10,7 @@
 
 ## Github CLI
 
-O GitHub CLI (`gh`) é uma ferramenta que permite gerenciar o GitHub diretamente pelo terminal, sem precisar abrir o navegador. Vai permitir listar repos da sua conta, criar, clonar, criar forks, issues e PRs.
+O GitHub CLI (`gh`) é uma ferramenta que permite *gerenciar o GitHub diretamente pelo terminal*, sem precisar abrir o navegador. Vai permitir listar repos da sua conta, criar, clonar, criar forks, issues e PRs.
 
 ![](https://i0.wp.com/user-images.githubusercontent.com/10404068/74261502-34ae1380-4cb0-11ea-8baf-cf8248f1b222.png?ssl=1)
 
@@ -21,23 +21,23 @@ O GitHub CLI (`gh`) é uma ferramenta que permite gerenciar o GitHub diretamente
 | Comando | O que faz? | Impacto no seu código atual |
 | :--- | :--- | :--- |
 | **Git Fetch** | Baixa metadados e objetos do servidor. | **Zero.** Nada muda nos seus arquivos. |
-| **Git Pull** | Faz o Fetch + Merge (ou Rebase). | **Alto.** Altera seus arquivos e pode gerar conflitos. |
+| **Git Pull** | Faz o Fetch + Merge. | **Alto.** Altera seus arquivos e pode gerar conflitos. |
 
-Diferentemente do comando `git pull`, que baixa as alterações e tenta integrá-las imediatamente ao código, podendo resultar em conflitos inesperados, o comando `git fetch` atualiza apenas as ramificações de rastreamento remoto (como `origin/main`). 
+Diferentemente do comando `git pull`, que *baixa as alterações e tenta integrá-las imediatamente ao código*, podendo resultar em *conflitos* inesperados, o comando `git fetch` *atualiza apenas as ramificações de rastreamento remoto* (como `origin/main`). 
 
 --
 
 Git Fetch é útil, por exemplo:
 
-- Ao iniciar o dia e revisar as alterações que a equipe realizou durante a noite, sem precisar lidar com possíveis conflitos na cópia local do código. A ação envolve a execução do comando `git fetch`, seguida pelo uso de `git log HEAD..origin/main` para visualizar a lista de novos commits.
+- Ao iniciar o dia e *revisar as alterações que a equipe realizou durante a noite*, sem precisar lidar com possíveis conflitos na cópia local do código. A ação envolve a execução do comando `git fetch`, seguida pelo uso de `git log HEAD..origin/main` para visualizar a lista de novos commits.
 
-- Quando um colega solicita a revisão de uma funcionalidade (code review) que foi implementada em uma nova ramificação.
+- Quando um *colega solicita a revisão de uma funcionalidade (code review) que foi implementada em uma nova ramificação*.
     - Contexto: A ramificação `feature-nova` existe no servidor, mas não foi baixada para seu sistema local.
     - Ação: É necessário executar o comando `git fetch` para que seu repositório local reconheça a nova ramificação. Em seguida, você pode utilizar `git checkout feature-nova` para testar a implementação.
 
 --
 
-- Ocasionalmente, ramificações são deletadas no servidor após a conclusão de um Merge Request, mas permanecem visíveis na lista local como se ainda existissem. O comando `git fetch --prune` deve ser utilizado para remover as referências locais de ramificações que já foram excluídas do repositório remoto.
+- Ocasionalmente, ramificações são deletadas no servidor após a conclusão de um Merge Request, mas permanecem visíveis na lista local como se ainda existissem. O comando `git fetch --prune` deve ser utilizado para *remover as referências locais de ramificações que já foram excluídas do repositório remoto*.
 
 - Se adotar a estratégia de *Rebase* para manter um histórico linear, o uso do comando `fetch` é um passo inicial essencial.
     - Contexto: Após concluir sua tarefa, você deseja posicionar suas alterações "no topo" das atualizações mais recentes da ramificação `main`.
@@ -59,7 +59,7 @@ Os três comandos abaixo são as ferramentas de investigação do desenvolvedor,
 
 ### `diff`
 
-O `diff` é o comando que você mais vai usar enquanto estiver escrevendo código. Ele mostra a diferença exata entre duas versões de arquivos.
+O `diff` é o comando que você mais vai usar enquanto estiver escrevendo código. Ele *mostra a diferença exata entre duas versões de arquivos*.
 
 - Contexto 1 (Antes do Commit): Você terminou de escrever uma função e quer revisar se não deixou nenhum `console.log` perdido ou uma variável com nome errado. Ação: `git diff` (mostra o que você alterou mas ainda não "stagiou").
 
@@ -71,7 +71,7 @@ O `diff` é o comando que você mais vai usar enquanto estiver escrevendo códig
 
 ### `blame`
 
-O `blame` é usado para entender o contexto histórico de uma linha específica. Ele mostra, linha por linha, quem foi o último autor e em qual commit aquela alteração foi feita.
+O `blame` é usado para entender o contexto histórico de uma linha específica. Ele *mostra, linha por linha, quem foi o último autor e em qual commit aquela alteração foi feita.*
 
 - Contexto 1 (Bug Misterioso): Você encontrou uma linha de código bizarra que está causando um erro. Você precisa saber quem a escreveu para perguntar: "Cara, por que você fez essa validação assim?". Ação: `git blame arquivo.js`.
 
@@ -81,7 +81,7 @@ O `blame` é usado para entender o contexto histórico de uma linha específica.
 
 ### `show`
 
-Enquanto o `log` te dá a lista de mensagens, o `show` entra dentro de um commit específico para ver as entranhas dele.
+Enquanto o `log` te dá a lista de mensagens, o `show` *entra dentro de um commit específico para ver as entranhas dele*.
 
 - Contexto 1 (Pós-Blame): Você usou o blame e descobriu que o erro veio do commit abc1234. Agora você quer ver tudo o que foi enviado naquele commit (outros arquivos que mudaram juntos). Ação: `git show abc1234`.
 
@@ -91,7 +91,7 @@ Enquanto o `log` te dá a lista de mensagens, o `show` entra dentro de um commit
 
 ## Arquivo `.gitignore`
 
-É um arquivo de texto oculto que você cria na raiz do projeto (chamado literalmente `.gitignore`). Você escreve nele os nomes de arquivos ou pastas que o Git deve ignorar completamente (como senhas, arquivos de configuração locais, pastas de dependências gigantes como `node_modules` ou `.venv`, ou arquivos compilados). O Git nunca vai enviá-los para o repositório remoto, ficarão apenas no seu repo local.
+É um *arquivo de texto oculto que você cria na raiz do projeto* (chamado literalmente `.gitignore`). Você escreve nele os nomes de *arquivos ou pastas que o Git deve ignorar completamente* (como senhas, arquivos de configuração locais, pastas de dependências gigantes como `node_modules` ou `.venv`, ou arquivos compilados). O Git *nunca vai enviá-los para o repositório remot*o, ficarão apenas no seu repo local.
 
 --
 
