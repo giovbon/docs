@@ -1,0 +1,46 @@
+<!-- .slide: data-background-image="https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>APIs do Xano</h1>
+</div>
+
+---
+
+## APIs de Autenticação
+
+<div style="text-align: center;">
+    <img src="https://kroki.io/nomnoml/svg/eNp9jT8LgzAQxfd8ioOsgi3iEkrB0alC3YpDMDEeahLyhy5--EYHix3KLffevd87KtDJPqDRDByqMRBquRCoFYNrSai3vN9FeUkiODNJBrQoCkIHnOe0D2IbQl63FJ24kneoYhihamq_Jrt5PFvIebJyj0pHu5Ja2xgYyIXjnIHmi8zAcu_fxomVPGLYzxvSpn-6IwCnntko1L81fwtO-CIP9oh8qeilS0D3AeoKXjo=" width="10%" data-preview-image>
+</div>
+
+---
+
+## APIs Customizadas
+
+
+<!-- nomnoml
+#direction: right
+#padding: 15
+#spacing: 50
+#stroke: #333
+#fill: #fdfdfd
+
+[<package> Custom APIs|
+
+[GET buscaCEP|
+Input: cep(number)|
+Output: CEP(UF, Cidade ...)]
+
+[GET buscaCliente|
+Input: authToken|
+Output: CLIENTE]
+
+[POST cadastraCliente|
+Input: nome, email, senha, celular, cpf, status|
+Output: user, cliente, authToken]
+
+[GET upsertCEP|
+Input: cep, cidade, estado|
+Output: CEP]
+
+]
+-->

@@ -5,32 +5,41 @@ hide:
 
 # Lista das APIs
 
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../SLIDES/02-lista-apis.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
+
 - [x] APIs de CRUD básicas (criadas automaticamente junto com as tabelas)
     - `GET`, `POST`, `DELETE id`, `GET id` e `PATCH id`
 
-- [x] APIs de autenticação básicas (criadas junto da criação do workspace no Xano). A partir de uma tabela `user` padrão, ou outra tabela que assuma este papel, uma série de 3 APIs sempre estão disponíveis para uso:
-    - `/auth/login` {email, password} devolve um `authToken` para alguém já cadastrado
-    - `/auth/signup` {name, email,password } cadastra usuário e devolve um `authToken` [^1]
+- [x] APIs de autenticação básicas (criadas junto da criação do workspace no Xano). A partir da tabela `user` padrão[^6], três APIs estão disponíveis para uso:
+    - `/auth/login` devolve um `authToken` para alguém já cadastrado
+    - `/auth/signup` cadastra usuário e devolve um `authToken` [^1]
     - `/auth/me/{authToken}` dado um authToken, devolve o usuário associado à ele
 
 - SNIPPETs importados [^2]
-    - [ ] `/consultacep` {cep} dado um cep, devolve cep, localidade, estado, etc.
+    - [ ] `/consultaCEP` dado um número de cep, devolve cep, localidade, estado, etc.
     - [ ] `/SendGrid_Email` {from, to, subject, content} devolve o status do envio
 
 ## APIs Customizadas
 
-- [ ] `/buscacep` {cep} dado um cep, devolve se ele está na tabela CEP [^3]
+- [ ] `/buscaCEP` {cep} dado um cep, devolve se ele está na tabela CEP [^3]
 
 - [ ] `/buscaCliente` (ou `/consultaCliente`), dado um authToken, devolve o cliente [^3]
 
-- [ ] `/UpsertCEP` {cep, cidade, estado} confere se o cep já existe, se sim, insere, se não, atualiza, retorna o CEP [^4]
+- [ ] `/upsertCEP` {cep, cidade, estado} confere se o cep já existe, se sim, insere, se não, atualiza, retorna o CEP [^4]
 
 - [ ] `/cadastraCliente` realiza 4 processos para: [^5]
     - Cadastrar user ( `/auth/signup` ) e recuperar o authToken
     - Recuperar dados do user (`/auth/me`)
     - Procurar status do cliente
     - Salvar o cliente associado ao usuário e status
-- [ ] `/consultaEnderecoDoCliente` {authToken} dado um token, devolve os endereços daquele cliente [^5]
+- [ ] `/consultaEnderecoCliente` {authToken} dado um token, devolve os endereços daquele cliente [^5]
 
 - [ ] `/salvaEndereco` salva ou atualiza o cep, estado e cidade na tabela CEP, os demais campos na tabela ENDERECO [^5]
 
@@ -44,3 +53,4 @@ hide:
 [^3]: Aula 16
 [^4]: Aula 17
 [^5]: Aula 18
+[^6]: Tabelas a serem usadas para autenticação de usuários devem possuir campo de `Email` (tipo text) e um campo de `Password` (tipo password).
