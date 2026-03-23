@@ -24,18 +24,60 @@ window.gerarPDFTypst = async function(typPath) {
         }
 
         if (!typstCompiler) {
-            // Import the bundled Typst module
-            const typstModule = await import('./typst/snippet.bundle.mjs');
-            typstCompiler = typstModule.$typst;
-
-            // Determine Wasm URL relative to this script
+            // Determine base URL from script tag or fallback safely
             const scriptTag = document.querySelector('script[src*="typst-pdf.js"]');
             const baseUrl = scriptTag ? scriptTag.src : window.location.origin + '/javascripts/typst-pdf.js';
-            const wasmUrl = new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
+            
+            // 1. Fully robust module resolution
+            let typstModule = null;
+            const modulePaths = [
+                new URL('./typst/snippet.bundle.mjs', baseUrl).href,
+                new URL('../../javascripts/typst/snippet.bundle.mjs', window.location.href).href,
+                new URL('../../../javascripts/typst/snippet.bundle.mjs', window.location.href).href,
+                new URL('../../../../javascripts/typst/snippet.bundle.mjs', window.location.href).href,
+                new URL('/javascripts/typst/snippet.bundle.mjs', window.location.origin).href,
+                new URL('/docs/javascripts/typst/snippet.bundle.mjs', window.location.origin).href
+            ];
+            
+            for (const p of modulePaths) {
+                try {
+                    typstModule = await import(p);
+                    break;
+                } catch (e) {}
+            }
+            if (!typstModule) {
+               throw new Error("Não foi possível carregar o módulo Typst (snippet.bundle.mjs). Tente recarregar a página.");
+            }
+            
+            typstCompiler = typstModule.$typst;
 
-            // Init compiler with local WASM
+            // 2. Fully robust WASM resolution
             typstCompiler.setCompilerInitOptions({
-                getModule: () => wasmUrl
+                getModule: async () => {
+                    const wasmPaths = [
+                        new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href,
+                        new URL('../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                        new URL('../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                        new URL('../../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
+                        new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href,
+                        new URL('/docs/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href
+                    ];
+                    
+                    for (const p of wasmPaths) {
+                        try {
+                            const res = await fetch(p, { method: 'HEAD' });
+                            if (res.ok) {
+                                // Double check it doesn't return HTML (Github pages 404s sometimes trick ok)
+                                const contentType = res.headers.get('content-type');
+                                if (!contentType || !contentType.includes('text/html')) {
+                                    return p;
+                                }
+                            }
+                        } catch (e) {}
+                    }
+                    // Fallback to the default one if all fail
+                    return new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
+                }
             });
         }
 
