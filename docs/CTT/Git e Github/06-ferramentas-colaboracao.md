@@ -14,3 +14,5 @@ hide:
     </section>
   </div>
 </div>
+
+[Baixar Exercício CTT7](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT07.typ'); return false;" }

@@ -85,7 +85,8 @@ extra_javascript = [
     "https://cdn.jsdelivr.net/npm/markmap-view@0.17",
     "javascripts/init-markmap.js",
     "https://cdn.jsdelivr.net/npm/asciinema-player@3.0/dist/bundle/asciinema-player.min.js",
-    "javascripts/init-asciinema.js"
+    "javascripts/init-asciinema.js",
+    "javascripts/typst-pdf.js"
 ]
 
 # ----------------------------------------------------------------------------
