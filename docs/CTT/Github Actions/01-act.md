@@ -1,9 +1,22 @@
 ---
+icon: simple/githubactions
 hide:
   - navigation
 ---
 
-# Ambientes de Execução de Workflows
+# Intro Github Actions
+
+<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
+  <div class="slides">
+    <section data-markdown="../../zSLIDES/07-intro-github-actions.txt"
+             data-separator="^\r?\n---\r?\n$"
+             data-separator-vertical="^\r?\n--\r?\n$">
+    </section>
+  </div>
+</div>
+
+??? abstract "Referências"
+    - [Documentação do GitHub Actions - Documentos do GitHub](https://docs.github.com/pt/actions)
 
 ## Act
 
@@ -86,9 +99,4 @@ jobs:
 ```
 
 Após isso rode: `act -l` para ver se esse workflow aparece, depois disso: `act workflow_dispatch -q`. A mensagem de "Hello" deverá aparecer no terminal.
-
-## Github Actions
-
-??? abstract "Referências"
-    - [Documentação do GitHub Actions - Documentos do GitHub](https://docs.github.com/pt/actions)
 
