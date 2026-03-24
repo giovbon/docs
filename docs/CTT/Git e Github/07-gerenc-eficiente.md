@@ -71,6 +71,7 @@ gh config set editor "nano"
 |-------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | `gh repo list`                                       | Lista repositórios da sua conta.                                                                          |
 | `gh repo create my-repo-name --public`                        | Cria um novo repositório.                                                                                 |
+| `gh repo create <nome-do-repo> --source=. --push --public`                        | Cria um novo repositório e manda o repo local direto para ele.                                                                                 |
 | `gh repo clone owner/repo-name`                      | Clona um repositório existente.                                                                           |
 | `gh repo view --web`                                 | Abre a página do repositório atual diretamente no seu navegador de internet.                              |
 | `gh repo fork facebook/react`                         | Faz o fork do projeto na sua conta, especificando qual.                                                  |

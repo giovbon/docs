@@ -8,6 +8,7 @@ hide:
 
 ??? abstract "Referências"
     - [courses.devopsdirective.com/github-actions-beginner-to-pro](https://courses.devopsdirective.com/github-actions-beginner-to-pro)
+    - [Documentação do GitHub Actions - Documentos do GitHub](https://docs.github.com/pt/actions)
 
 Pode-se entender o GitHub Actions como um motor flexível para automatizar diversas tarefas relacionadas ao desenvolvimento de software. Seu principal objetivo é a automação geral de fluxos de trabalho dentro do ecossistema do GitHub.
 
