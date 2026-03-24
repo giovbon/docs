@@ -22,6 +22,22 @@ O **Selenium** é um ecossistema de ferramentas voltado para a *automação de n
 
 --
 
+**Comparação com PyAutoGUI**: 
+
+- **PyAutoGUI** controla o sistema operacional inteiro de forma "cega", baseado no que está visível na tela
+    - Clica em **coordenadas da tela** (ex: clique no pixel X: 500, Y: 300) ou procura por uma imagem específica que você salvou
+    -  **Onde funciona:** Em qualquer lugar do seu computador.
+    - É muito frágil. Se a janela do programa mudar de lugar, se a resolução do monitor for diferente, ou se aparecer um pop-up na frente, o PyAutoGUI vai clicar no lugar errado e o seu robô vai falhar. Além disso, você não pode usar o computador enquanto o script estiver rodando.
+
+--
+
+- **Selenium** controla exclusivamente navegadores web lendo o código por trás do site
+    - Interage diretamente com o código fonte do site (o HTML). Em vez de dizer "clique no meio da tela", você diz ao Selenium: "encontre o botão que tem o ID 'botao-login' no código do site e clique nele"
+    - Onde funciona:** Apenas dentro de navegadores web.
+    - É extremamente robusto e confiável. Como ele procura pelo elemento no código da página, não importa se você redimensionou a janela do navegador, se a resolução da tela mudou ou se o botão está lá no final da página (ele rola a página sozinho se precisar). Ele pode até rodar em "modo invisível" (*headless*), sem abrir a janela na tela
+
+---
+
 Lembrando da pirâmide de testes:
 
 <div style="text-align: center;">

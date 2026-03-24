@@ -109,22 +109,22 @@ acoes_avancadas = ActionChains(driver) # (4)!
 time.sleep(2)
 
 try:
-    print("▶ Lição 1: Executando clique simples...")
+    print("Executando clique simples...")
     caixa_clique = driver.find_element(By.ID, 'caixa-clique') # (5)!
     caixa_clique.click() # (6)!
     time.sleep(2)
 
-    print("▶ Lição 2: Executando duplo clique...")
+    print("Executando duplo clique...")
     caixa_duplo = driver.find_element(By.ID, 'caixa-duplo')
     acoes_avancadas.double_click(caixa_duplo).perform() # (7)!
     time.sleep(2)
 
-    print("▶ Lição 3: Executando clique com o botão direito...")
+    print("Executando clique com o botão direito...")
     caixa_direito = driver.find_element(By.ID, 'caixa-direito')
     acoes_avancadas.context_click(caixa_direito).perform()
     time.sleep(2)
 
-    print("▶ Lição 4: Limpando texto e digitando com o teclado...")
+    print("Limpando texto e digitando com o teclado...")
     area_teclado = driver.find_element(By.ID, 'area-teclado')
     area_teclado.click() #(8)!
     
