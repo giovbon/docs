@@ -3,7 +3,9 @@ hide:
   - navigation
 ---
 
-# Act
+# Ambientes de Execução de Workflows
+
+## Act
 
 ??? abstract "Referências"
     - [Introduction - act - User Guide | Manual | Docs | Documentation](https://nektosact.com/)
@@ -12,7 +14,7 @@ hide:
 
 Pode-se entender o GitHub Actions como um motor flexível para automatizar diversas tarefas relacionadas ao desenvolvimento de software. Seu principal objetivo é a automação geral de fluxos de trabalho dentro do ecossistema do GitHub. O act foi feito para imitar o comportamento do GitHub.
 
-## Preparação do ambiente
+### Preparação do ambiente
 
 Instalação no ubuntu:
 
@@ -45,7 +47,7 @@ Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para
 
 Escolha `Medium` e Enter.
 
-## Comandos
+### Comandos
 
 ```bash
 # lista todos os workflows e jobs detectados no seu projeto
@@ -66,7 +68,7 @@ act -W ./hello.yml -P ubuntu-latest=node:slim
 act -j [ID]
 ```
 
-## Testando
+### Testando
 
 No GitHub, quando você faz um git push, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. O act imita esse comportamento, assim para executar seu primeiro script abaixo crie uma pasta, inicialize o repositório git ali e dentro de `.github/workflows/` coloque o arquivo `hello.yml` com esse conteúdo:
 
@@ -84,3 +86,9 @@ jobs:
 ```
 
 Após isso rode: `act -l` para ver se esse workflow aparece, depois disso: `act workflow_dispatch -q`. A mensagem de "Hello" deverá aparecer no terminal.
+
+## Github Actions
+
+??? abstract "Referências"
+    - [Documentação do GitHub Actions - Documentos do GitHub](https://docs.github.com/pt/actions)
+
