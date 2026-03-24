@@ -51,15 +51,15 @@ window.gerarPDFTypst = async function(typPath) {
             
             typstCompiler = typstModule.$typst;
 
-            // 2. Fully robust WASM resolution
-            let resolvedWasmUrl = new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href;
+            // 2. Fully robust Gzip WASM resolution and native decompression
+            let resolvedWasmUrl = new URL('./typst/typst_ts_web_compiler_bg.wasm.gz', baseUrl).href;
             const wasmPaths = [
-                new URL('./typst/typst_ts_web_compiler_bg.wasm', baseUrl).href,
-                new URL('../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                new URL('../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                new URL('../../../../javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.href).href,
-                new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href,
-                new URL('/docs/javascripts/typst/typst_ts_web_compiler_bg.wasm', window.location.origin).href
+                new URL('./typst/typst_ts_web_compiler_bg.wasm.gz', baseUrl).href,
+                new URL('../../javascripts/typst/typst_ts_web_compiler_bg.wasm.gz', window.location.href).href,
+                new URL('../../../javascripts/typst/typst_ts_web_compiler_bg.wasm.gz', window.location.href).href,
+                new URL('../../../../javascripts/typst/typst_ts_web_compiler_bg.wasm.gz', window.location.href).href,
+                new URL('/javascripts/typst/typst_ts_web_compiler_bg.wasm.gz', window.location.origin).href,
+                new URL('/docs/javascripts/typst/typst_ts_web_compiler_bg.wasm.gz', window.location.origin).href
             ];
             
             for (const p of wasmPaths) {
@@ -75,8 +75,23 @@ window.gerarPDFTypst = async function(typPath) {
                 } catch (e) {}
             }
 
+            // Fetch and decompress the GZIP WASM file natively
+            const responseWasm = await fetch(resolvedWasmUrl);
+            if (!responseWasm.ok) throw new Error("Não foi possível carregar o arquivo WASM comprimido.");
+
+            let buffer;
+            if (typeof DecompressionStream !== 'undefined') {
+                const ds = new DecompressionStream('gzip');
+                const decompressedStream = responseWasm.body.pipeThrough(ds);
+                buffer = await new Response(decompressedStream).arrayBuffer();
+            } else {
+                // Seventually fallback if browser doesn't support DecompressionStream
+                console.warn("DecompressionStream não suportado nativamente. Verifique o servidor.");
+                buffer = await responseWasm.arrayBuffer();
+            }
+
             typstCompiler.setCompilerInitOptions({
-                getModule: () => resolvedWasmUrl
+                getModule: () => buffer
             });
         }
 
