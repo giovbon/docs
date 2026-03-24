@@ -4,8 +4,12 @@
     margin: 2rem auto;
     max-width: 100%;
     display: block;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Softer shadow */
+    border: 1px solid #30343e;
+    /* Subtle border to define edges */
     border-radius: 8px;
+    background-color: #1e2129;
     overflow: hidden;
 }
 
@@ -14,25 +18,37 @@
     max-width: 100%;
 }
 
-/* Theme adjustments if needed to match MkDocs Material */
-.asciinema-theme-asciinema {
-    --player-bg: #1e2129; /* Match Slate theme background */
+/* Theme adjustments to match Zensical Slate theme background */
+.asciinema-player,
+.asciinema-terminal,
+.asciinema-theme-asciinema,
+.asciinema-player-wrapper {
+    --player-bg: #1e2129 !important;
+    background-color: #1e2129 !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* Fix: Add bottom padding so the last line isn't hidden behind player controls */
+/* Ensure the player root has enough space at the bottom */
 .asciinema .asciinema-player {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem !important;
+    /* Extra space to prevent truncation */
+    background-color: #1e2129 !important;
+    box-shadow: none !important;
 }
 
-/* Add bottom padding to the terminal text area */
-.asciinema .asciinema-terminal {
-    padding-bottom: 1.5rem !important;
+/* Force significant bottom padding inside the terminal itself */
+.asciinema-terminal {
+    padding-bottom: 1rem !important;
+    /* Ensure content is pushed above the controls */
 }
 
-/* Ensure the control bar has a solid background so it doesn't overlap text */
+/* Ensure the control bar uses a solid background and stays at the very bottom */
 .asciinema .control-bar {
-    background: linear-gradient(transparent, rgba(30, 33, 41, 0.95) 40%);
+    background-color: #1e2129 !important;
+    background: linear-gradient(transparent, #1e2129 40%) !important;
     padding-top: 1rem;
+    border: none !important;
 }
 
 /* Print Overrides: Replace player with a static placeholder for PDF/Print */
@@ -54,7 +70,7 @@
         border-radius: 8px !important;
     }
 
-    .asciinema > * {
+    .asciinema>* {
         display: none !important;
     }
 
@@ -98,7 +114,7 @@
     border-radius: 8px !important;
 }
 
-.asciinema-print-mode > * {
+.asciinema-print-mode>* {
     display: none !important;
 }
 

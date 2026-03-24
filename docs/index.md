@@ -17,6 +17,4 @@ Made with:
 </div>
 
 <!-- NÃO MUDE O NOME DA PÁGINA DE INDEX PRA OUTRA COISA, pesquisa só aparece aqui
-
-remover implementação do jupyterlite
 -->

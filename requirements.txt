@@ -1,6 +1,1 @@
 zensical
-jupyterlite-core
-jupyterlite-pyodide-kernel
-jupyter-server
-jupyterlab-server
-jupyterlab-language-pack-pt-BR
