@@ -27,7 +27,7 @@ O GitHub CLI (gh) é uma ferramenta que permite gerenciar o GitHub diretamente p
 === "Linux (Ubuntu/Debian)"
 
     ```bash
-    sudo apt intall gh
+    sudo apt install gh
     gh --version 
     ```
 
@@ -70,7 +70,7 @@ gh config set editor "nano"
 | Comando                                                | Descrição                                                                                                  |
 |-------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | `gh repo list`                                       | Lista repositórios da sua conta.                                                                          |
-| `gh repo create my-repo-name`                        | Cria um novo repositório.                                                                                 |
+| `gh repo create my-repo-name --public`                        | Cria um novo repositório.                                                                                 |
 | `gh repo clone owner/repo-name`                      | Clona um repositório existente.                                                                           |
 | `gh repo view --web`                                 | Abre a página do repositório atual diretamente no seu navegador de internet.                              |
 | `gh repo fork facebook/react`                         | Faz o fork do projeto na sua conta, especificando qual.                                                  |
