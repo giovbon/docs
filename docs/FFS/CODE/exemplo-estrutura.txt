@@ -1,0 +1,40 @@
+- Meu Projeto de Exemplo/
+  - backend/
+    - main.py
+      ```python
+      from flask import Flask
+      app = Flask(__name__)
+      
+      @app.route("/")
+      def hello():
+          return "Hello World!"
+      ```
+    - requirements.txt
+      ```text
+      flask==2.0.1
+      ```
+  - frontend/
+    - index.html
+      ```html
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Meu Site</title>
+      </head>
+      <body>
+          <h1>Olá Mundo!</h1>
+      </body>
+      </html>
+      ```
+    - style.css
+      ```css
+      body {
+          font-family: sans-serif;
+          background-color: #f4f4f4;
+      }
+      ```
+- README.md
+  ```markdown
+  # Meu Projeto de Exemplo
+  Este é um arquivo de demonstração da nova funcionalidade!!!
+  ```
