@@ -6,15 +6,6 @@ hide:
 
 # CRUD :simple-fastapi: :simple-pydantic:
 
-<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
-  <div class="slides">
-    <section data-markdown="../../zSLIDES/00.txt"
-             data-separator="^\r?\n---\r?\n$"
-             data-separator-vertical="^\r?\n--\r?\n$">
-    </section>
-  </div>
-</div>
-
 No desenvolvimento de APIs, existem ==quatro ações principais que fazemos com os dados==: criar, ler, atualizar e excluir. Com essas operações podemos realizar qualquer tipo de comportamento em uma base dados. Podemos criar um registro, em seguida alterá-lo, e depois deletá-lo.
 
 Quando falamos de APIs servindo dados, todas essas operações têm alguma forma similar no protocolo HTTP. O protocolo tem verbos para indicar essas mesmas ações que queremos representar no banco de dados.

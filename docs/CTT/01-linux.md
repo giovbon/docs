@@ -15,9 +15,10 @@ No CMD lance o comando: `wsl --install -d Ubuntu-22.04`. Vai instalar o ubuntu, 
 - Os arquivos do windows são acessíveis em `/mnt/c`
 - Os arquivos do linux ficam acessíveis em `\\wsl$`, colocando na barra de endereços do explorador de arquivos.
 
-Deletando máquinas:
+Recriando máquinas:
 - listar máquinas `wsl --list --verbose`
 - deletar máquina `wsl --unregister NomeDaDistro`
+- recriar: `wsl --install -d Ubuntu-22.04`
 
 ## Distrobox :simple-distrobox:
 

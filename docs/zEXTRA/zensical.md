@@ -1,15 +1,12 @@
 ---
 hide:
     - navigation
-    - path
-search:
-  exclude: true
 ---
 
 # Zensical
 
-https://giovbon.github.io/docs/  
-https://zensical.org/docs/get-started/
+??? abstract "Referências"
+    - [Zensical Documentation](https://zensical.org/docs/get-started/)
 
 ```bash
 # instalação
@@ -18,6 +15,8 @@ source .venv/bin/activate
 pip install zensical
 
 zensical new .
+
+zensical serve
 ```
 
 Tem o [script actions](https://zensical.org/docs/publish-your-site/) pra fazer rodar no github pages.
