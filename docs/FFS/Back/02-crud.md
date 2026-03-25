@@ -222,11 +222,3 @@ print(novo_user.email)     # Agora é "novo@email.com"
 ```
 
 Com isso concluímos um CRUD simples de usuário de uma aplicação, usando FastAPI.
-
-
-<!-- AQUI!!!! NOVA FUNCIONALIDADE
-
-
-??? example ":lucide-folder-tree: Diretório da aplicação"
-
-    <div class="code-explorer" data-src="../../CODE/exemplo-estrutura.txt"></div> -->

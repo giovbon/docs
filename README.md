@@ -433,3 +433,19 @@ def somar(a, b):
     
     return resultado
 ```
+
+
+
+# gerar_explorador.py
+
+`python gerar_explorador.py ./docs/ -o ./docs/arquivos/estrutura.txt`
+
+O comando é formado por 4 partes. É como se você estivesse dando uma instrução falada para o computador:
+
+python gerar_explorador.py (O que faz): Avisa o computador: "Ei, execute aquele script que acabamos de criar."
+
+./docs/ (O que faz): É o alvo. Você está dizendo: "Eu quero que você leia absolutamente todos os arquivos e pastas que estão dentro da pasta chamada docs." (Você pode trocar isso por qualquer outra pasta do seu computador).
+
+-o (O que faz): Vem da palavra "Output" (Saída). Significa: "Pegue tudo o que você leu na pasta alvo, e salve o resultado no seguinte lugar..."
+
+./docs/arquivos/estrutura.txt (O que faz): É o destino. O script vai criar (ou substituir) um arquivo de texto exatamente nesse caminho e despejar toda aquela formatação chata de indentações e códigos ali dentro.

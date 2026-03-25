@@ -2,3 +2,4 @@ site
 .venv
 docs/jupyterlite
 .cache
+**/_hide/
