@@ -1,9 +1,0 @@
-{
-  "jupyter-config-data": {
-    "defaultGuiState": "lab",
-    "theme": "JupyterLab Dark",
-    "locale": "pt_BR",
-    "litePluginSettings": {
-    }
-  }
-}

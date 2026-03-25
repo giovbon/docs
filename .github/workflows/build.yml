@@ -23,20 +23,6 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
-      # --- JUPYTERLITE BUILD (com cache) ---
-      - uses: actions/cache@v4
-        id: jupyterlite-cache
-        with:
-          path: docs/jupyterlite
-          key: jupyterlite-${{ hashFiles('jupyterlite-content/**', 'jupyter-lite.json') }}
-
-      - name: Build JupyterLite
-        if: steps.jupyterlite-cache.outputs.cache-hit != 'true'
-        run: |
-          jupyter lite build \
-            --contents jupyterlite-content \
-            --output-dir docs/jupyterlite
-
       - run: zensical build --clean
       
       # --- NOTIFICAÇÃO DE ERRO ---

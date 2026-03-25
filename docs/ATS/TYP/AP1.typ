@@ -1,3 +1,5 @@
+#set text(size: 14pt)
+
 #set page(
   paper: "a4",
   footer: align(center)[Gerado em: #datetime.today().display("[day]/[month]/[year]")],
@@ -5,8 +7,6 @@
 )
 
 = AP1
-
-Apresento um exercício prático desenhado para ser concluído em cerca de 3 horas. Este projeto consiste na criação de um *Gestor de Notas Pessoais* (um módulo de *backend* para guardar apontamentos e enviar notificações), estruturado especificamente para aplicar todos os conceitos abordados nos documentos fornecidos.
 
 === O Projeto: Gestor de Notas (`note_manager`)
 
@@ -25,8 +25,6 @@ projeto_notas/
 │   ├── conftest.py
 │   └── test_gestor.py
 ```
-
----
 
 === Fase 1: Validação com TDD (Tempo estimado: 45 min)
 

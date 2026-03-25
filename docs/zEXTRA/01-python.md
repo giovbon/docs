@@ -4,6 +4,7 @@ icon: simple/python
 
 # Python :simple-python:
 
+
 ## Ambientes
 
 Criação de ambiente:

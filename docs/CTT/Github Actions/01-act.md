@@ -15,9 +15,6 @@ hide:
   </div>
 </div>
 
-??? abstract "Referências"
-    - [Documentação do GitHub Actions - Documentos do GitHub](https://docs.github.com/pt/actions)
-
 ## Act
 
 ??? abstract "Referências"
@@ -33,17 +30,39 @@ Instalação no ubuntu:
 
 ``` bash
 cd
+# configurar docker
 sudo apt install curl docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
-curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
-sudo mv ./bin/act /usr/local/bin/act
-act --version
 sudo usermod -aG docker $USER
 newgrp docker
+# intalar act
+curl -O https://raw.githubusercontent.com/nektos/act/master/install.sh
+sudo bash install.sh
+sudo mv ./bin/act /usr/local/bin/act
+act --version
 ```
 
-Mensagem ao tentar rodar algum workflow com `act`:
+Após isso, crie nova pasta, inicialize repositório crie o arquivo `.github/workflows/hello.yml` dentro dessa estrutura de pastas e coloque esse conteúdo dentro do arquivo:
+
+```yaml
+name: Hello World
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello-inline-bash:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello GitHub Action Workflow!"
+```
+
+No GitHub, quando você faz um git push, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. O act imita esse comportamento.
+
+Agora rode: `act -l` para ver se esse workflow aparece, depois disso: `act workflow_dispatch -q` para executar.
+
+Ao tentar rodar esse primeiro workflow com `act`, aparecerá o menu de escolha:
 
 ```
 Please choose the default image you want to use with act:
@@ -56,11 +75,16 @@ Default image and other options can be changed manually in /home/giovani/.config
 > Medium
   Micro
 ```
+
 Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para você escolher o tamanho do ambiente virtual (imagem Docker) padrão que executará os fluxos de trabalho. Você tem três opções que equilibram consumo de disco e compatibilidade: a **Large** (gigante e idêntica aos servidores do GitHub), a **Medium** (cerca de 500MB, compatível com a maioria das ações e que está atualmente selecionada) e a **Micro** (muito leve, mas restrita). O aviso final apenas informa que essa escolha poderá ser alterada futuramente no seu arquivo de configuração `actrc`.
 
 Escolha `Medium` e Enter.
 
-### Comandos
+Depois disso rode novamente o comando: `act workflow_dispatch -q` para executar. Pode ser que demore um pouco pois o programa baixará a imagem docker correspondente para preparar o ambiente.
+
+Depois de tudo a mensagem de "Hello GitHub Action Workflow!" deverá aparecer no terminal.
+
+### Principais Comandos
 
 ```bash
 # lista todos os workflows e jobs detectados no seu projeto
@@ -81,22 +105,6 @@ act -W ./hello.yml -P ubuntu-latest=node:slim
 act -j [ID]
 ```
 
-### Testando
+??? example ":lucide-square-terminal: Instalando o act e executando primeiro workflow"
 
-No GitHub, quando você faz um git push, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. O act imita esse comportamento, assim para executar seu primeiro script abaixo crie uma pasta, inicialize o repositório git ali e dentro de `.github/workflows/` coloque o arquivo `hello.yml` com esse conteúdo:
-
-```yaml
-name: Hello World
-
-on:
-  workflow_dispatch:
-
-jobs:
-  say-hello-inline-bash:
-    runs-on: ubuntu-24.04
-    steps: # (3)!
-      - run: echo "Hello GitHub Action Workflow!"
-```
-
-Após isso rode: `act -l` para ver se esse workflow aparece, depois disso: `act workflow_dispatch -q`. A mensagem de "Hello" deverá aparecer no terminal.
-
+    <div class="asciinema" data-src="../../zASC/13-act-install-hello.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
