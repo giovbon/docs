@@ -22,7 +22,35 @@ hide:
     - [nektos/act: Run your GitHub Actions locally 🚀](https://github.com/nektos/act)
     - [How to Run GitHub Actions Locally Using the act CLI Tool](https://www.freecodecamp.org/news/how-to-run-github-actions-locally/)
 
-Pode-se entender o GitHub Actions como um motor flexível para automatizar diversas tarefas relacionadas ao desenvolvimento de software. Seu principal objetivo é a automação geral de fluxos de trabalho dentro do ecossistema do GitHub. O act foi feito para imitar o comportamento do GitHub.
+Pode-se entender o GitHub Actions como um motor flexível para automatizar diversas tarefas relacionadas ao desenvolvimento de software. Seu principal objetivo é a automação geral de fluxos de trabalho dentro do ecossistema do GitHub. 
+
+!!! danger "Alerta"
+
+    No GitHub, quando você faz um `git push`, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. 
+    O act imita esse comportamento, de forma que para executar os workflows você deve criar uma pasta, inicializar um repo com `git init`, criar as pastas `.github/workflows` e dentro de `workflows` colocar seus workflows como arquivos `.yml`
+
+O act foi feito para imitar o comportamento do GitHub.
+
+### Principais comandos do act
+
+```bash
+# lista todos os workflows e jobs detectados no seu projeto
+act -l
+# checa se o arquivo YAML está com a sintaxe correta
+act -n
+# executará todos os jobs com evento de push
+act
+# roda os workflows por evento
+act pull_request
+# roda workflow inteiro específico, pode estar em qualquer pasta
+act -W .github/workflows/meu-teste.yml
+# filtra a saída do terminal para exibir apenas o que o script imprimiu
+act -W ./.github/workflows/meu-teste.yml | grep "|" 
+# executa workflow definindo qual imagem Docker deve ser usada para rodar os jobs
+act -W ./hello.yml -P ubuntu-latest=node:slim
+# roda um job específico
+act -j [ID]
+```
 
 ### Preparação do ambiente
 
@@ -58,17 +86,16 @@ jobs:
       - run: echo "Hello GitHub Action Workflow!"
 ```
 
-No GitHub, quando você faz um git push, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. O act imita esse comportamento.
-
-Agora rode: `act -l` para ver se esse workflow aparece, depois disso: `act workflow_dispatch -q` para executar.
+- Agora rode `act -l` para ver se esse workflow aparece.
+- Depois disso rode `act workflow_dispatch -q` para executar.
 
 Ao tentar rodar esse primeiro workflow com `act`, aparecerá o menu de escolha:
 
-```
+```bash
 Please choose the default image you want to use with act:
   - Large size image: ca. 17GB download + 53.1GB storage, you will need 75GB of free disk space, snapshots of GitHub Hosted Runners without snap and pulled docker images
   - Medium size image: ~500MB, includes only necessary tools to bootstrap actions and aims to be compatible with most actions
-  - Micro size image: <200MB, contains only NodeJS required to bootstrap actions, doesn't work with all actions
+  - Micro size image: <200MB, contains only NodeJS required to bootstrap actions, doesn't work with all actions #(1)!
 
 Default image and other options can be changed manually in /home/giovani/.config/act/actrc (please refer to https://nektosact.com/usage/index.html?highlight=configur#configuration-file for additional information about file structure)  [Use arrows to move, type to filter, ? for more help]
   Large
@@ -76,34 +103,13 @@ Default image and other options can be changed manually in /home/giovani/.config
   Micro
 ```
 
-Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para você escolher o tamanho do ambiente virtual (imagem Docker) padrão que executará os fluxos de trabalho. Você tem três opções que equilibram consumo de disco e compatibilidade: a **Large** (gigante e idêntica aos servidores do GitHub), a **Medium** (cerca de 500MB, compatível com a maioria das ações e que está atualmente selecionada) e a **Micro** (muito leve, mas restrita). O aviso final apenas informa que essa escolha poderá ser alterada futuramente no seu arquivo de configuração `actrc`.
+1. Esse texto é a tela de configuração inicial da ferramenta `act`, pedindo para você escolher o tamanho do ambiente virtual (imagem Docker) padrão que executará os fluxos de trabalho. Você tem três opções que equilibram consumo de disco e compatibilidade: a **Large** (gigante e idêntica aos servidores do GitHub), a **Medium** (cerca de 500MB, compatível com a maioria das ações e que está atualmente selecionada) e a **Micro** (muito leve, mas restrita). O aviso final apenas informa que essa escolha poderá ser alterada futuramente no seu arquivo de configuração `actrc`.
 
 Escolha `Medium` e Enter.
 
 Depois disso rode novamente o comando: `act workflow_dispatch -q` para executar. Pode ser que demore um pouco pois o programa baixará a imagem docker correspondente para preparar o ambiente.
 
-Depois de tudo a mensagem de "Hello GitHub Action Workflow!" deverá aparecer no terminal.
-
-### Principais Comandos
-
-```bash
-# lista todos os workflows e jobs detectados no seu projeto
-act -l
-# checa se o arquivo YAML está com a sintaxe correta
-act -n
-# executará todos os jobs com evento de push
-act
-# roda os workflows por evento
-act pull_request
-# roda workflow inteiro específico, pode estar em qualquer pasta
-act -W .github/workflows/meu-teste.yml
-# filtra a saída do terminal para exibir apenas o que o script imprimiu
-act -W ./.github/workflows/meu-teste.yml | grep "|" 
-# executa workflow definindo qual imagem Docker deve ser usada para rodar os jobs
-act -W ./hello.yml -P ubuntu-latest=node:slim
-# roda um job específico
-act -j [ID]
-```
+Depois de tudo a mensagem de "Hello GitHub Action Workflow!" deverá aparecer no terminal. Fim.
 
 ??? example ":lucide-square-terminal: Instalando o act e executando primeiro workflow"
 
