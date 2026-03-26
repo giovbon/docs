@@ -65,7 +65,8 @@ extra_css = [
     "stylesheets/custom.css",
     "stylesheets/markmap.css",
     "stylesheets/asciinema.css",
-    "https://cdn.jsdelivr.net/npm/asciinema-player@3.0/dist/bundle/asciinema-player.min.css"
+    "https://cdn.jsdelivr.net/npm/asciinema-player@3.0/dist/bundle/asciinema-player.min.css",
+    "stylesheets/filetree.css"
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
@@ -86,7 +87,8 @@ extra_javascript = [
     "javascripts/init-markmap.js",
     "https://cdn.jsdelivr.net/npm/asciinema-player@3.0/dist/bundle/asciinema-player.min.js",
     "javascripts/init-asciinema.js",
-    "javascripts/typst-pdf.js"
+    "javascripts/typst-pdf.js",
+    "javascripts/init-filetree.js"
 ]
 
 # ----------------------------------------------------------------------------
