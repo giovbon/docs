@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-<div class="code-explorer" data-src="../../zCODE/fastzero1.txt" ></div>
+<!-- <div class="code-explorer" data-src="../../zCODE/fastzero1.txt" ></div> -->
 
 # CRUD :simple-fastapi: :simple-pydantic:
 
