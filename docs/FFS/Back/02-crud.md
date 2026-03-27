@@ -4,8 +4,6 @@ hide:
   - navigation
 ---
 
-<!-- <div class="code-explorer" data-src="../../zCODE/fastzero1.txt" ></div> -->
-
 # CRUD :simple-fastapi: :simple-pydantic:
 
 No desenvolvimento de APIs, existem ==quatro ações principais que fazemos com os dados==: criar, ler, atualizar e excluir. Com essas operações podemos realizar qualquer tipo de comportamento em uma base dados. Podemos criar um registro, em seguida alterá-lo, e depois deletá-lo.
@@ -224,3 +222,5 @@ print(novo_user.email)     # Agora é "novo@email.com"
 ```
 
 Com isso concluímos um CRUD simples de usuário de uma aplicação, usando FastAPI.
+
+<div class="code-explorer" data-src="../../zCODE/fastzero1.txt" ></div>

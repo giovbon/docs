@@ -140,25 +140,54 @@
   font-style: italic;
 }
 
-.file-tree-content pre {
+.file-tree-code-area {
+  display: flex;
+  height: 100%;
+  --code-line-height: 20px; /* pixel-based line height for perfect sync */
+  --code-font-size: 13.5px;
+  background: var(--md-code-bg-color, #2d2d2d);
+}
+
+.file-tree-gutter {
+  flex: 0 0 auto;
+  padding: 20px 10px 20px 15px; /* pixel-based padding */
+  text-align: right;
+  color: #666;
+  font-family: var(--md-code-font-family, 'Fira Code', monospace) !important;
+  font-size: var(--code-font-size) !important;
+  line-height: var(--code-line-height) !important;
+  background: rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  white-space: pre;
+  user-select: none;
   margin: 0;
+}
+
+.file-tree-content pre {
+  margin: 0 !important;
   border-radius: 0;
   border: none;
   box-shadow: none;
-  background: transparent;
-  height: 100%;
-  padding: 1.5em;
-  /* add some breathing room */
+  background: transparent !important;
+  flex: 1;
+  padding: 20px 15px 20px 10px !important; /* matching gutter's 20px top/bottom */
+  line-height: var(--code-line-height) !important;
 }
 
 .file-tree-content pre code {
-  height: 100%;
+  height: auto;
   display: block;
-  font-family: var(--md-code-font-family, 'Fira Code', monospace);
+  font-family: var(--md-code-font-family, 'Fira Code', monospace) !important;
+  font-size: var(--code-font-size) !important;
+  line-height: var(--code-line-height) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
 }
 
-.file-tree-content.large-font pre code {
-  font-size: 1.15em;
+.file-tree-content.large-font .file-tree-code-area {
+  --code-font-size: 17px;
+  --code-line-height: 24px;
 }
 
 .file-tree-font-btn {

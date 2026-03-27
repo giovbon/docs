@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function parseFileTreeData(text) {
-  const lines = text.split('\n');
+  const lines = text.split(/\r?\n/);
   const nodes = [];
   const stack = []; 
   
@@ -107,11 +107,14 @@ function parseFileTreeData(text) {
     }
 
     const trimmedLine = originalLine.trim();
+    if (trimmedLine.length === 0) continue; // ignore empty lines
+
     if (trimmedLine.startsWith('```')) {
       inCodeBlock = true;
       currentCodeLanguage = trimmedLine.substring(3).trim();
       currentCodeContent = [];
-      currentCodeIndent = originalLine.match(/^\s*/)[0].length;
+      const matchIndent = originalLine.match(/^\s*/);
+      currentCodeIndent = matchIndent ? matchIndent[0].length : 0;
       continue;
     }
 
@@ -230,17 +233,35 @@ function renderTree(nodes, container, contentPanel) {
           });
           contentPanel.appendChild(copyBtn);
 
+          // Create the main code display area
+          const codeArea = document.createElement('div');
+          codeArea.className = 'file-tree-code-area';
+
+          // Create Gutter with Line Numbers
+          const gutter = document.createElement('div');
+          gutter.className = 'file-tree-gutter';
+          
+          const lines = node.code.split('\n');
+          const linesCount = lines.length;
+          
+          let nums = '';
+          for (let i = 1; i <= linesCount; i++) {
+            nums += i + '\n';
+          }
+          gutter.textContent = nums;
+
           const pre = document.createElement('pre');
           const codeNode = document.createElement('code');
           codeNode.className = node.language ? `language-${node.language}` : '';
           codeNode.textContent = node.code;
           
           pre.appendChild(codeNode);
-          contentPanel.appendChild(pre);
+          codeArea.appendChild(gutter);
+          codeArea.appendChild(pre);
+          contentPanel.appendChild(codeArea);
 
           const applyHighlight = () => {
              if (window.hljs) {
-                // we might need to remove previous hljs classes if re-rendering, but it's a new node
                 window.hljs.highlightElement(codeNode);
              }
           };

@@ -1,6 +1,9 @@
 https://github.com/giovbon/docs
 
-- source .venv/bin/activate
+python3 venve .venv
+source .venv/bin/activate
+pip install zensical
+
 
 - zensical serve
 - zensical serve -a localhost:8080
