@@ -89,6 +89,8 @@ function parseFileTreeData(text) {
   let currentCodeLanguage = '';
   let currentCodeContent = [];
   let currentCodeIndent = 0;
+  let currentCodeAnnotations = {};
+  let currentBlockLineIdx = 0;
   
   for (let i = 0; i < lines.length; i++) {
     const originalLine = lines[i];
@@ -97,7 +99,6 @@ function parseFileTreeData(text) {
       if (originalLine.trim().startsWith('```')) {
         inCodeBlock = false;
         const lastNode = stack[stack.length - 1];
-        // Only attach code if the node wasn't deemed a folder by explicit structure
         if (lastNode) {
           lastNode.code = currentCodeContent.map(l => {
              if (l.trim().length === 0) return '';
@@ -109,9 +110,18 @@ function parseFileTreeData(text) {
           }).join('\n');
           lastNode.language = currentCodeLanguage;
           lastNode.isFolder = false; 
+          lastNode.annotations = currentCodeAnnotations;
         }
       } else {
-        currentCodeContent.push(originalLine);
+        const annotRegex = /(\s*(?:\/\/|#|<!--|\/\*)?\s*)@@\[(.*?)\](?:\s*(?:\*\/|-->))?/;
+        const match = originalLine.match(annotRegex);
+        let processedLine = originalLine;
+        if (match) {
+            currentCodeAnnotations[currentBlockLineIdx] = match[2];
+            processedLine = originalLine.replace(annotRegex, '');
+        }
+        currentCodeContent.push(processedLine);
+        currentBlockLineIdx++;
       }
       continue;
     }
@@ -123,6 +133,8 @@ function parseFileTreeData(text) {
       inCodeBlock = true;
       currentCodeLanguage = trimmedLine.substring(3).trim();
       currentCodeContent = [];
+      currentCodeAnnotations = {};
+      currentBlockLineIdx = 0;
       const matchIndent = originalLine.match(/^\s*/);
       currentCodeIndent = matchIndent ? matchIndent[0].length : 0;
       continue;
@@ -272,7 +284,93 @@ function renderTree(nodes, container, contentPanel) {
 
           const applyHighlight = () => {
              if (window.hljs) {
-                window.hljs.highlightElement(codeNode);
+                const result = window.hljs.highlight(node.code, { 
+                    language: node.language || 'plaintext',
+                    ignoreIllegals: true 
+                });
+                let highlightedCode = result.value;
+                
+                if (node.annotations && Object.keys(node.annotations).length > 0) {
+                    const lines = highlightedCode.split('\n');
+                    Object.keys(node.annotations).forEach(lineIdx => {
+                        const idx = parseInt(lineIdx);
+                        if (lines[idx] !== undefined) {
+                            const tooltipText = escapeHTML(node.annotations[idx]);
+                            lines[idx] += ` <span class="annotation-marker" tabindex="0" data-annotation="${tooltipText}">✚</span>`;
+                        }
+                    });
+                    highlightedCode = lines.join('\n');
+                }
+                
+                codeNode.innerHTML = highlightedCode;
+                
+                // Attach tooltip listeners
+                const markers = codeArea.querySelectorAll('.annotation-marker');
+                markers.forEach(marker => {
+                    marker.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        // find existing globals
+                        let activeTooltip = document.querySelector('.annotation-tooltip');
+                        
+                        // Close currently active marker
+                        if (marker.classList.contains('active')) {
+                            marker.classList.remove('active');
+                            if (activeTooltip) activeTooltip.remove();
+                            return;
+                        }
+                        
+                        document.querySelectorAll('.annotation-marker.active').forEach(m => m.classList.remove('active'));
+                        if (activeTooltip) activeTooltip.remove();
+                        
+                        marker.classList.add('active');
+                        
+                        const text = marker.getAttribute('data-annotation');
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'annotation-tooltip';
+                        
+                        // Basic markdown parsing for inline code blocks
+                        let htmlText = text.replace(/`(.*?)`/g, '<code>$1</code>');
+                        tooltip.innerHTML = htmlText;
+                        
+                        // Default position out of view to calculate dimension
+                        tooltip.style.top = '-9999px';
+                        tooltip.style.left = '0px';
+                        document.body.appendChild(tooltip);
+                        
+                        // Positioning calculations
+                        const rect = marker.getBoundingClientRect();
+                        const ttRect = tooltip.getBoundingClientRect();
+                        
+                        let tooltipLeft = rect.left + (rect.width / 2) - (ttRect.width / 2);
+                        if (tooltipLeft + ttRect.width > window.innerWidth - 10) {
+                            tooltipLeft = window.innerWidth - 10 - ttRect.width;
+                        }
+                        if (tooltipLeft < 10) {
+                            tooltipLeft = 10;
+                        }
+                        tooltip.style.left = tooltipLeft + 'px';
+                        
+                        // Vertical placement
+                        let tooltipTop = rect.bottom + 10;
+                        if (tooltipTop + ttRect.height > window.innerHeight - 10) {
+                            tooltipTop = rect.top - ttRect.height - 10;
+                        }
+                        tooltip.style.top = tooltipTop + 'px';
+                        
+                        const closeListener = (e2) => {
+                            if (!tooltip.contains(e2.target) && e2.target !== marker) {
+                                tooltip.remove();
+                                marker.classList.remove('active');
+                                document.removeEventListener('click', closeListener);
+                            }
+                        };
+                        
+                        setTimeout(() => {
+                            document.addEventListener('click', closeListener);
+                        }, 10);
+                        
+                    });
+                });
              }
           };
 
@@ -290,4 +388,12 @@ function renderTree(nodes, container, contentPanel) {
       container.appendChild(fileDiv);
     }
   });
+}
+
+function escapeHTML(str) {
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
 }

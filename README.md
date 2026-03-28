@@ -452,3 +452,7 @@ python gerar_explorador.py (O que faz): Avisa o computador: "Ei, execute aquele 
 -o (O que faz): Vem da palavra "Output" (Saída). Significa: "Pegue tudo o que você leu na pasta alvo, e salve o resultado no seguinte lugar..."
 
 ./docs/arquivos/estrutura.txt (O que faz): É o destino. O script vai criar (ou substituir) um arquivo de texto exatamente nesse caminho e despejar toda aquela formatação chata de indentações e códigos ali dentro.
+
+## Comentários no código
+
+Com `# @@[Cria uma nova instância do usuário atual, chamada `user_atualizado`, aplicando as alterações contidas em `update_data`. O método `model_copy` do Pydantic é utilizado para gerar uma cópia do objeto original, mesclando os novos dados com os existentes.]`

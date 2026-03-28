@@ -62,8 +62,8 @@
       
           user_atual = database[user_id - 1] 
           update_data = user.model_dump(exclude_unset=True) 
-          user_atualizado = user_atual.model_copy(update=update_data) 
-          database[user_id - 1] = user_atualizado 
+          user_atualizado = user_atual.model_copy(update=update_data) # @@[Cria uma nova instância do usuário atual, chamada `user_atualizado`, aplicando as alterações contidas em `update_data`. O método `model_copy` do Pydantic é utilizado para gerar uma cópia do objeto original, mesclando os novos dados com os existentes.]
+          database[user_id - 1] = user_atualizado
       
           return user_atualizado
       
