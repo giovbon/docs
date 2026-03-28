@@ -5,19 +5,10 @@ hide:
 
 # Lista das APIs
 
-<div class="reveal" style="height: 500px; border: 1px solid #ccc;">
-  <div class="slides">
-    <section data-markdown="../SLIDES/02-lista-apis.txt"
-             data-separator="^\r?\n---\r?\n$"
-             data-separator-vertical="^\r?\n--\r?\n$">
-    </section>
-  </div>
-</div>
-
 - [x] APIs de CRUD básicas (criadas automaticamente junto com as tabelas)
     - `GET`, `POST`, `DELETE id`, `GET id` e `PATCH id`
 
-- [x] APIs de autenticação básicas (criadas junto da criação do workspace no Xano). A partir da tabela `user` padrão[^6], três APIs estão disponíveis para uso:
+- [x] APIs de autenticação (criadas junto da criação do workspace no Xano). A partir da tabela `user` padrão[^6], três APIs estão disponíveis para uso:
     - `/auth/login` devolve um `authToken` para alguém já cadastrado
     - `/auth/signup` cadastra usuário e devolve um `authToken` [^1]
     - `/auth/me/{authToken}` dado um authToken, devolve o usuário associado à ele
@@ -26,7 +17,7 @@ hide:
     - [ ] `/consultaCEP` dado um número de cep, devolve cep, localidade, estado, etc.
     - [ ] `/SendGrid_Email` {from, to, subject, content} devolve o status do envio
 
-## APIs Customizadas
+**APIs Customizadas**
 
 - [ ] `/buscaCEP` {cep} dado um cep, devolve se ele está na tabela CEP [^3]
 

@@ -443,6 +443,8 @@ def somar(a, b):
 
 `python gerar_explorador.py ./docs/ -o ./docs/arquivos/estrutura.txt`
 
+Especificando arquivos, pastas e extensões para serem ignorados: `python3 gerar_explorador.py ./minha_pasta --ignore-dirs "logs,temp" --ignore-files "secret.py" --ignore-exts ".log,.tmp"`
+
 O comando é formado por 4 partes. É como se você estivesse dando uma instrução falada para o computador:
 
 python gerar_explorador.py (O que faz): Avisa o computador: "Ei, execute aquele script que acabamos de criar."

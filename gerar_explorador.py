@@ -3,9 +3,10 @@ import os
 import argparse
 from pathlib import Path
 
-# Diretórios e extensões comumente ignorados por padrão para não travar o gerador com binários
-IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'dist', 'build', '.venv', 'venv'}
-IGNORE_EXTS = {'.exe', '.dll', '.so', '.dylib', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar', '.gz'}
+# Diretórios, arquivos e extensões comumente ignorados por padrão
+IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'dist', 'build', '.venv', 'venv', '.idea', '.vscode'}
+IGNORE_FILES = {'.ds_store', 'package-lock.json', 'yarn.lock'}
+IGNORE_EXTS = {'.exe', '.dll', '.so', '.dylib', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar', '.gz', '.pyc'}
 
 def get_language(ext):
     """Mapeia extensões para os nomes de sintaxe usados pelo markdown/highlight.js."""
@@ -38,7 +39,13 @@ def print_tree(dir_path: Path, output_file, level=0):
     # Organiza: exibe pastas primeiro, depois os arquivos na lista
     dirs, files = [], []
     for entry in entries:
-        if entry in IGNORE_DIRS or entry.startswith('.'):
+        if entry.startswith('.'):
+            continue
+        
+        if entry in IGNORE_DIRS:
+            continue
+            
+        if entry in IGNORE_FILES:
             continue
         
         p = dir_path / entry
@@ -90,8 +97,27 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Gera automaticamente um arquivo .txt aninhado para o File Tree Explorer Vanilla JS.")
     parser.add_argument("caminho", help="Caminho para a pasta que você quer transformar no explorador.")
     parser.add_argument("-o", "--output", default="estrutura.txt", help="Nome/caminho do arquivo gerado (Padrão: estrutura.txt)")
+    parser.add_argument("--ignore-dirs", help="Nomes de pastas extras para ignorar (separados por vírgula)")
+    parser.add_argument("--ignore-files", help="Nomes de arquivos extras para ignorar (separados por vírgula)")
+    parser.add_argument("--ignore-exts", help="Extensões extras para ignorar (ex: .log,.tmp)")
     
     args = parser.parse_args()
+
+    # Atualiza as listas de ignore se fornecido via argumentos
+    if args.ignore_dirs:
+        for d in args.ignore_dirs.split(','):
+            IGNORE_DIRS.add(d.strip())
+            
+    if args.ignore_files:
+        for f in args.ignore_files.split(','):
+            IGNORE_FILES.add(f.strip())
+            
+    if args.ignore_exts:
+        for ex in args.ignore_exts.split(','):
+            ext = ex.strip()
+            if not ext.startswith('.'):
+                ext = '.' + ext
+            IGNORE_EXTS.add(ext.lower())
     target_dir = Path(args.caminho)
     
     if not target_dir.exists() or not target_dir.is_dir():
