@@ -39,6 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     explorer.appendChild(fontBtn);
+
+    // Sidebar toggle button
+    const toggleSidebarBtn = document.createElement('button');
+    toggleSidebarBtn.className = 'file-tree-toggle-sidebar-btn';
+    toggleSidebarBtn.innerHTML = '◫';
+    toggleSidebarBtn.title = 'Recolher/Expandir menu';
+    toggleSidebarBtn.addEventListener('click', () => {
+      explorer.classList.toggle('sidebar-collapsed');
+    });
+    explorer.appendChild(toggleSidebarBtn);
     
     const contentPanel = document.createElement('div');
     contentPanel.className = 'file-tree-content';
