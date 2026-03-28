@@ -152,10 +152,11 @@
 
 .file-tree-code-area {
   display: flex;
-  height: 100%;
+  min-height: 100%;
   --code-line-height: 20px; /* pixel-based line height for perfect sync */
   --code-font-size: 13.5px;
   background: var(--md-code-bg-color, #2d2d2d);
+  position: relative; /* Established as reference for tooltips */
 }
 
 .file-tree-gutter {
@@ -311,7 +312,7 @@
 
 /* Global Tooltip (Popover) */
 .annotation-tooltip {
-  position: fixed;
+  position: absolute; /* Changed from fixed to absolute to scroll with code */
   z-index: 100000;
   background: #252526;
   color: #e4e4e4;

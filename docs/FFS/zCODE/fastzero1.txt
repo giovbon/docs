@@ -62,7 +62,7 @@
       
           user_atual = database[user_id - 1] 
           update_data = user.model_dump(exclude_unset=True) 
-          user_atualizado = user_atual.model_copy(update=update_data) # @@[Cria uma nova instância do usuário atual, chamada `user_atualizado`, aplicando as alterações contidas em `update_data`. O método `model_copy` do Pydantic é utilizado para gerar uma cópia do objeto original, mesclando os novos dados com os existentes.]
+          user_atualizado = user_atual.model_copy(update=update_data)
           database[user_id - 1] = user_atualizado
       
           return user_atualizado
@@ -81,7 +81,7 @@
     - schemas.py
       ```python
       from typing import Optional
-      from pydantic import BaseModel, EmailStr 
+      from pydantic import BaseModel, EmailStr # @@[`BaseModel` é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.]
       
       class UserSchema(BaseModel):
           username: str
@@ -96,14 +96,14 @@
           message: str
           user: UserPublic
       
-      class UserDB(UserSchema): 
+      class UserDB(UserSchema): #@@[Indica que a classe `UserDB` herda da classe `UserSchema`. Isso significa que `UserDB` possui todos os atributos e validações definidos em `UserSchema`, além de adicionar um novo atributo, `id`, do tipo `int`. Essa herança permite que `UserDB` aproveite a estrutura e a validação de dados já configuradas em `UserSchema`, facilitando a criação de modelos de dados mais especializados.]
           id: int
       
       class UserList(BaseModel):
           users: list[UserPublic]
       
       class UserUpdate(BaseModel):
-          username: Optional[str] = None 
+          username: Optional[str] = None #@@[No método PATCH, usar `Optional[str] = None` (ou `str | None = None`) é essencial porque torna o campo não obrigatório, permitindo que o usuário envie apenas os dados que deseja atualizar. Se um campo, como `username`, for omitido, o Pydantic atribui None a ele. Isso é importante para que, ao usar `model_dump(exclude_unset=True)`, o sistema identifique quais campos foram realmente enviados e quais podem ser ignorados na atualização, evitando a sobrescrição acidental de informações existentes.]
           email: Optional[EmailStr] = None
           password: Optional[str] = None
       

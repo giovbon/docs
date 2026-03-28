@@ -113,7 +113,7 @@ function parseFileTreeData(text) {
           lastNode.annotations = currentCodeAnnotations;
         }
       } else {
-        const annotRegex = /(\s*(?:\/\/|#|<!--|\/\*)?\s*)@@\[(.*?)\](?:\s*(?:\*\/|-->))?/;
+        const annotRegex = /(\s*(?:\/\/|#|<!--|\/\*)?\s*)@@\[(.*)\](?:\s*(?:\*\/|-->))?\s*$/;
         const match = originalLine.match(annotRegex);
         let processedLine = originalLine;
         if (match) {
@@ -335,27 +335,38 @@ function renderTree(nodes, container, contentPanel) {
                         // Default position out of view to calculate dimension
                         tooltip.style.top = '-9999px';
                         tooltip.style.left = '0px';
-                        document.body.appendChild(tooltip);
+                        codeArea.appendChild(tooltip);
                         
                         // Positioning calculations
                         const rect = marker.getBoundingClientRect();
                         const ttRect = tooltip.getBoundingClientRect();
+                        const areaRect = codeArea.getBoundingClientRect();
                         
-                        let tooltipLeft = rect.left + (rect.width / 2) - (ttRect.width / 2);
-                        if (tooltipLeft + ttRect.width > window.innerWidth - 10) {
-                            tooltipLeft = window.innerWidth - 10 - ttRect.width;
+                        // Horizontal placement: start with centering relative to marker in viewport
+                        let targetViewportLeft = rect.left + (rect.width / 2) - (ttRect.width / 2);
+                        
+                        // Constraint: avoid going off the left/right edges of the dynamic viewport
+                        if (targetViewportLeft + ttRect.width > window.innerWidth - 10) {
+                            targetViewportLeft = window.innerWidth - 10 - ttRect.width;
                         }
-                        if (tooltipLeft < 10) {
-                            tooltipLeft = 10;
+                        if (targetViewportLeft < 10) {
+                            targetViewportLeft = 10;
                         }
-                        tooltip.style.left = tooltipLeft + 'px';
+                        
+                        // Convert viewport left to codeArea relative left
+                        tooltip.style.left = (targetViewportLeft - areaRect.left) + 'px';
                         
                         // Vertical placement
-                        let tooltipTop = rect.bottom + 10;
-                        if (tooltipTop + ttRect.height > window.innerHeight - 10) {
-                            tooltipTop = rect.top - ttRect.height - 10;
+                        let relativeTop;
+                        // Check if it fits below in the viewport
+                        if (rect.bottom + 10 + ttRect.height > window.innerHeight - 10) {
+                            // Flip to top of marker
+                            relativeTop = rect.top - areaRect.top - ttRect.height - 10;
+                        } else {
+                            // Place below marker
+                            relativeTop = rect.bottom - areaRect.top + 10;
                         }
-                        tooltip.style.top = tooltipTop + 'px';
+                        tooltip.style.top = relativeTop + 'px';
                         
                         const closeListener = (e2) => {
                             if (!tooltip.contains(e2.target) && e2.target !== marker) {
