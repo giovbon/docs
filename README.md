@@ -428,7 +428,7 @@ Você pode passar atributos `data-*` para customizar o player:
 
 
 
-## Destaque de Código
+# Destaque de Código
 
 ```python [1|1-2|1-4]
 def somar(a, b):
@@ -455,6 +455,28 @@ python gerar_explorador.py (O que faz): Avisa o computador: "Ei, execute aquele 
 
 ./docs/arquivos/estrutura.txt (O que faz): É o destino. O script vai criar (ou substituir) um arquivo de texto exatamente nesse caminho e despejar toda aquela formatação chata de indentações e códigos ali dentro.
 
+Usos comuns:
+
+- `python3 gerar_explorador.py . --ignore-dirs "backup"`
+- `python3 gerar_explorador.py . --ignore-exts ".tmp,.swp,.bak"`
+- `python3 gerar_explorador.py . --ignore-dirs "venv" --ignore-files "poetry.lock"`
+
+Se você não definir o caminho usando `-o`, o script salvará o arquivo com o nome **`estrutura.txt`** diretamente na **pasta onde você está no terminal** (o diretório de trabalho atual).
+
+Por exemplo:
+
+1. Se você estiver na pasta `/home/giobon/meu-projeto/` e rodar:
+   ```bash
+   python3 gerar_explorador.py ./docs/
+   ```
+   O arquivo será criado em: `/home/giobon/meu-projeto/estrutura.txt`.
+
+### Resumo do Comportamento:
+- **Sem `-o`**: Salva como `estrutura.txt` na pasta atual.
+- **Com `-o arquivo.txt`**: Salva como `arquivo.txt` na pasta atual.
+- **Com `-o pasta/sub/arquivo.txt`**: Salva dentro da estrutura de pastas especificada (e agora, graças à nossa última atualização, ele cria as pastas automaticamente se elas não existirem).
+
 ## Comentários no código
 
 Com `# @@[Cria uma nova instância do usuário atual, chamada `user_atualizado`, aplicando as alterações contidas em `update_data`. O método `model_copy` do Pydantic é utilizado para gerar uma cópia do objeto original, mesclando os novos dados com os existentes.]`
+

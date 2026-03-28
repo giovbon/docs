@@ -10,6 +10,8 @@ O Xano não funciona criando apenas CRUDs, ele pode atuar como um "intermediári
 
 ## Snippet de Consulta de CEP (ViaCEP)
 
+[Vídeo tutorial](https://drive.google.com/file/d/1tv5upTEIM29ptKb5lLa4cxdAB8eZwDBH/view?usp=sharing)
+
 O objetivo é criar uma API no Xano que, *ao receber um CEP, busca o endereço completo*. O Xano apenas chama um serviço externo gratuito chamado ViaCEP, uma API que retorna dados de um endereço com base no CEP. Seu uso está previsto nos casos de uso. Esta funcionalidade é importante na interface desenvolvida no FlutterFlow para autocompletar os dados (como logradouro, bairro, localidade, etc) uma vez que o usuário digitou o CEP (também há a possibilidade de implementação dessa funcionalidade diretamente no FlutterFlow).
 
 ---
@@ -27,6 +29,8 @@ O objetivo é criar uma API no Xano que, *ao receber um CEP, busca o endereço c
 Assim você importa o Snippet "consultacep" e, ao testá-lo ("Run"), pode inserir um CEP e receber os dados do endereço como resposta.
 
 ## Snippet de Envio de E-mail
+
+[Vídeo tutorial](https://drive.google.com/file/d/1lku5IkHlLzDCqh2canIyTCtsMjtZjPhI/view?usp=sharing)
 
 O objetivo é criar uma API no Xano que envia e-mails. O Xano utiliza outro serviço externo, o SendGrid, que é quem de fato envia o e-mail. O envio de e-mail no cadastro é uma etapa importante por duas razões:
 - O e-mail será usado como o login do usuário.
