@@ -253,7 +253,11 @@ function renderTree(nodes, container, contentPanel) {
               console.error('Falha ao copiar:', e);
             });
           });
-          contentPanel.appendChild(copyBtn);
+          
+          // Fix: Append copy button to the explorer container so it stays fixed during inner scroll
+          const oldCopyBtn = explorer.querySelector('.file-tree-copy-btn');
+          if (oldCopyBtn) oldCopyBtn.remove();
+          explorer.appendChild(copyBtn);
 
           // Create the main code display area
           const codeArea = document.createElement('div');
