@@ -8,7 +8,7 @@ hide:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">
-    <section data-markdown="../../zSLIDES/08-temp.txt"
+    <section data-markdown="../../zSLIDES/08-workflows.txt"
              data-separator="^\r?\n---\r?\n$"
              data-separator-vertical="^\r?\n--\r?\n$">
     </section>
@@ -47,3 +47,5 @@ jobs:
 5. Define runner. Runner é a máquina ou ambiente virtual onde o job será executado (ex: um servidor `ubuntu-24.04`).
 3. Steps são as instruções sequenciais executadas dentro do job.
 6. Executa comando de linha de comando (shell).
+
+[:lucide-arrow-big-down: Baixar Exercício CTT8](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT08.typ'); return false;" }
