@@ -17,6 +17,7 @@ Quando falamos de APIs servindo dados, todas essas operações têm alguma forma
 - `PATCH`: é usado quando o cliente quer aplicar ==atualizações parciais== a um recurso existente, enviando apenas os dados que precisam ser modificados.
 - `DELETE`: usado para dizer ao servidor que delete determinado recurso.
 
+
 <div class="code-explorer" data-src="../../zCODE/fastzero1.txt" ></div>
 
 ## Schemas

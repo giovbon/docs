@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(text => {
         const treeData = parseFileTreeData(text);
-        renderTree(treeData, sidebar, contentPanel);
+        renderTree(treeData, sidebar, contentPanel, explorer);
       })
       .catch(e => {
         sidebar.innerHTML = `<span style="color:red">Erro carregando ${src}</span>`;
@@ -175,7 +175,7 @@ function parseFileTreeData(text) {
   return nodes;
 }
 
-function renderTree(nodes, container, contentPanel) {
+function renderTree(nodes, container, contentPanel, explorer) {
   nodes.forEach(node => {
     if (node.isFolder || node.children.length > 0) {
       const details = document.createElement('div');
@@ -203,7 +203,7 @@ function renderTree(nodes, container, contentPanel) {
       
       const childrenContainer = document.createElement('div');
       childrenContainer.className = 'file-tree-children';
-      renderTree(node.children, childrenContainer, contentPanel);
+      renderTree(node.children, childrenContainer, contentPanel, explorer);
       
       details.appendChild(childrenContainer);
       container.appendChild(details);
