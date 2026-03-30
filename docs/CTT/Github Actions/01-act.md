@@ -86,6 +86,16 @@ jobs:
       - run: echo "Hello GitHub Action Workflow!"
 ```
 
+!!! danger "Alerta"
+
+    `.github/workflows/work-hello.yml` é o mesmo que essa estrutura de pastas:
+    ```
+    ├── Nome_Projeto_Git
+    │   ├── .github
+    │       ├── workflows
+    │   │   │   └── work-hello.yml
+    ```
+
 - Agora rode `act -l` para ver se esse workflow aparece.
 - Depois disso rode `act workflow_dispatch -q` para executar.
 

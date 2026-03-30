@@ -26,6 +26,16 @@ hide:
 No GitHub, quando você faz um `git push`, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. 
 O act imita esse comportamento, de forma que para executar os workflows você deve criar uma pasta, inicializar um repo com `git init`, criar as pastas `.github/workflows` e dentro de `workflows` colocar seus workflows como arquivos `.yml`
 
+!!! danger "Alerta"
+
+    `.github/workflows/work-hello.yml` é o mesmo que essa estrutura de pastas:
+    ```
+    ├── Nome_Projeto_Git
+    │   ├── .github
+    │       ├── workflows
+    │   │   │   └── work-hello.yml
+    ```
+
 Elementos básicos de um workflow, a estrutura mínima para um workflow funcionar:
 
 ``` yaml

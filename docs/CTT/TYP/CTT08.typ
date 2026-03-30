@@ -19,7 +19,7 @@ O `act` exige que o ambiente local seja reconhecido como um repositório Git par
 
 1. Crie uma pasta raiz para o seu projeto chamada `meu-projeto-ci`.
 2. Inicialize um repositório Git vazio e faça um commit inicial (pode ser de um arquivo `README.md` vazio).
-3. Recrie a estrutura de diretórios estrita que o GitHub (e o `act`) exige para reconhecer os workflows de automação.
+3. Recrie a estrutura de diretórios estrita que o GitHub (e o `act`) exige para reconhecer os workflows de automação (`.github/workflows/`).
 4. Certifique-se de que o *Docker* está rodando na sua máquina e que o *`act`* está instalado.
 
 == Parte 2: O Primeiro Workflow e a Ferramenta de Mapeamento
@@ -36,7 +36,7 @@ Antes de criar o pipeline completo, você precisa validar se o `act` está lendo
 5. *Validação:* Utilize o comando do `act` que *lista todos os workflows e jobs detectados* sem executá-los. Anote o comando utilizado e a saída do terminal. Em qual `Stage` este job se encontra?
 6. *Execução:* Execute apenas este arquivo específico utilizando a flag `-W` combinada com `grep "|"` para limpar a saída do terminal e ver apenas os `echos`.
 
-== Parte 3: O Desafio do Pipeline Complexo (DAG)
+== Parte 3: O Desafio do Pipeline Complexo
 
 Agora você criará o pipeline oficial da aplicação. Crie um novo arquivo chamado `02-pipeline-principal.yml`. Este workflow deve ser disparado no evento de `push`.
 
