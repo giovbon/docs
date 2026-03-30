@@ -6,13 +6,6 @@
 
 ---
 
-# Conceitos Iniciais de Desenvolvimento Web
-
-Front-end e Back-end. Arquitetura cliente-servidor com comunicação request-response: requisição composta por URL, métodos (GET, POST PUT e DELETE), headers e body; resposta composta por status code (tipos de códigos), headers e body. Protocolo HTTP e conceitos de recurso e Hipermídia; composição de URLs; CRUD; APIs, padrão REST e Swagger.
-
----
-
-## Front-end e Back-end
 **Front-end** é a parte visível de uma aplicação, focada na interface do usuário (o que você vê e interage).
 -  Vai utilizar linguagens como *HTML, CSS e JavaScript para criar a parte visual e interativa*, no Hard Code usa frameworks e bibliotecas como React, Angular, Tailwind, Vue.js, etc. 
 - Foca na experiência do usuário, na aparência e a funcionalidade da interface. 
@@ -47,7 +40,7 @@ A **comunicação request-response** é um modelo fundamental para a *comunicaç
 
 <div style="text-align: center;">
 	<img src="https://darvishdarab.github.io/cs421_f20/assets/images/client-server-1-d85a93ea16590c10bed340dd78294d0d.png" width="30%" data-preview-image>
-	<img src="../SLIDES/img/request_response.png" width="50%" data-preview-image>
+	<img src="../zSLIDES/img/request_response.png" width="50%" data-preview-image>
 </div>
 
 ---
@@ -55,7 +48,7 @@ A **comunicação request-response** é um modelo fundamental para a *comunicaç
 Esse padrão de comunicação é uma *comunicação síncrona* e baseada em ciclos independentes, ou seja, o servidor só responde quando solicitado, e cada troca de mensagem é completa em si. Esse padrão é a *base da interação entre front-end e back-end em aplicações web modernas*.
 
 <div style="text-align: center;">
-	<img src="../SLIDES/img/request_response_front_back.png" width="50%" data-preview-image>
+	<img src="../zSLIDES/img/request_response_front_back.png" width="50%" data-preview-image>
 </div>
 
 ---
@@ -97,7 +90,7 @@ Um documento completo é construído por diferentes sub-documentos (recursos), c
 ## URLs
 A localização de recursos no protocolo HTTP é realizada através das URLs (Universal Resource Locator). 
 
-### `http://www.loja.com.br:80/musica/cd.php?id=37&sessao=AB7#detalhes`
+`http://www.loja.com.br:80/musica/cd.php?id=37&sessao=AB7#detalhes`
 
 - **`http`**: diz respeito ao protocolo
 - **`www`**: representa o domínio
@@ -107,7 +100,7 @@ A localização de recursos no protocolo HTTP é realizada através das URLs (Un
 
 ---
 
-### `http://www.loja.com.br:80/musica/cd.php?id=37&sessao=AB7#detalhes`
+`http://www.loja.com.br:80/musica/cd.php?id=37&sessao=AB7#detalhes`
 
 - **`80`**: é a porta padrão em http, não precisa ser definida na url, pois o padrão é 80 em HTTP e 443 em HTTPS
 - **`musica`**: caminho, pasta ou categoria
@@ -233,4 +226,4 @@ No Swagger podemos ver uma lista de endpoints (pontos de acesso) da API:
 
 <div style="text-align: center;">
 	<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.sstatic.net%2F173dI.png&f=1&nofb=1&ipt=6b71e65e2128a198dc766cc9b68880b4612afd3ad5cfbd36d30ffa6cdd5507b2" width="50%" data-preview-image>
-</div>
+</div>ssss
