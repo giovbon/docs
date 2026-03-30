@@ -42,10 +42,10 @@ Agora você criará o pipeline oficial da aplicação. Crie um novo arquivo cham
 
 Você deve configurar *quatro jobs distintos*. Lembre-se de que, por padrão, o GitHub Actions tenta rodar tudo em paralelo. Você precisará usar a palavra-chave *`needs`* para criar a seguinte ordem de execução estruturada (um Grafo Direcionado Acíclico - DAG):
 
-*   *Job 1 (`setup-e-lint`):* O primeiro a rodar. Simula a preparação do ambiente e a checagem de qualidade do código. Deve rodar no `ubuntu-latest` e ter um step que imprima `"Analisando qualidade do código..."`.
-*   *Job 2 (`testes-unitarios`):* Só pode iniciar *após* o término do Job 1. Deve imprimir `"Rodando testes unitários..."`.
-*   *Job 3 (`scan-de-seguranca`):* Também só pode iniciar *após* o término do Job 1, mas deve rodar *em paralelo* com o Job 2. Deve imprimir `"Procurando vulnerabilidades..."`.
-*   *Job 4 (`build-e-deploy`):* O estágio final. Só deve iniciar quando os testes (Job 2) *E* o scan de segurança (Job 3) tiverem finalizado com sucesso. Deve imprimir `"Gerando artefato e fazendo deploy..."`.
+-   *Job 1 (`setup-e-lint`):* O primeiro a rodar. Simula a preparação do ambiente e a checagem de qualidade do código. Deve rodar no `ubuntu-latest` e ter um step que imprima `"Analisando qualidade do código..."`.
+-   *Job 2 (`testes-unitarios`):* Só pode iniciar *após* o término do Job 1. Deve imprimir `"Rodando testes unitários..."`.
+-   *Job 3 (`scan-de-seguranca`):* Também só pode iniciar *após* o término do Job 1, mas deve rodar *em paralelo* com o Job 2. Deve imprimir `"Procurando vulnerabilidades..."`.
+-   *Job 4 (`build-e-deploy`):* O estágio final. Só deve iniciar quando os testes (Job 2) *E* o scan de segurança (Job 3) tiverem finalizado com sucesso. Deve imprimir `"Gerando artefato e fazendo deploy..."`.
 
 *Validação de Arquitetura:*
 Antes de rodar, verifique se a sintaxe do YAML está correta usando o comando de *dry-run* (checagem de sintaxe) do `act`.
