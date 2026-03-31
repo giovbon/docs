@@ -4,11 +4,11 @@ hide:
   - navigation
 ---
 
-# Selenium :simple-selenium:
+# Selenium I:simple-selenium:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">
-    <section data-markdown="../zSLIDES/07-selenium.txt"
+    <section data-markdown="../zSLIDES/07-selenium1.txt"
              data-separator="^\r?\n---\r?\n$"
              data-separator-vertical="^\r?\n--\r?\n$">
     </section>
@@ -17,32 +17,60 @@ hide:
 
 ## Preparar ambiente
 
-Crie ambiente python, depois:
 
-```bash
-pip install selenium
-pip install webdriver-manager
-```
+=== "Linux (Ubuntu/Debian)"
 
-```py title="teste-func-selenium.py"
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager # (6)!
+    ```bash
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install selenium webdriver-manager pytest
+    ```
 
-servico = Service(ChromeDriverManager().install())  # (1)!
-driver = webdriver.Chrome(service=servico)  # (2)!
+=== "Windows"
 
-driver.get("https://www.google.com")  # (3)!
-print(f"Sucesso! Título: {driver.title}")  # (4)!
-driver.quit()  # (5)!
-```
+    ```bash
+    python -m venv .venv
+    .venv\Scripts\activate
+    pip install selenium webdriver-manager pytest
+    ```
 
-1. Instala e obtém o caminho do ChromeDriver
-2. Inicializa o WebDriver e o servidor HTTP local do ChromeDriver
-3. Carrega a página do Google
-4. Exibe o título da página
-5. Encerra a sessão e finaliza processos
-6. Importa as bibliotecas necessárias para usar o Selenium com o ChromeDriver e gerenciar automaticamente a instalação do ChromeDriver
+---
+
+=== "Chrome"
+
+    ```py title="teste-func-selenium.py"
+    from selenium import webdriver
+    from selenium.webdriver.chrome.service import Service
+    from webdriver_manager.chrome import ChromeDriverManager
+
+    servico = Service(ChromeDriverManager().install())  
+    driver = webdriver.Chrome(service=servico)  
+
+    driver.get("https://www.google.com")  
+    print(f"Sucesso! Título: {driver.title}")  
+    driver.quit()  
+    ```
+
+=== "Chromium"
+
+    ```py title="teste-func-selenium.py"
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from webdriver_manager.chrome import ChromeDriverManager
+    from webdriver_manager.core.os_manager import ChromeType
+
+    options = Options()
+    options.binary_location = "/usr/sbin/chromium"
+
+    servico = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+
+    driver = webdriver.Chrome(service=servico, options=options)
+
+    driver.get("https://www.google.com")
+    print(f"Sucesso! Título: {driver.title}")
+    driver.quit()
+    ```
 
 Execute com  `python3 teste-func-selenium.py`. 
 
@@ -156,7 +184,10 @@ finally:
 9. Primeira linha "aperta" a tecla Control (Ctrl) e a mantém pressionada, toca na tecla "A" e finalmente solta a tecla. A segunda linha apaga o conteúdo.
 10. Fecha tudo e mata o processo do driver (diferente do `driver.close()` que fecha apenas a janela/aba que está em foco no momento)
 
----
+
+## Interagindo com Web Elements
+
+Encontrar o elemento é só o primeiro passo. Depois de guardar o elemento em uma variável, usamos métodos para interagir com ele como um usuário real.
 
 | Componente | Função Principal | Analogia |
 | :--- | :--- | :--- |

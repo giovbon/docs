@@ -66,8 +66,7 @@ extra_css = [
     "stylesheets/markmap.css",
     "stylesheets/asciinema.css",
     "https://cdn.jsdelivr.net/npm/asciinema-player@3.0/dist/bundle/asciinema-player.min.css",
-    "stylesheets/filetree.css",
-    "stylesheets/drawio.css?v=2"
+    "stylesheets/filetree.css"
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
@@ -90,8 +89,7 @@ extra_javascript = [
     "javascripts/init-asciinema.js",
     "javascripts/typst-pdf.js",
     "javascripts/init-filetree.js",
-    "https://viewer.diagrams.net/js/viewer-static.min.js?v=2",
-    "javascripts/init-drawio.js?v=2"
+    "https://viewer.diagrams.net/js/viewer-static.min.js?v=2"
 ]
 
 # ----------------------------------------------------------------------------
