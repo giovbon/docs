@@ -41,7 +41,7 @@ O **Selenium** é um ecossistema de ferramentas voltado para a *automação de n
 Lembrando da pirâmide de testes:
 
 <div style="text-align: center;">
-    <img src="../SLIDES/img/piram-tests.png" width="60%">
+    <img src="../zSLIDES/img/piram-tests.png" width="60%">
 </div>
 
 

@@ -8,7 +8,7 @@ hide:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">
-    <section data-markdown="../SLIDES/07-selenium.txt"
+    <section data-markdown="../zSLIDES/07-selenium.txt"
              data-separator="^\r?\n---\r?\n$"
              data-separator-vertical="^\r?\n--\r?\n$">
     </section>

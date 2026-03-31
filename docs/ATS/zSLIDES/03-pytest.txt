@@ -256,8 +256,8 @@ Ao abrir o arquivo `index.html` no navegador, você encontrará seu código-font
 ---
 
 <div style="text-align: center;">
-    <img src="../SLIDES/img/coverage1.png" width="70%">
-    <img src="../SLIDES/img/coverage2.png" width="70%">
+    <img src="../zSLIDES/img/coverage1.png" width="70%">
+    <img src="../zSLIDES/img/coverage2.png" width="70%">
 </div>
 
 O `if` está amarelo porque ele é o "pai" de um desvio (branch). A cor amarela não significa que a linha não foi lida, mas sim que a lógica daquela linha não foi explorada em todas as suas possibilidades (o `else`, no caso).

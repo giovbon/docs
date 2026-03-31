@@ -49,7 +49,7 @@ Quase todo teste de unidade segue uma estrutura lógica dividida em três etapas
 A Pirâmide de Testes é um conceito que serve para *guiar a estratégia de automação de testes* em um projeto de software que ajuda os desenvolvedores a decidirem *quantos e quais tipos de testes devem ser criados*.
 
 <div style="text-align: center;">
-    <img src="../SLIDES/img/piram-tests.png" width="60%">
+    <img src="../zSLIDES/img/piram-tests.png" width="60%">
 </div>
 
 
