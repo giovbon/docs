@@ -5,8 +5,8 @@ source .venv/bin/activate
 pip install zensical
 
 
-- zensical serve
-- zensical serve -a localhost:8080
+zensical serve
+zensical serve -a localhost:8080
 
 
 

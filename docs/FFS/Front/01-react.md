@@ -16,72 +16,13 @@ hide:
   </div>
 </div>
 
-## Componente
-
-```js title="App.js"
-import MeuBotao from "./Componentes/Botao1";
-
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Componentes do React</h1>
-
-      <MeuBotao // (1)!
-        texto="Componente intância do componente MeuBotao"
-        bgcor="blue"
-        cor="white"
-      />
-      <br />
-      <MeuBotao texto="Outro botão" bgcor="red" cor="white" /> /* (2)! */
-    </div>
-  );
-}
-```
-
-1. Enviando 3 props para este componente: texto, bgcor e cor
-2. Reutilizando o componente com outras propriedades
-
-```js title="MeuBotao.jsx"
-import React from "react";
-
-export default function MeuBotao({ texto, bgcor, cor }) { // (2)!
-  /* (1)! */
-  return (
-    <button style={{ backgroundColor: bgcor, color: cor }}>{texto}</button>
-  );
-}
-
-```
-
-1. A área entre a definição da função e o `return` é o "cérebro" do componente, onde você processa dados, define estados com `useState` e cria funções de lógica antes de renderizar o visual
-2. Recebe 3 propriedades de forma desestruturada, sem ela ficaria: `MeuBotao( props )` com as props sendo acessadas com `props.bgcor`
+<div class="code-explorer" data-src="../../zCODE/react1.txt" ></div>
 
 Os atributos do JSX (como o `backgroundColor`) são semelhantes aos atributos HTML, mas com algumas diferenças importantes: 
 
 - Os atributos de eventos em JSX seguem a convenção **camelCase**, como `onClick`, enquanto em HTML são escritos em minúsculas (`onclick`)... 
     - `class` do html é escrito de forma diferente em React: `className`.
 - Alguns atributos são específicos do React e não têm equivalente direto no HTML.
-
-## Estados
-
-Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo declarar uma variável de estado e uma função para atualizá-la.
-
-```js hl_lines="4 8-9" title="Contador.jsx"
-import React, { useState } from 'react';
-
-function Contador() {
-  const [contador, setContador] = useState(0);  //(1)!
-
-  return (
-    <div>
-      <p>Contagem: {contador}</p>
-      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
-    </div>
-  );
-}
-```
-
-1. O uso de `useState` envolve declarar uma variável de estado (`contador`) e uma função para atualizá-la (`setContador`) além do estado inicial (`useState(0)`)
 
 ---
 

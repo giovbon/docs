@@ -1,0 +1,121 @@
+- /
+  - src/
+    - Componentes/
+      - Botao.jsx
+        ```jsx
+        import React from "react";
+        
+        export default function MeuBotao({ texto, bgcor, cor, onClick }) { //@@[Recebe 4 propriedades de forma desestruturada, sem ela ficaria: `MeuBotao( props )` com as props sendo acessadas com `props.bgcor`]
+          //@@[A área entre a definição da função e o return é o "cérebro" do  componente, onde você processa dados, define estados com useState e cria funções de lógica antes de renderizar o visual.]
+          return (
+            <button style={{ backgroundColor: bgcor, color: cor }} onClick={onClick}>
+              {texto}
+            </button>
+          );
+        }
+        ```
+      - Contador.jsx
+        ```jsx
+        import React, { useState } from "react";
+        
+        export default function Contador() {
+          const [contador, setContador] = useState(0); //@@[O uso de `useState` envolve declarar uma variável de estado (`contador`) e uma função para atualizá-la (`setContador`) além do estado inicial (`useState(0)`)]
+        
+          return (
+            <>
+              <p>Contagem: {contador}</p>
+              <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+              <button onClick={() => setContador(0)}>Resetar</button>
+            </>
+          );
+        }
+        ```
+    - App.js
+      ```javascript
+      import MeuBotao from "./Componentes/Botao";
+      import Contador from "./Componentes/Contador";
+      import "./styles.css";
+      
+      export default function App() {
+
+        function handleClick() {
+          alert("Clicado!");
+        }
+      
+        return (
+          <div className="App">
+              
+            <h1>Componentes do React</h1>
+      
+            <MeuBotao //@@[Enviando 4 props para este componente: texto, bgcor, cor e onClick]
+              texto="Componente intância do componente MeuBotao"
+              bgcor="blue"
+              cor="white"
+              onClick={handleClick}
+            />
+      
+            <br />
+      
+            <MeuBotao //@@[Reutilizando o componente com outras propriedades]
+              texto="Outro botão"
+              bgcor="red"
+              cor="white"
+              onClick={handleClick}
+            />
+      
+            <Contador />
+          </div>
+        );
+      }
+      ```
+    - index.js
+      ```javascript
+      import { StrictMode } from "react";
+      import { createRoot } from "react-dom/client";
+      
+      import App from "./App";
+      
+      const rootElement = document.getElementById("root");
+      const root = createRoot(rootElement);
+      
+      root.render(
+        <StrictMode>
+          <App />
+        </StrictMode>
+      );
+      ```
+    - styles.css
+      ```css
+      .App {
+        font-family: sans-serif;
+        text-align: center;
+      }
+      ```
+  - package.json
+    ```json
+    {
+      "name": "react",
+      "version": "1.0.0",
+      "description": "",
+      "keywords": [],
+      "main": "src/index.tsx",
+      "dependencies": {
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-scripts": "^5.0.0"
+      },
+      "devDependencies": {
+        "@types/react": "19.0.0",
+        "@types/react-dom": "19.0.0",
+        "loader-utils": "3.2.1",
+        "typescript": "5.7.2"
+      },
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+      },
+      "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+    }
+    ```
