@@ -5,78 +5,78 @@
       ```
     - app.py
       ```python
-      from fastapi import FastAPI, HTTPException
-      from fast_zero.schemas import UserSchema, UserResponse, UserDB, UserList, UserPublic, UserUpdate, Message
-      
-      app = FastAPI() 
-      
-      @app.get("/", summary="Endpoint raiz") 
-      def read_root():
-          return {'message': 'API FUNCIONANDO!'}
-      
-      database = [] 
-      
-      @app.post("/users/", status_code=201, response_model=UserResponse, summary="Cria um usuário")
-      def create_user(user: UserSchema):
-      
-          dados_do_usuario = user.model_dump() 
-      
-          novo_id = len(database) + 1 
-      
-          user_with_id = UserDB( 
-              id=novo_id,
-              username=dados_do_usuario["username"],
-              email=dados_do_usuario["email"],
-              password=dados_do_usuario["password"]
-          )
-      
-          database.append(user_with_id) 
-          
-      
-          return {
-              "message": "Usuário criado com sucesso",
-              "user": user_with_id
-          }
-      
-      @app.get('/users/', response_model=UserList, summary="Retorna todos os usuários")
-      def read_users():
-          return {'users': database} 
-      
-      @app.put('/users/{user_id}', response_model=UserPublic, summary="Atualiza totalmente um usuário")
-      def update_user(user_id: int, user: UserSchema): 
-          if user_id > len(database) or user_id < 1: 
-              raise HTTPException( 
-                  status_code=404, detail='User not found'
-              ) 
-      
-          user_with_id = UserDB(**user.model_dump(), id=user_id) 
-          database[user_id - 1] = user_with_id 
-      
-          return user_with_id
-      
-      @app.patch('/users/{user_id}', response_model=UserPublic, summary="Atualiza parcialmente um usuário")
-      def patch_user(user_id: int, user: UserUpdate):
-      
-          if user_id > len(database) or user_id < 1:
-              raise HTTPException(status_code=404, detail='User not found')
-      
-          user_atual = database[user_id - 1] 
-          update_data = user.model_dump(exclude_unset=True) 
-          user_atualizado = user_atual.model_copy(update=update_data)
-          database[user_id - 1] = user_atualizado
-      
-          return user_atualizado
-      
-      @app.delete('/users/{user_id}', response_model=Message, summary="Deleta um usuário")
-      def delete_user(user_id: int):
-          if user_id > len(database) or user_id < 1:
-              raise HTTPException(
-                  status_code=404, detail='User not found'
-              )
-      
-          del database[user_id - 1] 
-      
-          return {'message': 'User deleted'}
+        from fastapi import FastAPI, HTTPException
+        from schemas import UserSchema, UserResponse, UserDB, UserList, UserPublic, UserUpdate, Message
+
+        app = FastAPI() #@@[instância do FastAPI]
+
+        @app.get("/", summary="Endpoint raiz") #@@[rota GET para raiz que chama read_root]
+        def read_root():
+            return {'message': 'API FUNCIONANDO!'}
+
+        database = [] #@@[banco "fake" em memória como lista]
+
+        @app.post("/users/", status_code=201, response_model=UserResponse, summary="Cria um usuário")#@@[rota POST que valida resposta com UserResponse]
+        def create_user(user: UserSchema):
+
+            dados_do_usuario = user.model_dump() #@@[converte dados validados em dict]
+            
+            novo_id = len(database) + 1 #@@[gera ID baseado no tamanho atual da lista]
+
+            user_with_id = UserDB( #@@[cria UserDB com ID e campos do dict]
+                id=novo_id,
+                username=dados_do_usuario["username"],
+                email=dados_do_usuario["email"],
+                password=dados_do_usuario["password"]
+            )
+            
+            database.append(user_with_id) #@@[adiciona novo usuário à lista em memória]
+            #@@[alternativa: user_with_id = UserDB(**user.model_dump(), id=len(database)+1); database.append(user_with_id)]
+
+            return {
+                "message": "Usuário criado com sucesso",
+                "user": user_with_id
+            }
+
+        @app.get('/users/', response_model=UserList, summary="Retorna todos os usuários")
+        def read_users():
+            return {'users': database} #@@[retorna todos os usuários armazenados]
+
+        @app.put('/users/{user_id}', response_model=UserPublic, summary="Atualiza totalmente um usuário")
+        def update_user(user_id: int, user: UserSchema): #@@[user_id identifica o usuário; user traz dados para substituição]
+            if user_id > len(database) or user_id < 1: #@@[verifica se user_id está fora do intervalo válido]
+                raise HTTPException( #@@[lança 404 se usuário não existir]
+                    status_code=404, detail='User not found'
+                ) 
+
+            user_with_id = UserDB(**user.model_dump(), id=user_id) #@@[cria nova instância UserDB a partir dos dados recebidos]
+            database[user_id - 1] = user_with_id #@@[substitui o registro existente (índice = id-1)]
+
+            return user_with_id
+
+        @app.patch('/users/{user_id}', response_model=UserPublic, summary="Atualiza parcialmente um usuário")
+        def patch_user(user_id: int, user: UserUpdate):
+
+            if user_id > len(database) or user_id < 1:
+                raise HTTPException(status_code=404, detail='User not found')
+
+            user_atual = database[user_id - 1] #@@[busca registro atual pelo índice]
+            update_data = user.model_dump(exclude_unset=True) #@@[pega apenas campos fornecidos na requisição]
+            user_atualizado = user_atual.model_copy(update=update_data) #@@[gera cópia com os campos atualizados]
+            database[user_id - 1] = user_atualizado #@@[salva usuário atualizado na lista]
+
+            return user_atualizado
+
+        @app.delete('/users/{user_id}', response_model=Message, summary="Deleta um usuário")
+        def delete_user(user_id: int):
+            if user_id > len(database) or user_id < 1:
+                raise HTTPException(
+                    status_code=404, detail='User not found'
+                )
+
+            del database[user_id - 1] #@@[remove o usuário da lista pelo índice]
+
+            return {'message': 'User deleted'}
       ```
     - schemas.py
       ```python

@@ -174,7 +174,7 @@ act pull_request
 # roda workflow inteiro específico, pode estar em qualquer pasta
 act -W .github/workflows/meu-teste.yml
 # filtra a saída do terminal para exibir apenas o que o script imprimiu
-act -W ./.github/workflows/meu-teste.yml | grep "|" 
+act -W .github/workflows/meu-teste.yml | grep "|" 
 # executa workflow definindo qual imagem Docker deve ser 
 # usada para rodar os jobs
 act -W ./hello.yml -P ubuntu-latest=node:slim
