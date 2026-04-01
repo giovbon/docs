@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Diretórios, arquivos e extensões comumente ignorados por padrão
 IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'dist', 'build', '.venv', 'venv', '.idea', '.vscode'}
-IGNORE_FILES = {'.ds_store', 'package-lock.json', 'yarn.lock'}
+IGNORE_FILES = {'.ds_store', 'package-lock.json', 'yarn.lock', 'gerar_explorador.py', 'estrutura.txt'}
 IGNORE_EXTS = {'.exe', '.dll', '.so', '.dylib', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.zip', '.tar', '.gz', '.pyc'}
 
 def get_language(ext):

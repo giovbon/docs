@@ -1,3 +1,8 @@
+#set page(
+  paper: "a4",
+  footer: align(center)[Gerado em: #datetime.today().display("[day]/[month]/[year]")]
+)
+
 = ATS7
 
 == Automação e Validação de Interface com Selenium e Pytest
