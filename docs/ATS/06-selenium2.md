@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-# Selenium II:simple-selenium:
+# Selenium II :simple-selenium:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">

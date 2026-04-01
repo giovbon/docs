@@ -72,6 +72,36 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(text => {
         const treeData = parseFileTreeData(text);
         renderTree(treeData, sidebar, contentPanel, explorer);
+
+        // Download button — always visible, downloads entire project as ZIP
+        const downloadBtn = document.createElement('button');
+        downloadBtn.className = 'file-tree-download-btn';
+        downloadBtn.innerHTML = '⬇';
+        downloadBtn.title = 'Baixar projeto como ZIP';
+        downloadBtn.addEventListener('click', () => {
+          downloadBtn.innerHTML = '⏳';
+          downloadBtn.disabled = true;
+          const zipName = src.split('/').pop().replace(/\.txt$/i, '') || 'projeto';
+          loadJSZip().then(JSZip => {
+            const zip = new JSZip();
+            collectFiles(treeData, '', zip);
+            zip.generateAsync({ type: 'blob' }).then(blob => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = zipName + '.zip';
+              a.click();
+              URL.revokeObjectURL(url);
+              downloadBtn.innerHTML = '✅';
+              setTimeout(() => { downloadBtn.innerHTML = '⬇'; downloadBtn.disabled = false; }, 2000);
+            });
+          }).catch(e => {
+            console.error('Erro ao gerar ZIP:', e);
+            downloadBtn.innerHTML = '⬇';
+            downloadBtn.disabled = false;
+          });
+        });
+        explorer.appendChild(downloadBtn);
       })
       .catch(e => {
         sidebar.innerHTML = `<span style="color:red">Erro carregando ${src}</span>`;
@@ -411,4 +441,29 @@ function escapeHTML(str) {
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+}
+
+// Loads JSZip from CDN (cached after first load)
+function loadJSZip() {
+  if (window.JSZip) return Promise.resolve(window.JSZip);
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+    script.onload = () => resolve(window.JSZip);
+    script.onerror = () => reject(new Error('Falha ao carregar JSZip'));
+    document.head.appendChild(script);
+  });
+}
+
+// Recursively walks the tree and adds files to the ZIP at their full path
+function collectFiles(nodes, basePath, zip) {
+  nodes.forEach(node => {
+    const fullPath = basePath ? basePath + '/' + node.name : node.name;
+    if (node.isFolder || node.children.length > 0) {
+      zip.folder(fullPath);
+      collectFiles(node.children, fullPath, zip);
+    } else if (node.code !== null) {
+      zip.file(fullPath, node.code);
+    }
+  });
 }

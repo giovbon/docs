@@ -37,7 +37,7 @@
     driver.execute_script("window.open('https://pt.wikipedia.org');") #@@[O comando JavaScript 'window.open' abre uma URL em uma nova aba]
     WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(2)) #@@[espera até 10 segundos que o navegador tenha exatamente 2 janelas/abas abertas antes de continuar, se abrir antes ele já muda de aba]
     
-    driver.switch_to.window(driver.window_handles[1]) # @@[O Selenium lista as abas e nós mandamos ele olhar para a posição 1
+    driver.switch_to.window(driver.window_handles[1]) #@@[O Selenium lista as abas e nós mandamos ele olhar para a posição 1]
     driver.save_screenshot("2_print_wikipedia.png")
     
     print("Abrindo nova aba para o site da Impacta")
@@ -47,7 +47,7 @@
     driver.switch_to.window(driver.window_handles[2])
     driver.save_screenshot("3_print_python.png")
     
-    driver.quit() #@@ [Encerra tudo e fecha todas as abas de uma vez]
+    driver.quit() #@@[Encerra tudo e fecha todas as abas de uma vez]
     ```
   - 03-extrair_dados.py
     ```python

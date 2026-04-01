@@ -81,7 +81,7 @@
     - schemas.py
       ```python
       from typing import Optional
-      from pydantic import BaseModel, EmailStr # @@[`BaseModel` é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.]
+      from pydantic import BaseModel, EmailStr #@@[`BaseModel` é uma classe do Pydantic que permite criar modelos de dados, oferecendo validação automática, fácil conversão para JSON e aprimoramento na documentação de APIs. É essencial para construir modelos consistentes e validados.]
       
       class UserSchema(BaseModel):
           username: str
