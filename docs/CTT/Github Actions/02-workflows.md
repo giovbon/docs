@@ -25,7 +25,7 @@ hide:
 
     Use sempre espaços, nunca Tabs, para indentar YAML (a indentação define a hierarquia dos dados). A convenção é 2 espaços por nível, o hífen conta na indentação e deve ser seguido por um espaço.
 
-    ```yml
+    ```yaml
     # Nível 0
     on: [push]
 
