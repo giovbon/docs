@@ -19,6 +19,7 @@ hide:
 ??? abstract "Referências"
 
     - [Getting Started: Installation | Next.js](https://nextjs.org/docs/app/getting-started/installation)
+    - [Entendendo os métodos de renderização do Next.js: SSR, CSR, SSG e ISR | por Narayanan Sundaram | Medium](https://medium.com/@narayanansundar02/understanding-next-js-rendering-methods-ssr-csr-ssg-and-isr-7764dedabbe6)
 
 
 ## Criação do projeto em Next.js
@@ -33,8 +34,7 @@ npm run dev
 npx create-next-app@latest
 ```
 
-<!--
+
 ??? example ":lucide-square-terminal: Iniciando projeto em Next.js"
 
-    <div class="asciinema" data-src="../../zASC/01-react-vite-init.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
--->
+    <div class="asciinema" data-src="../../zASC/02-nextjs-install.cast" data-speed="1.5" data-idle-time-limit="4" data-theme="tango"></div> 
