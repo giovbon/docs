@@ -1,6 +1,12 @@
 #set page(
   paper: "a4",
-  footer: align(center)[Gerado em: #datetime.today().display("[day]/[month]/[year]")]
+  fill: rgb("#181818"),
+  footer: align(center)[Gerado em: #datetime.today().display("[day]/[month]/[year]")],
+)
+#show raw.where(block: false): set text(fill: rgb("#aed68d"))
+#set text(
+  fill: rgb("#f5f5f5"), 
+  size: 14pt
 )
 
 = Desafio Prático: Robô de Auditoria Multitarefa
