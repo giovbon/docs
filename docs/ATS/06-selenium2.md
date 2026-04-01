@@ -4,6 +4,8 @@ hide:
   - navigation
 ---
 
+<div class="page-unlock" data-unlock-date="2026-04-02"></div>
+
 # Selenium II :simple-selenium:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">

@@ -80,6 +80,7 @@ extra_javascript = [
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/markdown/markdown.js",
     "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js",
     "https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js",
+    "javascripts/init-access-control.js",
     "javascripts/init-reveal.js",
     "https://cdn.jsdelivr.net/npm/d3@7",
     "https://cdn.jsdelivr.net/npm/markmap-lib@0.17",
