@@ -24,6 +24,10 @@ hide:
 
 ## Criação do projeto em Next.js
 
+!!! danger "Alerta"
+
+    Para o curso crie o projeto em javascript ao invés de typscript.
+
 ```bash
 npx create-next-app@latest nome-do-proj --js --yes
 cd nome-do-proj
@@ -33,10 +37,7 @@ npm run dev
 
 npx create-next-app@latest
 ```
-!!! danger "Alerta"
 
-    Para o curso crie o projeto em javascript ao invés de typscript.
-
-??? example ":lucide-square-terminal: Iniciando projeto em Next.js"
+??? example ":lucide-square-terminal: Iniciando projeto em Next.js (2 formas)"
 
     <div class="asciinema" data-src="../../zASC/02-nextjs-install.cast" data-speed="1.5" data-idle-time-limit="4" data-theme="tango"></div> 
