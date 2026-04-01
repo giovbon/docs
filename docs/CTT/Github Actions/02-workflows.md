@@ -23,6 +23,23 @@ hide:
 
     Todos workflows são criados usando a linguagem YAML. Tenha em mente que a precisão na indentação é crucial. Um erro simples, como um espaço a mais ou a falta dele, pode fazer com que seu workflow falhe sem explicações claras.
 
+    Use sempre espaços, nunca Tabs, para indentar YAML (a indentação define a hierarquia dos dados). A convenção é 2 espaços por nível, o hífen conta na indentação e deve ser seguido por um espaço.
+
+    ```yml
+    # Nível 0
+    on: [push]
+
+    # Nível 0
+    jobs:
+      # Nível 1 (2 espaços)
+      testar_codigo:
+        # Nível 2 (4 espaços)
+        runs-on: ubuntu-latest
+        steps:
+          # Nível 3 (6 espaços, lista aninhada)
+          - run: npm test
+    ```
+
 No GitHub, quando você faz um `git push`, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. 
 O act imita esse comportamento, de forma que para executar os workflows você deve criar uma pasta, inicializar um repo com `git init`, criar as pastas `.github/workflows` e dentro de `workflows` colocar seus workflows como arquivos `.yml`
 

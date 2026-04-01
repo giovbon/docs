@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
               a.click();
               URL.revokeObjectURL(url);
               downloadBtn.innerHTML = '✅';
-              setTimeout(() => { downloadBtn.innerHTML = '⬇'; downloadBtn.disabled = false; }, 2000);
+              setTimeout(() => { downloadBtn.innerHTML = '💾'; downloadBtn.disabled = false; }, 2000);
             });
           }).catch(e => {
             console.error('Erro ao gerar ZIP:', e);
-            downloadBtn.innerHTML = '⬇';
+            downloadBtn.innerHTML = '💾';
             downloadBtn.disabled = false;
           });
         });

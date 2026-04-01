@@ -21,7 +21,7 @@ Você está desenvolvendo a base de um script de auditoria que, no futuro, fará
 *Parte 1: Configuração Inicial, Headless e Segurança de Rede (Espera Implícita)*
 1. Configure o WebDriver para rodar o Chromium em modo *Headless* (utilizando a flag `--headless=new`).
 2. Defina o tamanho da janela do navegador para 1920x1080 para evitar que elementos fiquem ocultos por design responsivo.
-3. *NOVO:* Configure uma *Espera Implícita* global de 10 segundos logo após instanciar o driver. Isso servirá como uma "rede de segurança" contra oscilações comuns de rede durante toda a execução do script, garantindo que o Selenium faça o *polling* automático antes de falhar ao buscar elementos mais simples.
+3. Configure uma *Espera Implícita* global de 10 segundos logo após instanciar o driver. Isso servirá como uma "rede de segurança" contra oscilações comuns de rede durante toda a execução do script, garantindo que o Selenium faça o *polling* automático antes de falhar ao buscar elementos mais simples.
 
 *Parte 2: Orquestração de Abas*
 1. Ao iniciar o driver, acesse a URL: `https://the-internet.herokuapp.com/dropdown` (Esta será a aba 0).
