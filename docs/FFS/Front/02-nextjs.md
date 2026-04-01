@@ -36,6 +36,5 @@ npx create-next-app@latest
 <!--
 ??? example ":lucide-square-terminal: Iniciando projeto em Next.js"
 
-    <div class="asciinema" data-src="../../zASC/02-nextjs.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
-
+    <div class="asciinema" data-src="../../zASC/01-react-vite-init.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
 -->

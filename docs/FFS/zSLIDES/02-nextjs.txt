@@ -30,6 +30,8 @@ Enquanto o **React** puro delega a *montagem da página ao cliente*, o **Next.js
     - Renderização do Lado do Servidor (*SSR*)
     - Geração Estática Incremental (*ISR*)
 
+Veja: [Entendendo os métodos de renderização do Next.js: SSR, CSR, SSG e ISR | por Narayanan Sundaram | Medium](https://medium.com/@narayanansundar02/understanding-next-js-rendering-methods-ssr-csr-ssg-and-isr-7764dedabbe6)
+
 --
 
 ### Comparativo Direto
@@ -156,14 +158,3 @@ Regras rápidas:
 | Usa `useState`, `useEffect`, `onClick`, (Hooks) etc.                  | ✅ Sim                   |
 | Chama APIs, usa hooks do navegador (`window`, `localStorage`) | ✅ Sim                   |
 | Só recebe props simples e renderiza HTML                      | ❌ Não                   |
-
-
----
-
-## Criação do projeto em Next.js
-
-```bash
-npx create-next-app@latest nome-do-proj --js --yes
-cd nome-do-proj
-npm run dev
-```
