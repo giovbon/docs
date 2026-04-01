@@ -1,0 +1,169 @@
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>next.js</h1>
+    <img src="https://simpleicons.org/icons/nextdotjs.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+Next.js é um framework construído sobre o React, *adicionando funcionalidades e uma estrutura completa para desenvolvimento de aplicações web mais complexas*.
+
+O **Next.js** foi criado para superar as limitações do React tradicional (**CSR**), focando em performance e visibilidade. A principal diferença reside no *momento e local da criação do conteúdo*.
+
+Enquanto o **React** puro delega a *montagem da página ao cliente*, o **Next.js** entrega o produto pronto (*montado no servidor*), garantindo velocidade para o usuário e clareza para os motores de busca.
+
+---
+
+## React vs. Next.js
+
+**React** é uma biblioteca JavaScript focada apenas em construir interfaces de usuário (UI). Ele oferece flexibilidade total, mas ***exige** que você instale e configure manualmente diversas ferramentas*.
+- Você precisa instalar e configurar bibliotecas externas, como o `react-router-dom`, e **definir as rotas manualmente** via código.
+- A **renderização** é tipicamente do **lado do cliente** (Client-Side Rendering - CSR).
+
+--
+
+**Next.js**: É um framework full-stack que *vem com muitas ferramentas e estruturas pré-configuradas* (prontas para uso, "out-of-the-box").
+- Usa um **sistema de roteamento baseado em arquivos** (File-system based).
+- No Next.js, além da Renderização do Lado do Cliente (*CSR*), você tem nativamente o suporte a **estratégias de pré-renderização** como: 
+    - Geração de Site Estático (*SSG*)
+    - Renderização do Lado do Servidor (*SSR*)
+    - Geração Estática Incremental (*ISR*)
+
+--
+
+### Comparativo Direto
+
+| Característica | React Puro (CSR) | Next.js (Pré-rendering) |
+| :--- | :--- | :--- |
+| **Geração do HTML** | No navegador do usuário. | No servidor (antes do envio). |
+| **Conteúdo Inicial** | HTML quase vazio (depende de JS). | HTML completo e pronto. |
+| **Impacto no SEO** | Difícil e lento (robôs podem falhar). | Excelente (indexação imediata). |
+| **Experiência (UX)** | Mais lenta (espera o carregamento). | Rápida (conteúdo visível na hora). |
+
+Resumo sobre motivos de usar o Next.js: performance e SEO.
+
+--
+
+### Por que o Next.js vence em SEO e UX?
+
+*   **SEO (Otimização para Buscas):** Diferente do React puro, onde o Google precisa "trabalhar" para montar a página, o Next.js entrega o texto e os links prontos. Isso garante que o *site seja ranqueado mais rápido e de forma mais completa*.
+*   **UX (Experiência do Usuário):** O *usuário não fica olhando para uma tela branca enquanto o JavaScript carrega*; ele recebe a estrutura da página instantaneamente, o que reduz a taxa de rejeição.
+
+**SEO** significa *Search Engine Optimization* (Otimização para Mecanismos de Busca) e é o conjunto de técnicas para **melhorar o posicionamento** de um site nos resultados de busca orgânicos (não pagos), como o Google, garantindo que o robô consiga ler, entender e ranquear seu conteúdo.
+
+
+---
+
+## Roteamento por Arquivos
+
+No Next.js, você não instala o `react-router-dom`. Suas rotas são definidas pela estrutura de pastas. Cada rota é uma pasta dentro de `app/` que contém um arquivo `page.js` (ou `.tsx`). Esse é o padrão oficial e recomendado.
+
+```
+app/
+ ├── page.js               → "/"
+ ├── about/
+ │   └── page.js           → "/about"
+ ├── blog/
+ │   └── page.js           → "/blog"
+ └── blog/[slug]/
+     └── page.js           → "/blog/qualquer-coisa"
+```
+
+---
+
+## Componentes
+
+No Next.js (App Router), a estrutura é livre, mas existe um padrão amplamente adotado pela comunidade que é usar a pasta `components`
+
+```
+app/
+ ├── layout.js          ← layout global
+ ├── page.js            ← página raiz "/"
+ ├── about/
+ │   └── page.js        ← rota "/about"
+ ├── blog/
+ │   └── [slug]/
+ │       └── page.js    ← rota dinâmica
+components/
+ ├── Header.jsx
+ ├── Footer.jsx
+ ├── Button.jsx
+ └── Card/
+     ├── Card.jsx
+     └── Card.css
+```
+
+---
+
+Assim os arquivos de componentes seguem essa estrutura:
+
+```jsx
+export default function Header() {
+  return (
+    <header className="bg-gray-800 text-white p-4">
+      <h1 className="text-xl font-bold">Meu Site</h1>
+    </header>
+  );
+}
+```
+
+Sendo importados:
+
+```jsx
+import Header from "@/components/Header";
+// O prefixo @/ aponta pra a raiz do projeto (./).
+
+export default function Page() {
+  return (
+    <>
+      <Header />
+        ...
+    </>
+  );
+}
+```
+
+---
+
+Um componente criado em React *funciona sem nenhuma alteração dentro do Next.js*. Mas no App Router (Next 13+), por padrão os componentes são Server Components — ou seja, renderizados no servidor. 
+Isso quer dizer que se o seu componente usa algo do navegador (DOM, eventos, hooks, etc.), *você precisa dizer que ele é cliente, com `"use client"`*:
+
+```jsx
+"use client"
+import { useState } from "react"
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <button
+      className="p-2 bg-green-600 text-white"
+      onClick={() => setCount(count + 1)}
+    >
+      Contador: {count}
+    </button>
+  )
+}
+```
+
+--
+
+Regras rápidas:
+
+| Situação                                                      | Precisa `"use client"`? |
+| ------------------------------------------------------------- | ----------------------- |
+| Só exibe dados, estático                                      | ❌ Não                   |
+| Usa `useState`, `useEffect`, `onClick`, (Hooks) etc.                  | ✅ Sim                   |
+| Chama APIs, usa hooks do navegador (`window`, `localStorage`) | ✅ Sim                   |
+| Só recebe props simples e renderiza HTML                      | ❌ Não                   |
+
+
+---
+
+## Criação do projeto em Next.js
+
+```bash
+npx create-next-app@latest nome-do-proj --js --yes
+cd nome-do-proj
+npm run dev
+```
