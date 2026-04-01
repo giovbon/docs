@@ -96,16 +96,7 @@ function enforceUnlockDate() {
         errorMsg.style.minHeight = '1.25rem';
         errorMsg.style.fontSize = '0.95rem';
 
-        const unlockBtn = document.createElement('button');
-        unlockBtn.textContent = 'Desbloquear';
-        unlockBtn.style.marginBottom = '0.75rem';
-        unlockBtn.style.padding = '0.55rem 1rem';
-        unlockBtn.style.fontSize = '1rem';
-        unlockBtn.style.cursor = 'pointer';
-        unlockBtn.style.border = 'none';
-        unlockBtn.style.borderRadius = '8px';
-        unlockBtn.style.background = '#4caf50';
-        unlockBtn.style.color = '#222';
+        let attempts = 0;
 
         const tryUnlock = () => {
             const code = (codeInput.value || '').trim();
@@ -114,14 +105,26 @@ function enforceUnlockDate() {
                 document.documentElement.style.overflow = '';
                 return;
             }
-            errorMsg.textContent = 'Senha inválida';
+            attempts++;
+            if (attempts >= 3) {
+                window.location.href = '/';
+                return;
+            }
+            errorMsg.textContent = `Senha inválida (${attempts}/3)`;
         };
 
-        unlockBtn.addEventListener('click', tryUnlock);
-        codeInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
+        codeInput.addEventListener('input', () => {
+            if (codeInput.value.length === 6) {
                 tryUnlock();
+            }
+        });
+
+        // Block Reveal.js keyboard shortcuts when overlay is active, but allow typing in password input
+        overlay.addEventListener('keydown', (e) => {
+            const revealShortcuts = ['f', 'o', 'n', 'p', 'h', 'v', 'c', 'b', 'r', 't', 's', 'm', 'e', 'q', 'escape'];
+            if (e.target !== codeInput && revealShortcuts.includes(e.key.toLowerCase())) {
+                e.preventDefault();
+                e.stopPropagation();
             }
         });
 
@@ -129,11 +132,13 @@ function enforceUnlockDate() {
         card.appendChild(text);
         card.appendChild(unlockInfo);
         card.appendChild(codeInput);
-        card.appendChild(unlockBtn);
         card.appendChild(errorMsg);
         card.appendChild(button);
         overlay.appendChild(card);
         document.body.appendChild(overlay);
+
+        // Auto-focus on password input
+        codeInput.focus();
 
         document.documentElement.style.overflow = 'hidden';
         return;
