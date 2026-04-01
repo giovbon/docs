@@ -33,7 +33,9 @@ npm run dev
 
 npx create-next-app@latest
 ```
+!!! danger "Alerta"
 
+    Para o curso crie o projeto em javascript ao invés de typscript.
 
 ??? example ":lucide-square-terminal: Iniciando projeto em Next.js"
 
