@@ -18,3 +18,5 @@ hide:
 ## Exemplos
 
 <div class="code-explorer" data-src="../zCODE/selenium2-exes.txt" ></div>
+
+[:lucide-arrow-big-down: Baixar Exercício ATS8](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" }

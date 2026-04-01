@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Download button — always visible, downloads entire project as ZIP
         const downloadBtn = document.createElement('button');
         downloadBtn.className = 'file-tree-download-btn';
-        downloadBtn.innerHTML = '⬇';
+        downloadBtn.innerHTML = '💾';
         downloadBtn.title = 'Baixar projeto como ZIP';
         downloadBtn.addEventListener('click', () => {
           downloadBtn.innerHTML = '⏳';
