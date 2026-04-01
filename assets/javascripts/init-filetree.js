@@ -243,12 +243,12 @@ function renderTree(nodes, container, contentPanel, explorer) {
           
           const copyBtn = document.createElement('button');
           copyBtn.className = 'file-tree-copy-btn';
-          copyBtn.innerHTML = '📋 Copiar';
+          copyBtn.innerHTML = '📋';
           copyBtn.title = 'Copiar código';
           copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(node.code).then(() => {
-              copyBtn.innerHTML = '✅ Copiado!';
-              setTimeout(() => { copyBtn.innerHTML = '📋 Copiar'; }, 2000);
+              copyBtn.innerHTML = '✅';
+              setTimeout(() => { copyBtn.innerHTML = '📋'; }, 2000);
             }).catch(e => {
               console.error('Falha ao copiar:', e);
             });
