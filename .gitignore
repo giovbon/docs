@@ -3,3 +3,5 @@ site
 docs/jupyterlite
 .cache
 **/_hide/
+.fslckout
+zensical.fossil
