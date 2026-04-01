@@ -232,3 +232,5 @@ def test_verificar_titulo_do_playground(navegador):
 ```
 
 1. O código utiliza um caminho para um arquivo HTML local na mesma pasta que o script de teste, em vez de acessar um site na Internet. O prefixo `file://` indica ao navegador para abrir um arquivo local.
+
+[:lucide-arrow-big-down: Baixar Exercício ATS7](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS7.typ'); return false;" }
