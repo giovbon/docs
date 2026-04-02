@@ -40,7 +40,7 @@ jobs:
             --dead-code-injection true \
             --string-array true \
             --string-array-encoding 'base64' \
-            --domainLock 'giovbon.github.io'
+            --domain-lock 'giovbon.github.io'
 
       # --- NOTIFICAÇÃO DE ERRO ---
       - name: Notificar falha via ntfy
