@@ -28,7 +28,48 @@ jobs:
       # 1. Primeiro geramos o site normal
       - run: zensical build --clean
       
-      # 2. Depois aplicamos a ofuscação APENAS no arquivo gerado dentro da pasta 'site'
+      # 2. INJEÇÃO DA TRAVA ANTI-BYPASS
+      - name: Injetar Proteção CSS nos HTMLs
+        run: |
+          python -c "
+          import os
+          
+          # O código que esconde a página e lida com JS desativado
+          protecao = '''
+          <style id=\"trava-anti-bypass\">
+            /* Esconde TUDO por padrão */
+            body { display: none !important; }
+          </style>
+          <noscript>
+            <style>
+              /* Se o JS estiver desligado, mostra o body, mas esconde o site original */
+              body { display: block !important; }
+              body > * { display: none !important; }
+            </style>
+            <div style=\"text-align: center; margin-top: 15vh; font-family: sans-serif;\">
+              <h2>Acesso Protegido</h2>
+              <p>Você precisa ativar o JavaScript para validar seu acesso.</p>
+            </div>
+          </noscript>
+          </head>
+          '''
+          
+          # Percorre a pasta site gerada pelo Zensical
+          for root, dirs, files in os.walk('site'):
+              for file in files:
+                  if file.endswith('.html'):
+                      caminho = os.path.join(root, file)
+                      with open(caminho, 'r', encoding='utf-8') as f:
+                          conteudo = f.read()
+                      
+                      # Injeta a trava logo antes de fechar a tag </head>
+                      if '</head>' in conteudo:
+                          conteudo = conteudo.replace('</head>', protecao)
+                          with open(caminho, 'w', encoding='utf-8') as f:
+                              f.write(conteudo)
+          "
+
+      # 3. Depois aplicamos a ofuscação APENAS no arquivo gerado dentro da pasta 'site'
       - name: Ofuscar script de controle de acesso
         run: |
           npm install -g javascript-obfuscator
@@ -54,7 +95,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.NTFY_TOKEN }}" \
             https://ntfy.giobon.uk/transpeed
 
-      # 3. Faz o upload da pasta 'site' (que agora contém o JS ofuscado)
+      # 4. Faz o upload da pasta 'site' (que agora contém o JS ofuscado e os HTMLs protegidos)
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site

@@ -1,7 +1,18 @@
 (() => {
   async function enforceUnlockDate() {
+    
+    // 1. Nova função que remove a trava injetada pelo GitHub Actions
+    const removeCSSLock = () => {
+      const trava = document.getElementById('trava-anti-bypass');
+      if (trava) trava.remove();
+    };
+
     const unlockEl = document.querySelector('.page-unlock');
-    if (!unlockEl) return;
+    if (!unlockEl) {
+      // 2. Se a página não tem bloqueio, destrava e encerra
+      removeCSSLock();
+      return;
+    }
 
     const rawDate = (unlockEl.getAttribute('data-unlock-date') || '').trim();
     const unlockPasswordAttr = (unlockEl.getAttribute('data-unlock-password') || '').trim();
@@ -33,7 +44,11 @@
       }
     };
 
-    if (getStoredUnlock()) return;
+    if (getStoredUnlock()) {
+      // 3. Se a senha já está salva no navegador, destrava e encerra
+      removeCSSLock();
+      return;
+    }
 
     let unlockDate;
     if (rawDate) {
@@ -44,6 +59,7 @@
         const parsed = Date.parse(rawDate);
         if (Number.isNaN(parsed)) {
           console.warn('unlock-date inválido:', rawDate);
+          removeCSSLock(); // Fallback: destrava em caso de erro no código do Zensical
           return;
         }
         unlockDate = new Date(parsed);
@@ -65,7 +81,12 @@
 
     const isDateLocked = Boolean(unlockDate) && today < unlockDate;
     const isPasswordLocked = !!unlockPasswordAttr && (!unlockDate || today < unlockDate);
-    if (!isDateLocked && !isPasswordLocked) return;
+    
+    if (!isDateLocked && !isPasswordLocked) {
+      // 4. Se não tem senha nem trava de data ativa, destrava e encerra
+      removeCSSLock();
+      return;
+    }
 
     const _obf = (s) => {
       try {
@@ -95,6 +116,9 @@
         child.style.display = 'none';
       }
     });
+
+    // 5. Destrava a tela para que o overlay de senha apareça (o conteúdo original já foi ocultado pelo forEach acima)
+    removeCSSLock();
 
     const overlay = document.createElement('div');
     overlay.classList.add('page-unlock-overlay');
