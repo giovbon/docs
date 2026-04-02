@@ -14,7 +14,10 @@ zensical serve -a localhost:8080
 
 ## Bloqueio de paginas por data
 
+```
 <div class="page-unlock" data-unlock-date="2026-04-02"></div>
+<div class="page-unlock" data-unlock-date="2026-04-02" data-unlock-password="1q2w3e"></div>
+```
 
 # Referência
 
