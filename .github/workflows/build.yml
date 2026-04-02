@@ -17,14 +17,31 @@ jobs:
     steps:
       - uses: actions/configure-pages@v5
       - uses: actions/checkout@v5
+      
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
           cache: 'pip'
+          
       - run: pip install -r requirements.txt
 
+      # 1. Primeiro geramos o site normal
       - run: zensical build --clean
       
+      # 2. Depois aplicamos a ofuscação APENAS no arquivo gerado dentro da pasta 'site'
+      - name: Ofuscar script de controle de acesso
+        run: |
+          npm install -g javascript-obfuscator
+          
+          javascript-obfuscator site/javascripts/init-access-control.js \
+            --output site/javascripts/init-access-control.js \
+            --compact true \
+            --control-flow-flattening true \
+            --dead-code-injection true \
+            --string-array true \
+            --string-array-encoding 'base64' \
+            --domainLock 'giovbon.github.io'
+
       # --- NOTIFICAÇÃO DE ERRO ---
       - name: Notificar falha via ntfy
         if: failure()
@@ -37,9 +54,10 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.NTFY_TOKEN }}" \
             https://ntfy.giobon.uk/transpeed
 
-      # Estas etapas só rodarão se as anteriores passarem com sucesso
+      # 3. Faz o upload da pasta 'site' (que agora contém o JS ofuscado)
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
+          
       - uses: actions/deploy-pages@v4
         id: deployment

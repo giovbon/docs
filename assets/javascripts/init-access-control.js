@@ -1,1 +1,227 @@
-(()=>{async function enforceUnlockDate(){const unlockEl = document.querySelector('.page-unlock');if(!unlockEl)return;const rawDate =(unlockEl.getAttribute('data-unlock-date')|| '').trim();const unlockPasswordAttr =(unlockEl.getAttribute('data-unlock-password')|| '').trim();const storageKey = `page-unlock:${location.pathname}`;const getStoredUnlock =()=> {try {const raw = localStorage.getItem(storageKey);if(!raw)return false;const data = JSON.parse(raw);if(!data || !data.expiresAt)return false;const expiresAt = new Date(data.expiresAt);if(Number.isNaN(expiresAt.getTime()))return false;if(new Date()< expiresAt)return true;localStorage.removeItem(storageKey);return false;} catch(error){console.warn('Falha ao ler localStorage de desbloqueio:', error);return false;}};const setStoredUnlock =()=> {try {const expiresAt = new Date(Date.now()+ 24 * 60 * 60 * 1000);localStorage.setItem(storageKey, JSON.stringify({unlocked:true, expiresAt:expiresAt.toISOString()}));} catch(error){console.warn('Falha ao salvar localStorage de desbloqueio:', error);}};if(getStoredUnlock())return;let unlockDate;if(rawDate){if(/^\d{4}-\d{2}-\d{2}$/.test(rawDate)){const [year, month, day] = rawDate.split('-').map(Number);unlockDate = new Date(Date.UTC(year, month - 1, day));} else {const parsed = Date.parse(rawDate);if(Number.isNaN(parsed)){console.warn('unlock-date inválido:', rawDate);return;} unlockDate = new Date(parsed);unlockDate = new Date(Date.UTC(unlockDate.getFullYear(), unlockDate.getMonth(), unlockDate.getDate()));}} let today;try{const response=await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');const data=await response.json();const now=new Date(data.datetime);today=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));}catch(error){console.warn('Falha ao obter data do servidor:',error);const now=new Date();today=new Date(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate()));}const isDateLocked = Boolean(unlockDate)&& today < unlockDate;const isPasswordLocked = !!unlockPasswordAttr &&(!unlockDate || today < unlockDate);if(!isDateLocked && !isPasswordLocked)return;const _obf =(s)=> {try {return typeof atob === 'function' ? atob(s):s;} catch {return s;}};const _obfTag =(plain)=> {try {return typeof btoa === 'function' ? btoa(plain):plain;} catch {return plain;}};const requiredPassword = unlockPasswordAttr || _obf('MXEyczNl');const message = isDateLocked ? `Esta página só pode ser acessada em ${unlockDate.toISOString().slice(0, 10)} ou depois. Hoje é ${today.toISOString().slice(0, 10)}.`:_obf('RXN0YSBww6FnaW5hIGVzdMOhIGJsb3F1ZWFkYS4gRGlnaXRlIGEgc2VuaGEgcGFyYSBsaWJlcmFyIG8gYWNlc3NvLg==');const hiddenElements = [];Array.from(document.body.children).forEach((child)=> {if(!child.classList.contains('page-unlock-overlay')){hiddenElements.push({element:child, display:child.style.display || ''});child.style.display = 'none';}});const overlay = document.createElement('div');overlay.classList.add('page-unlock-overlay');overlay.style.position = 'fixed';overlay.style.inset = '0';overlay.style.background = 'rgba(0, 0, 0, 0.7)';overlay.style.color = '#ffffff';overlay.style.display = 'flex';overlay.style.alignItems = 'center';overlay.style.justifyContent = 'center';overlay.style.textAlign = 'center';overlay.style.zIndex = '9999';overlay.style.padding = '2rem';overlay.style.fontFamily = 'Roboto, system-ui, -apple-system, Segoe UI, sans-serif';const card = document.createElement('div');card.style.maxWidth = '620px';card.style.width = '100%';card.style.background = 'rgba(255, 255, 255, 0.08)';card.style.border = '1px solid rgba(255, 255, 255, 0.2)';card.style.borderRadius = '12px';card.style.padding = '1.5rem';card.style.backdropFilter = 'blur(10px)';const title = document.createElement('h1');title.textContent = '🔒 Bloqueio de página';title.style.margin = '0 0 0.75rem';title.style.fontSize = '1.5rem';const text = document.createElement('p');text.textContent = message;text.style.margin = '0 0 1rem';text.style.fontSize = '1.05rem';const codeInput = document.createElement('input');codeInput.type = 'password';codeInput.maxLength = 20;codeInput.placeholder = 'Senha para liberar acesso';codeInput.style.padding = '0.5rem';codeInput.style.fontSize = '1rem';codeInput.style.width = '100%';codeInput.style.marginBottom = '0.5rem';codeInput.style.borderRadius = '6px';codeInput.style.border = '1px solid rgba(255,255,255,0.5)';const errorMsg = document.createElement('p');errorMsg.style.color = '#ffb3b3';errorMsg.style.margin = '0 0 0.5rem';errorMsg.style.minHeight = '1.25rem';errorMsg.style.fontSize = '0.95rem';const button = document.createElement('button');button.textContent = 'Voltar';button.style.padding = '0.6rem 1rem';button.style.fontSize = '1rem';button.style.cursor = 'pointer';button.style.border = 'none';button.style.borderRadius = '8px';button.style.background = '#ff9800';button.style.color = '#222';let attempts = 0;const restoreContent =()=> {hiddenElements.forEach(({element, display})=> {element.style.display = display;});if(document.body.contains(overlay)){document.body.removeChild(overlay);} document.documentElement.style.overflow = '';};const tryUnlock =()=> {const code =(codeInput.value || '').trim();if(code === requiredPassword){setStoredUnlock();restoreContent();return;} attempts += 1;if(attempts >= 3){window.location.href = '/';return;} errorMsg.textContent = `Senha inválida(${attempts}/3)`;};codeInput.addEventListener('keydown',(e)=> {if(e.key === 'Enter'){e.preventDefault();tryUnlock();}});const instruction = document.createElement('p');instruction.style.margin = '0 0 0.75rem';instruction.style.fontSize = '0.95rem';instruction.textContent = 'Digite a senha e pressione Enter.';button.addEventListener('click',()=> {if(document.referrer && document.referrer !== window.location.href){window.location.href = document.referrer;} else {window.location.href = '/';}});card.appendChild(title);card.appendChild(text);card.appendChild(instruction);card.appendChild(codeInput);card.appendChild(errorMsg);card.appendChild(button);overlay.appendChild(card);document.body.appendChild(overlay);codeInput.focus();document.documentElement.style.overflow = 'hidden';} async function initAccessControl(){await enforceUnlockDate();} if(typeof document$ !== 'undefined'){document$.subscribe(initAccessControl);} else {document.addEventListener('DOMContentLoaded', initAccessControl);}})();
+(() => {
+  async function enforceUnlockDate() {
+    const unlockEl = document.querySelector('.page-unlock');
+    if (!unlockEl) return;
+
+    const rawDate = (unlockEl.getAttribute('data-unlock-date') || '').trim();
+    const unlockPasswordAttr = (unlockEl.getAttribute('data-unlock-password') || '').trim();
+    const storageKey = `page-unlock:${location.pathname}`;
+
+    const getStoredUnlock = () => {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        if (!data || !data.expiresAt) return false;
+        const expiresAt = new Date(data.expiresAt);
+        if (Number.isNaN(expiresAt.getTime())) return false;
+        if (new Date() < expiresAt) return true;
+        localStorage.removeItem(storageKey);
+        return false;
+      } catch (error) {
+        console.warn('Falha ao ler localStorage de desbloqueio:', error);
+        return false;
+      }
+    };
+
+    const setStoredUnlock = () => {
+      try {
+        const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+        localStorage.setItem(storageKey, JSON.stringify({ unlocked: true, expiresAt: expiresAt.toISOString() }));
+      } catch (error) {
+        console.warn('Falha ao salvar localStorage de desbloqueio:', error);
+      }
+    };
+
+    if (getStoredUnlock()) return;
+
+    let unlockDate;
+    if (rawDate) {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
+        const [year, month, day] = rawDate.split('-').map(Number);
+        unlockDate = new Date(Date.UTC(year, month - 1, day));
+      } else {
+        const parsed = Date.parse(rawDate);
+        if (Number.isNaN(parsed)) {
+          console.warn('unlock-date inválido:', rawDate);
+          return;
+        }
+        unlockDate = new Date(parsed);
+        unlockDate = new Date(Date.UTC(unlockDate.getFullYear(), unlockDate.getMonth(), unlockDate.getDate()));
+      }
+    }
+
+    let today;
+    try {
+      const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');
+      const data = await response.json();
+      const now = new Date(data.datetime);
+      today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    } catch (error) {
+      console.warn('Falha ao obter data do servidor:', error);
+      const now = new Date();
+      today = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+    }
+
+    const isDateLocked = Boolean(unlockDate) && today < unlockDate;
+    const isPasswordLocked = !!unlockPasswordAttr && (!unlockDate || today < unlockDate);
+    if (!isDateLocked && !isPasswordLocked) return;
+
+    const _obf = (s) => {
+      try {
+        return typeof atob === 'function' ? atob(s) : s;
+      } catch {
+        return s;
+      }
+    };
+
+    const _obfTag = (plain) => {
+      try {
+        return typeof btoa === 'function' ? btoa(plain) : plain;
+      } catch {
+        return plain;
+      }
+    };
+
+    const requiredPassword = unlockPasswordAttr || _obf('MXEyczNl');
+    const message = isDateLocked
+      ? `Esta página só pode ser acessada em ${unlockDate.toISOString().slice(0, 10)} ou depois. Hoje é ${today.toISOString().slice(0, 10)}.`
+      : _obf('RXN0YSBww6FnaW5hIGVzdMOhIGJsb3F1ZWFkYS4gRGlnaXRlIGEgc2VuaGEgcGFyYSBsaWJlcmFyIG8gYWNlc3NvLg==');
+
+    const hiddenElements = [];
+    Array.from(document.body.children).forEach((child) => {
+      if (!child.classList.contains('page-unlock-overlay')) {
+        hiddenElements.push({ element: child, display: child.style.display || '' });
+        child.style.display = 'none';
+      }
+    });
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('page-unlock-overlay');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = '0';
+    overlay.style.background = 'rgba(0, 0, 0, 0.7)';
+    overlay.style.color = '#ffffff';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.textAlign = 'center';
+    overlay.style.zIndex = '9999';
+    overlay.style.padding = '2rem';
+    overlay.style.fontFamily = 'Roboto, system-ui, -apple-system, Segoe UI, sans-serif';
+
+    const card = document.createElement('div');
+    card.style.maxWidth = '620px';
+    card.style.width = '100%';
+    card.style.background = 'rgba(255, 255, 255, 0.08)';
+    card.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+    card.style.borderRadius = '12px';
+    card.style.padding = '1.5rem';
+    card.style.backdropFilter = 'blur(10px)';
+
+    const title = document.createElement('h1');
+    title.textContent = '🔒 Bloqueio de página';
+    title.style.margin = '0 0 0.75rem';
+    title.style.fontSize = '1.5rem';
+
+    const text = document.createElement('p');
+    text.textContent = message;
+    text.style.margin = '0 0 1rem';
+    text.style.fontSize = '1.05rem';
+
+    const codeInput = document.createElement('input');
+    codeInput.type = 'password';
+    codeInput.maxLength = 20;
+    codeInput.placeholder = 'Senha para liberar acesso';
+    codeInput.style.padding = '0.5rem';
+    codeInput.style.fontSize = '1rem';
+    codeInput.style.width = '100%';
+    codeInput.style.marginBottom = '0.5rem';
+    codeInput.style.borderRadius = '6px';
+    codeInput.style.border = '1px solid rgba(255,255,255,0.5)';
+
+    const errorMsg = document.createElement('p');
+    errorMsg.style.color = '#ffb3b3';
+    errorMsg.style.margin = '0 0 0.5rem';
+    errorMsg.style.minHeight = '1.25rem';
+    errorMsg.style.fontSize = '0.95rem';
+
+    const button = document.createElement('button');
+    button.textContent = 'Voltar';
+    button.style.padding = '0.6rem 1rem';
+    button.style.fontSize = '1rem';
+    button.style.cursor = 'pointer';
+    button.style.border = 'none';
+    button.style.borderRadius = '8px';
+    button.style.background = '#ff9800';
+    button.style.color = '#222';
+
+    let attempts = 0;
+
+    const restoreContent = () => {
+      hiddenElements.forEach(({ element, display }) => {
+        element.style.display = display;
+      });
+      if (document.body.contains(overlay)) {
+        document.body.removeChild(overlay);
+      }
+      document.documentElement.style.overflow = '';
+    };
+
+    const tryUnlock = () => {
+      const code = (codeInput.value || '').trim();
+      if (code === requiredPassword) {
+        setStoredUnlock();
+        restoreContent();
+        return;
+      }
+      attempts += 1;
+      if (attempts >= 3) {
+        window.location.href = '/';
+        return;
+      }
+      errorMsg.textContent = `Senha inválida(${attempts}/3)`;
+    };
+
+    codeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        tryUnlock();
+      }
+    });
+
+    const instruction = document.createElement('p');
+    instruction.style.margin = '0 0 0.75rem';
+    instruction.style.fontSize = '0.95rem';
+    instruction.textContent = 'Digite a senha e pressione Enter.';
+
+    button.addEventListener('click', () => {
+      if (document.referrer && document.referrer !== window.location.href) {
+        window.location.href = document.referrer;
+      } else {
+        window.location.href = '/';
+      }
+    });
+
+    card.appendChild(title);
+    card.appendChild(text);
+    card.appendChild(instruction);
+    card.appendChild(codeInput);
+    card.appendChild(errorMsg);
+    card.appendChild(button);
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+    codeInput.focus();
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  async function initAccessControl() {
+    await enforceUnlockDate();
+  }
+
+  if (typeof document$ !== 'undefined') {
+    document$.subscribe(initAccessControl);
+  } else {
+    document.addEventListener('DOMContentLoaded', initAccessControl);
+  }
+})();
