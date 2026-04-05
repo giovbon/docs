@@ -33,6 +33,7 @@ O act foi feito para imitar o comportamento do GitHub.
 
 ### Principais comandos do act
 
+
 ```bash
 # lista todos os workflows e jobs detectados no seu projeto
 act -l
@@ -54,22 +55,33 @@ act -j [ID]
 
 ### Preparação do ambiente
 
-Instalação no ubuntu:
+Instalação:
 
-``` bash
-cd
-# configurar docker
-sudo apt install curl docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo usermod -aG docker $USER
-newgrp docker
-# intalar act
-curl -O https://raw.githubusercontent.com/nektos/act/master/install.sh
-sudo bash install.sh
-sudo mv ./bin/act /usr/local/bin/act
-act --version
-```
+=== "Linux (Ubuntu/Debian)"
+
+    ```bash   
+    cd
+    # configurar docker
+    sudo apt install curl docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    # intalar act
+    curl -O https://raw.githubusercontent.com/nektos/act/master/install.sh
+    sudo bash install.sh
+    sudo mv ./bin/act /usr/local/bin/act
+    act --version
+    ```
+
+=== "Linux (Arch)"
+
+    ```bash
+    sudo pacman -S act docker
+    sudo systemctl enable --now docker.service
+    sudo usermod -aG docker $USER
+    act --version
+    ```
 
 Após isso, crie nova pasta, inicialize repositório crie o arquivo `.github/workflows/hello.yml` dentro dessa estrutura de pastas e coloque esse conteúdo dentro do arquivo:
 
@@ -117,7 +129,7 @@ Default image and other options can be changed manually in /home/giovani/.config
 
 Escolha `Medium` e Enter.
 
-Depois disso rode novamente o comando: `act workflow_dispatch -q` para executar. Pode ser que demore um pouco pois o programa baixará a imagem docker correspondente para preparar o ambiente.
+Depois disso rode novamente o comando: `act workflow_dispatch -q` para executar. Pode ser que demore um pouco pois o programa baixará a imagem docker correspondente para preparar o ambiente (aprox. 1.5 GB).
 
 Depois de tudo a mensagem de "Hello GitHub Action Workflow!" deverá aparecer no terminal. Fim.
 
