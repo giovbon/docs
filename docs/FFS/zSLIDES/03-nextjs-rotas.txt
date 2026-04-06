@@ -12,7 +12,7 @@ Atualmente, existem dois sistemas principais de roteamento:
 - **App Router** (introduzido no Next.js 13 e o padrão atual)
 - **Pages Router** (o sistema clássico)
 
-O **Pages Router** é o jeito clássico e mais familiar para quem usa Next.js há anos. O **App Router** é o padrão moderno, mais complexo inicialmente, mas incrivelmente poderoso em termos de performance, organização modular e carregamento de páginas. Para qualquer projeto novo, o App Router é a escolha recomendada pela própria Vercel. Por isso *vamos focar nele*.
+O **Pages Router** é o jeito clássico e mais familiar para quem usa Next.js há anos. O **App Router** é o padrão moderno, mais complexo inicialmente, mas poderoso em termos de performance, organização modular e carregamento de páginas. Para qualquer projeto novo, o App Router é a escolha recomendada pela própria Vercel. Por isso *vamos focar nele*.
 
 ---
 
