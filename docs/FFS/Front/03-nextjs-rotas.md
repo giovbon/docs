@@ -17,13 +17,6 @@ hide:
   </div>
 </div>
 
-<!-- ??? abstract "Referências"
-
-    -  -->
-
-
----
-
 ## Exemplo
 
 <iframe src="https://codesandbox.io/p/devbox/bext-impacta-aula-thm973?embed=1&file=%2Fapp%2Fpage.js"
@@ -32,3 +25,5 @@ hide:
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+<div class="code-explorer" data-src="../../zCODE/nextjs-rotas.txt" ></div>

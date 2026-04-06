@@ -1,0 +1,322 @@
+- /
+  - app/
+    - blog/
+      - [slug]/
+        - page.js
+          ```javascript
+          import Link from 'next/link';
+          
+          // 1. Adicionamos o "async" antes da função
+          export default async function BlogPost({ params }) {
+            // 2. Aguardamos os parâmetros carregarem
+            const parametros = await params; /* @@[No Next.js 15, você precisa usar o `await` porque o `params` passou a ser uma *Promise* (uma operação assíncrona) com o objetivo de melhorar a performance da aplicação. Isso permite que o servidor comece a montar e enviar outras partes da página para o usuário antes mesmo de terminar de processar a URL. Como se trata de uma Promise, o JavaScript exige obrigatoriamente o uso do `await` para avisar ao código que ele deve esperar o dado da rota (como o seu `slug`) carregar completamente antes de tentar exibi-lo na tela.] */
+          
+            return (
+              <div style={{ textAlign: "center", padding: '50px' }}>
+                <h1>Você está lendo a página dinâmica!</h1>
+                
+                {/* 3. Agora usamos a variável que aguardou o resultado */}
+                <h2 style={{ color: 'gray' }}>O slug acessado foi: {parametros.slug}</h2>
+                
+                <div style={{ marginTop: '30px' }}>
+                  <Link href="/" style={{ color: 'blue', textDecoration: 'underline' }}>
+                    Voltar para a Home
+                  </Link>
+                </div>
+              </div>
+            );
+          }
+          ```
+    - sobre/
+      - page.js
+        ```javascript
+        'use client'; // Necessário para usar o hook useRouter
+        
+        import { useRouter } from 'next/navigation';
+        
+        export default function Sobre() {
+          // APLICANDO: Navegação Programática
+          const router = useRouter();
+        
+          const handleVoltar = () => {
+            // Simula uma ação e redireciona o usuário
+            console.log("Ação realizada com sucesso, voltando para a Home...");
+            router.push('/');
+          };
+        
+          return (
+            <div style={{ textAlign: "center", padding: '50px' }}>
+              <h1>Página Sobre Nós</h1>
+              <p>Esta é a rota estática /sobre.</p>
+              
+              <button 
+                onClick={handleVoltar} 
+                style={{ padding: '10px 20px', marginTop: '20px', cursor: 'pointer' }}
+              >
+                Voltar para a Home programaticamente
+              </button>
+            </div>
+          );
+        }
+        ```
+    - error.js
+      ```javascript
+      'use client'; // Obrigatório em arquivos de erro!
+      
+      export default function Error({ error, reset }) {
+        return (
+          <div style={{ textAlign: 'center', padding: '50px', backgroundColor: '#ffe6e6' }}>
+            <h2 style={{ color: 'red' }}>Opa! Algo deu errado. 💥</h2>
+            <p>{error.message}</p>
+            
+            {/* Botão para tentar renderizar a rota novamente sem recarregar o site inteiro */}
+            <button onClick={() => reset()} style={{ padding: '10px', marginTop: '10px' }}>
+              Tentar novamente
+            </button>
+          </div>
+        );
+      }
+      
+      /* O `error.js` é um componente de cliente (`'use client'`) no Next.js que isola falhas em rotas específicas. Ele atua como um escudo: se uma página quebra, ele exibe uma interface de erro amigável com a opção de tentar recarregar o conteúdo (`reset()`), garantindo que o restante do site, como os layouts e menus, continue funcionando perfeitamente sem travar a aplicação inteira. */
+      ```
+    - globals.css
+      ```css
+      @import "tailwindcss";
+      
+      ```
+    - layout.js
+      ```javascript
+      import Link from 'next/link';
+      
+      /* O Next.js já cria um layout.js padrão quando você roda o create-next-app. Criado um menu de navegação aqui, assim, ao trocar de página, o menu nunca pisca ou recarrega. */
+      
+      export default function RootLayout({ children }) {
+        return (
+          <html lang="pt-BR">
+            <body style={{ margin: 0, fontFamily: "sans-serif" }}>
+              
+              {/* Este menu vai aparecer em TODAS as páginas do site */}
+              <nav style={{ padding: '20px', backgroundColor: '#f0f0f0', display: 'flex', gap: '15px', justifyContent: 'center' }}>
+                <Link href="/">Home</Link>
+                <Link href="/sobre">Sobre Nós</Link>
+                <Link href="/blog/teste">Blog</Link>
+                <Link href="/dashboard">Dashboard</Link>
+              </nav>
+              
+              {/* O conteúdo de cada page.js será injetado aqui dentro */}
+              <main style={{ padding: '20px' }}>
+                {children}
+              </main> 
+              
+            </body>
+          </html>
+        );
+      }
+      ```
+    - loading.js
+      ```javascript
+        export default function Loading() {
+          return (
+            <div style={{ textAlign: 'center', padding: '50px', color: '#666' }}>
+              <h2>⏳ Carregando conteúdo...</h2>
+            </div>
+          );
+        }
+      
+        /* Se alguma página demorar para carregar (por exemplo, se estiver buscando dados em um banco de dados), o Next.js vai mostrar esse arquivo automaticamente no lugar do {children} do layout, e depois substitui pelo conteúdo real. */
+      ```
+    - not-found.js
+      ```javascript
+      import Link from 'next/link';
+      
+      export default function NotFound() {
+        return (
+          <div style={{ textAlign: 'center', padding: '50px' }}>
+            <h1>404 - Página não encontrada 🕵️‍♂️</h1>
+            <p>A rota que você tentou acessar não existe no nosso projeto.</p>
+            <Link href="/" style={{ color: 'blue' }}>Voltar para o início</Link>
+          </div>
+        );
+      }
+      
+      /* Se o usuário tentar acessar localhost:3000/rota-que-nao-existe, ao invés de uma tela feia do navegador, ele verá essa interface amigável. */
+      ```
+    - page.js
+      ```javascript
+      'use client'; // Necessário pois temos uma função onClick (handleClick)
+      
+      import Link from 'next/link';
+      import MeuBotao from "../components/Botao";
+      import Contador from "../components/Contador";
+      
+      export default function Home() {
+        function handleClick() {
+          alert("Clicado!");
+        }
+      
+        return (
+          <div style={{ textAlign: "center", fontFamily: "sans-serif", padding: '20px' }}>
+            <h1>Componentes do React no Next.js</h1>
+      
+            <MeuBotao
+              texto="Instância do MeuBotao"
+              bgcor="blue"
+              cor="white"
+              onClick={handleClick}
+            />
+            <MeuBotao
+              texto="Outro botão"
+              bgcor="red"
+              cor="white"
+              onClick={handleClick}
+            />
+      
+            <Contador />
+          </div>
+        );
+      }
+      ```
+  - components/
+    - Botao.jsx
+      ```jsx
+      import React from "react";
+      
+      export default function MeuBotao({ texto, bgcor, cor, onClick }) {
+        return (
+          <button style={{ backgroundColor: bgcor, color: cor, padding: '10px', margin: '5px' }} onClick={onClick}>
+            {texto}
+          </button>
+        );
+      }
+      ```
+    - Contador.jsx
+      ```jsx
+      'use client'; // Obrigatório no App Router para usar hooks como useState
+      
+      import React, { useState } from "react";
+      
+      export default function Contador() {
+        const [contador, setContador] = useState(0);
+      
+        return (
+          <>
+            <p>Contagem: {contador}</p>
+            <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+            <button onClick={() => setContador(0)}>Resetar</button>
+          </>
+        );
+      }
+      ```
+  - README.md
+    ```markdown
+    This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+    
+    ## Getting Started
+    
+    First, run the development server:
+    
+    ```bash
+    npm run dev
+    npm run dev -- -p 4000
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
+    ```
+    
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    
+    You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+    
+    This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    
+    ## Learn More
+    
+    To learn more about Next.js, take a look at the following resources:
+    
+    - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+    - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    
+    You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    
+    ## Deploy on Vercel
+    
+    The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    
+    Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```
+  - eslint.config.mjs
+    ```mjs
+    import { defineConfig, globalIgnores } from "eslint/config";
+    import nextVitals from "eslint-config-next/core-web-vitals";
+    
+    const eslintConfig = defineConfig([
+      ...nextVitals,
+      // Override default ignores of eslint-config-next.
+      globalIgnores([
+        // Default ignores of eslint-config-next:
+        ".next/**",
+        "out/**",
+        "build/**",
+        "next-env.d.ts",
+      ]),
+    ]);
+    
+    export default eslintConfig;
+    ```
+  - jsconfig.json
+    ```json
+    {
+      "compilerOptions": {
+        "paths": {
+          "@/*": ["./*"]
+        }
+      }
+    }
+    ```
+  - next.config.mjs
+    ```mjs
+    /** @type {import('next').NextConfig} */
+    const nextConfig = {
+      /* config options here */
+    };
+    
+    export default nextConfig;
+    ```
+  - package.json
+    ```json
+    {
+      "name": "teste-nextjs",
+      "version": "0.1.0",
+      "private": true,
+      "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint"
+      },
+      "dependencies": {
+        "next": "16.2.2",
+        "react": "19.2.4",
+        "react-dom": "19.2.4"
+      },
+      "devDependencies": {
+        "@tailwindcss/postcss": "^4",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.2",
+        "tailwindcss": "^4"
+      }
+    }
+    ```
+  - postcss.config.mjs
+    ```mjs
+    const config = {
+      plugins: {
+        "@tailwindcss/postcss": {},
+      },
+    };
+    
+    export default config;
+    ```

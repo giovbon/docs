@@ -28,11 +28,12 @@ No App Router, *as rotas são definidas por pastas*, e a interface de cada rota 
 
 ## Rotas Dinâmicas
 
-Se você precisa de URLs que mudam (como o ID de um produto ou slug de um post), você usa colchetes `[]` no nome da pasta.
+Se você precisa de *URLs que mudam* (como o ID de um produto ou slug de um post), você usa colchetes `[]` no nome da pasta.
 
-- `app/blog/[slug]/page.tsx`: Rota `/blog/meu-primeiro-post` ou `/blog/qualquer-coisa`
+- `app/blog/[slug]/page.tsx` pode ter como rota `/blog/meu-primeiro-post` ou `/blog/qualquer-coisa`
 
 Para acessar o valor da URL dentro da página:
+
 ```tsx
 // app/blog/[slug]/page.tsx
 export default function BlogPost({ params }: { params: { slug: string } }) {
@@ -44,7 +45,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
 ## Navegação entre páginas
 
-Para navegar entre as páginas sem recarregar o navegador inteiro (Single Page Application), você *não deve* usar a tag HTML padrão `<a>`. Em vez disso, use o componente `<Link>` do próprio Next.js.
+Para *navegar entre as páginas sem recarregar o navegador inteiro* (Single Page Application), você não deve usar a tag HTML padrão `<a>`. Em vez disso, use o componente `<Link>` do próprio Next.js.
 
 ```tsx
 import Link from 'next/link';
@@ -65,7 +66,7 @@ export default function Menu() {
 ---
 
 ## Navegação Programática
-Se você precisar redirecionar o usuário após uma ação (como enviar um formulário), use o hook `useRouter`:
+Se você precisar *redirecionar o usuário após uma ação* (como enviar um formulário), use o hook `useRouter`:
 
 --
 
@@ -97,13 +98,13 @@ export default function Formulario() {
 
 ## Arquivos Especiais de Rota
 
-O sistema de pastas do App Router traz arquivos que lidam automaticamente com os estados da sua aplicação, sem precisar de bibliotecas extras:
+O sistema de pastas do App Router traz *arquivos que lidam automaticamente com os estados da sua aplicação*, sem precisar de bibliotecas extras:
 
-- `loading.tsx`: Mostra uma interface de carregamento (como um *spinner* ou *skeleton*) enquanto a `page.tsx` está buscando dados no servidor.
-- `error.tsx`: Captura erros isolados naquela rota específica, evitando que o site inteiro "quebre" na tela do usuário.
-- `not-found.tsx`: Uma página de erro 404 personalizada para aquela rota.
+- `loading.tsx`: mostra uma *interface de carregamento* (como um spinner ou skeleton) enquanto a `page.tsx` está buscando dados no servidor.
+- `error.tsx`: *captura erros isolados naquela rota específica*, evitando que o site inteiro "quebre" na tela do usuário.
+- `not-found.tsx`: uma *página de erro 404 personalizada* para aquela rota.
 
-Você pode colocar esses arquivos em **qualquer pasta de rota**, e eles vão atuar de forma isolada (afetando apenas aquela rota específica e as rotas filhas dela). Isso significa que você pode ter um *loading* diferente para o painel do usuário e outro para a página de produtos, ou capturar um erro na seção de comentários de um blog sem que a página inteira pare de funcionar.
+Você pode colocar esses arquivos em *qualquer pasta de rota*, e eles vão atuar de forma isolada (afetando apenas *aquela rota específica e as rotas filhas dela*). Isso significa que você pode ter um loading diferente para o painel do usuário e outro para a página de produtos, ou capturar um erro na seção de comentários de um blog sem que a página inteira pare de funcionar.
 
 --
 
@@ -129,9 +130,9 @@ app/
 
 ## Layouts (`layout.tsx`)
 
-Além do arquivo `page.tsx`, o App Router introduziu o arquivo `layout.tsx`. Ele serve para criar interfaces compartilhadas entre várias rotas (como menus de navegação e rodapés).
+Além do arquivo `page.tsx`, o App Router introduziu o arquivo `layout.tsx`. Ele serve para *criar interfaces compartilhadas entre várias rotas* (como menus de navegação e rodapés).
 
-A grande vantagem: ao navegar entre páginas que compartilham o mesmo layout, **o layout não é recarregado**. Ele mantém seu estado enquanto apenas o conteúdo interno muda.
+A grande vantagem: ao navegar entre páginas que compartilham o mesmo layout, *o layout não é recarregado*. Ele mantém seu estado enquanto apenas o conteúdo interno muda.
 
 --
 
