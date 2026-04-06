@@ -14,7 +14,7 @@ hide:
              data-separator="^\r?\n---\r?\n$"
              data-separator-vertical="^\r?\n--\r?\n$">
     </section>
-  </div>s
+  </div>
 </div>
 
 <!-- ??? abstract "Referências"
