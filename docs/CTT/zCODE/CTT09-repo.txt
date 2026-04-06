@@ -29,7 +29,8 @@
       ```
   - .gitignore
     ```
-    .venv
+    .venv/
+    *cache*/
     ```
   - main.py
     ```python
