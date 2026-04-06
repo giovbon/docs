@@ -442,7 +442,9 @@ def somar(a, b):
     return resultado
 ```
 
+## Code Explorer
 
+`<div class="code-explorer" data-src="../../zCODE/CTT09-repo.txt" ></div>`
 
 # gerar_explorador.py
 

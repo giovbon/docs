@@ -1,0 +1,154 @@
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>next.js</h1>
+    <img src="https://simpleicons.org/icons/nextdotjs.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+O roteamento no Next.js é baseado no **sistema de arquivos** (file-system based routing). 
+Atualmente, existem dois sistemas principais de roteamento: 
+- **App Router** (introduzido no Next.js 13 e o padrão atual)
+- **Pages Router** (o sistema clássico)
+
+O **Pages Router** é o jeito clássico e mais familiar para quem usa Next.js há anos. O **App Router** é o padrão moderno, mais complexo inicialmente, mas incrivelmente poderoso em termos de performance, organização modular e carregamento de páginas. Para qualquer projeto novo, o App Router é a escolha recomendada pela própria Vercel. Por isso *vamos focar nele*.
+
+---
+
+No App Router, *as rotas são definidas por pastas*, e a interface de cada rota é definida por um arquivo especial chamado `page.js` (ou `page.tsx` se estiver usando TypeScript). Se uma pasta não tiver um arquivo `page.js`, ela *não será acessível publicamente* (útil para guardar componentes, estilos ou funções auxiliares).
+
+*Exemplos de estrutura:*
+
+- `app/page.tsx` → Rota raiz (`/`)
+- `app/sobre/page.tsx` → Rota `/sobre`
+- `app/contato/page.tsx` → Rota `/contato`
+
+---
+
+## Rotas Dinâmicas
+
+Se você precisa de URLs que mudam (como o ID de um produto ou slug de um post), você usa colchetes `[]` no nome da pasta.
+
+- `app/blog/[slug]/page.tsx`: Rota `/blog/meu-primeiro-post` ou `/blog/qualquer-coisa`
+
+Para acessar o valor da URL dentro da página:
+```tsx
+// app/blog/[slug]/page.tsx
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  return <h1>Lendo o post: {params.slug}</h1>;
+}
+```
+
+---
+
+## Navegação entre páginas
+
+Para navegar entre as páginas sem recarregar o navegador inteiro (Single Page Application), você *não deve* usar a tag HTML padrão `<a>`. Em vez disso, use o componente `<Link>` do próprio Next.js.
+
+```tsx
+import Link from 'next/link';
+
+export default function Menu() {
+  return (
+    <nav>
+      <ul>
+        <li><Link href="/">Home</Link></li>
+        <li><Link href="/sobre">Sobre Nós</Link></li>
+        <li><Link href="/blog/meu-post">Blog</Link></li>
+      </ul>
+    </nav>
+  );
+}
+```
+
+---
+
+## Navegação Programática
+Se você precisar redirecionar o usuário após uma ação (como enviar um formulário), use o hook `useRouter`:
+
+--
+
+```tsx
+'use client'; // Necessário no App Router para usar hooks do React
+
+import { useRouter } from 'next/navigation';
+
+export default function Formulario() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Faz o login ou salva os dados...
+    
+    // Redireciona para o painel
+    router.push('/dashboard');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Entrar</button>
+    </form>
+  );
+}
+```
+
+---
+
+## Arquivos Especiais de Rota
+
+O sistema de pastas do App Router traz arquivos que lidam automaticamente com os estados da sua aplicação, sem precisar de bibliotecas extras:
+
+- `loading.tsx`: Mostra uma interface de carregamento (como um *spinner* ou *skeleton*) enquanto a `page.tsx` está buscando dados no servidor.
+- `error.tsx`: Captura erros isolados naquela rota específica, evitando que o site inteiro "quebre" na tela do usuário.
+- `not-found.tsx`: Uma página de erro 404 personalizada para aquela rota.
+
+Você pode colocar esses arquivos em **qualquer pasta de rota**, e eles vão atuar de forma isolada (afetando apenas aquela rota específica e as rotas filhas dela). Isso significa que você pode ter um *loading* diferente para o painel do usuário e outro para a página de produtos, ou capturar um erro na seção de comentários de um blog sem que a página inteira pare de funcionar.
+
+--
+
+Exemplo:
+
+Imagine que você tem uma área administrativa (Dashboard) no seu site. A estrutura das pastas ficaria assim:
+
+```
+app/
+├── layout.tsx         -> Layout global (cabeçalho, rodapé de todo o site)
+├── page.tsx           -> Rota raiz (Home)
+├── loading.tsx        -> Loading global (caso alguma página não tenha o seu próprio)
+│
+└── dashboard/
+    ├── layout.tsx     -> Layout específico do Dashboard (ex: menu lateral)
+    ├── page.tsx       -> Rota /dashboard
+    ├── loading.tsx    -> Mostra um esqueleto animado SÓ quando o dashboard carrega
+    ├── error.tsx      -> Se um gráfico der erro, só o dashboard quebra (o resto do site continua vivo)
+    └── not-found.tsx  -> Tela de "Item não encontrado no Dashboard"
+```
+
+---
+
+## Layouts (`layout.tsx`)
+
+Além do arquivo `page.tsx`, o App Router introduziu o arquivo `layout.tsx`. Ele serve para criar interfaces compartilhadas entre várias rotas (como menus de navegação e rodapés).
+
+A grande vantagem: ao navegar entre páginas que compartilham o mesmo layout, **o layout não é recarregado**. Ele mantém seu estado enquanto apenas o conteúdo interno muda.
+
+--
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html lang="pt-BR">
+      <body>
+        <nav>Menu Principal Aqui</nav>
+        
+        {/* As páginas (page.tsx) serão renderizadas aqui dentro */}
+        <main>{children}</main> 
+        
+        <footer>Rodapé Aqui</footer>
+      </body>
+    </html>
+  );
+}
+```
