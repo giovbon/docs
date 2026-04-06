@@ -103,4 +103,4 @@ Execute a api localmente, replicando os passos que o github actions fez (crie am
 
 == Entrega
 
-Envie o *link do repo do github* para o #link("https://forms.gle/XtxuC3MNMnuaU1v66")[formulário] (não envie pelo classroom, como de costume).
+Envie o *link do repo do github* para o #link("https://forms.gle/XtxuC3MNMnuaU1v66")[formulário] (*NÃO* envie pelo classroom, apenas click em "_Marcar como Concluída_" lá dentro após preencherem o formulário com a entrega).
