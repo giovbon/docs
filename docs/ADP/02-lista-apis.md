@@ -44,7 +44,7 @@ hide:
 [^6]: Tabelas a serem usadas para autenticação de usuários devem possuir campo de `Email` (tipo text) e um campo de `Password` (tipo password).
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryTextColor': '#fff', 'lineColor': '#aaa'}}}%%
+%%{init: {'theme': 'dark'}}}%%
 graph LR
     %% Alterado de TD para LR para resolver sobreposição %%
 
