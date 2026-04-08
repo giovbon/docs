@@ -1,6 +1,16 @@
+#set page(
+  paper: "a4",
+  fill: rgb("#181818"),
+  footer: align(center)[Gerado em: #datetime.today().display("[day]/[month]/[year]")],
+)
+#show raw.where(block: false): set text(fill: rgb("#aed68d"))
+#set text(
+  fill: rgb("#f5f5f5"), 
+  size: 14pt
+)
+
 = Desafio Prático: Automação de Testes de API Modernas
 
-*Duração Estimada:* 2 horas
 *Ferramentas Necessárias:* Python 3.9+, `pytest`, `pytest-asyncio`, `httpx`, `tavern`, `fastapi`.
 
 == Contexto
@@ -8,7 +18,7 @@ Você foi contratado como Engenheiro de Qualidade (QA) em uma startup inovadora.
 
 Sua missão é dividida em três partes.
 
-=== Parte 1: Teste de Contrato com Tavern (Tempo estimado: 1h)
+=== Parte 1: Teste de Contrato com Tavern
 A startup consome a API pública `https://jsonplaceholder.typicode.com`. Você precisa testar o fluxo de tarefas (To-Dos), garantindo que os dados retornem corretamente e usando um teste declarativo em YAML.
 
 *O que você deve fazer:*
@@ -23,7 +33,7 @@ A startup consome a API pública `https://jsonplaceholder.typicode.com`. Você p
    - Valide se o `status_code` é 200.
    - *Integração com Python:* Crie um arquivo `utils.py` com uma função chamada `validar_lista_tarefas`. Essa função deve receber a resposta HTTP, verificar se o retorno é uma lista e confirmar se pelo menos uma das tarefas da lista contém a chave `completed` (seja `true` ou `false`). Chame essa função neste stage usando a tag de integração do Tavern (`verify_response_with`).
 
-=== Parte 2: Teste de Performance Assíncrona (Tempo estimado: 45 min)
+=== Parte 2: Teste de Performance Assíncrona
 O time de Back-end acabou de criar um endpoint assíncrono para processar pagamentos, mas eles não têm certeza se ele realmente aguenta múltiplas chamadas simultâneas sem travar.
 
 *O código da API local (`api_pagamentos.py`) é este:*
@@ -44,9 +54,9 @@ async def processar_pagamento():
 2. Usando `pytest`, `pytest-asyncio` e `httpx`, crie um teste que se conecte diretamente à aplicação FastAPI na memória (usando `ASGITransport`, sem precisar rodar o Uvicorn).
 3. *Parametrize* o teste para disparar: 5, 20 e 50 requisições simultâneas.
 4. Utilize `asyncio.gather` para disparar as tarefas de forma assíncrona.
-5. Valide se todos os status retornados são `200` e crie um `assert` para garantir que o tempo total de execução do teste (mesmo com 50 requisições) seja *menor que 2.0 segundos*.
+5. Valide se todos os status retornados são `200` e crie um `assert` para garantir que o tempo total de execução do teste (mesmo com 50 requisições) seja *menor que 3.5 segundos*.
 
-=== Parte 3: Boas Práticas de Repositório (Tempo estimado: 15 min)
+=== Parte 3: Boas Práticas de Repositório
 Ao rodar seus testes, o Pytest e o Python geraram várias pastas de cache que não devem ser enviadas para o repositório da empresa.
 
 *O que você deve fazer:*
@@ -55,11 +65,11 @@ Ao rodar seus testes, o Pytest e o Python geraram várias pastas de cache que n�
 
 ---
 
-*Entregáveis Esperados ao final das 2 horas:*
+*Entregáveis Esperados:*
 - `utils.py`
 - `test_fluxo_todos.tavern.yaml`
 - `api_pagamentos.py`
 - `test_performance.py`
 - `.gitignore`
 
-#emoji.warning Envie o *link do repo do github* para o #link("https://forms.gle/XtxuC3MNMnuaU1v66")[formulário] (*NÃO* envie pelo classroom, apenas click em "_Marcar como Concluída_" lá dentro após preencher o formulário com a entrega).
+⚠️ Envie o *link do repo do github* para o #link("https://forms.gle/XtxuC3MNMnuaU1v66")[formulário] (*NÃO* envie pelo classroom, apenas click em "_Marcar como Concluída_" lá dentro após preencher o formulário com a entrega).
