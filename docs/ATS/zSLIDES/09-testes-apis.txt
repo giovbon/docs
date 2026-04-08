@@ -2,7 +2,6 @@
 
 <div class="glass-box">
     <h1>testes de apis</h1>
-    <img src="https://simpleicons.org/icons/selenium.svg" class="glass-icon imagem-invertida" />
 </div>
 
 ---
@@ -42,21 +41,26 @@ Os testes de API fortalecem a segurança do sistema protegendo-o contra vetores 
 
 ## APIs síncronas vs assíncronas
 
-Para entender por que existem APIs síncronas e assíncronas, é preciso considerar como o computador organiza suas tarefas simultâneas e lida com os momentos em que precisa ficar esperando por uma resposta.
+A diferença principal entre os modelos está em como o servidor gerencia o tempo de espera (como consultas a bancos de dados ou requisições externas):
 
---
+- **Síncrono (ex: Flask, Django)**: *Cada requisição "trava" um processo exclusivo até ser finalizada*. É um modelo mais fácil de programar e debugar, mas exige *alto consumo de memória e perde desempenho rapidamente ao lidar com muitos acessos simultâneos*.
 
-- No modelo síncrono (ex.: Django, Flask), cada pedido do usuário ocupa um "trabalhador" do servidor que fica totalmente travado enquanto espera por respostas demoradas (como da internet ou do banco de dados). Isso é simples de programar e de achar erros, mas consome muita memória para manter cada um desses trabalhadores ativos e perde muito desempenho tentando organizar a troca de atenção entre eles quando há muitos acessos ao mesmo tempo.
-
---
-
-- No modelo assíncrono (ex.: FastAPI, Node.js), as buscas demoradas não travam o sistema e são organizadas por um "maestro" central: a tarefa atual "passa a vez" enquanto aguarda a resposta, permitindo que o mesmo trabalhador vá atender outros usuários; quando a resposta final chega, o maestro avisa para a tarefa continuar de onde parou. Isso reduz drasticamente o consumo de memória e a necessidade de trabalhadores extras, suportando com facilidade muitos clientes e conexões longas, sendo ideal para sistemas que passam muito tempo esperando dados externos e precisam entregar um volume gigantesco de informações rapidamente.
+**Assíncrono (ex: FastAPI, Node.js)**: *As tarefas não bloqueiam o servidor*. Enquanto uma requisição aguarda dados externos, o sistema "passa a vez" e o mesmo trabalhador atende outros usuários. Isso *economiza muita memória e permite suportar milhares de conexões simultâneas com alta performance*.
 
 ---
 
 ## Tavern
 
-Ao invés de escrever código Python, você escreve testes de API em arquivos YAML. Separa a lógica da estrutura do teste. É extremamente legível, ótimo para documentação viva, e permite encadear requisições (pegar o ID retornado no POST e usar no GET seguinte) com muita elegância, sem poluir o código.
+Ao invés de escrever código Python, você descreve seus testes de API de forma declarativa em arquivos YAML. Ele roda nativamente dentro do processo do `pytest`, aproveitando toda a sua infraestrutura já existente (fixtures, CI/CD e relatórios) sem sair do fluxo de desenvolvimento.
 
-Tavern permite escrever testes de API em YAML (casos declarativos, orientados a dados) que são executados dentro do mesmo processo do pytest — ou seja, você não precisa escrever testes em Python para APIs, mas ainda aproveita fixtures, variáveis de ambiente e a pipeline CI já configurada para pytest.  
-Em prática: crie cenários YAML que descrevem requisições e asserts, rode com `pytest` junto dos unit tests, e ganhe execução unificada, relatórios e integração contínua sem sair do fluxo de desenvolvimento Python.
+--
+
+**Principais Vantagens e Recursos:**
+
+- **Documentação Viva:** A separação entre a lógica e a estrutura cria testes extremamente legíveis, servindo como documentação atualizada do contrato da API.
+
+- **Encadeamento de Requisições:** Permite capturar dados de uma resposta (ex: salvar um Token ou ID de um POST) e utilizá-los como variáveis nas requisições seguintes de forma elegante.
+
+- **Parametrização Nativa:** Executa o mesmo cenário de teste múltiplas vezes com dados de entrada diferentes diretamente pelo YAML, evitando duplicação de código.
+
+- **Integração com Python (Ext Functions):** Capacidade de invocar funções Python customizadas de dentro do YAML para realizar validações complexas de regras de negócio (ex: checar formato de e-mails ou datas).
