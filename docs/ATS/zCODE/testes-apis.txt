@@ -1,0 +1,117 @@
+- /
+  - README.md
+    ```markdown
+    
+    python -m venv venv
+    source venv/bin/activate
+    
+    venv\Scripts\activate
+    
+    pip install pytest requests httpx pytest-asyncio tavern fastapi uvicorn
+    
+    pytest -v -s
+    
+    pytest test_api_async_performance.py -v -s
+    
+    <!-- uvicorn server_burro:app -->
+    
+    
+    ```
+  - conftest.py
+    ```python
+    
+    import pytest
+    
+    @pytest.fixture
+    def base_url():
+        """Fixture que fornece a URL base da API para todos os testes."""
+        return "https://jsonplaceholder.typicode.com"
+    ```
+  - server_burro.py
+    ```python
+    # uvicorn server_burro:app
+    from fastapi import FastAPI
+    import asyncio
+    
+    app = FastAPI()
+    
+    @app.get("/lento")
+    async def lento():
+        # Ele simplesmente dorme 2 segundos e responde
+        await asyncio.sleep(2)
+        return {"status": "ok"}
+    ```
+  - test_api_async_performance.py
+    ```python
+    # test_api_async_performance.py
+    import pytest
+    import httpx
+    import time
+    import asyncio
+    
+    URL_LOCAL_LENTA = "http://localhost:8000/lento"
+    
+    @pytest.mark.asyncio
+    async def test_performance_assincrona():
+        inicio = time.time()
+        
+        async with httpx.AsyncClient() as client:
+            # Dispara 3 requisições que demoram 2s cada
+            tarefas = [
+                client.get(URL_LOCAL_LENTA),
+                client.get(URL_LOCAL_LENTA),
+                client.get(URL_LOCAL_LENTA)
+            ]
+            
+            # O asyncio.gather dispara as 3 ao mesmo tempo
+            respostas = await asyncio.gather(*tarefas)
+            
+            for res in respostas:
+                assert res.status_code == 200
+                
+        fim = time.time()
+        tempo_total = fim - inicio
+        
+        # Se fosse síncrono, demoraria 6 segundos (2+2+2)
+        # Sendo assíncrono, demora pouco mais de 2 segundos.
+        print(f"\nTempo total de execução: {tempo_total:.2f} segundos")
+        
+        assert tempo_total < 3.0
+    ```
+  - test_api_requests.py
+    ```python
+    import requests
+    
+    def test_get_post_com_requests(base_url):
+        # O Pytest injeta o 'base_url' automaticamente
+        url = f"{base_url}/posts/1"
+        
+        # 1. Realiza a ação (GET)
+        response = requests.get(url)
+        
+        # 2. Validações (Asserts)
+        assert response.status_code == 200
+        
+        data = response.json()
+        assert data["id"] == 1
+        assert data["userId"] == 1
+        assert "title" in data # Verifica se a chave existe no JSON
+    ```
+  - test_api_simples.tavern.yaml
+    ```yaml
+    # test_api_simples.tavern.yaml
+    test_name: Teste basico de GET na API publica
+    
+    stages:
+      - name: Busca o post 1 e valida a resposta
+        request:
+          url: "https://jsonplaceholder.typicode.com/posts/1"
+          method: GET
+        
+        response:
+          status_code: 200
+          strict: False  # Usamos o False para ele não reclamar de chaves que não queremos testar agora
+          json:
+            id: 1
+            userId: 1
+    ```

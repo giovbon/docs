@@ -19,8 +19,8 @@ hide:
 ??? abstract "Referências"
     - [Easier API testing with Tavern](https://tavern.readthedocs.io/en/latest/)
 
-<!-- ## Exemplos
+## Exemplos
 
-<div class="code-explorer" data-src="../zCODE/selenium2-exes.txt" ></div>
+<div class="code-explorer" data-src="../zCODE/testes-apis.txt" ></div>
 
-[:lucide-arrow-big-down: Baixar Exercício ATS8](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" } -->
+[:lucide-arrow-big-down: Baixar Exercício ATS8](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" }
