@@ -25,4 +25,4 @@ hide:
 
 [:lucide-arrow-big-down: ATS9 - Teste APIs](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS9.typ'); return false;" }
 
-[:lucide-send: Entregar Atividade](https://seusite.com.br){ .md-button }
+[:lucide-send: Entregar Atividade](https://forms.gle/XtxuC3MNMnuaU1v66){ .md-button }
