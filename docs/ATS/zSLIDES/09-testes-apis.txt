@@ -1,0 +1,62 @@
+<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>testes de apis</h1>
+    <img src="https://simpleicons.org/icons/selenium.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+## Importância
+
+A arquitetura moderna transformou as APIs na espinha dorsal das aplicações, onde *front-ends desacoplados* (web, mobile, clientes diversos) d*ependem de APIs para receber dados e lógica*. Testar APIs garante que o “motor” do sistema entregue dados corretos independentemente da interface, *evitando que falhas no back-end quebrem múltiplos clientes*.
+
+--
+
+Os testes de API ocupam o *nível médio da pirâmide de testes*, equilibrando velocidade e abrangência pois são mais rápidos e estáveis que testes de UI e mais integrados que testes unitários, *validando fluxos de negócio, integração com bancos e regras complexas* em milissegundos. Além disso, eles asseguram o cumprimento do contrato (tipos, chaves, códigos HTTP), prevenindo regressões que quebrariam consumidores da API.
+
+<div style="text-align: center;">
+	<img src="https://i0.wp.com/automationstepbystep.com/mobufoc/2020/04/TestPyramid1.png?fit=1014%2C752&ssl=1" width="35%" data-preview-image>
+</div>
+
+--
+
+Os testes de API fortalecem a segurança do sistema protegendo-o contra vetores de ataque comuns. Na prática, eles devem validar:
+
+- **Autenticação**: robustez dos fluxos e gestão de tokens (expiração e refresh).
+- **Autorização**: controle de acesso baseado em perfis (RBAC) em endpoints sensíveis.
+- **Integridade de Dados**: validação rigorosa de entrada e saída para prevenir ataques de injeção e desserialização insegura.
+- **Disponibilidade**: aplicação de rate limiting (throttling) para evitar abusos.
+- **Resiliência**: comportamento estável do servidor ao receber cargas inesperadas ou dados malformados.
+
+---
+
+## Stack para Testes de APIS
+
+- O **Pytest** é o padrão-ouro em automação Python (fixtures, markers, conftest são habilidades-chave) e é amplamente adotado em empresas de todos os portes; 
+- A **biblioteca `requests`** é muito usada em código legado e *testes síncronos* (para testes diretos e sequenciais).
+- A **biblioteca `httpx`** é a tendência atual para *arquiteturas assíncronas* e FastAPI (suporta requisições assíncronas (async/await) e HTTP/2)
+    - *Por que usar HTTPX?* Quando você está testando APIs modernas (especialmente aquelas construídas com frameworks assíncronos) e precisa simular *concorrência*, ou apenas quer testes que rodem mais rápido de forma *paralela*.
+
+---
+
+## APIs síncronas vs assíncronas
+
+Para entender por que existem APIs síncronas e assíncronas, é preciso considerar como o computador organiza suas tarefas simultâneas e lida com os momentos em que precisa ficar esperando por uma resposta.
+
+--
+
+- No modelo síncrono (ex.: Django, Flask), cada pedido do usuário ocupa um "trabalhador" do servidor que fica totalmente travado enquanto espera por respostas demoradas (como da internet ou do banco de dados). Isso é simples de programar e de achar erros, mas consome muita memória para manter cada um desses trabalhadores ativos e perde muito desempenho tentando organizar a troca de atenção entre eles quando há muitos acessos ao mesmo tempo.
+
+--
+
+- No modelo assíncrono (ex.: FastAPI, Node.js), as buscas demoradas não travam o sistema e são organizadas por um "maestro" central: a tarefa atual "passa a vez" enquanto aguarda a resposta, permitindo que o mesmo trabalhador vá atender outros usuários; quando a resposta final chega, o maestro avisa para a tarefa continuar de onde parou. Isso reduz drasticamente o consumo de memória e a necessidade de trabalhadores extras, suportando com facilidade muitos clientes e conexões longas, sendo ideal para sistemas que passam muito tempo esperando dados externos e precisam entregar um volume gigantesco de informações rapidamente.
+
+---
+
+## Tavern
+
+Ao invés de escrever código Python, você escreve testes de API em arquivos YAML. Separa a lógica da estrutura do teste. É extremamente legível, ótimo para documentação viva, e permite encadear requisições (pegar o ID retornado no POST e usar no GET seguinte) com muita elegância, sem poluir o código.
+
+Tavern permite escrever testes de API em YAML (casos declarativos, orientados a dados) que são executados dentro do mesmo processo do pytest — ou seja, você não precisa escrever testes em Python para APIs, mas ainda aproveita fixtures, variáveis de ambiente e a pipeline CI já configurada para pytest.  
+Em prática: crie cenários YAML que descrevem requisições e asserts, rode com `pytest` junto dos unit tests, e ganhe execução unificada, relatórios e integração contínua sem sair do fluxo de desenvolvimento Python.
