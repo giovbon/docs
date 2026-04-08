@@ -44,31 +44,47 @@ hide:
 [^6]: Tabelas a serem usadas para autenticação de usuários devem possuir campo de `Email` (tipo text) e um campo de `Password` (tipo password).
 
 ```mermaid
-graph TD
-    %% Definição das classes visuais
-    classDef auth fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#000;
-    classDef loc fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#000;
-    classDef action fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000;
-    classDef logic fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000;
-    classDef database fill:#eceff1,stroke:#455a64,stroke-width:2px,color:#000;
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryTextColor': '#fff', 'lineColor': '#aaa'}}}%%
+graph LR
+    %% Alterado de TD para LR para resolver sobreposição %%
 
     %% Declaração dos Nós (APIs e Banco de Dados)
-    BuscaCli(["/buscaCliente"])
-    UpsertCEP(["/upsertCEP"])
+    subgraph Entrada [Entrada / Gatilhos]
+        BuscaCli(["/buscaCliente"])
+        UpsertCEP(["/upsertCEP"])
+    end
     
-    ConsultaEnd(["/consultaEnderecoCliente"])
-    SalvaEnd(["/salvaEndereco"])
-    AtualizaEnd(["/atualizaEndereco"])
+    subgraph Processo [Processamento de Endereço]
+        ConsultaEnd(["/consultaEnderecoCliente"])
+        SalvaEnd(["/salvaEndereco"])
+        AtualizaEnd(["/atualizaEndereco"])
+    end
     
-    MarcarPadrao(["/marcarEnderecoPadrao"])
+    subgraph Regra [Regra de Negócio]
+        MarcarPadrao(["/marcarEnderecoPadrao"])
+    end
+
     DB[("Tabela de Endereços")]
 
-    %% Atribuição de classes aos nós (Sintaxe segura)
+    %% Atribuição de classes aos nós
     class BuscaCli auth;
     class UpsertCEP loc;
     class ConsultaEnd,SalvaEnd,AtualizaEnd action;
     class MarcarPadrao logic;
     class DB database;
+
+    %% --- DEFINIÇÃO DE ESTILOS PARA TEMA ESCURO --- %%
+    %% Cores com alto contraste para fundo escuro
+    classDef auth fill:#f96,stroke:#333,stroke-width:2px,color:#000,font-weight:bold;
+    classDef loc fill:#0cf,stroke:#333,stroke-width:2px,color:#000,font-weight:bold;
+    classDef action fill:#4caf50,stroke:#333,stroke-width:1px,color:#fff;
+    classDef logic fill:#9c27b0,stroke:#333,stroke-width:1px,color:#fff;
+    classDef database fill:#607d8b,stroke:#fff,stroke-width:2px,color:#fff,rx:5,ry:5;
+    
+    %% Estilo padrão para subgraphs no tema escuro
+    style Entrada fill:#2d2d2d,stroke:#555,color:#fff
+    style Processo fill:#2d2d2d,stroke:#555,color:#fff
+    style Regra fill:#2d2d2d,stroke:#555,color:#fff
 
     %% 1. Dependência de Identidade
     BuscaCli -->|Depende de Sucesso| ConsultaEnd
@@ -80,11 +96,12 @@ graph TD
     UpsertCEP -->|Dependência Obrigatória| AtualizaEnd
 
     %% Ações no Banco de Dados (Operações padrão)
+    %% Adicionado quebras de linha <br/> nos textos longos para evitar sobreposição
     ConsultaEnd -.->|Lê dados| DB
     SalvaEnd -.->|Cria registro| DB
     AtualizaEnd -.->|Altera registro| DB
 
     %% 3. Lógica de Negócio (Exclusividade)
-    MarcarPadrao ==>|1. Marca o endereço alvo| DB
-    MarcarPadrao ==>|2. Varre a tabela e desmarca os outros| DB
+    MarcarPadrao ==>|1. Marca o<br/>endereço alvo| DB
+    MarcarPadrao ==>|2. Varre tabela e<br/>desmarca outros| DB
 ```
