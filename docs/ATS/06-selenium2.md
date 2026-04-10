@@ -21,6 +21,6 @@ hide:
 
 <div class="code-explorer" data-src="../zCODE/selenium2-exes.txt" ></div>
 
-[:lucide-file-text: ATS8 - Selenium 1](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" }
+[:lucide-file-text: ATS8 - Selenium 2](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" }
 
 [:lucide-send: Entregar Atividade](https://forms.gle/XtxuC3MNMnuaU1v66){ .md-button target="_blank" }
