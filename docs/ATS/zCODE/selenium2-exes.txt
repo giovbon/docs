@@ -1,4 +1,9 @@
 - /
+  - .gitignore
+    ```
+    .venv/
+    *cache*/
+    ```
   - 01-headless.py
     ```python
     from selenium import webdriver
