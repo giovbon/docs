@@ -24,7 +24,7 @@ Para facilitar o início, você receberá um arquivo de workflow (`pipeline.yml`
 
 === Passo 1: Preparação do Terreno
 
-1.  Crie um novo repositório público ou privado no seu GitHub chamado `lab-github-actions-vars`.
+1.  Crie um novo repositório *público* no seu GitHub chamado `lab-github-actions-vars`.
 2.  *Faça o upload do arquivo `pipeline.yml`* (localizado em `/home/ubuntu/lab-github-actions-vars/pipeline.yml`) para a raiz do seu novo repositório, dentro da pasta `.github/workflows/`.
 3.  Vá até as configurações do repositório (*Settings > Secrets and variables > Actions*).
 4.  *Crie um Secret:* Adicione um *Repository Secret* chamado `API_TOKEN_PROD` com um valor fictício (ex: `super_senha_secreta_123`).
