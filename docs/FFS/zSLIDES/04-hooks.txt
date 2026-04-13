@@ -1,0 +1,162 @@
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>hooks</h1>
+    <img src="https://simpleicons.org/icons/react.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+
+## Estados
+
+Os estados do React *armazenam **dados que podem mudar ao longo do tempo** em um componente*, permitindo que ele seja dinâmico e reativo. *Quando o estado muda, o React re-renderiza automaticamente o componente*, refletindo as alterações na interface do usuário, o que é fundamental para criar aplicações interativas que respondem a eventos e mudanças de dados.
+
+---
+
+### `useState`
+
+Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo declarar uma variável de estado e uma função para atualizá-la. Os ***hooks** no React são funções que permitem utilizar o estado e outras funcionalidades* em componentes funcionais.
+
+No React funcional, o estado é frequentemente gerenciado usando o hook `useState`. Este hook permite que você *declare uma variável de estado e uma função para atualizá-la*.
+
+---
+
+```jsx
+import React, { useState } from 'react';
+
+function Contador() {
+  const [contador, setContador] = useState(0); 
+
+  return (
+    <div>
+      <p>Contagem: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+Aqui, `contador` é a variável que armazena um estado. A função `setContador`, por sua vez, é a responsável por atualizar o estado (`contador`) do componente. Quando o estado é atualizado, o React entende que o componente precisa ser renderizado novamente com o novo valor, e é assim que a interface do usuário (a contagem exibida na tela) é atualizada.
+
+---
+
+Outro exemplo:
+
+```jsx
+import React, { useState } from 'react';
+
+function BotaoStatus() {
+  // O valor inicial de 'estaLigado' é definido como 'false'
+  const [estaLigado, setEstaLigado] = useState(false);
+
+  // A função para alternar o valor de 'estaLigado'
+  function alternarStatus() {
+    setEstaLigado(!estaLigado); // O ! inverte o valor de true para false, ou vice-versa
+  }
+
+  return (
+    <div>
+      <p>O botão está: {estaLigado ? 'Ligado' : 'Desligado'}</p>
+      <button onClick={alternarStatus}>Alternar Status</button>
+    </div>
+  );
+}
+```
+
+---
+
+### `useEffect`
+
+O `useEffect` é um Hook fundamental do React usado para *lidar com **"efeitos colaterais"**, que são ações que interagem com o mundo externo*, como fazer requisições a APIs ou manipular o título da página. Ele executa uma função com a lógica do seu efeito após a renderização do componente.
+
+**Efeitos colaterais** são *ações que interagem com o mundo externo ao seu componente, como fazer requisições a uma API*, alterar o título da página ou usar um timer. Eles são chamados assim porque são ações que *não se encaixam no fluxo de renderização puro do React e precisam ser gerenciadas separadamente* para garantir a previsibilidade e a performance da sua aplicação.
+
+---
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function Contador() {
+  const [contador, setContador] = useState(0);
+
+  // O useEffect age aqui como um observador
+  useEffect(() => {
+    // A cada vez que a variável 'contador' mudar, 
+    // esta linha de código será executada.
+    document.title = `Você clicou ${contador} vezes`;
+    console.log('O efeito foi executado porque o contador mudou.');
+  }, [contador]); // Array de dependências: 
+  // 'useEffect' vai rodar quando 'contador' mudar.
+
+  return (
+    <div>
+      <p>Contagem: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>
+        Incrementar
+      </button>
+    </div>
+  );
+}
+```
+
+---
+
+No exemplo, o `useState` cria um estado chamado `contador` e uma função para atualizá-lo, `setContador`. 
+
+O `useEffect`, por sua vez, age como um **observador**, executando um "**efeito colateral**" (mudar o título da página) toda vez que o valor de `contador` for alterado, conforme instruído pelo seu **array de dependências**. 
+
+Assim, a cada clique, `setContador` atualiza o estado, e o `useEffect` reage a essa mudança, *garantindo que a tela e o título do navegador fiquem sincronizados de forma eficiente*.
+
+---
+
+`useEffect` aplicado num contexto de uma **chamada à uma API**: 
+
+O usuário digita o CEP, o que atualiza um estado. O useEffect está "observando" esse estado e, quando detecta que ele mudou para um CEP válido, ele dispara o efeito colateral: a requisição à API. Essa abordagem garante que a chamada de rede seja executada de forma controlada e eficiente, evitando requisições desnecessárias e mantendo a lógica de renderização do componente separada das ações que interagem com o mundo externo.
+
+---
+
+## Renderização Condicional
+
+Condicional rendering em React é uma técnica que permite a você *renderizar diferentes elementos ou componentes com base em uma ou mais condições*. Em outras palavras, é como dizer: "Se essa condição for verdadeira, mostre este conteúdo. Se for falsa, mostre este outro".
+
+```jsx
+function Saudacao({ estaLogado }) {
+  if (estaLogado) {
+    return <h1>Bem-vindo de volta!</h1>;
+  }
+  return <h1>Por favor, faça login.</h1>;
+}
+```
+
+---
+
+Com operador ternário:
+
+```jsx
+function Botao({ estaLogado }) {
+  return (
+    <div>
+      {estaLogado ? (
+        <button>Sair</button>
+      ) : (
+        <button>Entrar</button>
+      )}
+    </div>
+  );
+}
+```
+
+---
+
+Se você só precisa renderizar algo se a condição for verdadeira e nada se for falsa, use o operador `&&`:
+
+```jsx
+function MensagemDeAlerta({ temMensagem }) {
+  return (
+    <div>
+      {temMensagem && <h1>Você tem novas mensagens!</h1>}
+    </div>
+  );
+}
+```
