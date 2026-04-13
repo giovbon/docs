@@ -25,6 +25,6 @@ hide:
 
 ## Exercício
 
-[:lucide-file-text: ATS9 - Teste APIs](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS9.typ'); return false;" }
+[:lucide-file-text: ATS9 - Testes APIs](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS9.typ'); return false;" }
 
 [:lucide-send: Entregar Atividade](https://forms.gle/XtxuC3MNMnuaU1v66){ .md-button target="_blank" }

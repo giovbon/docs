@@ -32,10 +32,12 @@ Os testes de API fortalecem a segurança do sistema protegendo-o contra vetores 
 
 ## Stack para Testes de APIS
 
-- O **Pytest** é o padrão-ouro em automação Python (fixtures, markers, conftest são habilidades-chave) e é amplamente adotado em empresas de todos os portes; 
-- A **biblioteca `requests`** é muito usada em código legado e *testes síncronos* (para testes diretos e sequenciais).
-- A **biblioteca `httpx`** é a tendência atual para *arquiteturas assíncronas* e FastAPI (suporta requisições assíncronas (async/await) e HTTP/2)
-    - *Por que usar HTTPX?* Quando você está testando APIs modernas (especialmente aquelas construídas com frameworks assíncronos) e precisa simular *concorrência*, ou apenas quer testes que rodem mais rápido de forma *paralela*.
+O **Pytest** é o padrão-ouro em automação Python (fixtures, markers, conftest são habilidades-chave) e é amplamente adotado em empresas de todos os portes; 
+
+A **biblioteca `requests`** é muito usada em código legado e *testes síncronos* (para testes diretos e sequenciais).
+
+A **biblioteca `httpx`** é a tendência atual para *arquiteturas assíncronas* e FastAPI (suporta requisições assíncronas (async/await) e HTTP/2)
+- *Por que usar HTTPX?* Quando você está testando APIs modernas (especialmente aquelas construídas com frameworks assíncronos) e precisa simular *concorrência*, ou apenas quer testes que rodem mais rápido de forma *paralela*.
 
 ---
 
@@ -43,7 +45,7 @@ Os testes de API fortalecem a segurança do sistema protegendo-o contra vetores 
 
 A diferença principal entre os modelos está em como o servidor gerencia o tempo de espera (como consultas a bancos de dados ou requisições externas):
 
-- **Síncrono (ex: Flask, Django)**: *Cada requisição "trava" um processo exclusivo até ser finalizada*. É um modelo mais fácil de programar e debugar, mas exige *alto consumo de memória e perde desempenho rapidamente ao lidar com muitos acessos simultâneos*.
+**Síncrono (ex: Flask, Django)**: *Cada requisição "trava" um processo exclusivo até ser finalizada*. É um modelo mais fácil de programar e debugar, mas exige *alto consumo de memória e perde desempenho rapidamente ao lidar com muitos acessos simultâneos*.
 
 **Assíncrono (ex: FastAPI, Node.js)**: *As tarefas não bloqueiam o servidor*. Enquanto uma requisição aguarda dados externos, o sistema "passa a vez" e o mesmo trabalhador atende outros usuários. Isso *economiza muita memória e permite suportar milhares de conexões simultâneas com alta performance*.
 
@@ -51,7 +53,25 @@ A diferença principal entre os modelos está em como o servidor gerencia o temp
 
 ## Tavern
 
-Ao invés de escrever código Python, você descreve seus testes de API de forma declarativa em arquivos YAML. Ele roda nativamente dentro do processo do `pytest`, aproveitando toda a sua infraestrutura já existente (fixtures, CI/CD e relatórios) sem sair do fluxo de desenvolvimento.
+Ao invés de escrever código Python, você *descreve seus testes de API de forma declarativa em arquivos YAML*. Ele roda nativamente dentro do processo do `pytest`, aproveitando toda a sua infraestrutura já existente (fixtures, CI/CD e relatórios) sem sair do fluxo de desenvolvimento.
+
+```yaml
+# test_api_simples.tavern.yaml
+test_name: Teste basico de GET na API publica
+
+stages:
+  - name: Busca o post 1 e valida a resposta
+    request:
+      url: "https://jsonplaceholder.typicode.com/posts/1"
+      method: GET
+
+    response:
+      status_code: 200
+      strict: False  # Usamos o False para ele não reclamar de chaves que não queremos testar agora
+      json:
+        id: 1
+        userId: 1
+```
 
 --
 
