@@ -4,7 +4,7 @@ hide:
   - navigation
 ---
 
-# Next.js Rotas :simple-nextdotjs:
+# Next.js Hooks :simple-nextdotjs:
 
 <div class="reveal" style="height: 500px; border: 1px solid #ccc;">
   <div class="slides">
