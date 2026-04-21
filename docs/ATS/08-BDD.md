@@ -59,18 +59,18 @@ def verificar_resultado(estado):
 
 Execute com `pytest test_soma.py`. Quando você executa `test_soma.py`, o pytest-bdd faz o seguinte, passo a passo:
 
-1. Lê `scenarios('soma.feature')` e carrega o arquivo `soma.feature`.
-2. Encontra o cabeçalho `# language: pt` e usa o dicionário interno para mapear `Dado`→`given`, `Quando`→`when`, `Então`→`then`.
-3. Percorre o cenário linha a linha, extraindo as strings das etapas:
-   - `que o valor inicial é zero`
-   - `eu somo 2 e 2`
-   - `o total deve ser 4`
-4. Registra as funções Python decoradas (`@given`, `@when`, `@then`) e faz correspondência exata das strings das etapas com os decoradores do código.
-5. Ao casar cada texto exatamente, executa as funções na ordem das etapas:
-   - Chama `valor_inicial()` (`@given`) que retorna `{"total": 0}` e o disponibiliza como fixture `estado`.
-   - Chama `somar(estado)` (`@when`) que atualiza `estado["total"] = 4`.
-   - Chama `verificar_resultado(estado)` (`@then`) que executa `assert estado["total"] == 4`.
-6. Se todas as asserções passarem, o teste é considerado bem-sucedido; se a correspondência de strings falhar ou a asserção falhar, o pytest reporta erro.
+- Lê `scenarios('soma.feature')` e carrega o arquivo `soma.feature`.
+- Encontra o cabeçalho `# language: pt` e usa o dicionário interno para mapear `Dado`→`given`, `Quando`→`when`, `Então`→`then`.
+- Percorre o cenário linha a linha, extraindo as strings das etapas:
+    - `que o valor inicial é zero`
+    - `eu somo 2 e 2`
+    - `o total deve ser 4`
+- Registra as funções Python decoradas (`@given`, `@when`, `@then`) e faz correspondência exata das strings das etapas com os decoradores do código.
+- Ao casar cada texto exatamente, executa as funções na ordem das etapas:
+    - Chama `valor_inicial()` (`@given`) que retorna `{"total": 0}` e o disponibiliza como fixture `estado`.
+    - Chama `somar(estado)` (`@when`) que atualiza `estado["total"] = 4`.
+    - Chama `verificar_resultado(estado)` (`@then`) que executa `assert estado["total"] == 4`.
+- Se todas as asserções passarem, o teste é considerado bem-sucedido; se a correspondência de strings falhar ou a asserção falhar, o pytest reporta erro.
 
 Exemplo mais complexo:
 
@@ -78,6 +78,6 @@ Exemplo mais complexo:
 
 ## Exercício
 
-[:lucide-file-text: ATS9 - Testes APIs](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS9.typ'); return false;" }
+[:lucide-file-text: ATS10 - BDD](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS10.typ'); return false;" }
 
 [:lucide-send: Entregar Atividade](https://forms.gle/XtxuC3MNMnuaU1v66){ .md-button target="_blank" }

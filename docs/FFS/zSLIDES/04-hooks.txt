@@ -10,13 +10,13 @@
 
 ## Estados
 
-Os estados do React *armazenam **dados que podem mudar ao longo do tempo** em um componente*, permitindo que ele seja dinâmico e reativo. *Quando o estado muda, o React re-renderiza automaticamente o componente*, refletindo as alterações na interface do usuário, o que é fundamental para criar aplicações interativas que respondem a eventos e mudanças de dados.
+Os estados do React *armazenam dados que podem mudar ao longo do tempo em um componente*, permitindo que ele seja dinâmico e reativo. *Quando o estado muda, o React re-renderiza automaticamente o componente*, refletindo as alterações na interface do usuário, o que é fundamental para criar aplicações interativas que respondem a eventos e mudanças de dados.
 
 ---
 
 ### `useState`
 
-Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo declarar uma variável de estado e uma função para atualizá-la. Os ***hooks** no React são funções que permitem utilizar o estado e outras funcionalidades* em componentes funcionais.
+Cada componente pode ter seu próprio estado, que é gerenciado frequentemente com o hook `useState`, permitindo declarar uma variável de estado e uma função para atualizá-la. Os **hooks** no React são funções que permitem utilizar o estado e outras funcionalidades* em componentes funcionais.
 
 No React funcional, o estado é frequentemente gerenciado usando o hook `useState`. Este hook permite que você *declare uma variável de estado e uma função para atualizá-la*.
 
