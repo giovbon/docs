@@ -19,17 +19,13 @@ hide:
 
 **APIs Customizadas**
 
-- [ ] `/buscaCEP`. Recebe um CEP (texto) e busca na tabela CEP. Se encontrar, devolve o registro; se não, devolve null. Serve para evitar o "Query All" (buscar tudo) que seria lento. (16)
+- [x] `/buscaCEP`. Recebe um CEP (texto) e busca na tabela CEP. Se encontrar, devolve o registro; se não, devolve null. Serve para evitar o "Query All" (buscar tudo) que seria lento. (16)
 
-- [ ] `/buscaCliente` (ou `/consultaCliente`). Recebe `authToken`, chama internamente `/auth/me` para pegar o `user_id`, e então busca na tabela Cliente. É a base para quase todas as outras APIs. (16/17)
+- [x] `/buscaCliente` (ou `/consultaCliente`). Recebe `authToken`, chama internamente `/auth/me` para pegar o `user_id`, e então busca na tabela Cliente. É a base para quase todas as outras APIs. (16/17)
 
-- [ ] `/upsertCEP`. Recebe {cep, cidade, estado}. Se o CEP existe, faz PATCH (atualiza); se não, faz POST (insere). Sempre retorna o registro do CEP (com o id). (17)
+- [x] `/upsertCEP`. Recebe {cep, cidade, estado}. Se o CEP existe, faz PATCH (atualiza); se não, faz POST (insere). Sempre retorna o registro do CEP (com o id). (17)
 
-- [ ] `/cadastraCliente` Fluxo de 4 etapas: (17)
-    1. `/auth/signup` (cria user); 
-    2. `/auth/me` (pega ID); 
-    3. Busca `status_id` na tabela `STATUS_CLIENTE`; 
-    4. Salva na tabela Cliente.
+- [x] `/cadastraCliente` Fluxo de 4 etapas: Recebe dados do cliente e cadastra um novo usuário para login e já cria o perfil de cliente vinculado a ele na mesma operação. (17)
 
 - [ ] `/consultaEnderecoCliente`. Recebe `authToken`, descobre quem é o cliente (via `/buscaCliente`) e lista os endereços. Usa um Addon para trazer os dados do CEP junto com o endereço. (18)
 
