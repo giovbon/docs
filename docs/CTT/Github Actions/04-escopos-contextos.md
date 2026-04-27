@@ -19,8 +19,6 @@ hide:
 
 [:lucide-file-text: CTT10 - env, vars, secrets](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT10.typ'); return false;" }
 
-[:lucide-file-text: CTT10 - Dissertativas 1](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT10B.typ'); return false;" }
-
 ```yaml title="pipeline.yml"
 name: Desafio de Variaveis e Escopos
 on: workflow_dispatch
