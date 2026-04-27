@@ -1,0 +1,107 @@
+<!-- .slide: data-background-image="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>tailwind</h1>
+    <img src="https://simpleicons.org/icons/tailwindcss.svg" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+
+Tailwind é um framework de CSS utilitário que facilita o desenvolvimento de interfaces de usuário ao *permitir o uso de classes específicas para estilizar elementos diretamente no HTML, sem a necessidade de escrever CSS personalizado*, garantindo consistência no design, desenvolvimento rápido e reutilização de código.
+
+O conceito de **classes utilitárias** do Tailwind propõe que a *estilização seja feita aplicando-se diretamente no HTML/JSX diversas classes, onde cada classe corresponde a uma única propriedade CSS ou a um conjunto muito limitado* (ex: `bg-blue-500` para cor de fundo, `p-4` para padding, `flex` para display). 
+
+Essa abordagem permite aos desenvolvedores construir designs customizados de forma rápida, sem a necessidade de escrever CSS personalizado ou de inventar nomes descritivos para classes, resultando em maior consistência e em um processo de desenvolvimento mais ágil.
+
+--
+
+
+#### Exemplo
+
+```html
+<button class="bg-sky-500 hover:bg-sky-700 ...">Save changes</button>
+```
+
+Renderiza um botão estilizado, onde:
+
+- `bg-sky-500`: define a cor de fundo (background) do botão como um tom de azul Sky na intensidade 500 (a cor padrão do botão).
+- `hover:bg-sky-700`: altera a cor de fundo do botão para um tom de azul Sky mais escuro (700) apenas quando o mouse passa sobre ele (hover).
+
+Veja mais exemplos em: [Styling with utility classes - Core concepts - Tailwind CSS](https://tailwindcss.com/docs/styling-with-utility-classes)
+
+---
+
+## Layout e Posicionamento
+
+As classes que definem a estrutura e o fluxo dos elementos.
+
+| Categoria | Classe Mais Usada | Função |
+| :--- | :--- | :--- |
+| **Display** | `block`, `hidden` | Controla o tipo de exibição (e visibilidade). |
+| **Flexbox** | `flex` | Transforma o elemento em um contêiner flexível. |
+| **Alinhamento** | `justify-center` | Alinha o conteúdo horizontalmente. |
+| **Alinhamento** | `items-center` | Alinha o conteúdo verticalmente. |
+| **Grid** | `grid`, `grid-cols-3` | Cria layout de grade com N colunas. |
+
+---
+
+## Espaçamento (`padding` e `margin`)
+
+Usa uma escala de espaçamento consistente (Ex: de 0 a 96).
+
+| Categoria | Classe Mais Usada | Função |
+| :--- | :--- | :--- |
+| **Padding (Geral)** | `p-4` | Aplica padding em todos os 4 lados. |
+| **Padding (Eixo)** | `py-2`, `px-6` | Padding vertical (`y`) e horizontal (`x`). |
+| **Margin (Geral)** | `m-5` | Aplica margin em todos os 4 lados. |
+| **Margin (Específico)** | `mt-8`, `mb-2` | Margin Top (`mt`) e Margin Bottom (`mb`). |
+| **Centralização** | `mx-auto` | Centraliza um bloco horizontalmente. |
+
+---
+
+## Cores e Fundo
+
+Utiliza uma paleta padronizada (Ex: `blue-500` = tom 500 da cor azul).
+
+| Categoria | Classe Mais Usada | Exemplo | Função |
+| :--- | :--- | :--- | :--- |
+| **Cor de Fundo** | `bg-cor-X` | `bg-indigo-600` | Define a cor de fundo. |
+| **Cor do Texto** | `text-cor-X` | `text-white` | Define a cor do texto. |
+
+---
+
+## Tipografia
+
+Controle total sobre o texto.
+
+| Categoria | Classe Mais Usada | Exemplo | Função |
+| :--- | :--- | :--- | :--- |
+| **Tamanho** | `text-xl` | `text-2xl` | Define o tamanho da fonte. |
+| **Peso** | `font-bold` | `font-semibold` | Define o peso (negrito/seminegrito). |
+| **Alinhamento** | `text-center` | `text-left` | Alinha o texto dentro do elemento. |
+
+---
+
+## Interatividade e Efeitos
+
+Adicionando polimento visual e funcional.
+
+| Categoria | Classe Mais Usada | Função |
+| :--- | :--- | :--- |
+| **Borda** | `rounded-lg` | Define o quão arredondada será a borda. |
+| **Sombra** | `shadow-md` | Aplica uma sombra de intensidade média. |
+| **Transição** | `transition-colors` | Suaviza a mudança de cor (para usar com `hover:`). |
+| **Duração** | `duration-300` | Define o tempo da transição (300ms). |
+
+---
+
+## Variantes (Responsividade e Estados)
+
+Os **Prefixos** aplicam estilos apenas em condições específicas.
+
+| Prefixo | Exemplo | Condição |
+| :--- | :--- | :--- |
+| **Responsividade** | `md:flex` | Aplica `display: flex` **somente** em telas médias (`768px`) ou maiores. |
+| **Estado** | `hover:bg-green-600` | Altera a cor de fundo **somente** quando o mouse passa sobre o elemento. |
+| **Estado** | `focus:ring-2` | Aplica um anel de foco **somente** quando o elemento está ativo (focado). |
