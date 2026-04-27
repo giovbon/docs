@@ -15,7 +15,7 @@ hide:
   </div>
 </div>
 
-## Artefatos
+## Exemplo do uso de artefatos
 
 ```yaml title="artefatos.yml"
 name: Aprendendo Artefatos

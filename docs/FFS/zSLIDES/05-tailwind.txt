@@ -16,6 +16,23 @@ Essa abordagem permite aos desenvolvedores construir designs customizados de for
 
 --
 
+### Classes Utilitárias
+
+Classes utilitárias são classes pequenas e focadas que executam uma tarefa específica. Exemplos incluem:
+
+- `justify-center` alinha o texto
+- `p 4` adiciona preenchimento
+- `mt 6` adiciona margem superior
+- `bg gray 100` aplica um fundo claro
+
+Ao combinar várias classes utilitárias, você pode criar designs completos diretamente em HTML. Essa abordagem torna os estilos mais fáceis de entender, atualizar e depurar.
+
+--
+
+O Tailwind CSS foi desenvolvido com base em um sistema de design consistente. Em vez de usar valores aleatórios, ele utiliza *escalas predefinidas* para espaçamento, cores e tipografia.
+
+Este sistema de design garante que os *layouts permaneçam equilibrados, legíveis e visualmente consistentes em diferentes páginas e tamanhos de tela*.
+
 
 #### Exemplo
 
@@ -28,7 +45,27 @@ Renderiza um botão estilizado, onde:
 - `bg-sky-500`: define a cor de fundo (background) do botão como um tom de azul Sky na intensidade 500 (a cor padrão do botão).
 - `hover:bg-sky-700`: altera a cor de fundo do botão para um tom de azul Sky mais escuro (700) apenas quando o mouse passa sobre ele (hover).
 
-Veja mais exemplos em: [Styling with utility classes - Core concepts - Tailwind CSS](https://tailwindcss.com/docs/styling-with-utility-classes)
+---
+
+### Por que os desenvolvedores usam o Tailwind CSS?
+
+À medida que os projetos crescem, o CSS tradicional torna-se difícil de gerenciar. Os desenvolvedores frequentemente enfrentam problemas como *espaçamento inconsistente, nomes de classes pouco claros e estilos que entram em conflito entre si*.
+
+O Tailwind CSS resolve esses problemas ao impor um *sistema de design consistente*. Ele fornece valores predefinidos para espaçamento, cores, tipografia e layout, o que ajuda a manter a consistência visual em todo o projeto.
+
+Os benefícios de usar o Tailwind CSS incluem:
+
+- Desenvolvimento mais rápido
+- Estilo mais limpo e previsível
+- Sem arquivos CSS grandes para gerenciar
+- Manutenção mais fácil
+- Melhor escalabilidade para projetos em crescimento
+
+--
+
+### Por que alguns desenvolvedores não usam o Tailwind CSS?
+
+O ganho de produtividade implica em *componentes mais "poluídos"* no react/next.js.
 
 ---
 
