@@ -1,5 +1,5 @@
 ---
-icon: simple/nextdotjs
+icon: simple/tailwindcss
 hide:
   - navigation
 ---
