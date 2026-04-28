@@ -44,6 +44,8 @@ npx create-next-app@latest
 
 ## Estratégias de renderização
 
+![](https://miro.medium.com/v2/resize:fit:1400/1*qtbY8twpsF6WBghrpz4fXg.png)
+
 ### Server-Side Rendering (SSR) - Renderização no Lado do Servidor
 **O que é e o que faz:**
 No SSR, o HTML da página é gerado no **servidor** no momento exato em que o usuário faz a requisição. O servidor busca os dados necessários no banco de dados, monta a página HTML completa e a envia pronta para o navegador. 
@@ -74,3 +76,14 @@ O ISR é uma evolução mágica do SSG popularizada por frameworks como o Next.j
 - **Vantagens:** Junta a velocidade extrema do SSG com a capacidade de manter dados atualizados quase como o SSR.
 
 **Exemplo simples:** A página de um produto em um grande e-commerce. Você quer que ela carregue em milissegundos (SSG). Mas o preço do produto pode mudar. Usando ISR com um limite de 60 segundos: a página é estática. Se o preço mudar, por 1 minuto as pessoas ainda veem o preço velho. O primeiro acesso após 1 minuto recebe a página velha, mas engatilha a recriação. Segundos depois, a página estática foi substituída pela nova com o preço novo, sem derrubar ou reconstruir as outras milhões de páginas da loja.
+
+---
+
+### Comparativo de Estratégias de Renderização Web
+
+| Estratégia | Onde / Quando o HTML é gerado? | Principal Vantagem | Principal Desvantagem | Exemplo Clássico |
+| :--- | :--- | :--- | :--- | :--- |
+| **SSR** (Server-Side) | No servidor, **no momento exato** do pedido do utilizador. | SEO excelente e dados sempre 100% atualizados. | Maior carga no servidor; tempo de resposta (TTFB) mais lento. | Sites de notícias (ex: G1, CNN). |
+| **SSG** (Static Site) | No servidor, **durante o build** (compilação do projeto). | Performance extrema e custo de alojamento muito baixo. | Necessita de um novo build para qualquer alteração de conteúdo. | Blogs e documentação técnica. |
+| **CSR** (Client-Side) | No navegador, **em tempo de execução**, via JavaScript. | Navegação instantânea após o load inicial (experiência de app). | SEO inicial prejudicado e demora no carregamento em dispositivos lentos. | Dashboards e Spotify Web. |
+| **ISR** (Incremental) | No servidor, atualizando o conteúdo **em background** após um tempo limite. | Rapidez do SSG com a flexibilidade de atualização do SSR. | O primeiro visitante após a expiração ainda vê dados antigos. | Páginas de produto em grandes E-commerces. |
