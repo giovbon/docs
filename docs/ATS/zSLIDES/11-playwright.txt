@@ -1,0 +1,114 @@
+<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>playwright</h1>
+</div>
+
+---
+
+## O que é
+
+O **Playwright** é um framework de automação de código aberto desenvolvido pela Microsoft, criado especificamente para testes de ponta a ponta (*end-to-end*) e controle de navegadores web. Ele se destaca por fornecer uma única API capaz de controlar de forma confiável os principais motores de navegação modernos — Chromium (Chrome/Edge), Firefox e WebKit (Safari) — em diferentes sistemas operacionais. Além disso, a ferramenta é altamente versátil para os desenvolvedores, oferecendo suporte oficial para várias linguagens de programação, incluindo JavaScript, TypeScript, Python, Java e C# (.NET).
+
+Na prática, o Playwright é amplamente utilizado por equipes de engenharia e controle de qualidade (QA) para testar aplicações web de forma automatizada, simulando o comportamento real de um usuário (como cliques, preenchimento de formulários e navegação) para garantir que tudo funcione perfeitamente antes do lançamento. Além dos testes de software, ele é uma escolha muito popular para *web scraping* (extração automatizada de dados de sites) e automação de tarefas rotineiras na internet. Seus recursos avançados, como a espera inteligente por elementos da página (*auto-wait*), interceptação de tráfego de rede e geração de evidências em vídeo ou capturas de tela, tornam a execução dessas tarefas muito mais rápida e estável.
+
+---
+
+## Diferenças em relação ao Selenium
+
+Não é que o Selenium seja ruim; ele tem uma comunidade gigantesca e funciona muito bem para muitos projetos. Mas se você vai começar um projeto hoje, o Playwright representa uma geração mais moderna de ferramentas de automação. Ele evita as principais dores de cabeça da automação clássica: testes lentos, falsos positivos e configurações complexas.
+
+--
+
+### 1. Velocidade e Arquitetura
+* **Selenium:** Comunica-se com o navegador enviando requisições HTTP individuais para cada comando (via protocolo WebDriver). Isso adiciona um pequeno atraso em cada ação, o que deixa os testes mais lentos.
+* **Playwright:** Estabelece uma conexão direta e contínua com o navegador via **WebSockets**. Isso permite uma comunicação bidirecional quase instantânea, tornando a execução dos testes e scripts significativamente mais rápida.
+
+--
+
+### 2. Espera Inteligente (*Auto-wait*)
+* **Por que não usar o Selenium?** No Selenium, se a sua página demora meio segundo a mais para carregar um botão, o teste quebra dizendo que o elemento não foi encontrado. Você é forçado a escrever códigos extras de "espera" (`WebDriverWait` ou os temidos `sleeps`), o que gera testes intermitentes (*flaky tests* — funcionam hoje, falham amanhã).
+* **A vantagem do Playwright:** Ele possui *auto-wait* nativo. Antes de clicar em um botão, ele verifica automaticamente se o elemento está visível, habilitado e estável. Isso reduz drasticamente as falhas aleatórias e deixa o código muito mais limpo.
+
+--
+
+### 3. Configuração e Gerenciamento
+* **Selenium:** Historicamente, exige que você baixe e gerencie os *drivers* específicos para cada navegador e sistema operacional (como o ChromeDriver ou o GeckoDriver), o que pode ser uma dor de cabeça quando o navegador do seu PC atualiza e o driver fica incompatível.
+* **Playwright:** Já vem com tudo pronto. Com um único comando de instalação, ele baixa os binários otimizados do Chromium, Firefox e WebKit, garantindo que o seu ambiente de teste não quebre com atualizações externas.
+
+--
+
+### 4. Isolamento e Paralelismo
+* **Playwright** introduziu o conceito de *Browser Contexts* (Contextos de Navegador). Em vez de abrir um navegador inteiro e pesado para cada teste (como o Selenium faz), ele abre apenas "sessões" isoladas (como abas anônimas) em questão de milissegundos. Isso permite rodar dezenas de testes em paralelo de forma muito mais eficiente e usando menos memória RAM.
+
+---
+
+## Uso
+
+Começar a usar o Playwright no Python é muito rápido porque a ferramenta já cuida de toda a configuração pesada para você. Ele oferece duas APIs: uma síncrona (mais fácil para começar) e uma assíncrona (excelente para escalar *web scraping*).
+
+
+A API Síncrona do Playwright funciona de forma linear e bloqueante, executando uma linha de código por vez. Isso significa que o Python só avança para a próxima instrução após a anterior ser totalmente concluída, como aguardar o carregamento completo de uma página. Por ser escrita no estilo tradicional da linguagem, ela possui uma curva de aprendizado menor e torna o código muito mais fácil de ler e depurar. Essa simplicidade faz dela a escolha ideal para quem está começando, para testes de software padrão e para automações rotineiras onde fazer várias coisas ao mesmo tempo não é a prioridade.
+
+Já a API Assíncrona opera de maneira não-bloqueante, utilizando as palavras-chave `async` e `await` para permitir que o Python realize outras tarefas em segundo plano enquanto aguarda processos demorados. Essa capacidade de lidar com múltiplas ações simultaneamente, como abrir dezenas de abas de uma só vez sem travar o sistema, a torna extremamente rápida e escalável. Por exigir um pouco mais de conhecimento técnico, ela é indicada especificamente para projetos pesados de *web scraping*, extração de dados em massa e integrações com aplicações web de alto desempenho.
+
+
+Abaixo, preparei um passo a passo usando a versão síncrona para você rodar seu primeiro código em menos de 5 minutos.
+
+### 1. Instalação do Pacote
+Primeiro, você precisa instalar a biblioteca do Playwright no seu ambiente Python (certifique-se de estar usando o Python 3.8 ou superior). Abra o seu terminal e digite:
+
+```bash
+pip install playwright
+```
+
+### 2. Instalação dos Navegadores
+Esta é a parte onde o Playwright brilha. Em vez de você caçar *drivers* pela internet, basta rodar o comando abaixo no terminal. Ele vai baixar as versões otimizadas do Chromium, Firefox e WebKit para a sua máquina:
+
+```bash
+playwright install
+```
+
+### 3. Escrevendo o Seu Primeiro Script
+Crie um arquivo chamado `meu_primeiro_script.py` e cole o código abaixo. Este script vai abrir o navegador, acessar um site, tirar uma captura de tela e imprimir o título da página.
+
+```python
+from playwright.sync_api import sync_playwright
+
+def iniciar_automacao():
+    # Inicia o Playwright
+    with sync_playwright() as p:
+        
+        # 1. Abre o navegador Chromium. 
+        # headless=False faz com que você veja o navegador abrindo. 
+        # Se for True, ele roda em segundo plano de forma invisível.
+        navegador = p.chromium.launch(headless=False)
+        
+        # 2. Abre uma nova aba/página
+        pagina = navegador.new_page()
+        
+        # 3. Navega até um site
+        print("Acessando o site...")
+        pagina.goto("https://pt.wikipedia.org/")
+        
+        # 4. Imprime o título da aba
+        print(f"O título da página é: {pagina.title()}")
+        
+        # 5. Tira um print da tela e salva na mesma pasta do script
+        pagina.screenshot(path="print_wikipedia.png")
+        print("Captura de tela salva com sucesso!")
+        
+        # 6. Fecha o navegador
+        navegador.close()
+
+if __name__ == "__main__":
+    iniciar_automacao()
+```
+
+### O que está acontecendo no código?
+* **`with sync_playwright() as p:`** Utilizamos um gerenciador de contexto (`with`) para garantir que os processos do Playwright sejam abertos e fechados corretamente, sem deixar lixo na memória do seu computador.
+* **`headless=False`**: Por padrão, o Playwright roda em modo *headless* (invisível, muito mais rápido para servidores). Como estamos aprendendo, colocar como `False` permite que você veja o "fantasma" controlando o navegador.
+
+---
+
+Você tem em mente algum site específico ou tarefa rotineira que gostaria de tentar automatizar agora para que possamos adaptar esse código?
