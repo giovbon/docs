@@ -12,7 +12,6 @@
 
 = Implementando Integração Contínua (CI) com GitHub Actions
 
-*Duração Estimada:* 2 horas
 *Objetivo:* Configurar um pipeline de Integração Contínua em uma API Python (FastAPI), forçar uma falha para entender o papel do CI na segurança do código e simular um fluxo de trabalho real com Pull Requests.
 
 == Cenário
@@ -60,7 +59,6 @@ Na vida real, não fazemos "push" direto na `main`. Usamos ramificações (branc
 8. *Observe a Mágica:* Note que o botão verde de "Merge" estará *BLOQUEADO* pelo GitHub porque o seu CI (verificar-api) falhou. O "Guarda-Costas" funcionou!
 9. Para finalizar com sucesso: corrija o teste na sua máquina, faça um novo push na mesma branch. O Pull Request vai atualizar sozinho, os testes vão rodar de novo, ficar verdes e o botão de Merge será liberado. Faça o Merge!
 
-
 === Parte 4: Evoluindo o Pipeline (Aplicando strategy matrix)
 
 Você garantiu que o código funciona perfeitamente na versão 3.11 do Python. Mas a sua startup acabou de descobrir que alguns clientes vão rodar essa API em servidores mais antigos com Python 3.10, e outros nos mais novos com Python 3.12. 
@@ -96,10 +94,6 @@ Nós testamos o código com o `pytest`, mas será que o servidor da API realment
 
 3. Faça o commit e envie para o GitHub.
 4. *O Resultado Final:* Abra os logs do Actions. Você verá a sua API iniciando dentro da máquina virtual do GitHub e o comando `curl` acessando as suas rotas e retornando o JSON com sucesso! Você acabou de criar um teste de caixa-preta automatizado.
-
-=== Parte 6: OPCIONAL - Rodando a API localmente (para os realmente fortes)
-
-Execute a api localmente, replicando os passos que o github actions fez (crie ambiente python, instale todas as dependências, incluindo as do `requirements.txt` e abra a API no seu navegador e a teste com o swagger (`http://localhost:8000/docs`))
 
 == Entrega
 
