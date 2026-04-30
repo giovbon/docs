@@ -74,7 +74,7 @@ Execute com `pytest test_soma.py`. Quando você executa `test_soma.py`, o pytest
 
 Exemplo mais complexo:
 
-<div class="code-explorer" data-src="../zCODE/pytest-bdd-saque.txt" ></div>
+<div class="code-explorer" data-src="zCODE/pytest-bdd-saque.txt" ></div>
 
 ## Exercício
 

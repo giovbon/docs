@@ -19,7 +19,7 @@ hide:
 
 ## Exemplos
 
-<div class="code-explorer" data-src="../zCODE/selenium2-exes.txt" ></div>
+<div class="code-explorer" data-src="zCODE/selenium2-exes.txt" ></div>
 
 [:lucide-file-text: ATS8 - Selenium 2](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS8.typ'); return false;" }
 
