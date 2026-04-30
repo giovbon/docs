@@ -135,4 +135,4 @@ Depois de tudo a mensagem de "Hello GitHub Action Workflow!" deverá aparecer no
 
 ??? example ":lucide-square-terminal: Instalando o act e executando primeiro workflow"
 
-    <div class="asciinema" data-src="zASC/13-act-install-hello.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
+    <div class="asciinema" data-src="../zASC/13-act-install-hello.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
