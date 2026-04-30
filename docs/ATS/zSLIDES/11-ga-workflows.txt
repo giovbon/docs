@@ -1,4 +1,4 @@
-<!-- .slide: data-background-image="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" data-background-size="cover" data-background-opacity="0.4" -->
+<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" data-background-opacity="0.4" -->
 
 <div class="glass-box">
     <h1>github actions</h1>
@@ -7,14 +7,7 @@
 
 ---
 
-Foi mal pela confusão! Entendi que você quer o **roteiro da fala** (o "texto da transição") para conectar os assuntos que você já explicou com o novo tópico do GitHub Actions.
-
-Aqui está uma sugestão de texto para você ler ou usar como base na hora de apresentar:
-
----
-
-
-"Até agora, nós mergulhamos no **como** construir a qualidade do nosso software. Aprendemos a criar testes robustos com **Pytest**, automatizamos interações no navegador com **Selenium**, e aplicamos metodologias como **TDD** e **BDD** para garantir que o comportamento e as regras de negócio estejam blindados. Vimos também como usar **Dublês de Teste** e **Fixtures** para isolar cenários e testar **APIs** de forma eficiente.
+Até agora, nós mergulhamos no **como** construir a qualidade do nosso software. Aprendemos a criar testes robustos com **Pytest**, automatizamos interações no navegador com **Selenium**, e aplicamos metodologias como **TDD** e **BDD** para garantir que o comportamento e as regras de negócio estejam blindados. Vimos também como usar **Dublês de Teste** e **Fixtures** para isolar cenários e testar **APIs** de forma eficiente.
 
 Mas, até este ponto, tudo o que fizemos depende de uma ação manual: eu ou você abrindo o terminal e rodando um comando na nossa própria máquina.
 
@@ -28,6 +21,8 @@ Vamos entender como essa estrutura de Workflows, Jobs e Runners funciona na prá
 
 ---
 
+## Github Actions
+
 No GitHub, quando você faz um `git push`, o servidor olha para a pasta `.github/workflows/` à procura de workflows (arquivos `.yml` ou `.yaml`) e dispara todos os arquivos que tenham `on: push` configurado. 
 
 ```
@@ -37,15 +32,7 @@ No GitHub, quando você faz um `git push`, o servidor olha para a pasta `.github
 │   │   │   └── work-hello.yml
 ```
 
----
-
-Um **evento** aciona um **workflow**, que é composto por um ou mais **jobs**.
-
-Cada job roda em um **runner** (máquina virtual, contêiner ou runner self-hosted) e seus **steps** são executados sequencialmente dentro do mesmo job.
-
-Já os jobs, entre si, podem rodar em paralelo, a menos que haja **dependências** definidas com `needs`
-
----
+--
 
 ## Elementos básicos de um workflow
 
@@ -54,6 +41,14 @@ Elementos básicos de um workflow, a estrutura mínima para um workflow funciona
 <div style="text-align: center;">
 <img src="../zSLIDES/img/composição-workflow.png" width="80%" data-preview-image>
 </div>
+
+--
+
+Um **evento** aciona um **workflow**, que é composto por um ou mais **jobs**.
+
+Cada job roda em um **runner** (máquina virtual, contêiner ou runner self-hosted) e seus **steps** são executados sequencialmente dentro do mesmo job.
+
+Já os jobs, entre si, podem rodar em paralelo, a menos que haja **dependências** definidas com `needs`
 
 --
 
@@ -94,12 +89,6 @@ Dentro de um job, existem **steps**. Os steps sempre, absolutamente *sempre, rod
 
 --
 
-*Cada Job roda em uma instância de Runner separada e limpa*, para garantir que um job não interfira no outro (isolamento) e o sistema pode *iniciar dois Runners ao mesmo tempo*, se um não depender do outro, para terminar tudo mais rápido (paralelismo).
-
-Se você tiver 10 arquivos `.yml` dentro da pasta `.github/workflows` e todos eles estiverem configurados para disparar no evento de push, o GitHub Actions *tentará iniciar* os 10 simultaneamente assim que você enviar o código. O GitHub utiliza um sistema de *limites de concorrência*. *A depender da sua conta*, se você ultrapassar esses limites, os jobs adicionais ficam no estado "Queued" (Na fila) até que um espaço seja liberado.
-
---
-
 <div style="text-align: center;">
 <img src="https://kroki.io/nomnoml/svg/eNqL1kvPLMkoTdIvzy_KTsvJLy_Wj1XQ1bWyU4h2LUvNK8mP5YIxFHSBguFQZYY1XNFe-UkgKrgktcAQIgtiGkGYenp6sVyxCmBVRoRVgRlgE2MVbKx0dRWibRKTikuKEpNL7AISixJzUnPyIQqM8CoAmYNPPqg0Ly-1yBDmR7CFMFEjJFEjoLOw-9wITRzicni44LUdYQb5fgAA3mCI6Q==" width="60%" data-preview-image>
 </div>
@@ -108,20 +97,13 @@ Se você tiver 10 arquivos `.yml` dentro da pasta `.github/workflows` e todos el
 
 ## Actions
 
-As **Actions** são ferramentas de *automação que configuram um ambiente limpo para codificação* (ex: Python), garantindo a execução consistente de scripts e testes, permitindo que o GitHub verifique automaticamente a integridade do código a cada alteração. Eles podem realizar:
-
-- **Instalação de Dependências**: Instalar bibliotecas ou ferramentas necessárias.
-- **Compilação de Código**: Compilar o código-fonte para gerar executáveis ou outros artefatos.
-- **Execução de Testes**: Rodar testes unitários ou de integração para verificar se o código funciona conforme esperado.
-- **Implantação**: Publicar o código em um servidor ou em serviços de nuvem (CD).
-
---
+As **Actions** são ferramentas de *automação que configuram um ambiente limpo para codificação* (ex: Python), garantindo a execução consistente de scripts e testes, permitindo que o GitHub verifique automaticamente a integridade do código a cada alteração. 
 
 Imagine que o *Runner* (a máquina que o GitHub te empresta) é um *computador novo, formatado* com Linux. Ele não tem seu código, não tem Python instalado e não tem suas bibliotecas. Para não ter que digitar 20 linhas de comandos Linux toda vez para configurar esse ambiente, a comunidade e o próprio GitHub criaram Actions.
 
 **Actions** são *pacotes de código reutilizáveis criados pela comunidade ou pelo GitHub*. Elas servem para encapsular tarefas frequentes e repetitivas, permitindo que você monte seu pipeline como se fossem blocos de Lego.
 
----
+--
 
 Exemplo:
 
@@ -185,7 +167,7 @@ A `setup-python` é uma Action que permite *customização*. Usamos a palavra-ch
 
 --
 
-O trecho a seguir constrói a aplicação instalando as *dependências* necessárias, como o framework FastAP:
+O trecho a seguir constrói a aplicação instalando as *dependências* necessárias, como o framework FastAPI:
 
 ```yml
 - name: Instalar dependências
@@ -215,7 +197,7 @@ O GitHub Actions é "burro" no sentido de que *ele não entende o seu código Py
 
 Se o Pytest rodar e todos os testes passarem, ele avisa o GitHub que deu tudo certo. Se um único teste falhar, o Pytest emite *um sinal de erro*, o Runner para imediatamente de funcionar, e o GitHub *bloqueia a sua atualização*.
 
----
+--
 
 Quando o fluxo termina, o GitHub nos dá um retorno visual imediato direto no repositório e no Pull Request.
 
