@@ -60,6 +60,6 @@ jobs:
 
 Modelo para o exercício:
 
-<div class="code-explorer" data-src="../../zCODE/CTT09-repo.txt" ></div>
+<div class="code-explorer" data-src="../zCODE/CTT09-repo.txt" ></div>
 
 [:lucide-arrow-big-down: Baixar Exercício CTT09](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT09.typ'); return false;" }

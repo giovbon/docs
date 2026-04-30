@@ -40,7 +40,7 @@ npx create-next-app@latest
 
 ??? example ":lucide-square-terminal: Iniciando projeto em Next.js (2 formas)"
 
-    <div class="asciinema" data-src="../../zASC/02-nextjs-install.cast" data-speed="1.5" data-idle-time-limit="4" data-theme="tango"></div> 
+    <div class="asciinema" data-src="../zASC/02-nextjs-install.cast" data-speed="1.5" data-idle-time-limit="4" data-theme="tango"></div> 
 
 ## Estratégias de renderização
 

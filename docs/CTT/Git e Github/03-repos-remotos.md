@@ -17,7 +17,7 @@ hide:
 
 ??? example ":lucide-square-terminal: Configurando chaves ssh e subindo repositório local com git push"
 
-    <div class="asciinema" data-src="../../zASC/06-ssh-git-push.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
+    <div class="asciinema" data-src="../zASC/06-ssh-git-push.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
 
 !!! danger "Alerta"
 
@@ -25,4 +25,4 @@ hide:
 
 ??? example ":lucide-square-terminal: Puxando alterações em repo remoto com git pull"
 
-    <div class="asciinema" data-src="../../zASC/07-git-pull.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
+    <div class="asciinema" data-src="../zASC/07-git-pull.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 

@@ -17,4 +17,4 @@ hide:
 
 ## Exemplo
 
-<div class="code-explorer" data-src="../../zCODE/nextjs-rotas.txt" ></div>
+<div class="code-explorer" data-src="../zCODE/nextjs-rotas.txt" ></div>
