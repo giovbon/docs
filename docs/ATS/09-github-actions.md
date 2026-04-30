@@ -61,7 +61,7 @@ jobs:
 
 Modelo para o exercício:
 
-<div class="code-explorer" data-src="../../zCODE/CTT09-repo.txt" ></div>
+<div class="code-explorer" data-src="../zCODE/CTT09-repo.txt" ></div>
 
 [:lucide-file-text: ATS11 - GA](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS11.typ'); return false;" }
 
