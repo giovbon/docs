@@ -53,7 +53,7 @@ Referências para utilizar:
     - Concorrência II: Channels
     - Gerenciamento de Pacotes (Go Modules)
     - Testes Automatizados em Go
-  . Cada página deve ser feita e revisada seguindo o fluxo de PRs descrito acima.
+  - Cada página deve ser feita e revisada seguindo o fluxo de PRs descrito acima.
 
 - *Estilização da documentação:* Uma documentação técnica de excelência não se resume apenas a escrever bons textos; a experiência de leitura e a formatação são fundamentais. Como vocês estarão documentando uma linguagem de programação, explorar os recursos visuais da ferramenta fará toda a diferença. Não se limitem ao Markdown básico! Acessem a documentação oficial do gerador no link #link("https://zensical.org/docs/setup/basics/", "Zensical - Basics & Setup") e descubram como enriquecer as páginas de vocês. Procurem aplicar recursos como:
 

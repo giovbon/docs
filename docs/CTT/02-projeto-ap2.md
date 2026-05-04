@@ -11,7 +11,7 @@ hide:
     - [Zensical Documentação](https://zensical.org/docs/get-started/)
     - [Roadmap da linguagem Go](https://roadmap.sh/golang)
 
-O objetivo é criar documentação da linguagem de programação Go, usando markdown com a ferramenta zensical. Leia a descrição e requisitos da entrega no link abaixo:
+O objetivo é criar site de documentação da linguagem de programação Go, usando markdown com a ferramenta zensical, publicando no github pages. Leia a descrição e requisitos da entrega no link abaixo:
 
 [:lucide-file-text: CTT-AP2](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/CTT-AP2.typ'); return false;" }
 
