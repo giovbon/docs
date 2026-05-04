@@ -85,4 +85,4 @@ gh config set editor "nano"
 
 ??? example ":lucide-square-terminal: Instalando gh e logando no github"
 
-    <div class="asciinema" data-src="../../zASC/12-github-cli.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 
+    <div class="asciinema" data-src="../zASC/12-github-cli.cast" data-speed="2" data-idle-time-limit="4" data-theme="tango"></div> 

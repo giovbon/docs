@@ -17,4 +17,4 @@ hide:
 
 ??? example ":lucide-square-terminal: git init, commit e clone"
 
-    <div class="asciinema" data-src="../../zASC/01-init_clone_commit.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>
+    <div class="asciinema" data-src="../zASC/01-init_clone_commit.cast" data-speed="1" data-idle-time-limit="4" data-theme="tango"></div>

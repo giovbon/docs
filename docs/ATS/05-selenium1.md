@@ -78,7 +78,7 @@ Deverá ser aberto o navegador e depois fechado e no final impresso: `Sucesso ab
 
 ---
 
-<div class="code-explorer" data-src="../zCODE/selenium1-exes.txt" ></div>
+<div class="code-explorer" data-src="zCODE/selenium1-exes.txt" ></div>
 
 ## Testando Locators
 

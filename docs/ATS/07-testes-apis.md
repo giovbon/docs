@@ -21,7 +21,7 @@ hide:
 
 ## Exemplos
 
-<div class="code-explorer" data-src="../zCODE/testes-apis.txt" ></div>
+<div class="code-explorer" data-src="zCODE/testes-apis.txt" ></div>
 
 ## Exercício
 

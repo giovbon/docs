@@ -59,6 +59,10 @@ jobs:
 
 ## Exercício
 
+Modelo para o exercício:
+
+<div class="code-explorer" data-src="zCODE/CTT09-repo.txt" ></div>
+
 [:lucide-file-text: ATS11 - GA](#){ .md-button .md-button--primary onclick="gerarPDFTypst('../TYP/ATS11.typ'); return false;" }
 
 [:lucide-send: Entregar Atividade](https://forms.gle/XtxuC3MNMnuaU1v66){ .md-button target="_blank" }
