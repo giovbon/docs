@@ -84,7 +84,7 @@ Referências para utilizar:
   - O job de deploy (`deploy_site`) *nunca* deve ser executado durante um *Pull Request*. Utilizar a diretiva `if` para garantir que o deploy só ocorra quando houver um `push` na branch `main` ou no evento de `schedule`.
 
 - *Documentação Final:*
-  - Escrever um `README.md` no repositório detalhando o fluxo de trabalho escolhido pela equipe, como as revisões foram feitas e a arquitetura do workflow do Actions.
+  - Escrever um `README.md` no repositório detalhando o fluxo de trabalho escolhido pela equipe, como as revisões foram feitas e a arquitetura do workflow do Actions. Incluir nele os *nomes dos integrantes*.
 
 == Entregáveis Finais
 
