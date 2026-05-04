@@ -22,7 +22,10 @@ Criação do projeto com zensical:
 ```bash
 # instalação
 python3 -m venv .venv
-source .venv/bin/activate
+# ativar ambiente
+source .venv/bin/activate # no linux
+python -m venv .venv # no windows
+
 pip install zensical
 
 zensical new .
