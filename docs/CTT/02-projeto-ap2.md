@@ -24,7 +24,7 @@ Criação do projeto com zensical:
 python3 -m venv .venv
 # ativar ambiente
 source .venv/bin/activate # no linux
-python -m venv .venv # no windows
+.venv\Scripts\activate # no windows
 
 pip install zensical
 
