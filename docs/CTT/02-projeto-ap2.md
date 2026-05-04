@@ -31,9 +31,9 @@ pip install zensical
 zensical new .
 
 zensical serve
-zensical serve --dev-addr localhost:8081 # define porta, caso 8000 esteja ocupada
+zensical serve zensical serve -a localhost:8080 # define porta, caso 8000 esteja ocupada
 ```
 
-Usar o [script actions](https://zensical.org/docs/publish-your-site/) como base pra fazer rodar no github pages.
+Usar o [workflow](https://zensical.org/docs/publish-your-site/) da documentação como base pra fazer rodar no github pages.
 
-Há várias opções de [customização](https://zensical.org/docs/customization/).
+Há várias opções de [customização](https://zensical.org/docs/customization/) do zensical.
