@@ -1,6 +1,6 @@
 - /
   - README.md
-    ```
+    ```text
     ## Como configurar o ambiente local
     
     **1. Criar e ativar o ambiente virtual:**
