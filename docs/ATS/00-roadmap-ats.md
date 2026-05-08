@@ -10,21 +10,27 @@ search:
 
 <div class="markmap" data-title="Roadmap CTT">
 <pre>
+<!-- https://roadmap.sh/qa -->
 # ATS
 
-## Testes Unitários e Fundamentos
-### UnitTest
-### PyTest
+## Introdução
+- Pirâmide de testes
+- Tipos de testes (funcional - não funcional)
+- Abordagens (white, gray, black box)
+## UnitTest
+## PyTest
 - Fixtures
-### Dublê de Testes
+## TDD (Test-Driven Development)
+- Red, Green, Refactor
+## Dublê de Testes
 - Mocks, Stubs, Fakes, Spies e Dummies
-### TDD (Test-Driven Development)
-
-## Testes E2E / Interface Web (UI)
-### Selenium I
-### Selenium II
-
-## Testes de Integração e Serviços
-### Testes de APIs
+## Selenium <!--Playwright https://playwright.dev/ -->
+- Padrão de Projeto: Page Object Model (POM) ???
+<!-- Tiozão incluiu o Behave -->
+## Testes de APIs
+## BDD (Behavior-Driven Development)
+## Github Actions
+- Conceitos de CI/CD
+- Criando pipelines com Github Actions (Rodando os testes automaticamente a cada push)
 </pre>
 </div>
