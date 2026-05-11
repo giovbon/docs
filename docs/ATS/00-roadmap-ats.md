@@ -31,6 +31,6 @@ search:
 ## BDD (Behavior-Driven Development)
 ## Github Actions
 - Conceitos de CI/CD
-- Criando pipelines com Github Actions (Rodando os testes automaticamente a cada push)
+- Criando pipelines com Github Actions (Rodando os testes automaticamente a cada push)>
 </pre>
 </div>
