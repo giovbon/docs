@@ -24,7 +24,7 @@ Vocês foram contratados como Engenheiros de Qualidade de Software. A missão é
 
 == O que é esperado na Entrega Final
 
-O grupo deverá entregar o link de um repositório público no GitHub contendo:
+Deverá ser entregue o link de um repositório público no GitHub contendo:
 
 1. O código da aplicação base refatorado para testes *(código base original fornecido no final deste documento)*.
 2. Toda a suíte de testes (Unidade, Integração/DB, Mocks, API, E2E e BDD).
