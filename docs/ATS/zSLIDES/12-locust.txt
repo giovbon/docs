@@ -1,0 +1,36 @@
+<!-- .slide: data-background-image="https://images.squarespace-cdn.com/content/v1/5fb4ea8933ae6c208c3dac41/1656395530398-NQT3HSOMM2GVD84P8FXM/car2car" data-background-size="cover" data-background-opacity="0.4" -->
+
+<div class="glass-box">
+    <h1>locust</h1>
+    <img src="https://simpleicons.org/icons/locust.svg" alt="Pytest" class="glass-icon imagem-invertida" />
+</div>
+
+---
+
+O **Locust** é uma ferramenta de *teste de carga (load testing) e de performance* de código aberto, altamente escalável e baseada em Python.
+
+Diferente de ferramentas tradicionais (como o Apache JMeter), que muitas vezes dependem de interfaces gráficas complexas ou arquivos XML para configurar os testes, o Locust permite que você defina todo o comportamento dos usuários simulados escrevendo *código Python puro*.
+
+---
+
+## Uso
+
+O objetivo principal do Locust é descobrir quantos usuários simultâneos um sistema consegue suportar antes de apresentar lentidão ou falhar. Portanto ele faz *testes não-funcionais*. Ele é usado principalmente para:
+
+- **Testes de Carga (Load Testing)**: Avaliar se a infraestrutura aguenta o tráfego normal ou o pico esperado de usuários.
+- **Testes de Estresse (Stress Testing)**: Inundar o sistema com requisições para descobrir qual é o seu "ponto de quebra" (gargalo).
+- **Medição de Performance**: Monitorar métricas cruciais como tempo de resposta, taxa de requisições por segundo (RPS) e taxa de erro sob diferentes níveis de carga.
+
+--
+
+O Locust brilha em situações onde o tráfego de usuários é alto, imprevisível ou *crítico para o negócio*. Aqui estão os cenários mais comuns:
+
+- **E-commerces em Épocas de Pico (Ex: Black Friday)**: Antes de grandes eventos de vendas, as empresas usam o Locust para simular milhares de clientes navegando no catálogo, pesquisando produtos, adicionando itens ao carrinho e finalizando compras ao mesmo tempo. Isso garante que a *loja não saia do ar na hora de maior lucro*.
+
+- **Lançamento de Novos Aplicativos ou Jogos**: No "Dia 1" do lançamento de um aplicativo ou game online, é comum haver uma enxurrada de novos usuários tentando fazer login ou baixar recursos simultaneamente. O Locust simula essa onda de conexões para garantir que os servidores de autenticação e os bancos de dados não entrem em colapso.
+
+--
+
+- **Validação e Otimização de APIs (Microsserviços)**: Se uma equipe constrói uma nova API REST ou GraphQL, o Locust é usado para disparar milhares de requisições por segundo contra esses endpoints. O objetivo é ver se a API responde dentro do limite aceitável (ex: menos de 200 milissegundos) e identificar quais microsserviços precisam de mais recursos de hardware.
+
+- **Teste de Auto-Scaling em Cloud**: Em ambientes de nuvem (AWS, Azure, GCP), o Locust é frequentemente usado para validar se as regras de Auto-Scaling estão funcionando. O teste aumenta a carga gradativamente e os engenheiros observam se a infraestrutura sobe novos servidores automaticamente de forma rápida o suficiente para lidar com o tráfego, sem gerar erros de timeout para os usuários.
